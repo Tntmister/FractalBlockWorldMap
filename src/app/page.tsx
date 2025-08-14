@@ -1,3 +1,4 @@
+import './graph'
 
 export default function Home() {
   return (
