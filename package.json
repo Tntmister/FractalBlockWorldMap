@@ -1,0 +1,27 @@
+{
+  "name": "fractal-block-world-map",
+  "version": "0.1.0",
+  "homepage": "https://tntmister.github.io/FractalBlockWorldMap",
+  "private": true,
+  "scripts": {
+    "deploy": "next build && touch ./out/.nojekyll && gh-pages -d out -t",
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "15.4.6",
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.4.6",
+    "gh-pages": "^6.3.0",
+    "typescript": "^5"
+  }
+}
