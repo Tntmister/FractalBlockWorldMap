@@ -1,48 +1,89 @@
-import { Connections, connections, nodeNames } from "./connections";
+import { inputGraph } from "./input";
+import { InputGraph, InputNode, nodeNames, stats } from "./types";
 
-type route = {
-  [dest in nodeNames]: number
+class Node {
+  name: nodeNames;
+  edges: {
+    node: Node;
+    distance?: number;
+    depth?: number;
+  }[];
+  upgrades?: stats[];
+  items?: stats[];
+  constructor(node: InputNode) {
+    this.name = node.name as nodeNames;
+    this.edges = []; // edges to other nodes
+    this.upgrades = node.upgrades;
+    this.items = node.items;
+  }
+
+  addEdge(node: Node, distance = 0, depth?: number) {
+    this.edges.push({
+      node: node,
+      distance: distance,
+      depth: depth
+    });
+  }
 }
 
-//https://rikyperdana.medium.com/directed-graph-pathfinding-algorithm-in-functional-js-b71a39e6dec8
-//above code snippet adapted for different data format and Typescript
 class Graph {
-  connections: Connections;
-  constructor(connections: Connections) {
-    this.connections = connections;
+  nodes: Map<nodeNames, Node>;
+  pathStack: Node['edges'];
+  constructor(graph: InputGraph, startingNode: nodeNames) {
+    this.nodes = new Map();
+    graph.nodes.forEach((inputNode) => {
+      this.addNode(inputNode);
+    })
+    graph.edges.forEach((inputEdge) => {
+      this.addEdge(inputEdge.from, inputEdge.to, inputEdge.distance, inputEdge.depth)
+    })
+    this.pathStack = [{
+      node: this.nodes.get(graph.root.name)!,
+      depth: graph.root.depth
+    }]; 
   }
 
-  pFinder = (from: nodeNames, dest: nodeNames, path = <route>{ [from]: 1 }) => {
-    const keys = Object.keys(this.connections) as (keyof typeof this.connections)[]
-    return keys.filter((step) => !path[step])
-      .reduce(
-        (acc, next): route[] =>
-          this.connections[from]?.[next]?.distance
-            ? [
-                ...acc,
-                ...this.pFinder(next, dest, {
-                  ...path,
-                  [from]: this.connections[from][next].distance,
-                }),
-              ]
-            : [...acc, ...(!acc.length && from === dest ? [path] : [])],
-        []
-      );
+  addNode(node: InputNode) {
+    if (!this.nodes.has(node.name as nodeNames)) {
+      this.nodes.set(node.name as nodeNames, new Node(node));
+    }
   }
 
-  sum = (arr: Array<number>) => arr.reduce((a, b) => a + b);
-  sub = ([first, ...rest]: Array<number>) => first - this.sum(rest);
+  addEdge(from: nodeNames, to: nodeNames, distance = 0, depth?: number) {
+    const fromNode = this.nodes.get(from);
+    const toNode = this.nodes.get(to);
+    if (fromNode && toNode) {
+      fromNode.addEdge(toNode, distance, depth);
+    } else {
+      throw new Error("Both nodes must exist before adding an edge.");
+    }
+  }
 
-  shortestPath = (from: nodeNames, dest: nodeNames): route =>
-    this.pFinder(from, dest).sort((a, b) =>
-      this.sub([this.sum(Object.values(a)), this.sum(Object.values(b))])
-    )[0];
+  get current(){
+    return this.pathStack[-1].node
+  }
 
-  longestPath = (from: nodeNames, dest: nodeNames): route =>
-    this.pFinder(from, dest).sort((a, b) =>
-      this.sub([this.sum(Object.values(b)), this.sum(Object.values(a))])
-    )[0];
+  traverse(toName: nodeNames) {
+    const toNode = this.nodes.get(toName);
+    if (!toNode) throw new Error(`Node ${toName} does not exist.`)
+
+    const edge = this.current.edges.find(edge => edge.node.name === toName);
+    if (!edge) throw new Error(`No edge from ${this.current.name} to ${toName}`);
+
+    this.pathStack.push(edge);
+  }
+
+  backtrack() {
+    if (this.pathStack.length > 1) {
+      this.pathStack.pop();
+    } else {
+      throw new Error(`${this.current.name} does not have a parent node.`)
+    }
+  }
+
+  printPath() {
+    console.log(this.pathStack.map((edge) => edge.node.name).join(" -> "));
+  }
 }
-const graph = new Graph(connections);
-console.log(graph.connections);
-console.log(graph.shortestPath("Tutorial Box", "Small White Flower"));
+const graph = new Graph(inputGraph, "Tutorial Box");
+console.log(graph.nodes)
