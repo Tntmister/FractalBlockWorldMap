@@ -1,14 +1,10 @@
-import { inputGraph } from './input';
 import { edgeInfo, InputGraph, InputNode, nodeNames, stats } from './types';
 
 class Node {
 	name: nodeNames;
-	edges: {
+	edges: (edgeInfo & {
 		node: Node;
-		distance?: number;
-		depth?: number;
-		note?: string;
-	}[];
+	})[];
 	upgrades?: stats[];
 	items?: stats[];
 	constructor(node: InputNode) {
@@ -18,18 +14,18 @@ class Node {
 		this.items = node.items;
 	}
 
-	addEdge(node: Node, ...args: [edgeInfo]) {
+	addEdge(node: Node, edgeInfo: edgeInfo) {
 		this.edges.push({
 			node: node,
-			...args
+			...edgeInfo
 		});
 	}
 }
 
-class Graph {
+export class Graph {
 	nodes: Map<nodeNames, Node>;
 	pathStack: Node['edges'];
-	constructor(graph: InputGraph, startingNode: nodeNames) {
+	constructor(graph: InputGraph, _startingNode: nodeNames) {
 		this.nodes = new Map();
 		for (const inputNode of graph.nodes) {
 			this.addNode(inputNode);
@@ -45,7 +41,8 @@ class Graph {
 		this.pathStack = [
 			{
 				node: this.nodes.get(graph.root.name)!,
-				depth: graph.root.depth
+				depth: graph.root.depth,
+				distance: 0
 			}
 		];
 	}
@@ -56,18 +53,22 @@ class Graph {
 		}
 	}
 
-	addEdge(from: nodeNames, to: nodeNames, ...edgeInfo: [edgeInfo]) {
+	addEdge(from: nodeNames, to: nodeNames, edgeInfo: edgeInfo) {
 		const fromNode = this.nodes.get(from);
 		const toNode = this.nodes.get(to);
 		if (fromNode && toNode) {
-			fromNode.addEdge(toNode, ...edgeInfo);
+			fromNode.addEdge(toNode, edgeInfo);
 		} else {
 			throw new Error('Both nodes must exist before adding an edge.');
 		}
 	}
 
 	get current() {
-		return this.pathStack[-1].node;
+		return this.pathStack[this.pathStack.length - 1].node;
+	}
+
+	get previous() {
+		return this.pathStack.length > 1 ? this.pathStack[this.pathStack.length - 2].node : null;
 	}
 
 	traverse(toName: nodeNames) {
@@ -93,5 +94,3 @@ class Graph {
 		console.log(this.pathStack.map((edge) => edge.node.name).join(' -> '));
 	}
 }
-const graph = new Graph(inputGraph, 'Tutorial Box');
-console.log(graph.nodes);

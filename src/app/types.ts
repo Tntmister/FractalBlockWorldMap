@@ -23,7 +23,7 @@ export type InputNode = {
 export type nodeNames = (typeof inputNodes)[number]['name'];
 
 export type edgeInfo = {
-	distance?: number; // how hard is it to travel ingame (enemy difficulty/time)
+	distance: number; // how hard is it to traverse to ingame (enemy difficulty/time)
 	depth?: number; // actual depth ("level" number ingame)
 	note?: string; // required keys/specifc method to enter
 };
