@@ -1,27 +1,37 @@
 {
-  "name": "fractal-block-world-map",
-  "version": "0.1.0",
-  "homepage": "https://tntmister.github.io/FractalBlockWorldMap",
-  "private": true,
-  "scripts": {
-    "deploy": "next build && touch ./out/.nojekyll && gh-pages -d out -t",
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "next": "15.4.6",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
-  },
-  "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.4.6",
-    "gh-pages": "^6.3.0",
-    "typescript": "^5"
-  }
+	"name": "fractal-block-world-map",
+	"version": "0.1.0",
+	"homepage": "https://tntmister.github.io/FractalBlockWorldMap",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"deploy": "next build && touch ./out/.nojekyll && gh-pages -d out -t",
+		"dev": "next dev --turbopack",
+		"build": "next build",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"next": "15.4.6",
+		"react": "19.1.0",
+		"react-dom": "19.1.0"
+	},
+	"devDependencies": {
+		"@eslint/css": "^0.10.0",
+		"@eslint/eslintrc": "^3",
+		"@eslint/js": "^9.33.0",
+		"@types/node": "^20",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"@typescript-eslint/parser": "^8.39.1",
+		"eslint": "^9.33.0",
+		"eslint-config-next": "15.4.6",
+		"eslint-plugin-react": "^7.37.5",
+		"gh-pages": "^6.3.0",
+		"globals": "^16.3.0",
+		"jiti": "^2.5.1",
+		"prettier": "^3.6.2",
+		"prettier-eslint": "^16.4.2",
+		"typescript": "^5.9.2",
+		"typescript-eslint": "^8.39.1"
+	}
 }

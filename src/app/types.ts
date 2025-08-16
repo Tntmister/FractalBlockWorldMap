@@ -1,26 +1,26 @@
-import { inputNodes } from "./input";
+import { inputNodes } from './input';
 
 export type stats =
-  | "Health"
-  | "Armor"
-  | "Plasma"
-  | "Cannon"
-  | "Laser"
-  | "Rocket"
-  | "Homing"
-  | "Minigun"
-  | "Railgun"
-  | "EMP"
-  | "Nuke"
-  | "Black Hole";
+	| 'Health'
+	| 'Armor'
+	| 'Plasma'
+	| 'Cannon'
+	| 'Laser'
+	| 'Rocket'
+	| 'Homing'
+	| 'Minigun'
+	| 'Railgun'
+	| 'EMP'
+	| 'Nuke'
+	| 'Black Hole';
 
 export type InputNode = {
-  name: string;
-  upgrades?: stats[]; // possible upgrades
-  items?: stats[]; // possible items
-}
+	name: string;
+	upgrades?: stats[]; // possible upgrades
+	items?: stats[]; // possible items
+};
 
-export type nodeNames = (typeof inputNodes)[number]["name"];
+export type nodeNames = (typeof inputNodes)[number]['name'];
 
 export type edgeInfo = {
 	distance?: number; // how hard is it to travel ingame (enemy difficulty/time)
@@ -29,13 +29,13 @@ export type edgeInfo = {
 };
 
 export interface InputGraph {
-  nodes: readonly InputNode[];
-  edges: {
+	nodes: readonly InputNode[];
+	edges: {
 		[from in nodeNames]?: {
 			[to in nodeNames]?: edgeInfo;
 		};
 	};
-  root: {
+	root: {
 		name: nodeNames;
 		depth: number;
 	};
