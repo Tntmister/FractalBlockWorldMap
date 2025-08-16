@@ -22,17 +22,21 @@ export type InputNode = {
 
 export type nodeNames = (typeof inputNodes)[number]["name"];
 
+export type edgeInfo = {
+	distance?: number; // how hard is it to travel ingame (enemy difficulty/time)
+	depth?: number; // actual depth ("level" number ingame)
+	note?: string; // required keys/specifc method to enter
+};
+
 export interface InputGraph {
   nodes: readonly InputNode[];
   edges: {
-    from: nodeNames;
-    to: nodeNames;
-    distance?: number;
-    depth?: number;
-    note?: string;
-  }[];
+		[from in nodeNames]?: {
+			[to in nodeNames]?: edgeInfo;
+		};
+	};
   root: {
-    name: nodeNames,
-    depth: number
-  }
+		name: nodeNames;
+		depth: number;
+	};
 }

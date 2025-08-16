@@ -1,5 +1,5 @@
 import { inputGraph } from "./input";
-import { InputGraph, InputNode, nodeNames, stats } from "./types";
+import { edgeInfo, InputGraph, InputNode, nodeNames, stats } from "./types";
 
 class Node {
   name: nodeNames;
@@ -7,6 +7,7 @@ class Node {
     node: Node;
     distance?: number;
     depth?: number;
+		note?: string;
   }[];
   upgrades?: stats[];
   items?: stats[];
@@ -17,11 +18,10 @@ class Node {
     this.items = node.items;
   }
 
-  addEdge(node: Node, distance = 0, depth?: number) {
+	addEdge(node: Node, ...args: [edgeInfo]) {
     this.edges.push({
       node: node,
-      distance: distance,
-      depth: depth
+			...args
     });
   }
 }
@@ -31,13 +31,19 @@ class Graph {
   pathStack: Node['edges'];
   constructor(graph: InputGraph, startingNode: nodeNames) {
     this.nodes = new Map();
-    graph.nodes.forEach((inputNode) => {
+		for (const inputNode of graph.nodes) {
       this.addNode(inputNode);
-    })
-    graph.edges.forEach((inputEdge) => {
-      this.addEdge(inputEdge.from, inputEdge.to, inputEdge.distance, inputEdge.depth)
-    })
-    this.pathStack = [{
+		}
+		// graph.edges.forEach((inputEdge) => {
+		//   this.addEdge(inputEdge.from, inputEdge.to, inputEdge.distance, inputEdge.depth)
+		// })
+		for (const [fromName, edge] of Object.entries(graph.edges)) {
+			for (const [toName, edgeInfo] of Object.entries(edge)) {
+				this.addEdge(fromName as nodeNames, toName as nodeNames, edgeInfo);
+			}
+		}
+		this.pathStack = [
+			{
       node: this.nodes.get(graph.root.name)!,
       depth: graph.root.depth
     }]; 
@@ -49,13 +55,13 @@ class Graph {
     }
   }
 
-  addEdge(from: nodeNames, to: nodeNames, distance = 0, depth?: number) {
+	addEdge(from: nodeNames, to: nodeNames, ...edgeInfo: [edgeInfo]) {
     const fromNode = this.nodes.get(from);
     const toNode = this.nodes.get(to);
     if (fromNode && toNode) {
-      fromNode.addEdge(toNode, distance, depth);
+			fromNode.addEdge(toNode, ...edgeInfo);
     } else {
-      throw new Error("Both nodes must exist before adding an edge.");
+			throw new Error("Both nodes must exist before adding an edge.");
     }
   }
 
