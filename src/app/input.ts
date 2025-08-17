@@ -5,7 +5,7 @@ export const inputNodes = [
 		name: 'Ying Forest'
 	},
 	{
-		name: 'Tutorial Box'
+		name: 'Tutorial'
 	},
 	{
 		name: 'Small Yellow Flower'
@@ -50,7 +50,7 @@ export const inputNodes = [
 export const inputGraph: InputGraph = {
 	nodes: inputNodes,
 	edges: {
-		'Tutorial Box': {
+		'Tutorial': {
 			'Ying Flower': {
 				distance: 0
 			}

@@ -22,7 +22,7 @@ export type InputNode = {
 
 export type nodeNames = (typeof inputNodes)[number]['name'];
 
-export type edgeInfo = {
+type edgeInfo = {
 	distance: number; // how hard is it to traverse to ingame (enemy difficulty/time)
 	depth?: number; // actual depth ("level" number ingame)
 	note?: string; // required keys/specifc method to enter
@@ -39,4 +39,17 @@ export interface InputGraph {
 		name: nodeNames;
 		depth: number;
 	};
+}
+
+export interface Edge extends edgeInfo {
+	node: Node;
+}
+
+export interface Node {
+	name: nodeNames;
+	edges: Edge[];
+	upgrades?: stats[];
+	items?: stats[];
+	pinkRing?: boolean;
+	pinkSphere?: boolean;
 }
