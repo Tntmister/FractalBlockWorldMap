@@ -45,6 +45,8 @@ export class Graph {
 				distance: 0
 			}
 		];
+		console.log(graph.nodes)
+		this.printPath()
 	}
 
 	addNode(node: InputNode) {
