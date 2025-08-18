@@ -50,7 +50,6 @@ export default function Home() {
 	}
 
 	function traverseUp(index: number) {
-		console.log(index);
 		if (pathStack.length == 1)
 			throw new Error(`Node ${currentNode().name} does not have a parent node!`);
 		setPathStack(pathStack.slice(0, index + 1));
@@ -104,7 +103,9 @@ export default function Home() {
 		}
 		const path: Edge[] = [];
 		for (let node = targetNode; predecessors.get(node); node = predecessors.get(node)!) {
-			path.unshift(predecessors.get(node)!.edges.find((edge) => edge.node.name == node.name)!);
+			path.unshift(
+				predecessors.get(node)!.edges.find((edge) => edge.node.name == node.name)!
+			);
 		}
 		return path;
 	}
@@ -114,31 +115,41 @@ export default function Home() {
 	}, []);
 
 	return (
-		<div>
-			<div>
-				Current path:{' '}
-				{pathStack.slice(0, pathStack.length - 1).map((edge, index) => (
-					<Fragment key={`${edge.node.name}Path`}>
-						<span onClick={() => traverseUp(index)}>{edge.node.name}</span> →{' '}
-					</Fragment>
-				))}
-				<span>{currentNode().name}</span>
-			</div>
-
-			{currentNode().pinkRing && (
-				<span onClick={traversePinkRing}>Pink Ring to: {getPinkRingDestination()!.name}</span>
+		<div id='base'>
+			{pathStack.length > 1 && (
+				<div id='pathContainer'>
+					Path up to root:
+					<div id='pathList'>
+						{pathStack.slice(0, -1).map((edge, index) => (
+							<span
+								className={`pathNode`}
+								key={`path${index}`}
+								onClick={() => traverseUp(index)}
+							>
+								{edge.node.name}
+							</span>
+						))}
+					</div>
+				</div>
 			)}
-			{previousNode() && (
-				<span onClick={() => traverseUp(pathStack.length - 2)}>Parent: {previousNode()!.name}</span>
+			<div id='current'>Current Area: {currentNode().name}</div>
+			{currentNode().edges.length > 0 && (
+				<div id='descendantsContainer'>
+					Areas inside {currentNode().name}:
+					<div id='descendantsList'>
+						{currentNode().edges.map((edge, index) => (
+							<span
+								className={`descendant`}
+								onClick={() => traverseDown(edge)}
+								key={`descendant${index}`}
+							>
+								{edge.node.name}
+								{edge.note && ` (${edge.note})`}
+							</span>
+						))}
+					</div>
+				</div>
 			)}
-			<div>Current: {currentNode().name}</div>
-			<div>
-				{currentNode().edges.map((edge) => (
-					<span onClick={() => traverseDown(edge)} key={`${edge.node.name}Down`}>
-						{edge.node.name}
-					</span>
-				))}
-			</div>
 		</div>
 	);
 }

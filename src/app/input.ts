@@ -66,7 +66,8 @@ export const inputGraph: InputGraph = {
 			},
 			'Small White Flower': {
 				distance: 0,
-				depth: 2
+				depth: 1,
+				note: 'Under Tutorial Island'
 			},
 			'Tutorial': {
 				distance: 0,
