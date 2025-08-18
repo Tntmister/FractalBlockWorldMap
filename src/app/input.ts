@@ -64,9 +64,21 @@ export const inputGraph: InputGraph = {
 				distance: 0,
 				depth: 1
 			},
-			'Small White Flower': { distance: 0, depth: 2 }
+			'Small White Flower': {
+				distance: 0,
+				depth: 2
+			},
+			'Tutorial': {
+				distance: 0,
+				note: 'Inside Tutorial Island'
+			}
 		},
-		'Ying Air': { 'Ying Air Cube': { distance: 1, depth: 1 } },
+		'Ying Air': {
+			'Ying Air Cube': {
+				distance: 1,
+				depth: 1
+			}
+		},
 		'Ying Flower': {
 			'Ying Island': {
 				distance: 0,

@@ -1,6 +1,6 @@
 'use client';
 import { inputGraph } from './input';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { nodeNames, Node, Edge } from './types';
 import path from 'path';
 
@@ -49,12 +49,11 @@ export default function Home() {
 		return pathStack.length > 1 ? pathStack[pathStack.length - 2].node : null;
 	}
 
-	function traverseUp() {
+	function traverseUp(index: number) {
+		console.log(index);
 		if (pathStack.length == 1)
-			throw new Error(
-				`Node ${currentNode().name} does not have a parent node!`
-			);
-		setPathStack(pathStack.slice(0, pathStack.length - 1));
+			throw new Error(`Node ${currentNode().name} does not have a parent node!`);
+		setPathStack(pathStack.slice(0, index + 1));
 	}
 
 	function traverseDown(edge: Edge) {
@@ -62,8 +61,7 @@ export default function Home() {
 	}
 
 	function getPinkRingDestination(): Node | undefined {
-		return pathStack.findLast((stackEdge) => stackEdge.node.pinkSphere === true)
-			?.node;
+		return pathStack.findLast((stackEdge) => stackEdge.node.pinkSphere === true)?.node;
 	}
 
 	function traversePinkRing() {
@@ -79,31 +77,66 @@ export default function Home() {
 		setPathStack(pathStack.slice(0, pinkSphereIndex + 1));
 	}
 
-	function printPath() {
-		console.log(pathStack.map((edge) => edge.node.name).join(' -> '));
+	//Dijkstra pathfinding
+	function pathfindTo(targetNode: Node): Edge[] {
+		const distancesToStart = new Map<Node, number>();
+		const visitedNodes = new Map<Node, number>();
+		const predecessors = new Map<Node, Node>();
+		nodes
+			.values()
+			.forEach((node) =>
+				distancesToStart.set(node, node.name === currentNode().name ? 0 : Infinity)
+			);
+		while (distancesToStart.size) {
+			const [currentNode, currentDistance] = distancesToStart
+				.entries()
+				.reduce((previousValue, currentValue) =>
+					previousValue[1] < currentValue[1] ? previousValue : currentValue
+				);
+			distancesToStart.delete(currentNode);
+			visitedNodes.set(currentNode, currentDistance);
+			for (const edge of currentNode.edges) {
+				if (edge.distance + currentDistance < distancesToStart.get(edge.node)!) {
+					distancesToStart.set(edge.node, edge.distance + currentDistance);
+					predecessors.set(edge.node, currentNode);
+				}
+			}
+		}
+		const path: Edge[] = [];
+		for (let node = targetNode; predecessors.get(node); node = predecessors.get(node)!) {
+			path.unshift(predecessors.get(node)!.edges.find((edge) => edge.node.name == node.name)!);
+		}
+		return path;
 	}
 
 	useEffect(() => {
-		console.log(nodes);
-		printPath();
+		setPathStack([...pathStack, ...pathfindTo(nodes.get(startingNode)!)]);
 	}, []);
 
 	return (
 		<div>
+			<div>
+				Current path:{' '}
+				{pathStack.slice(0, pathStack.length - 1).map((edge, index) => (
+					<Fragment key={`${edge.node.name}Path`}>
+						<span onClick={() => traverseUp(index)}>{edge.node.name}</span> →{' '}
+					</Fragment>
+				))}
+				<span>{currentNode().name}</span>
+			</div>
+
 			{currentNode().pinkRing && (
-				<div onClick={traversePinkRing}>
-					Pink Ring to: {getPinkRingDestination()!.name}
-				</div>
+				<span onClick={traversePinkRing}>Pink Ring to: {getPinkRingDestination()!.name}</span>
 			)}
 			{previousNode() && (
-				<div onClick={traverseUp}>Parent: {previousNode()!.name}</div>
+				<span onClick={() => traverseUp(pathStack.length - 2)}>Parent: {previousNode()!.name}</span>
 			)}
 			<div>Current: {currentNode().name}</div>
 			<div>
 				{currentNode().edges.map((edge) => (
-					<div onClick={() => traverseDown(edge)} key={edge.node.name}>
+					<span onClick={() => traverseDown(edge)} key={`${edge.node.name}Down`}>
 						{edge.node.name}
-					</div>
+					</span>
 				))}
 			</div>
 		</div>
