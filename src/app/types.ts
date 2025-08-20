@@ -20,8 +20,6 @@ export type InputNode = {
 	info?: {
 		upgrades?: pickups[]; // possible upgrades
 		items?: pickups[]; // possible items
-		pinkRing?: boolean;
-		pinkSphere?: boolean;
 	};
 };
 
@@ -32,6 +30,8 @@ type edgeInfo = {
 	depth?: number; // actual depth ("level" number ingame)
 	note?: string; // required keys/specifc method to enter
 	oneWay?: boolean;
+	pinkRing?: boolean; // is a pink ring -> ping sphere edge
+	up?: boolean;
 };
 
 export interface InputGraph {

@@ -40,61 +40,47 @@ export const inputNodes = [
 		name: 'Small White Flower',
 		info: {
 			upgrades: ['Health'],
-			items: ['Armor', 'Nuke', 'Rocket', 'Plasma', 'Homing'],
-			pinkSphere: true
+			items: ['Armor', 'Nuke', 'Rocket', 'Plasma', 'Homing']
 		}
 	},
 	{
 		name: 'Ying Flower'
 	},
 	{
-		name: 'Ying Flower Shells',
-		info: {
-			pinkSphere: true
-		}
+		name: 'Ying Flower Shells'
 	},
 	{
 		name: 'Ying World'
 	},
 	{
-		name: 'Ying Cave Island',
-		info: {
-			pinkSphere: true
-		}
+		name: 'Ying Cave Island'
 	},
 	{
 		name: 'Ying Cave Island Layer 1',
 		info: {
-			upgrades: ['Cannon', 'Plasma'],
-			pinkRing: true
+			upgrades: ['Cannon', 'Plasma']
 		}
 	},
 	{
-		name: 'Ying Cave Island Layer 2',
-		info: {
-			pinkRing: true
-		}
+		name: 'Ying Cave Island Layer 2'
 	},
 	{
 		name: 'Ying Cave Island Layer 3',
 		info: {
 			items: ['Armor'],
-			upgrades: ['Laser'],
-			pinkRing: true
+			upgrades: ['Laser']
 		}
 	},
 	{
 		name: 'Ying Cave Island Layer 4',
 		info: {
-			upgrades: ['Health', 'Minigun'],
-			pinkRing: true
+			upgrades: ['Health', 'Minigun']
 		}
 	},
 	{
 		name: 'Spider Air',
 		info: {
-			items: ['Rocket', 'Railgun'],
-			pinkRing: true
+			items: ['Rocket', 'Railgun']
 		}
 	},
 	{
@@ -104,10 +90,7 @@ export const inputNodes = [
 		}
 	},
 	{
-		name: 'Orange',
-		info: {
-			pinkSphere: true
-		}
+		name: 'Orange'
 	},
 	{
 		name: 'Blue Bubble Gauntlet'
@@ -173,10 +156,7 @@ export const inputNodes = [
 		}
 	},
 	{
-		name: 'Slow Exit Maze',
-		info: {
-			pinkRing: true
-		}
+		name: 'Slow Exit Maze'
 	},
 	{
 		name: 'Mylantis'
@@ -304,6 +284,7 @@ export const inputGraph: InputGraph = {
 			},
 			'Quicksand Grass': {
 				distance: 0,
+				oneWay: true,
 				note: 'Around save points'
 			}
 		},
@@ -323,6 +304,11 @@ export const inputGraph: InputGraph = {
 			'Upgrade Station': {
 				distance: 30,
 				note: 'Top of tree'
+			}
+		},
+		'Upgrade Station': {
+			'Apple Tree': {
+				distance: 0
 			}
 		},
 		'Ying Island': {
@@ -393,6 +379,10 @@ export const inputGraph: InputGraph = {
 		'Ying Cave Island Layer 1': {
 			'Ying Cave Island Layer 2': {
 				distance: 15
+			},
+			'Ying Cave Island': {
+				distance: 15,
+				pinkRing: true
 			}
 		},
 		'Ying Cave Island Layer 2': {
@@ -404,11 +394,19 @@ export const inputGraph: InputGraph = {
 			},
 			'Jumbo Yellow Flower': {
 				distance: 10
+			},
+			'Ying Cave Island': {
+				distance: 15,
+				pinkRing: true
 			}
 		},
 		'Ying Cave Island Layer 3': {
 			'Ying Cave Island Layer 4': {
 				distance: 15
+			},
+			'Ying Cave Island': {
+				distance: 15,
+				pinkRing: true
 			}
 		},
 		'Ying Cave Island Layer 4': {
@@ -417,6 +415,10 @@ export const inputGraph: InputGraph = {
 			},
 			'Spider Air': {
 				distance: 5
+			},
+			'Ying Cave Island': {
+				distance: 5,
+				pinkRing: true
 			}
 		},
 		'Spider Air': {
@@ -487,7 +489,13 @@ export const inputGraph: InputGraph = {
 		},
 		'Grey Lattice': {
 			'Slow Exit Maze': {
-				distance: 20
+				distance: 0
+			}
+		},
+		'Slow Exit Maze': {
+			'Ying Flower': {
+				distance: 15,
+				pinkRing: true
 			}
 		},
 		'Outer Space Level 0': {

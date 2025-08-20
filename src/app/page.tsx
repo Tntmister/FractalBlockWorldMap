@@ -3,6 +3,7 @@ import { inputGraph } from './input';
 import { Fragment, useEffect, useState } from 'react';
 import { nodeNames, Node, Edge } from './types';
 import Image from './images/Image';
+import path from 'path';
 
 const nodes: Map<nodeNames, Node> = new Map();
 for (const node of inputGraph.nodes) {
@@ -29,10 +30,11 @@ for (const [fromName, edge] of Object.entries(inputGraph.edges)) {
 	}
 }
 
-const startingNode: nodeNames = 'Tutorial';
+const startingNode: nodeNames = 'Ying Cave Island Layer 4';
 
 export default function Home() {
-	const [pathStack, setPathStack] = useState<Node['edges']>([
+	// eslint-disable-next-line prefer-const
+	let [pathStack, setPathStack] = useState<Node['edges']>([
 		{
 			node: nodes.get(inputGraph.root.name)!,
 			distance: 0
@@ -51,6 +53,19 @@ export default function Home() {
 
 	function traverseDown(edge: Edge) {
 		setPathStack([...pathStack, edge]);
+	}
+
+	function traverseTo(nodeName: nodeNames, rerender: boolean = true) {
+		const path = pathfindTo(nodes.get(nodeName)!);
+		for (const edge of path) {
+			if (edge.pinkRing || edge.up)
+				pathStack = pathStack.slice(
+					0,
+					pathStack.findLastIndex((edge2) => edge.node.name == edge2.node.name) + 1
+				);
+			else pathStack.push(edge);
+		}
+		if (rerender) setPathStack(pathStack.slice());
 	}
 
 	//Dijkstra pathfinding
@@ -92,7 +107,8 @@ export default function Home() {
 	}
 
 	useEffect(() => {
-		setPathStack([...pathStack, ...pathfindTo(nodes.get(startingNode)!)]);
+		traverseTo(startingNode);
+		console.log(pathStack);
 	}, []);
 
 	return (
@@ -113,11 +129,11 @@ export default function Home() {
 									''
 								)}
 								<span className={`pathNode`} onClick={() => traverseUp(index)}>
-									{path.findLastIndex((edge) => edge.node.info?.pinkSphere) ==
+									{/* {path.findLastIndex((edge) => edge.node.info?.pinkSphere) ==
 										index &&
 										currentNode().info?.pinkRing && (
 											<i className='icon-pinkSphere'>(Pink Sphere)</i>
-										)}
+										)} */}
 									{edge.node.name}
 								</span>
 							</Fragment>
@@ -130,20 +146,27 @@ export default function Home() {
 				<div id='descendantsContainer'>
 					Areas inside {currentNode().name}:
 					<div id='descendantsList'>
-						{currentNode().edges.map((edge, index) => (
-							<Fragment key={`descendant${index}`}>
-								<span className={`descendant`} onClick={() => traverseDown(edge)}>
-									<div>{edge.node.name}</div>
-									<div>{edge.note && ` (${edge.note})`}</div>
-								</span>
-								<Image
-									className='descendantTooltip'
-									src={`./images/descendants/${currentNode().name}-${edge.node.name}.webp`}
-									fallbackSrc={`./images/descendants/${edge.node.name}.webp`}
-									alt=''
-								/>
-							</Fragment>
-						))}
+						{currentNode().edges.map(
+							(edge, index) =>
+								!edge.pinkRing &&
+								!edge.up && (
+									<Fragment key={`descendant${index}`}>
+										<span
+											className={`descendant`}
+											onClick={() => traverseDown(edge)}
+										>
+											<div>{edge.node.name}</div>
+											<div>{edge.note && ` (${edge.note})`}</div>
+										</span>
+										<Image
+											className='descendantTooltip'
+											src={`./images/descendants/${currentNode().name}-${edge.node.name}.webp`}
+											fallbackSrc={`./images/descendants/${edge.node.name}.webp`}
+											alt=''
+										/>
+									</Fragment>
+								)
+						)}
 					</div>
 				</div>
 			)}
