@@ -81,7 +81,7 @@ a {
 .descendant,
 .pathNode {
 	display: flex;
-	align-items: middle;
+	align-items: center;
 	padding: 0.25rem;
 	border: 1px solid var(--foreground);
 	cursor: pointer;
