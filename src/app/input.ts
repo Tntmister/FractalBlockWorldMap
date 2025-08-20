@@ -90,7 +90,38 @@ export const inputNodes = [
 		}
 	},
 	{
-		name: 'Orange'
+		name: 'Orange',
+		info: {
+			upgrades: ['Rocket'],
+			items: ['Nuke']
+		}
+	},
+	{
+		name: 'Outer Crust A'
+	},
+	{
+		name: 'Outer Crust B'
+	},
+	{
+		name: 'Outer Mantle'
+	},
+	{
+		name: 'Outer Mantle Secret',
+		info: {
+			upgrades: ['Rocket', 'Minigun']
+		}
+	},
+	{
+		name: 'Red-Green Elevator'
+	},
+	{
+		name: 'Inner Crust'
+	},
+	{
+		name: 'Inner Mantle'
+	},
+	{
+		name: 'Huntington'
 	},
 	{
 		name: 'Blue Bubble Gauntlet'
@@ -100,6 +131,9 @@ export const inputNodes = [
 	},
 	{
 		name: 'Botany Lab'
+	},
+	{
+		name: 'Infinity Flower'
 	},
 	{
 		name: 'Ying Island'
@@ -113,6 +147,7 @@ export const inputNodes = [
 	{
 		name: 'Ying Air Cube',
 		info: {
+			upgrades: ['Plasma', 'Cannon'],
 			items: ['Plasma']
 		}
 	},
@@ -120,7 +155,16 @@ export const inputNodes = [
 		name: 'Ying Air'
 	},
 	{
+		name: 'Ying Air Core',
+		info: {
+			upgrades: ['Rocket']
+		}
+	},
+	{
 		name: 'Noob Maze'
+	},
+	{
+		name: 'Ying World Library'
 	},
 	{
 		name: 'I1'
@@ -186,7 +230,7 @@ export const inputNodes = [
 	{
 		name: 'Large Cannon Pyramid',
 		info: {
-			upgrades: ['Cannon', 'Railgun', 'Health'],
+			upgrades: ['Cannon', 'Railgun', 'Health', 'Nuke'],
 			items: ['Laser', 'Railgun']
 		}
 	},
@@ -204,7 +248,16 @@ export const inputNodes = [
 		name: 'Pure Menger Sponge'
 	},
 	{
+		name: 'Pure Menger Sponge Treasure',
+		info: {
+			upgrades: ['Nuke']
+		}
+	},
+	{
 		name: 'Stoney Air'
+	},
+	{
+		name: 'Mossy Air'
 	},
 	{
 		name: 'Stoney Air Cave',
@@ -237,6 +290,22 @@ export const inputNodes = [
 		info: {
 			upgrades: ['Rocket'],
 			items: ['Homing', 'Rocket', 'Cannon', 'Minigun']
+		}
+	},
+	{
+		name: 'Yellow Flower City'
+	},
+	{
+		name: 'Green Cube'
+	},
+	{
+		name: 'Gated Community'
+	},
+	{
+		name: 'Yellow Flower City Secret Treasure',
+		info: {
+			upgrades: ['Minigun'],
+			items: ['Railgun', 'Rocket', 'Minigun', 'Laser', 'Armor', 'Health']
 		}
 	}
 ] as const satisfies readonly InputNode[];
@@ -317,6 +386,12 @@ export const inputGraph: InputGraph = {
 			},
 			'Ying Forest': {
 				distance: 0
+			},
+			'Pure Menger Sponge': {
+				distance: 5
+			},
+			'Small Cannon Pyramid': {
+				distance: 5
 			}
 		},
 		'Tutorial Island': {
@@ -334,6 +409,10 @@ export const inputGraph: InputGraph = {
 		'Ying Air': {
 			'Ying Air Cube': {
 				distance: 1
+			},
+			'Ying Air Core': {
+				distance: 30,
+				note: 'Shrink multiple times'
 			}
 		},
 		'Ying Air Cube': {
@@ -349,6 +428,10 @@ export const inputGraph: InputGraph = {
 		'Ying Flower Shells': {
 			'Ying World': {
 				distance: 0
+			},
+			'Green Cube': {
+				distance: Infinity,
+				note: 'Shell 2'
 			}
 		},
 		'Ying World': {
@@ -364,8 +447,23 @@ export const inputGraph: InputGraph = {
 			'Grey Lattice': {
 				distance: 0
 			},
-			'Pure Menger Sponge': {
+			'Gated Community': {
 				distance: 5
+			}
+		},
+		'Gated Community': {
+			'Ying World Library': {
+				distance: 0
+			},
+			'Noob Maze': {
+				distance: 0
+			},
+			'Small Noob Flower': {
+				distance: 0
+			},
+			'Small Cannon Pyramid': {
+				distance: 0,
+				note: 'x3'
 			}
 		},
 		'Ying Cave Island': {
@@ -448,9 +546,67 @@ export const inputGraph: InputGraph = {
 				distance: Infinity
 			}
 		},
+		'Botany Lab': {
+			'Infinity Flower': {
+				distance: Infinity
+			}
+		},
 		'Orange': {
 			'Stoney Air': {
 				distance: 0
+			},
+			'Yellow Flower City': {
+				distance: 0
+			},
+			'Outer Crust A': {
+				distance: 10
+			}
+		},
+		'Outer Crust A': {
+			'Ying Air': {
+				distance: 20
+			},
+			'Outer Crust B': {
+				distance: 20
+			}
+		},
+		'Outer Crust B': {
+			'Outer Mantle': {
+				distance: 20
+			}
+		},
+		'Outer Mantle': {
+			'Inner Crust': {
+				distance: 20
+			},
+			'Blue Bubble': {
+				distance: Infinity
+			},
+			'Spider Air': {
+				distance: 0
+			},
+			'Red-Green Elevator': {
+				distance: 5,
+				note: 'Shrinks by 1'
+			},
+			'Outer Mantle Secret': {
+				distance: 30,
+				note: 'Yellow Cube'
+			}
+		},
+		'Red-Green Elevator': {
+			'Stoney Air': {
+				distance: 0
+			}
+		},
+		'Inner Crust': {
+			'Inner Mantle': {
+				distance: Infinity
+			}
+		},
+		'Inner Mantle': {
+			'Huntington': {
+				distance: Infinity
 			}
 		},
 		'Stoney Air': {
@@ -458,7 +614,7 @@ export const inputGraph: InputGraph = {
 				distance: 0
 			},
 			'Yellow Cube': {
-				distance: 10,
+				distance: Infinity,
 				note: 'Need to be small enough'
 			},
 			'Green Shrink Box': {
@@ -472,6 +628,9 @@ export const inputGraph: InputGraph = {
 			}
 		},
 		'Yellow Cube': {
+			'Mossy Air': {
+				distance: Infinity
+			},
 			'Stoney Sanctuary': {
 				distance: Infinity
 			},
@@ -490,6 +649,12 @@ export const inputGraph: InputGraph = {
 		'Grey Lattice': {
 			'Slow Exit Maze': {
 				distance: 0
+			}
+		},
+		'Pure Menger Sponge': {
+			'Pure Menger Sponge Treasure': {
+				distance: 10,
+				note: 'Very Deep'
 			}
 		},
 		'Slow Exit Maze': {
@@ -529,6 +694,26 @@ export const inputGraph: InputGraph = {
 			},
 			'Ying Air': {
 				distance: 0
+			},
+			'Yellow Flower City': {
+				distance: 10
+			}
+		},
+		'Yellow Flower City': {
+			'Small Cannon Pyramid': {
+				distance: 10,
+				note: 'Orange X towers guranteed jumbo yellow flower'
+			},
+			'Quicksand Grass': {
+				distance: 5
+			},
+			'Yellow Flower City Secret Treasure': {
+				distance: 20,
+				note: 'Shrink until level 8'
+			},
+			'Pure Menger Sponge': {
+				distance: 20,
+				note: 'Shrink until level 8'
 			}
 		},
 		'Small Cannon Pyramid': {
@@ -539,12 +724,23 @@ export const inputGraph: InputGraph = {
 		},
 		'Jumbo Yellow Flower': {
 			'Small Yellow Flower': {
-				distance: 10,
+				distance: 20,
 				note: 'x5'
 			},
 			'Large Cannon Pyramid': {
-				distance: 30,
+				distance: 20,
 				note: 'Secret below rocket room'
+			},
+			'Ying Cave Island': {
+				distance: 20
+			}
+		},
+		'Large Cannon Pyramid': {
+			'Small White Flower': {
+				distance: 20
+			},
+			'Upgrade Station': {
+				distance: 20
 			}
 		},
 		'Quicksand Grass': {
