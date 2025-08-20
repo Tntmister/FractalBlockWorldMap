@@ -12,6 +12,7 @@
 
 html,
 body {
+	font-size: 20px;
 	max-height: 100vh;
 	max-width: 100vw;
 	overflow-y: auto;
@@ -48,11 +49,6 @@ a {
 	height: 100vh;
 }
 
-.pathNode {
-	padding: 0.25rem;
-	border: #ededed 1px solid;
-}
-
 #current {
 	text-align: center;
 	flex: 1;
@@ -74,13 +70,29 @@ a {
 #pathList,
 #descendantsList {
 	display: flex;
-	justify-content: center;
 	overflow-y: auto;
 	text-wrap: nowrap;
 	gap: 0.5rem;
+	align-items: center;
+	margin-bottom: 0.5rem;
+	justify-content: space-evenly;
 }
 
-.descendant {
+.descendant,
+.pathNode {
 	padding: 0.25rem;
-	border: #ededed 1px solid;
+	border: 1px solid var(--foreground);
+	cursor: pointer;
+}
+
+.descendantTooltip {
+	visibility: hidden;
+	position: absolute;
+	bottom: 5vh;
+	max-height: 20vh;
+	width: auto;
+}
+
+.descendant:hover + .descendantTooltip {
+	visibility: visible;
 }

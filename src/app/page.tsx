@@ -2,7 +2,7 @@
 import { inputGraph } from './input';
 import { Fragment, useEffect, useState } from 'react';
 import { nodeNames, Node, Edge } from './types';
-import path from 'path';
+import Image from './images/Image';
 
 const nodes: Map<nodeNames, Node> = new Map();
 for (const node of inputGraph.nodes) {
@@ -10,8 +10,7 @@ for (const node of inputGraph.nodes) {
 		nodes.set(node.name as nodeNames, {
 			name: node.name as nodeNames,
 			edges: [],
-			items: node.items,
-			upgrades: node.upgrades
+			info: node.info
 		});
 	}
 }
@@ -36,17 +35,12 @@ export default function Home() {
 	const [pathStack, setPathStack] = useState<Node['edges']>([
 		{
 			node: nodes.get(inputGraph.root.name)!,
-			depth: inputGraph.root.depth,
 			distance: 0
 		}
 	]);
 
 	function currentNode() {
 		return pathStack[pathStack.length - 1].node;
-	}
-
-	function previousNode() {
-		return pathStack.length > 1 ? pathStack[pathStack.length - 2].node : null;
 	}
 
 	function traverseUp(index: number) {
@@ -57,23 +51,6 @@ export default function Home() {
 
 	function traverseDown(edge: Edge) {
 		setPathStack([...pathStack, edge]);
-	}
-
-	function getPinkRingDestination(): Node | undefined {
-		return pathStack.findLast((stackEdge) => stackEdge.node.pinkSphere === true)?.node;
-	}
-
-	function traversePinkRing() {
-		if (!currentNode().pinkRing)
-			throw new Error(`Node ${currentNode().name} does not have a pink ring!`);
-		const pinkSphereIndex = pathStack.findLastIndex(
-			(stackEdge) => stackEdge.node.pinkSphere === true
-		);
-		if (pinkSphereIndex == -1)
-			throw new Error(
-				`No destination pink sphere found for pink ring on node ${currentNode().name}`
-			);
-		setPathStack(pathStack.slice(0, pinkSphereIndex + 1));
 	}
 
 	//Dijkstra pathfinding
@@ -87,20 +64,24 @@ export default function Home() {
 				distancesToStart.set(node, node.name === currentNode().name ? 0 : Infinity)
 			);
 		while (distancesToStart.size) {
+			// get the node with the smallest distance to start
 			const [currentNode, currentDistance] = distancesToStart
 				.entries()
 				.reduce((previousValue, currentValue) =>
 					previousValue[1] < currentValue[1] ? previousValue : currentValue
 				);
+			// remove from unvisited set and add to visited set
 			distancesToStart.delete(currentNode);
 			visitedNodes.set(currentNode, currentDistance);
+			// iterate edge nodes, and set distance to unvisited node if smaller than current node distance to start
 			for (const edge of currentNode.edges) {
 				if (edge.distance + currentDistance < distancesToStart.get(edge.node)!) {
 					distancesToStart.set(edge.node, edge.distance + currentDistance);
-					predecessors.set(edge.node, currentNode);
+					predecessors.set(edge.node, currentNode); // set predecessor node (for backtracking to create path)
 				}
 			}
 		}
+		// create path from predecessors
 		const path: Edge[] = [];
 		for (let node = targetNode; predecessors.get(node); node = predecessors.get(node)!) {
 			path.unshift(
@@ -120,14 +101,26 @@ export default function Home() {
 				<div id='pathContainer'>
 					Path up to root:
 					<div id='pathList'>
-						{pathStack.slice(0, -1).map((edge, index) => (
-							<span
-								className={`pathNode`}
-								key={`path${index}`}
-								onClick={() => traverseUp(index)}
-							>
-								{edge.node.name}
-							</span>
+						{pathStack.map((edge, index, path) => (
+							<Fragment key={`path${index}`}>
+								{index != 0 ? (
+									edge.oneWay ? (
+										<i className='icon-oneWay'>One Way</i>
+									) : (
+										'→'
+									)
+								) : (
+									''
+								)}
+								<span className={`pathNode`} onClick={() => traverseUp(index)}>
+									{path.findLastIndex((edge) => edge.node.info?.pinkSphere) ==
+										index &&
+										currentNode().info?.pinkRing && (
+											<i className='icon-pinkSphere'>(Pink Sphere)</i>
+										)}
+									{edge.node.name}
+								</span>
+							</Fragment>
 						))}
 					</div>
 				</div>
@@ -138,14 +131,18 @@ export default function Home() {
 					Areas inside {currentNode().name}:
 					<div id='descendantsList'>
 						{currentNode().edges.map((edge, index) => (
-							<span
-								className={`descendant`}
-								onClick={() => traverseDown(edge)}
-								key={`descendant${index}`}
-							>
-								{edge.node.name}
-								{edge.note && ` (${edge.note})`}
-							</span>
+							<Fragment key={`descendant${index}`}>
+								<span className={`descendant`} onClick={() => traverseDown(edge)}>
+									<div>{edge.node.name}</div>
+									<div>{edge.note && ` (${edge.note})`}</div>
+								</span>
+								<Image
+									className='descendantTooltip'
+									src={`./images/descendants/${currentNode().name}-${edge.node.name}.webp`}
+									fallbackSrc={`./images/descendants/${edge.node.name}.webp`}
+									alt=''
+								/>
+							</Fragment>
 						))}
 					</div>
 				</div>

@@ -1,6 +1,6 @@
 import { inputNodes } from './input';
 
-export type stats =
+export type pickups =
 	| 'Health'
 	| 'Armor'
 	| 'Plasma'
@@ -12,12 +12,17 @@ export type stats =
 	| 'Railgun'
 	| 'EMP'
 	| 'Nuke'
-	| 'Black Hole';
+	| 'Black Hole'
+	| 'Gold';
 
 export type InputNode = {
 	name: string;
-	upgrades?: stats[]; // possible upgrades
-	items?: stats[]; // possible items
+	info?: {
+		upgrades?: pickups[]; // possible upgrades
+		items?: pickups[]; // possible items
+		pinkRing?: boolean;
+		pinkSphere?: boolean;
+	};
 };
 
 export type nodeNames = (typeof inputNodes)[number]['name'];
@@ -26,6 +31,7 @@ type edgeInfo = {
 	distance: number; // how hard is it to traverse to ingame (enemy difficulty/time)
 	depth?: number; // actual depth ("level" number ingame)
 	note?: string; // required keys/specifc method to enter
+	oneWay?: boolean;
 };
 
 export interface InputGraph {
@@ -37,7 +43,6 @@ export interface InputGraph {
 	};
 	root: {
 		name: nodeNames;
-		depth: number;
 	};
 }
 
@@ -45,11 +50,6 @@ export interface Edge extends edgeInfo {
 	node: Node;
 }
 
-export interface Node {
-	name: nodeNames;
+export interface Node extends InputNode {
 	edges: Edge[];
-	upgrades?: stats[];
-	items?: stats[];
-	pinkRing?: boolean;
-	pinkSphere?: boolean;
 }
