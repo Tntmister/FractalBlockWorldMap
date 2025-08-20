@@ -149,11 +149,12 @@ export default function Home() {
 									''
 								)}
 								<span className={`pathNode`} onClick={() => traverseUp(index)}>
-									{/* {path.findLastIndex((edge) => edge.node.info?.pinkSphere) ==
-										index &&
-										currentNode().info?.pinkRing && (
-											<i className='icon-pinkSphere'>(Pink Sphere)</i>
-										)} */}
+									{index ==
+										pathStack.findLastIndex((edge) =>
+											currentNode().edges.some(
+												(edge2) => edge2.node.name === edge.node.name
+											)
+										) && <i className='icon-pinkSphere'>(Pink Sphere)</i>}
 									{edge.node.name}
 								</span>
 							</Fragment>
