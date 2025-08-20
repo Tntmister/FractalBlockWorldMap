@@ -3,9 +3,9 @@ import { inputGraph } from './input';
 import { Fragment, useEffect, useState } from 'react';
 import { nodeNames, Node, Edge } from './types';
 import Image from './images/Image';
-import path from 'path';
 
 const nodes: Map<nodeNames, Node> = new Map();
+// initialize nodes from input.ts
 for (const node of inputGraph.nodes) {
 	if (!nodes.has(node.name as nodeNames)) {
 		nodes.set(node.name as nodeNames, {
@@ -15,6 +15,7 @@ for (const node of inputGraph.nodes) {
 		});
 	}
 }
+// initialialize edges from input.ts
 for (const [fromName, edge] of Object.entries(inputGraph.edges)) {
 	for (const [toName, edgeInfo] of Object.entries(edge)) {
 		const fromNode = nodes.get(fromName as nodeNames);
@@ -30,7 +31,7 @@ for (const [fromName, edge] of Object.entries(inputGraph.edges)) {
 	}
 }
 
-const startingNode: nodeNames = 'Ying Cave Island Layer 4';
+const startingNode: nodeNames = 'Ying Island';
 
 export default function Home() {
 	// eslint-disable-next-line prefer-const
@@ -51,64 +52,83 @@ export default function Home() {
 		setPathStack(pathStack.slice(0, index + 1));
 	}
 
-	function traverseDown(edge: Edge) {
-		setPathStack([...pathStack, edge]);
+	function traverseTo(node: Node, rerender: boolean = true) {
+		traversePath(pathfindTo(node), rerender);
 	}
 
-	function traverseTo(nodeName: nodeNames, rerender: boolean = true) {
-		const path = pathfindTo(nodes.get(nodeName)!);
+	function traversePath(path: Edge[], rerender: boolean = true) {
 		for (const edge of path) {
 			if (edge.pinkRing || edge.up)
 				pathStack = pathStack.slice(
 					0,
-					pathStack.findLastIndex((edge2) => edge.node.name == edge2.node.name) + 1
+					pathStack.findLastIndex((edge2) => edge.node.name == edge2.node.name)
 				);
 			else pathStack.push(edge);
 		}
 		if (rerender) setPathStack(pathStack.slice());
 	}
 
-	//Dijkstra pathfinding
 	function pathfindTo(targetNode: Node): Edge[] {
-		const distancesToStart = new Map<Node, number>();
-		const visitedNodes = new Map<Node, number>();
-		const predecessors = new Map<Node, Node>();
-		nodes
-			.values()
-			.forEach((node) =>
-				distancesToStart.set(node, node.name === currentNode().name ? 0 : Infinity)
-			);
-		while (distancesToStart.size) {
-			// get the node with the smallest distance to start
-			const [currentNode, currentDistance] = distancesToStart
-				.entries()
-				.reduce((previousValue, currentValue) =>
-					previousValue[1] < currentValue[1] ? previousValue : currentValue
+		//Dijkstra pathfinding
+		function pathfindToAux(targetNode: Node, currentPathStack: Edge[] = pathStack): Edge[] {
+			const distancesToStart = new Map<Node, number>();
+			const visitedNodes = new Map<Node, number>();
+			const predecessors = new Map<Node, Node>();
+			nodes
+				.values()
+				.forEach((node) =>
+					distancesToStart.set(
+						node,
+						node.name === currentPathStack.at(-1)!.node.name ? 0 : Infinity
+					)
 				);
-			// remove from unvisited set and add to visited set
-			distancesToStart.delete(currentNode);
-			visitedNodes.set(currentNode, currentDistance);
-			// iterate edge nodes, and set distance to unvisited node if smaller than current node distance to start
-			for (const edge of currentNode.edges) {
-				if (edge.distance + currentDistance < distancesToStart.get(edge.node)!) {
-					distancesToStart.set(edge.node, edge.distance + currentDistance);
-					predecessors.set(edge.node, currentNode); // set predecessor node (for backtracking to create path)
+			while (distancesToStart.size) {
+				// get the node with the smallest distance to start
+				const [currentNode, currentDistance] = distancesToStart
+					.entries()
+					.reduce((previousValue, currentValue) =>
+						previousValue[1] < currentValue[1] ? previousValue : currentValue
+					);
+				// remove from unvisited set and add to visited set
+				distancesToStart.delete(currentNode);
+				visitedNodes.set(currentNode, currentDistance);
+				// iterate edge nodes, and set distance to unvisited node if smaller than current node distance to start
+				for (const edge of currentNode.edges) {
+					if (edge.distance + currentDistance < distancesToStart.get(edge.node)!) {
+						distancesToStart.set(edge.node, edge.distance + currentDistance);
+						predecessors.set(edge.node, currentNode); // set predecessor node (for backtracking to create path)
+					}
 				}
 			}
+			// create path from predecessors
+			const path: Edge[] = [];
+			for (let node = targetNode; predecessors.get(node); node = predecessors.get(node)!) {
+				path.unshift(
+					predecessors.get(node)!.edges.find((edge) => edge.node.name == node.name)!
+				);
+			}
+			return path;
 		}
-		// create path from predecessors
-		const path: Edge[] = [];
-		for (let node = targetNode; predecessors.get(node); node = predecessors.get(node)!) {
-			path.unshift(
-				predecessors.get(node)!.edges.find((edge) => edge.node.name == node.name)!
-			);
+
+		const list: Edge[][] = [];
+		for (let i = 0; i < pathStack.length; i++) {
+			list.push([
+				...pathStack
+					.toReversed()
+					.slice(0, i)
+					.map((edge) => ({ ...edge, up: true })),
+				...pathfindToAux(targetNode, pathStack.slice(0, pathStack.length - i))
+			]);
 		}
-		return path;
+		return list.sort(
+			(a, b) =>
+				a.reduce((acc, edge) => acc + edge.distance, 0) -
+				b.reduce((acc, edge) => acc + edge.distance, 0)
+		)[0];
 	}
 
 	useEffect(() => {
-		traverseTo(startingNode);
-		console.log(pathStack);
+		traverseTo(nodes.get(startingNode)!);
 	}, []);
 
 	return (
@@ -153,7 +173,7 @@ export default function Home() {
 									<Fragment key={`descendant${index}`}>
 										<span
 											className={`descendant`}
-											onClick={() => traverseDown(edge)}
+											onClick={() => traversePath([edge])}
 										>
 											<div>{edge.node.name}</div>
 											<div>{edge.note && ` (${edge.note})`}</div>
