@@ -2,7 +2,7 @@
 import { inputGraph } from './input';
 import { Fragment, useEffect, useState } from 'react';
 import { nodeNames, Node, Edge } from './types';
-import Image from './images/Image';
+import Image from './Image';
 
 const nodes: Map<nodeNames, Node> = new Map();
 // initialize nodes from input.ts
@@ -141,7 +141,11 @@ export default function Home() {
 							<Fragment key={`path${index}`}>
 								{index != 0 ? (
 									edge.oneWay ? (
-										<i className='icon-oneWay'>One Way</i>
+										<Image
+											className='icon'
+											src='./images/icons/oneway.jpg'
+											alt='One Way'
+										/>
 									) : (
 										'→'
 									)
@@ -154,7 +158,13 @@ export default function Home() {
 											currentNode().edges.some(
 												(edge2) => edge2.node.name === edge.node.name
 											)
-										) && <i className='icon-pinkSphere'>(Pink Sphere)</i>}
+										) && (
+										<Image
+											className='icon'
+											src='./images/icons/pinkring.png'
+											alt='(Pink Sphere) '
+										/>
+									)}
 									{edge.node.name}
 								</span>
 							</Fragment>
