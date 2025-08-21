@@ -7,27 +7,21 @@ import Image from './Image';
 const nodes: Map<nodeNames, Node> = new Map();
 // initialize nodes from input.ts
 for (const node of inputGraph.nodes) {
-	if (!nodes.has(node.name as nodeNames)) {
-		nodes.set(node.name as nodeNames, {
-			name: node.name as nodeNames,
-			edges: [],
-			info: node.info
-		});
-	}
+	nodes.set(node.name as nodeNames, {
+		name: node.name as nodeNames,
+		edges: [],
+		info: node.info
+	});
 }
 // initialialize edges from input.ts
 for (const [fromName, edge] of Object.entries(inputGraph.edges)) {
 	for (const [toName, edgeInfo] of Object.entries(edge)) {
-		const fromNode = nodes.get(fromName as nodeNames);
-		const toNode = nodes.get(toName as nodeNames);
-		if (fromNode && toNode) {
-			fromNode.edges.push({
-				node: toNode,
-				...edgeInfo
-			});
-		} else {
-			throw new Error('Both nodes must exist before adding an edge.');
-		}
+		const fromNode = nodes.get(fromName as nodeNames)!;
+		const toNode = nodes.get(toName as nodeNames)!;
+		fromNode.edges.push({
+			node: toNode,
+			...edgeInfo
+		});
 	}
 }
 
@@ -46,25 +40,26 @@ export default function Home() {
 		return pathStack[pathStack.length - 1].node;
 	}
 
-	function traverseUp(index: number) {
-		if (pathStack.length == 1)
-			throw new Error(`Node ${currentNode().name} does not have a parent node!`);
-		setPathStack(pathStack.slice(0, index + 1));
-	}
-
 	function traverseTo(node: Node, rerender: boolean = true) {
 		traversePath(pathfindTo(node), rerender);
 	}
 
-	function traversePath(path: Edge[], rerender: boolean = true) {
+	// returns resulting pathStack of traversing a path
+	function getTraversedPath(path: Edge[]) {
+		let pathStackAux = pathStack.slice();
 		for (const edge of path) {
 			if (edge.pinkRing || edge.up)
-				pathStack = pathStack.slice(
+				pathStackAux = pathStackAux.slice(
 					0,
-					pathStack.findLastIndex((edge2) => edge.node.name == edge2.node.name)
+					pathStackAux.findLastIndex((edge2) => edge.node.name == edge2.node.name)
 				);
-			else pathStack.push(edge);
+			else pathStackAux.push(edge);
 		}
+		return pathStackAux;
+	}
+
+	function traversePath(path: Edge[], rerender: boolean = true) {
+		pathStack = getTraversedPath(path);
 		if (rerender) setPathStack(pathStack.slice());
 	}
 
@@ -111,15 +106,19 @@ export default function Home() {
 		}
 
 		const list: Edge[][] = [];
+		// for each node in the stack, append the path from current -> stack to the path from stack -> target
 		for (let i = 0; i < pathStack.length; i++) {
-			list.push([
+			const path = [
 				...pathStack
 					.toReversed()
 					.slice(0, i)
 					.map((edge) => ({ ...edge, up: true })),
 				...pathfindToAux(targetNode, pathStack.slice(0, pathStack.length - i))
-			]);
+			];
+			// if theres no path to target node, the resulting pathStacks's last element won't be the target node
+			if (getTraversedPath(path).at(-1)?.node.name === targetNode.name) list.push(path);
 		}
+		// get path with smallest distance
 		return list.sort(
 			(a, b) =>
 				a.reduce((acc, edge) => acc + edge.distance, 0) -
@@ -152,7 +151,7 @@ export default function Home() {
 								) : (
 									''
 								)}
-								<span className={`pathNode`} onClick={() => traverseUp(index)}>
+								<span className={`pathNode`} onClick={() => traverseTo(edge.node)}>
 									{index ==
 										pathStack.findLastIndex((edge) =>
 											currentNode().edges.some(
@@ -184,7 +183,7 @@ export default function Home() {
 									<Fragment key={`descendant${index}`}>
 										<span
 											className={`descendant`}
-											onClick={() => traversePath([edge])}
+											onClick={() => traverseTo(edge.node)}
 										>
 											<div>{edge.node.name}</div>
 											<div>{edge.note && ` (${edge.note})`}</div>
