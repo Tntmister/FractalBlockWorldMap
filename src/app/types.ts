@@ -13,14 +13,17 @@ export type pickups =
 	| 'EMP'
 	| 'Nuke'
 	| 'Black Hole'
-	| 'Gold';
+	| 'Gold'
+	| 'RejuvenX';
 
 export type InputNode = {
 	name: string;
-	info?: {
-		upgrades?: pickups[]; // possible upgrades
-		items?: pickups[]; // possible items
-	};
+	upgrades?: pickups[]; // possible upgrades
+	items?: pickups[]; // possible items
+	images?: {
+		src: string;
+		info: string;
+	}[];
 };
 
 export type nodeNames = (typeof inputNodes)[number]['name'];

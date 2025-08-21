@@ -3,9 +3,7 @@ import { InputGraph, InputNode } from './types';
 export const inputNodes = [
 	{
 		name: 'Ying Forest',
-		info: {
-			upgrades: ['Cannon', 'Plasma', 'Health']
-		}
+		upgrades: ['Cannon', 'Plasma', 'Health']
 	},
 	{
 		name: 'Tutorial'
@@ -15,33 +13,41 @@ export const inputNodes = [
 	},
 	{
 		name: 'Small Yellow Flower',
-		info: {
-			upgrades: ['Plasma', 'Health']
-		}
+		upgrades: ['Plasma', 'Health']
 	},
 	{
 		name: 'Jumbo Yellow Flower'
 	},
 	{
 		name: 'Small Black Flower',
-		info: {
-			upgrades: ['Health', 'Minigun', 'Laser', 'Cannon', 'Plasma'],
-			items: ['Armor']
-		}
+		upgrades: ['Health', 'Minigun', 'Laser', 'Cannon', 'Plasma'],
+		items: ['Armor']
 	},
 	{
 		name: 'Small Cannon Pyramid',
-		info: {
-			upgrades: ['Cannon'],
-			items: ['Laser', 'Rocket', 'Minigun', 'Cannon']
-		}
+		upgrades: ['Cannon'],
+		items: ['Laser', 'Rocket', 'Minigun', 'Cannon']
 	},
 	{
 		name: 'Small White Flower',
-		info: {
-			upgrades: ['Health'],
-			items: ['Armor', 'Nuke', 'Rocket', 'Plasma', 'Homing']
-		}
+		upgrades: ['Health', 'Homing', 'Plasma', 'Nuke', 'Rocket'],
+		items: ['Armor', 'Nuke', 'Rocket', 'Plasma', 'Homing', 'Minigun', 'Black Hole', 'EMP']
+	},
+	{
+		name: 'Upgraded Small White Flower',
+		upgrades: ['Health', 'Homing', 'Plasma', 'Nuke', 'Rocket'],
+		items: [
+			'Armor',
+			'Nuke',
+			'Rocket',
+			'Plasma',
+			'Homing',
+			'Minigun',
+			'Black Hole',
+			'EMP',
+			'Railgun',
+			'Gold'
+		]
 	},
 	{
 		name: 'Ying Flower'
@@ -57,44 +63,32 @@ export const inputNodes = [
 	},
 	{
 		name: 'Ying Cave Island Layer 1',
-		info: {
-			upgrades: ['Cannon', 'Plasma']
-		}
+		upgrades: ['Cannon', 'Plasma']
 	},
 	{
 		name: 'Ying Cave Island Layer 2'
 	},
 	{
 		name: 'Ying Cave Island Layer 3',
-		info: {
-			items: ['Armor'],
-			upgrades: ['Laser']
-		}
+		items: ['Armor'],
+		upgrades: ['Laser']
 	},
 	{
 		name: 'Ying Cave Island Layer 4',
-		info: {
-			upgrades: ['Health', 'Minigun']
-		}
+		upgrades: ['Health', 'Minigun']
 	},
 	{
 		name: 'Spider Air',
-		info: {
-			items: ['Rocket', 'Railgun']
-		}
+		items: ['Rocket', 'Railgun']
 	},
 	{
 		name: 'Baby Spider Air',
-		info: {
-			items: ['Minigun', 'Railgun']
-		}
+		items: ['Minigun', 'Railgun']
 	},
 	{
 		name: 'Orange',
-		info: {
-			upgrades: ['Rocket'],
-			items: ['Nuke']
-		}
+		upgrades: ['Rocket'],
+		items: ['Nuke']
 	},
 	{
 		name: 'Outer Crust A'
@@ -107,9 +101,7 @@ export const inputNodes = [
 	},
 	{
 		name: 'Outer Mantle Secret',
-		info: {
-			upgrades: ['Rocket', 'Minigun']
-		}
+		upgrades: ['Rocket', 'Minigun']
 	},
 	{
 		name: 'Red-Green Elevator'
@@ -139,6 +131,11 @@ export const inputNodes = [
 		name: 'Ying Island'
 	},
 	{
+		name: 'Menace Hive',
+		items: ['Health'],
+		upgrades: ['Minigun', 'Rocket', 'Cannon']
+	},
+	{
 		name: 'Tau Cave Flower'
 	},
 	{
@@ -146,19 +143,15 @@ export const inputNodes = [
 	},
 	{
 		name: 'Ying Air Cube',
-		info: {
-			upgrades: ['Plasma', 'Cannon'],
-			items: ['Plasma']
-		}
+		upgrades: ['Plasma', 'Cannon'],
+		items: ['Plasma']
 	},
 	{
 		name: 'Ying Air'
 	},
 	{
 		name: 'Ying Air Core',
-		info: {
-			upgrades: ['Rocket']
-		}
+		upgrades: ['Rocket']
 	},
 	{
 		name: 'Noob Maze'
@@ -195,9 +188,7 @@ export const inputNodes = [
 	},
 	{
 		name: 'Grey Lattice',
-		info: {
-			items: ['Armor']
-		}
+		items: ['Armor']
 	},
 	{
 		name: 'Slow Exit Maze'
@@ -213,45 +204,43 @@ export const inputNodes = [
 	},
 	{
 		name: 'Small Noob Flower',
-		info: {
-			upgrades: ['Health', 'Plasma']
-		}
+		upgrades: ['Health', 'Plasma']
 	},
 	{
 		name: 'Quicksand Grass'
 	},
 	{
-		name: 'Quicksand Grass Basement',
-		info: {
-			upgrades: ['Laser', 'EMP'],
-			items: ['Nuke']
-		}
+		name: 'Quicksand Basement',
+		upgrades: ['Laser', 'EMP'],
+		items: ['Nuke']
+	},
+	{
+		name: 'Purple House',
+		upgrades: ['EMP', 'RejuvenX']
 	},
 	{
 		name: 'Large Cannon Pyramid',
-		info: {
-			upgrades: ['Cannon', 'Railgun', 'Health', 'Nuke'],
-			items: ['Laser', 'Railgun']
-		}
+		upgrades: ['Cannon', 'Railgun', 'Health', 'Nuke'],
+		items: ['Laser', 'Railgun']
 	},
 	{
 		name: 'Fir Tree'
 	},
 	{
 		name: 'Alpha Cube',
-		info: {
-			items: ['Health', 'Armor'],
-			upgrades: ['Laser', 'Rocket', 'EMP', 'Black Hole', 'Railgun']
-		}
+		items: ['Health', 'Armor'],
+		upgrades: ['Laser', 'Rocket', 'EMP', 'Black Hole', 'Railgun']
+	},
+	{
+		name: 'Health Tower',
+		upgrades: ['Health', 'Laser', 'Minigun']
 	},
 	{
 		name: 'Pure Menger Sponge'
 	},
 	{
 		name: 'Pure Menger Sponge Treasure',
-		info: {
-			upgrades: ['Nuke']
-		}
+		upgrades: ['Nuke']
 	},
 	{
 		name: 'Stoney Air'
@@ -261,10 +250,8 @@ export const inputNodes = [
 	},
 	{
 		name: 'Stoney Air Cave',
-		info: {
-			upgrades: ['Health', 'Plasma', 'Cannon', 'Laser'],
-			items: ['Nuke', 'Minigun', 'Cannon', 'EMP', 'Laser']
-		}
+		upgrades: ['Health', 'Plasma', 'Cannon', 'Laser'],
+		items: ['Nuke', 'Minigun', 'Cannon', 'EMP', 'Laser']
 	},
 	{
 		name: 'Yellow Cube'
@@ -280,17 +267,13 @@ export const inputNodes = [
 	},
 	{
 		name: 'Apple',
-		info: {
-			upgrades: ['EMP', 'Laser', 'Cannon', 'Plasma'],
-			items: ['EMP', 'Rocket']
-		}
+		upgrades: ['EMP', 'Laser', 'Cannon', 'Plasma'],
+		items: ['EMP', 'Rocket']
 	},
 	{
 		name: 'Upgrade Station',
-		info: {
-			upgrades: ['Rocket'],
-			items: ['Homing', 'Rocket', 'Cannon', 'Minigun']
-		}
+		upgrades: ['Rocket'],
+		items: ['Homing', 'Rocket', 'Cannon', 'Minigun']
 	},
 	{
 		name: 'Yellow Flower City'
@@ -303,10 +286,8 @@ export const inputNodes = [
 	},
 	{
 		name: 'Yellow Flower City Secret Treasure',
-		info: {
-			upgrades: ['Minigun'],
-			items: ['Railgun', 'Rocket', 'Minigun', 'Laser', 'Armor', 'Health']
-		}
+		upgrades: ['Minigun'],
+		items: ['Railgun', 'Rocket', 'Minigun', 'Laser', 'Armor', 'Health']
 	}
 ] as const satisfies readonly InputNode[];
 
@@ -348,6 +329,9 @@ export const inputGraph: InputGraph = {
 			'Small Noob Flower': {
 				distance: 0
 			},
+			'Small Yellow Flower': {
+				distance: 5
+			},
 			'Small Black Flower': {
 				distance: 0
 			},
@@ -355,6 +339,10 @@ export const inputGraph: InputGraph = {
 				distance: 0,
 				oneWay: true,
 				note: 'Around save points'
+			},
+			'Menace Hive': {
+				distance: 20,
+				note: 'Depth 12+, hanging from branches'
 			}
 		},
 		'Small Black Flower': {
@@ -536,6 +524,14 @@ export const inputGraph: InputGraph = {
 				distance: 20
 			}
 		},
+		'Menace Hive': {
+			'Tau Cave Flower': {
+				distance: 20
+			},
+			'Ying Forest': {
+				distance: 0
+			}
+		},
 		'Blue Bubble Gauntlet': {
 			'Blue Bubble': {
 				distance: Infinity
@@ -556,7 +552,8 @@ export const inputGraph: InputGraph = {
 				distance: 0
 			},
 			'Yellow Flower City': {
-				distance: 0
+				distance: 0,
+				note: 'On top'
 			},
 			'Outer Crust A': {
 				distance: 10
@@ -606,7 +603,14 @@ export const inputGraph: InputGraph = {
 		},
 		'Inner Mantle': {
 			'Huntington': {
-				distance: Infinity
+				distance: 30
+			},
+			'Red-Green Elevator': {
+				distance: 5,
+				note: 'Shrinks by 1'
+			},
+			'Spider Air': {
+				distance: 0
 			}
 		},
 		'Stoney Air': {
@@ -641,6 +645,9 @@ export const inputGraph: InputGraph = {
 		'Tau Cave Flower': {
 			'Tau Cave Moon': {
 				distance: Infinity
+			},
+			'Ying Forest': {
+				distance: 5
 			},
 			'Ying Air': {
 				distance: 0
@@ -729,7 +736,7 @@ export const inputGraph: InputGraph = {
 			},
 			'Large Cannon Pyramid': {
 				distance: 20,
-				note: 'Secret below rocket room'
+				note: 'Shrink into waypoint room back'
 			},
 			'Ying Cave Island': {
 				distance: 20
@@ -744,21 +751,44 @@ export const inputGraph: InputGraph = {
 			}
 		},
 		'Quicksand Grass': {
-			'Quicksand Grass Basement': {
-				distance: 30
+			'Purple House': {
+				distance: 10,
+				note: 'Shrink until yellow tips on grass'
+			},
+			'Quicksand Basement': {
+				distance: 10,
+				note: 'Shrink until yellow tips on grass'
+			}
+		},
+		'Purple House': {
+			'Jumbo Yellow Flower': {
+				distance: 5
 			}
 		},
 		'Small White Flower': {
 			'Alpha Cube': {
-				distance: 10
+				distance: 10,
+				note: 'Front-Right corner'
 			},
 			'Fir Tree': {
 				distance: 10
+			},
+			'Quicksand Grass': {
+				distance: 0
 			}
 		},
 		'Alpha Cube': {
 			'Small Black Flower': {
 				distance: 30
+			},
+			'Health Tower': {
+				distance: 15,
+				note: 'Down-Left-Back Corner'
+			}
+		},
+		'Health Tower': {
+			'Quicksand Grass': {
+				distance: 0
 			}
 		},
 		'Fir Tree': {

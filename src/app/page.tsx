@@ -8,9 +8,8 @@ const nodes: Map<nodeNames, Node> = new Map();
 // initialize nodes from input.ts
 for (const node of inputGraph.nodes) {
 	nodes.set(node.name as nodeNames, {
-		name: node.name as nodeNames,
-		edges: [],
-		info: node.info
+		...node,
+		edges: []
 	});
 }
 // initialialize edges from input.ts
@@ -191,7 +190,7 @@ export default function Home() {
 										<Image
 											className='descendantTooltip'
 											src={`./images/descendants/${currentNode().name}-${edge.node.name}.webp`}
-											fallbackSrc={`./images/descendants/${edge.node.name}.webp`}
+											fallbackSrc={edge.node.images?.[0].src}
 											alt=''
 										/>
 									</Fragment>
