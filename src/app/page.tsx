@@ -88,6 +88,7 @@ export default function Home() {
 				visitedNodes.set(currentNode, currentDistance);
 				// iterate edge nodes, and set distance to unvisited node if smaller than current node distance to start
 				for (const edge of currentNode.edges) {
+					if (edge.distance == Infinity) edge.distance = 100; // TEMPORARY UNTIL EVERYTHING IS PATHED
 					if (edge.distance + currentDistance < distancesToStart.get(edge.node)!) {
 						distancesToStart.set(edge.node, edge.distance + currentDistance);
 						predecessors.set(edge.node, currentNode); // set predecessor node (for backtracking to create path)
