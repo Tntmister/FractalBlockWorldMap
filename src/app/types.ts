@@ -12,18 +12,36 @@ export type pickups =
 	| 'Railgun'
 	| 'EMP'
 	| 'Nuke'
-	| 'Black Hole'
+	| 'Dark Hole'
 	| 'Gold'
-	| 'RejuvenX';
+	| 'RejuvenX'
+	| 'Telekinesis';
+
+export type interactables =
+	| 'Sleep'
+	| 'CommonSell'
+	| 'Buy'
+	| 'BuyNuke'
+	| 'Markers'
+	| 'Waypoint'
+	| 'Bookmark'
+	| 'Respawn'
+	| 'PinkRing'
+	| 'PinkSphere'
+	| 'BlueRing'
+	| 'Save';
 
 export type InputNode = {
 	name: string;
 	upgrades?: pickups[]; // possible upgrades
 	items?: pickups[]; // possible items
+	interactables?: interactables[];
 	images?: {
 		src: string;
 		info: string;
 	}[];
+	trophy?: boolean;
+	secretTrophy?: boolean;
 };
 
 export type nodeNames = (typeof inputNodes)[number]['name'];
