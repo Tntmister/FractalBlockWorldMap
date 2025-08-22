@@ -1,35 +1,35 @@
-import { inputNodes } from './input';
+import { inputNodes } from "./input";
 
 export type pickups =
-	| 'Health'
-	| 'Armor'
-	| 'Plasma'
-	| 'Cannon'
-	| 'Laser'
-	| 'Rocket'
-	| 'Homing'
-	| 'Minigun'
-	| 'Railgun'
-	| 'EMP'
-	| 'Nuke'
-	| 'Dark Hole'
-	| 'Gold'
-	| 'RejuvenX'
-	| 'Telekinesis';
+	| "Health"
+	| "Armor"
+	| "Plasma"
+	| "Cannon"
+	| "Laser"
+	| "Rocket"
+	| "Homing"
+	| "Minigun"
+	| "Railgun"
+	| "EMP"
+	| "Nuke"
+	| "Dark Hole"
+	| "Gold"
+	| "RejuvenX"
+	| "Telekinesis";
 
 export type interactables =
-	| 'Sleep'
-	| 'CommonSell'
-	| 'Buy'
-	| 'BuyNuke'
-	| 'Markers'
-	| 'Waypoint'
-	| 'Bookmark'
-	| 'Respawn'
-	| 'PinkRing'
-	| 'PinkSphere'
-	| 'BlueRing'
-	| 'Save';
+	| "Sleep"
+	| "CommonSell"
+	| "Buy"
+	| "BuyNuke"
+	| "Markers"
+	| "Waypoint"
+	| "Bookmark"
+	| "Respawn"
+	| "PinkRing"
+	| "PinkSphere"
+	| "BlueRing"
+	| "Save";
 
 export type InputNode = {
 	name: string;
@@ -44,7 +44,7 @@ export type InputNode = {
 	secretTrophy?: boolean;
 };
 
-export type nodeNames = (typeof inputNodes)[number]['name'];
+export type nodeNames = (typeof inputNodes)[number]["name"];
 
 type edgeInfo = {
 	distance: number; // how hard is it to traverse to ingame (enemy difficulty/time)

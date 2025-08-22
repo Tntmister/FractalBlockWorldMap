@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
 	src: string;

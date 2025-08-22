@@ -1,8 +1,8 @@
-'use client';
-import { inputGraph } from './input';
-import { Fragment, useEffect, useState } from 'react';
-import { nodeNames, Node, Edge } from './types';
-import Image from './Image';
+"use client";
+import { inputGraph } from "./input";
+import { Fragment, useEffect, useState } from "react";
+import { nodeNames, Node, Edge } from "./types";
+import Image from "./Image";
 
 const nodes: Map<nodeNames, Node> = new Map();
 // initialize nodes from input.ts
@@ -24,11 +24,11 @@ for (const [fromName, edge] of Object.entries(inputGraph.edges)) {
 	}
 }
 
-const startingNode: nodeNames = 'Ying Island';
+const startingNode: nodeNames = "Ying Island";
 
 export default function Home() {
 	// eslint-disable-next-line prefer-const
-	let [pathStack, setPathStack] = useState<Node['edges']>([
+	let [pathStack, setPathStack] = useState<Node["edges"]>([
 		{
 			node: nodes.get(inputGraph.root.name)!,
 			distance: 0
@@ -146,10 +146,10 @@ export default function Home() {
 											alt='One Way'
 										/>
 									) : (
-										'→'
+										"→"
 									)
 								) : (
-									''
+									""
 								)}
 								<span className={`pathNode`} onClick={() => traverseTo(edge.node)}>
 									{index ==
