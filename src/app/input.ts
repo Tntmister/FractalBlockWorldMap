@@ -10,12 +10,12 @@ export const inputNodes = [
 		name: "Tutorial",
 		items: ["Plasma"],
 		upgrades: ["Laser", "Nuke"],
-		interactables: ["Save", "Respawn", "PinkSphere", "PinkRing", "BlueRing", "Waypoint"],
+		interactables: ["Save", "Respawn", "Pink Sphere", "Pink Ring", "Blue Ring", "Waypoint"],
 		secretTrophy: true
 	},
 	{
 		name: "Tutorial Island",
-		interactables: ["PinkSphere", "BlueRing", "Respawn", "Save"]
+		interactables: ["Pink Sphere", "Blue Ring", "Respawn", "Save"]
 	},
 	{
 		name: "Small Yellow Flower",
@@ -36,7 +36,7 @@ export const inputNodes = [
 	},
 	{
 		name: "Small White Flower",
-		interactables: ["Save", "PinkSphere", "PinkRing", "BlueRing"],
+		interactables: ["Save", "Pink Sphere", "Pink Ring", "Blue Ring"],
 		upgrades: ["Health", "Homing", "Plasma", "Nuke", "Rocket"],
 		items: ["Armor", "Nuke", "Rocket", "Plasma", "Homing", "Minigun", "Dark Hole", "EMP"]
 	},
@@ -49,7 +49,7 @@ export const inputNodes = [
 		name: "Ying Flower",
 		upgrades: ["Laser", "Cannon"],
 		items: ["EXP", "Cannon", "Laser", "Rocket", "Minigun"],
-		interactables: ["Waypoint", "Save", "Bookmark", "PinkSphere"]
+		interactables: ["Waypoint", "Save", "Bookmark", "Pink Sphere"]
 	},
 	{
 		name: "Ying World"
@@ -113,20 +113,20 @@ export const inputNodes = [
 	{
 		name: "Huntington",
 		trophy: true,
-		interactables: ["PinkRing", "Save", "ScarceSell", "Buy", "Markers", "Waypoint", "Respawn"],
+		interactables: ["Pink Ring", "Save", "Scarce Sell Station", "Buy", "Markers", "Waypoint", "Respawn"],
 		items: ["Gold", "Armor"],
-		upgrades: ["Health", "Telekinesis", "RejuvenX", "Railgun", "Nuke", "EMP"]
+		upgrades: ["Health", "Telekinesis", "RejuvenX", "Railgun", "Nuke", "EMP", "Cannon Weapon Mod"]
 	},
 	{
 		name: "Camel's Hump",
-		interactables: ["PinkSphere"]
+		interactables: ["Pink Sphere"]
 	},
 	{
 		name: "Blue Bubble Gauntlet"
 	},
 	{
 		name: "Blue Bubble",
-		interactables: ["PinkSphere"],
+		interactables: ["Pink Sphere"],
 		items: ["Health", "Minigun", "Rocket"]
 	},
 	{
@@ -143,12 +143,12 @@ export const inputNodes = [
 	{
 		name: "Orange Flower",
 		items: ["Rocket", "Minigun", "Cannon"],
-		interactables: ["Save", "PinkSphere"]
+		interactables: ["Save", "Pink Sphere"]
 	},
 	{
 		name: "Botany Lab",
 		trophy: true,
-		interactables: ["Save", "Waypoint", "PinkRing"],
+		interactables: ["Save", "Waypoint", "Pink Ring"],
 		items: ["Laser", "Homing", "Minigun", "Rocket", "Cannon", "Railgun", "Gold", "Health", "Armor"]
 	},
 	{
@@ -157,7 +157,7 @@ export const inputNodes = [
 	},
 	{
 		name: "Infinity Flower",
-		interactables: ["PinkSphere", "Save"],
+		interactables: ["Pink Sphere", "Save"],
 		upgrades: ["Laser"]
 	},
 	{
@@ -205,11 +205,11 @@ export const inputNodes = [
 	},
 	{
 		name: "Pink Tree",
-		interactables: ["PinkRing"]
+		interactables: ["Pink Ring"]
 	},
 	{
 		name: "Hard Pink Tree",
-		interactables: ["PinkRing"]
+		interactables: ["Pink Ring"]
 	},
 	{
 		name: "Tweedle-Dee Air"
@@ -217,11 +217,11 @@ export const inputNodes = [
 	{
 		name: "Tweedle Haunted House 1",
 		upgrades: ["Plasma", "Rocket"],
-		interactables: ["PinkRing", "Save"]
+		interactables: ["Pink Ring", "Save"]
 	},
 	{
 		name: "Tweedle Haunted House 2",
-		upgrades: ["Plasma", "Rocket", "WeaponMod"],
+		upgrades: ["Plasma", "Rocket", "Plasma Weapon Mod"],
 		items: ["Gold", "Plasma"]
 	},
 	{
@@ -255,13 +255,13 @@ export const inputNodes = [
 	},
 	{
 		name: "Tall Rail Tower",
-		interactables: ["PinkRing", "PinkSphere", "Save"],
+		interactables: ["Pink Ring", "Pink Sphere", "Save"],
 		upgrades: ["Rocket", "Railgun", "Cannon"],
 		items: ["Railgun"]
 	},
 	{
 		name: "Short Rail Tower",
-		interactables: ["PinkRing", "PinkSphere", "Save"],
+		interactables: ["Pink Ring", "Pink Sphere", "Save"],
 		items: ["Railgun"]
 	},
 	{
@@ -270,14 +270,14 @@ export const inputNodes = [
 	},
 	{
 		name: "Mossy Basement",
-		interactables: ["Buy", "CommonSell", "Save", "PinkRing"],
+		interactables: ["Buy", "Common Sell Station", "Save", "Pink Ring"],
 		items: ["Gold", "Rocket", "Minigun", "Homing", "Laser", "Cannon", "EMP", "Railgun", "Nuke"],
 		upgrades: ["Cannon", "Homing", "Rocket", "EMP"],
 		secretTrophy: true
 	},
 	{
 		name: "Tau Cave Moon",
-		interactables: ["PinkSphere", "Waypoint", "Buy", "Bookmark", "Save"]
+		interactables: ["Pink Sphere", "Waypoint", "Buy", "Bookmark", "Save"]
 	},
 	{
 		name: "Imp Disco",
@@ -294,7 +294,7 @@ export const inputNodes = [
 	},
 	{
 		name: "Hinesburg",
-		interactables: ["Markers", "Buy", "Waypoint", "Respawn", "Save", "CommonSell"],
+		interactables: ["Markers", "Buy", "Waypoint", "Respawn", "Save", "Common Sell Station"],
 		items: ["Gold", "Armor", "Nuke", "Railgun", "EMP"]
 	},
 	{
@@ -314,37 +314,37 @@ export const inputNodes = [
 		name: "Small Minigun Planet",
 		upgrades: ["Rocket", "Minigun", "Laser"],
 		items: ["Armor", "Rocket", "Laser"],
-		interactables: ["Waypoint", "Bookmark", "Save", "Markers", "Buy", "CommonSell"]
+		interactables: ["Waypoint", "Bookmark", "Save", "Markers", "Buy", "Common Sell Station"]
 	},
 	{
 		name: "Clay Planet",
 		upgrades: ["Nuke"],
 		items: ["Armor"],
-		interactables: ["Waypoint", "Bookmark", "Save", "Markers", "Buy", "CommonSell"]
+		interactables: ["Waypoint", "Bookmark", "Save", "Markers", "Buy", "Common Sell Station"]
 	},
 	{
 		name: "Alpha Moon",
 		trophy: true,
-		interactables: ["PinkSphere", "Bookmark", "Waypoint", "Save", "PinkRing"],
+		interactables: ["Pink Sphere", "Bookmark", "Waypoint", "Save", "Pink Ring"],
 		items: ["Nuke", "Railgun", "EMP", "Rocket", "Cannon", "Health", "Armor"],
 		upgrades: ["Nuke", "Railgun", "Health"]
 	},
 	{
 		name: "Beta Moon",
-		interactables: ["PinkSphere", "Buy", "Markers", "Save"],
+		interactables: ["Pink Sphere", "Buy", "Markers", "Save"],
 		items: ["Nuke", "Gold"],
 		upgrades: ["Dark Hole", "Minigun"],
 		trophy: true
 	},
 	{
 		name: "Ice Moon",
-		interactables: ["Waypoint", "Respawn", "Save", "Buy", "CommonSell", "PinkSphere"],
+		interactables: ["Waypoint", "Respawn", "Save", "Buy", "Common Sell Station", "Pink Sphere"],
 		items: ["Armor", "Health"],
 		upgrades: ["Laser", "EMP", "Cannon"]
 	},
 	{
 		name: "Gamma Moon",
-		interactables: ["Waypoint", "Respawn", "Save", "Buy", "CommonSell", "PinkSphere"],
+		interactables: ["Waypoint", "Respawn", "Save", "Buy", "Common Sell Station", "Pink Sphere"],
 		items: ["Armor", "Health", "Nuke"],
 		upgrades: ["Laser", "Nuke", "EMP", "Cannon"]
 	},
@@ -402,7 +402,8 @@ export const inputNodes = [
 		name: "Williston Tree"
 	},
 	{
-		name: "I1 Library"
+		name: "I1 Library",
+		interactables: ["Pink Sphere"]
 	},
 	{
 		name: "Imp Cave"
@@ -428,19 +429,19 @@ export const inputNodes = [
 	{
 		name: "Lighthouse",
 		upgrades: ["Minigun", "Health"],
-		interactables: ["PinkRing", "Save"]
+		interactables: ["Pink Ring", "Save"]
 	},
 	{
 		name: "Lighthouse Basement",
 		items: ["Minigun", "Railgun", "EMP", "Nuke"],
 		upgrades: ["Nuke"],
-		interactables: ["PinkSphere", "PinkRing", "BlueRing", "Save", "Waypoint", "Bookmark"],
+		interactables: ["Pink Sphere", "Pink Ring", "Blue Ring", "Save", "Waypoint", "Bookmark"],
 		trophy: true
 	},
 	{
 		name: "Golden Yellow Flower",
-		interactables: ["Save", "PinkRing"],
-		upgrades: ["Rocket", "WeaponMod"],
+		interactables: ["Save", "Pink Ring"],
+		upgrades: ["Rocket", "Rocket Weapon Mod"],
 		items: ["Rocket", "Minigun", "EMP", "Dark Hole", "Nuke", "Laser", "Cannon", "Gold"]
 	},
 	{
@@ -473,7 +474,7 @@ export const inputNodes = [
 	},
 	{
 		name: "Large Gold Asteroid",
-		interactables: ["Save", "PinkRing"],
+		interactables: ["Save", "Pink Ring"],
 		items: ["Gold"],
 		secretTrophy: true
 	},
@@ -505,7 +506,7 @@ export const inputNodes = [
 		name: "Richmond",
 		upgrades: ["Cannon", "Health"],
 		items: ["Armor"],
-		interactables: ["Waypoint", "CommonSell", "Buy", "Markers", "PinkRing", "PinkSphere"]
+		interactables: ["Waypoint", "Common Sell Station", "Buy", "Markers", "Pink Ring", "Pink Sphere"]
 	},
 	{
 		name: "Richmond Sewers",
@@ -514,7 +515,7 @@ export const inputNodes = [
 	},
 	{
 		name: "Richmond Building",
-		interactables: ["Save", "PinkRing", "PinkSphere"],
+		interactables: ["Save", "Pink Ring", "Pink Sphere"],
 		upgrades: ["Rocket", "Laser", "Minigun", "Cannon", "Plasma"],
 		items: ["Gold", "Cannon", "Laser", "Rocket", "Homing", "Minigun", "Dark Hole"],
 		trophy: true,
@@ -523,20 +524,20 @@ export const inputNodes = [
 	{
 		name: "Red Cave",
 		interactables: ["Save"],
-		items: ["Rocket"],
-		upgrades: ["Homing", "Rocket", "EXP"],
+		items: ["Rocket", "EXP"],
+		upgrades: ["Homing", "Rocket"],
 		trophy: true
 	},
 	{
 		name: "Red Rose",
-		interactables: ["PinkRing", "PinkSphere"],
+		interactables: ["Pink Ring", "Pink Sphere"],
 		items: ["Gold", "Nuke", "Minigun", "Rocket", "Railgun", "Homing", "Cannon", "Laser", "EMP"],
 		secretTrophy: true
 	},
 	{
 		name: "Richmond Library",
 		upgrades: ["Rocket"],
-		interactables: ["Waypoint", "BuyNuke", "BlueRing"]
+		interactables: ["Waypoint", "Buy Nuke", "Blue Ring"]
 	},
 	{
 		name: "Richmond Library Arcade",
@@ -557,7 +558,7 @@ export const inputNodes = [
 	},
 	{
 		name: "Stable Singletons",
-		interactables: ["PinkSphere"]
+		interactables: ["Pink Sphere"]
 	},
 	{
 		name: "Grey Lattice",
@@ -586,13 +587,13 @@ export const inputNodes = [
 	},
 	{
 		name: "Mylantis City",
-		interactables: ["PinkSphere"]
+		interactables: ["Pink Sphere"]
 	},
 	{
 		name: "Mylantis Top Garden",
 		items: ["Nuke", "Gold"],
 		upgrades: ["Plasma", "Cannon", "Laser", "Rocket", "Homing", "Minigun", "Railgun", "EMP", "Nuke", "Dark Hole", "RejuvenX"],
-		interactables: ["BuyNuke", "Buy", "ScarceSell", "Markers", "Waypoint", "Save", "Bookmark"],
+		interactables: ["Buy Nuke", "Buy", "Scarce Sell Station", "Markers", "Waypoint", "Save", "Bookmark"],
 		trophy: true
 	},
 	{
@@ -621,7 +622,7 @@ export const inputNodes = [
 		name: "Happy Land",
 		items: ["Plasma"],
 		upgrades: ["Plasma"],
-		interactables: ["BlueRing"]
+		interactables: ["Blue Ring"]
 	},
 	{
 		name: "Small Noob Flower",
@@ -641,7 +642,7 @@ export const inputNodes = [
 	},
 	{
 		name: "Large Cannon Pyramid",
-		interactables: ["PinkSphere"],
+		interactables: ["Pink Sphere"],
 		upgrades: ["Cannon", "Railgun", "Health", "Nuke"],
 		items: ["Laser", "Railgun"]
 	},
@@ -699,7 +700,7 @@ export const inputNodes = [
 	},
 	{
 		name: "Stoney Air Cave",
-		interactables: ["PinkRing", "Save"],
+		interactables: ["Pink Ring", "Save"],
 		trophy: true,
 		upgrades: ["Health", "Plasma", "Cannon", "Laser"],
 		items: ["Nuke", "Minigun", "Cannon", "EMP", "Laser", "Health", "Armor"]

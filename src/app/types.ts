@@ -1,43 +1,31 @@
 import { inputNodes } from "./input";
 
-export type pickups =
-	| "Health"
-	| "Armor"
-	| "Plasma"
-	| "Cannon"
-	| "Laser"
-	| "Rocket"
-	| "Homing"
-	| "Minigun"
-	| "Railgun"
-	| "EMP"
-	| "Nuke"
-	| "Dark Hole"
-	| "Gold"
-	| "RejuvenX"
-	| "Telekinesis"
-	| "WeaponMod"
-	| "EXP";
+type weaponTypes = "Plasma" | "Cannon" | "Laser" | "Rocket" | "Homing" | "Minigun" | "Railgun" | "EMP" | "Nuke" | "Dark Hole";
+type defenceTypes = "Health" | "Armor";
+type items = weaponTypes | defenceTypes | "Gold" | "EXP";
+type upgradeTypes = "Max Ammo" | "Regen" | "Fire Rate" | "Damage" | "Velocity" | "Radius" | "Freeze Time" | "Number" | "Weapon Mod";
+
+export type upgrades = `${weaponTypes | defenceTypes} ${upgradeTypes}` | "RejuvenX" | "Telekinesis" | "Weapon Mod" | items; // | items temporary until upgrades everywhere are specified
 
 export type interactables =
 	| "Sleep"
-	| "CommonSell"
-	| "ScarceSell"
+	| "Common Sell Station"
+	| "Scarce Sell Station"
 	| "Buy"
-	| "BuyNuke"
+	| "Buy Nuke"
 	| "Markers"
 	| "Waypoint"
 	| "Bookmark"
 	| "Respawn"
-	| "PinkRing"
-	| "PinkSphere"
-	| "BlueRing"
+	| "Pink Ring"
+	| "Pink Sphere"
+	| "Blue Ring"
 	| "Save";
 
 export type InputNode = {
 	name: string;
-	upgrades?: pickups[]; // possible upgrades
-	items?: pickups[]; // possible items
+	upgrades?: (upgrades | upgrades[])[]; // possible upgrades (including random ones)
+	items?: items[]; // possible items
 	interactables?: interactables[];
 	images?: {
 		src: string;
