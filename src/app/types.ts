@@ -1,8 +1,9 @@
-import { inputNodes } from "./input";
+import { monsters } from "./input/monsters";
+import { inputNodes } from "./input/nodes";
 
 type weaponTypes = "Plasma" | "Cannon" | "Laser" | "Rocket" | "Homing" | "Minigun" | "Railgun" | "EMP" | "Nuke" | "Dark Hole";
 type defenceTypes = "Health" | "Armor";
-type items = weaponTypes | defenceTypes | "Gold" | "EXP";
+type items = weaponTypes | defenceTypes | "Gold" | "EXP" | "Key";
 type upgradeTypes = "Max Ammo" | "Regen" | "Fire Rate" | "Damage" | "Velocity" | "Radius" | "Freeze Time" | "Number" | "Weapon Mod";
 
 export type upgrades = `${weaponTypes | defenceTypes} ${upgradeTypes}` | "RejuvenX" | "Telekinesis" | "Weapon Mod" | items; // | items temporary until upgrades everywhere are specified
@@ -22,8 +23,16 @@ export type interactables =
 	| "Blue Ring"
 	| "Save";
 
+export type monster = {
+	name: string;
+	drop?: upgrades | items;
+};
+
+export type monsterName = (typeof monsters)[number]["name"];
+
 export type InputNode = {
 	name: string;
+	monsters?: monsterName[];
 	upgrades?: (upgrades | upgrades[])[]; // possible upgrades (including random ones)
 	items?: items[]; // possible items
 	interactables?: interactables[];

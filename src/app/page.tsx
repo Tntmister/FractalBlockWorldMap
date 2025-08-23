@@ -1,8 +1,8 @@
 "use client";
-import { inputGraph } from "./input";
 import { Fragment, useEffect, useState } from "react";
 import { nodeNames, Node, Edge } from "./types";
 import Image from "./Image";
+import { inputGraph } from "./input/graph";
 
 const nodes: Map<nodeNames, Node> = new Map();
 // initialize nodes from input.ts
@@ -24,15 +24,35 @@ for (const [fromName, edge] of Object.entries(inputGraph.edges)) {
 	}
 }
 
-const startingNode: nodeNames = "Ying Island";
+const startingPath: nodeNames[] = [
+	inputGraph.root.name,
+	"Outer Space 0",
+	"Outer Space 1",
+	"Outer Space 2",
+	"Galaxy",
+	"Solar System",
+	"Tau Cave Moon",
+	"Type 2 Tau Cave",
+	"Type 3 Tau Cave",
+	"Type 1 Tau Cave",
+	"Ying Flower",
+	"Ying World",
+	"Tutorial Island"
+];
 
 export default function Home() {
 	// eslint-disable-next-line prefer-const
 	let [pathStack, setPathStack] = useState<Node["edges"]>([
 		{
-			node: nodes.get(inputGraph.root.name)!,
+			node: nodes.get(startingPath[0])!,
 			distance: 0
-		}
+		},
+		...startingPath.slice(1).map((nodeName, index) => {
+			console.log(nodeName);
+			return nodes
+				.get(startingPath[index])!
+				.edges.find((edge) => edge.node.name == nodeName)!;
+		})
 	]);
 
 	function currentNode() {
@@ -88,7 +108,6 @@ export default function Home() {
 				visitedNodes.set(currentNode, currentDistance);
 				// iterate edge nodes, and set distance to unvisited node if smaller than current node distance to start
 				for (const edge of currentNode.edges) {
-					if (edge.distance == Infinity) edge.distance = 100; // TEMPORARY UNTIL EVERYTHING IS PATHED
 					if (edge.distance + currentDistance < distancesToStart.get(edge.node)!) {
 						distancesToStart.set(edge.node, edge.distance + currentDistance);
 						predecessors.set(edge.node, currentNode); // set predecessor node (for backtracking to create path)
@@ -125,10 +144,6 @@ export default function Home() {
 				b.reduce((acc, edge) => acc + edge.distance, 0)
 		)[0];
 	}
-
-	useEffect(() => {
-		traverseTo(nodes.get(startingNode)!);
-	}, []);
 
 	return (
 		<div id='base'>
@@ -182,7 +197,7 @@ export default function Home() {
 									<Fragment key={`descendant${index}`}>
 										<span
 											className={`descendant`}
-											onClick={() => traverseTo(edge.node)}
+											onClick={() => traversePath([edge])}
 										>
 											<div>{edge.node.name}</div>
 											<div>{edge.note && ` (${edge.note})`}</div>
