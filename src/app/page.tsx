@@ -152,18 +152,17 @@ export default function Home() {
 									""
 								)}
 								<span className={`pathNode`} onClick={() => traverseTo(edge.node)}>
-									{index ==
-										pathStack.findLastIndex((edge) =>
-											currentNode().edges.some(
-												(edge2) => edge2.node.name === edge.node.name
-											)
-										) && (
-										<Image
-											className='icon'
-											src='./images/icons/pinkring.png'
-											alt='(Pink Sphere) '
-										/>
-									)}
+									{currentNode().interactables?.includes("Pink Ring") &&
+										index ==
+											pathStack.findLastIndex((edge) =>
+												edge.node.interactables?.includes("Pink Sphere")
+											) && (
+											<Image
+												className='icon'
+												src='./images/icons/pinkring.png'
+												alt='(Pink Ring) '
+											/>
+										)}
 									{edge.node.name}
 								</span>
 							</Fragment>
