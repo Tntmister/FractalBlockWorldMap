@@ -7,10 +7,15 @@ export const inputNodes = [
 		interactables: ["Waypoint", "Save", "Respawn"]
 	},
 	{
-		name: "Tutorial"
+		name: "Tutorial",
+		items: ["Plasma"],
+		upgrades: ["Laser", "Nuke"],
+		interactables: ["Save", "Respawn", "PinkSphere", "PinkRing", "BlueRing", "Waypoint"],
+		secretTrophy: true
 	},
 	{
-		name: "Tutorial Island"
+		name: "Tutorial Island",
+		interactables: ["PinkSphere", "BlueRing", "Respawn", "Save"]
 	},
 	{
 		name: "Small Yellow Flower",
@@ -31,29 +36,20 @@ export const inputNodes = [
 	},
 	{
 		name: "Small White Flower",
+		interactables: ["Save", "PinkSphere", "PinkRing", "BlueRing"],
 		upgrades: ["Health", "Homing", "Plasma", "Nuke", "Rocket"],
 		items: ["Armor", "Nuke", "Rocket", "Plasma", "Homing", "Minigun", "Dark Hole", "EMP"]
 	},
 	{
 		name: "Upgraded Small White Flower",
 		upgrades: ["Health", "Homing", "Plasma", "Nuke", "Rocket"],
-		items: [
-			"Armor",
-			"Nuke",
-			"Rocket",
-			"Plasma",
-			"Homing",
-			"Minigun",
-			"Dark Hole",
-			"EMP",
-			"Railgun",
-			"Gold"
-		]
+		items: ["Armor", "Nuke", "Rocket", "Plasma", "Homing", "Minigun", "Dark Hole", "EMP", "Railgun", "Gold"]
 	},
 	{
 		name: "Ying Flower",
-		upgrades: ["Laser"],
-		interactables: ["Waypoint"]
+		upgrades: ["Laser", "Cannon"],
+		items: ["EXP", "Cannon", "Laser", "Rocket", "Minigun"],
+		interactables: ["Waypoint", "Save", "Bookmark", "PinkSphere"]
 	},
 	{
 		name: "Ying World"
@@ -97,7 +93,8 @@ export const inputNodes = [
 		name: "Outer Crust B"
 	},
 	{
-		name: "Outer Mantle"
+		name: "Outer Mantle",
+		interactables: ["Waypoint", "Save", "Bookmark", "Buy"]
 	},
 	{
 		name: "Outer Mantle Secret",
@@ -115,8 +112,9 @@ export const inputNodes = [
 	},
 	{
 		name: "Huntington",
-		interactables: ["PinkRing"],
-		items: ["Gold"],
+		trophy: true,
+		interactables: ["PinkRing", "Save", "ScarceSell", "Buy", "Markers", "Waypoint", "Respawn"],
+		items: ["Gold", "Armor"],
 		upgrades: ["Health", "Telekinesis", "RejuvenX", "Railgun", "Nuke", "EMP"]
 	},
 	{
@@ -128,6 +126,7 @@ export const inputNodes = [
 	},
 	{
 		name: "Blue Bubble",
+		interactables: ["PinkSphere"],
 		items: ["Health", "Minigun", "Rocket"]
 	},
 	{
@@ -143,10 +142,14 @@ export const inputNodes = [
 	},
 	{
 		name: "Orange Flower",
-		items: ["Rocket", "Minigun"]
+		items: ["Rocket", "Minigun", "Cannon"],
+		interactables: ["Save", "PinkSphere"]
 	},
 	{
-		name: "Botany Lab"
+		name: "Botany Lab",
+		trophy: true,
+		interactables: ["Save", "Waypoint", "PinkRing"],
+		items: ["Laser", "Homing", "Minigun", "Rocket", "Cannon", "Railgun", "Gold", "Health", "Armor"]
 	},
 	{
 		name: "Galaxy Flower",
@@ -195,11 +198,18 @@ export const inputNodes = [
 	},
 	{
 		name: "Ice Cube",
-		items: ["Laser", "Railgun"],
-		upgrades: ["Laser", "Health"]
+		trophy: true,
+		interactables: ["Waypoint", "Bookmark"],
+		items: ["Laser", "Railgun", "Cannon", "EMP"],
+		upgrades: ["Laser", "Health", "Railgun"]
 	},
 	{
-		name: "Pink Tree"
+		name: "Pink Tree",
+		interactables: ["PinkRing"]
+	},
+	{
+		name: "Hard Pink Tree",
+		interactables: ["PinkRing"]
 	},
 	{
 		name: "Tweedle-Dee Air"
@@ -211,8 +221,18 @@ export const inputNodes = [
 	},
 	{
 		name: "Tweedle Haunted House 2",
-		upgrades: ["Plasma", "Rocket"],
+		upgrades: ["Plasma", "Rocket", "WeaponMod"],
 		items: ["Gold", "Plasma"]
+	},
+	{
+		name: "Flare Weapon Mod",
+		upgrades: ["Plasma"],
+		items: ["Plasma"]
+	},
+	{
+		name: "Tommy Gun Weapon Mod",
+		upgrades: ["Cannon"],
+		items: ["Cannon"]
 	},
 	{
 		name: "Weapon Library"
@@ -234,8 +254,14 @@ export const inputNodes = [
 		secretTrophy: true
 	},
 	{
-		name: "Railgun Tower",
+		name: "Tall Rail Tower",
+		interactables: ["PinkRing", "PinkSphere", "Save"],
 		upgrades: ["Rocket", "Railgun", "Cannon"],
+		items: ["Railgun"]
+	},
+	{
+		name: "Short Rail Tower",
+		interactables: ["PinkRing", "PinkSphere", "Save"],
 		items: ["Railgun"]
 	},
 	{
@@ -250,7 +276,12 @@ export const inputNodes = [
 		secretTrophy: true
 	},
 	{
-		name: "Tau Cave Moon"
+		name: "Tau Cave Moon",
+		interactables: ["PinkSphere", "Waypoint", "Buy", "Bookmark", "Save"]
+	},
+	{
+		name: "Imp Disco",
+		items: ["Homing"]
 	},
 	{
 		name: "Type 1 Tau Cave"
@@ -260,6 +291,70 @@ export const inputNodes = [
 	},
 	{
 		name: "Type 3 Tau Cave"
+	},
+	{
+		name: "Hinesburg",
+		interactables: ["Markers", "Buy", "Waypoint", "Respawn", "Save", "CommonSell"],
+		items: ["Gold", "Armor", "Nuke", "Railgun", "EMP"]
+	},
+	{
+		name: "Outer Space 2 Debris",
+		items: ["Laser"]
+	},
+	{
+		name: "Sun",
+		interactables: [],
+		upgrades: ["Health", "Rocket", "EMP", "Nuke"]
+	},
+	{
+		name: "Solar System Elevator",
+		interactables: ["Waypoint", "Bookmark", "Save"]
+	},
+	{
+		name: "Small Minigun Planet",
+		upgrades: ["Rocket", "Minigun", "Laser"],
+		items: ["Armor", "Rocket", "Laser"],
+		interactables: ["Waypoint", "Bookmark", "Save", "Markers", "Buy", "CommonSell"]
+	},
+	{
+		name: "Clay Planet",
+		upgrades: ["Nuke"],
+		items: ["Armor"],
+		interactables: ["Waypoint", "Bookmark", "Save", "Markers", "Buy", "CommonSell"]
+	},
+	{
+		name: "Alpha Moon",
+		trophy: true,
+		interactables: ["PinkSphere", "Bookmark", "Waypoint", "Save", "PinkRing"],
+		items: ["Nuke", "Railgun", "EMP", "Rocket", "Cannon", "Health", "Armor"],
+		upgrades: ["Nuke", "Railgun", "Health"]
+	},
+	{
+		name: "Beta Moon",
+		interactables: ["PinkSphere", "Buy", "Markers", "Save"],
+		items: ["Nuke", "Gold"],
+		upgrades: ["Dark Hole", "Minigun"],
+		trophy: true
+	},
+	{
+		name: "Ice Moon",
+		interactables: ["Waypoint", "Respawn", "Save", "Buy", "CommonSell", "PinkSphere"],
+		items: ["Armor", "Health"],
+		upgrades: ["Laser", "EMP", "Cannon"]
+	},
+	{
+		name: "Gamma Moon",
+		interactables: ["Waypoint", "Respawn", "Save", "Buy", "CommonSell", "PinkSphere"],
+		items: ["Armor", "Health", "Nuke"],
+		upgrades: ["Laser", "Nuke", "EMP", "Cannon"]
+	},
+	{
+		name: "Moon Debris",
+		items: ["Health", "Armor", "Laser"]
+	},
+	{
+		name: "Planet Debris",
+		items: ["Health", "Armor", "Rocket"]
 	},
 	{
 		name: "Ying Air Cube",
@@ -283,6 +378,72 @@ export const inputNodes = [
 		name: "I1"
 	},
 	{
+		name: "Williston City"
+	},
+	{
+		name: "Williston Field"
+	},
+	{
+		name: "EMP Castle"
+	},
+	{
+		name: "Bristol"
+	},
+	{
+		name: "Blackberry"
+	},
+	{
+		name: "Well"
+	},
+	{
+		name: "Purple Well"
+	},
+	{
+		name: "Williston Tree"
+	},
+	{
+		name: "I1 Library"
+	},
+	{
+		name: "Imp Cave"
+	},
+	{
+		name: "Gnole Cave"
+	},
+	{
+		name: "Demon Cave"
+	},
+	{
+		name: "Orc Cave"
+	},
+	{
+		name: "Beholder Cave"
+	},
+	{
+		name: "Black Cube"
+	},
+	{
+		name: "Red Cube"
+	},
+	{
+		name: "Lighthouse",
+		upgrades: ["Minigun", "Health"],
+		interactables: ["PinkRing", "Save"]
+	},
+	{
+		name: "Lighthouse Basement",
+		items: ["Minigun", "Railgun", "EMP", "Nuke"],
+		upgrades: ["Nuke"],
+		interactables: ["PinkSphere", "PinkRing", "BlueRing", "Save", "Waypoint", "Bookmark"],
+		trophy: true
+	},
+	{
+		name: "Golden Yellow Flower",
+		interactables: ["Save", "PinkRing"],
+		upgrades: ["Rocket", "WeaponMod"],
+		items: ["Rocket", "Minigun", "EMP", "Dark Hole", "Nuke", "Laser", "Cannon", "Gold"]
+	},
+	{
 		name: "I2"
 	},
 	{
@@ -292,13 +453,40 @@ export const inputNodes = [
 		name: "Burlington"
 	},
 	{
-		name: "Outer Space Level 0"
+		name: "Outer Space -1"
 	},
 	{
-		name: "Outer Space Level 1"
+		name: "Outer Space 0",
+		upgrades: ["Laser"]
 	},
 	{
-		name: "Outer Space Level 2"
+		name: "Outer Space 1"
+	},
+	{
+		name: "Outer Space 1 Bunker",
+		items: ["Armor", "Homing", "Rocket", "EMP"],
+		interactables: ["Save", "Buy"]
+	},
+	{
+		name: "Medium Gold Asteroid",
+		items: ["Gold"]
+	},
+	{
+		name: "Large Gold Asteroid",
+		interactables: ["Save", "PinkRing"],
+		items: ["Gold"],
+		secretTrophy: true
+	},
+	{
+		name: "Ice Castle",
+		upgrades: ["Laser"],
+		items: ["Laser"]
+	},
+	{
+		name: "The Bulk 1"
+	},
+	{
+		name: "Outer Space 2"
 	},
 	{
 		name: "Galaxy"
@@ -317,7 +505,7 @@ export const inputNodes = [
 		name: "Richmond",
 		upgrades: ["Cannon", "Health"],
 		items: ["Armor"],
-		interactables: ["Waypoint", "CommonSell", "Buy", "Markers", "PinkRing"]
+		interactables: ["Waypoint", "CommonSell", "Buy", "Markers", "PinkRing", "PinkSphere"]
 	},
 	{
 		name: "Richmond Sewers",
@@ -325,9 +513,34 @@ export const inputNodes = [
 		interactables: ["Waypoint"]
 	},
 	{
+		name: "Richmond Building",
+		interactables: ["Save", "PinkRing", "PinkSphere"],
+		upgrades: ["Rocket", "Laser", "Minigun", "Cannon", "Plasma"],
+		items: ["Gold", "Cannon", "Laser", "Rocket", "Homing", "Minigun", "Dark Hole"],
+		trophy: true,
+		secretTrophy: true
+	},
+	{
+		name: "Red Cave",
+		interactables: ["Save"],
+		items: ["Rocket"],
+		upgrades: ["Homing", "Rocket", "EXP"],
+		trophy: true
+	},
+	{
+		name: "Red Rose",
+		interactables: ["PinkRing", "PinkSphere"],
+		items: ["Gold", "Nuke", "Minigun", "Rocket", "Railgun", "Homing", "Cannon", "Laser", "EMP"],
+		secretTrophy: true
+	},
+	{
 		name: "Richmond Library",
 		upgrades: ["Rocket"],
-		interactables: ["Waypoint", "BuyNuke"]
+		interactables: ["Waypoint", "BuyNuke", "BlueRing"]
+	},
+	{
+		name: "Richmond Library Arcade",
+		upgrades: ["Health", "Railgun", "Laser", "Rocket"]
 	},
 	{
 		name: "Bedroom",
@@ -337,23 +550,78 @@ export const inputNodes = [
 		name: "Hell"
 	},
 	{
-		name: "Stable Singletons"
+		name: "Hell Flower"
+	},
+	{
+		name: "Inner Core"
+	},
+	{
+		name: "Stable Singletons",
+		interactables: ["PinkSphere"]
 	},
 	{
 		name: "Grey Lattice",
 		items: ["Armor"]
 	},
 	{
-		name: "Slow Exit Maze"
+		name: "Slow Exit Maze",
+		items: ["Armor"]
 	},
 	{
 		name: "Mylantis"
 	},
 	{
-		name: "Alpha Menger Sponge"
+		name: "Mylantis Caves",
+		interactables: ["Waypoint", "Bookmark", "Save"]
 	},
 	{
-		name: "Happy Land"
+		name: "RejuvenX Refinery",
+		upgrades: ["RejuvenX"],
+		items: ["Health", "Cannon", "Laser", "Rocket", "Minigun", "Railgun", "Nuke", "EMP", "Gold"],
+		interactables: ["Save", "Buy", "Respawn"]
+	},
+	{
+		name: "Nuclear Silo",
+		items: ["Nuke"]
+	},
+	{
+		name: "Mylantis City",
+		interactables: ["PinkSphere"]
+	},
+	{
+		name: "Mylantis Top Garden",
+		items: ["Nuke", "Gold"],
+		upgrades: ["Plasma", "Cannon", "Laser", "Rocket", "Homing", "Minigun", "Railgun", "EMP", "Nuke", "Dark Hole", "RejuvenX"],
+		interactables: ["BuyNuke", "Buy", "ScarceSell", "Markers", "Waypoint", "Save", "Bookmark"],
+		trophy: true
+	},
+	{
+		name: "Main Branch Library",
+		upgrades: ["Telekinesis"]
+	},
+	{
+		name: "House of 5 Lampreys"
+	},
+	{
+		name: "Laser Genesis Planet"
+	},
+	{
+		name: "Mylantis City Underground"
+	},
+	{
+		name: "Beta Menger Sponge"
+	},
+	{
+		name: "Alpha Menger Sponge",
+		upgrades: ["Nuke"],
+		items: ["Nuke", "Minigun", "Railgun"],
+		trophy: true
+	},
+	{
+		name: "Happy Land",
+		items: ["Plasma"],
+		upgrades: ["Plasma"],
+		interactables: ["BlueRing"]
 	},
 	{
 		name: "Small Noob Flower",
@@ -373,6 +641,7 @@ export const inputNodes = [
 	},
 	{
 		name: "Large Cannon Pyramid",
+		interactables: ["PinkSphere"],
 		upgrades: ["Cannon", "Railgun", "Health", "Nuke"],
 		items: ["Laser", "Railgun"]
 	},
@@ -388,7 +657,8 @@ export const inputNodes = [
 		name: "Health Tower",
 		interactables: ["Save"],
 		upgrades: ["Health", "Laser", "Minigun", "Nuke", "Rocket"],
-		items: ["Health", "Armor", "Minigun", "Laser", "Rocket", "Cannon"],
+		items: ["Health", "Armor", "Minigun", "Laser", "Rocket", "Cannon", "EMP"],
+		secretTrophy: true,
 		trophy: true
 	},
 	{
@@ -403,7 +673,8 @@ export const inputNodes = [
 	},
 	{
 		name: "Stoney Air",
-		items: ["Laser"]
+		items: ["Laser"],
+		interactables: ["Save"]
 	},
 	{
 		name: "Mossy Air"
@@ -418,8 +689,9 @@ export const inputNodes = [
 	},
 	{
 		name: "Buttercup",
+		interactables: ["Save"],
 		upgrades: ["Plasma"],
-		items: ["Health"]
+		items: ["Health", "Armor"]
 	},
 	{
 		name: "Yellow Cube Secret",
@@ -427,8 +699,10 @@ export const inputNodes = [
 	},
 	{
 		name: "Stoney Air Cave",
+		interactables: ["PinkRing", "Save"],
+		trophy: true,
 		upgrades: ["Health", "Plasma", "Cannon", "Laser"],
-		items: ["Nuke", "Minigun", "Cannon", "EMP", "Laser"]
+		items: ["Nuke", "Minigun", "Cannon", "EMP", "Laser", "Health", "Armor"]
 	},
 	{
 		name: "Yellow Cube"
@@ -442,6 +716,7 @@ export const inputNodes = [
 	},
 	{
 		name: "Stoney Sanctuary",
+		interactables: ["Waypoint", "Respawn", "Save", "Bookmark"],
 		upgrades: ["Health", "Rocket", "Homing", "Nuke", "EMP"],
 		items: ["EMP", "Nuke", "Minigun", "Railgun", "Homing", "Rocket", "Laser", "Cannon"]
 	},
@@ -450,17 +725,17 @@ export const inputNodes = [
 	},
 	{
 		name: "Red Apple Tree",
-		upgrades: ["Rocket"],
+		upgrades: ["Rocket", "Homing"],
 		items: ["Minigun", "Homing", "Rocket", "Cannon", "Nuke", "EMP", "Railgun", "Laser"]
 	},
 	{
 		name: "Yellow Apple Tree",
-		upgrades: ["Rocket"],
+		upgrades: ["Rocket", "Homing"],
 		items: ["Minigun", "Homing", "Rocket", "Cannon", "Nuke", "EMP", "Railgun", "Laser"]
 	},
 	{
 		name: "Green Apple Tree",
-		upgrades: ["Rocket"],
+		upgrades: ["Rocket", "Homing"],
 		items: ["Minigun", "Homing", "Rocket", "Cannon", "Nuke", "EMP", "Railgun", "Laser"]
 	},
 	{
@@ -533,6 +808,17 @@ export const inputGraph: InputGraph = {
 			},
 			"Hell": {
 				distance: 100
+			},
+			"Ying Forest": {
+				distance: 0
+			}
+		},
+		"I2": {
+			"Stoney Air": {
+				distance: 0
+			},
+			"I3": {
+				distance: Infinity
 			}
 		},
 		"Ying Forest": {
@@ -696,6 +982,9 @@ export const inputGraph: InputGraph = {
 			},
 			"Gated Community": {
 				distance: 5
+			},
+			"Noob Maze": {
+				distance: 5
 			}
 		},
 		"Gated Community": {
@@ -793,7 +1082,10 @@ export const inputGraph: InputGraph = {
 		},
 		"Blue Bubble Gauntlet": {
 			"Blue Bubble": {
-				distance: Infinity
+				distance: 60
+			},
+			"Ying Air": {
+				distance: 60
 			}
 		},
 		"Blue Bubble": {
@@ -825,17 +1117,198 @@ export const inputGraph: InputGraph = {
 			}
 		},
 		"Botany Lab": {
-			"Infinity Flower": {
-				distance: Infinity
+			"I1 Library": {
+				distance: 5
 			},
-			"Railgun Tower": {
-				distance: Infinity
+			"Short Rail Tower": {
+				distance: 0
+			},
+			"Tall Rail Tower": {
+				distance: 0
 			},
 			"Buttercup": {
+				distance: 0
+			},
+			"Red Cube": {
+				distance: Infinity
+			},
+			"Black Cube": {
+				distance: 5
+			},
+			"Red-Green Elevator": {
+				distance: 0
+			},
+			"Small Cannon Pyramid": {
+				distance: 0
+			},
+			"Health Tower": {
+				distance: 0
+			},
+			"Orange Flower": {
+				distance: 0
+			},
+			"Ying Forest": {
+				distance: 0
+			},
+			"Imp Cave": {
+				distance: 5
+			}
+		},
+		"Black Cube": {
+			"Lighthouse": {
+				distance: 15
+			},
+			"Red-Green Elevator": {
+				distance: 10
+			},
+			"Stoney Air": {
+				distance: 0
+			}
+		},
+		"Lighthouse": {
+			"Ying Forest": {
+				distance: 0
+			},
+			"Buttercup": {
+				distance: 0
+			},
+			"Lighthouse Basement": {
+				distance: 20
+			}
+		},
+		"Lighthouse Basement": {
+			"Small Minigun Planet": {
+				distance: 0
+			},
+			"Ying Air": {
+				distance: 0
+			},
+			"Golden Yellow Flower": {
+				distance: 0
+			},
+			"Ying Forest": {
+				distance: 0
+			}
+		},
+		"Golden Yellow Flower": {
+			"Ying Air": {
+				distance: 0
+			},
+			"Buttercup": {
+				distance: 0
+			},
+			"Golden Yellow Flower": {
+				distance: 0
+			},
+			"Health Tower": {
+				distance: 0
+			}
+		},
+		"I1 Library": {
+			"Infinity Flower": {
+				distance: 0
+			},
+			"Imp Cave": {
 				distance: Infinity
 			}
 		},
-		"Railgun Tower": {
+		"Infinity Flower": {
+			"I1": {
+				distance: Infinity
+			}
+		},
+		"I1": {
+			"Williston Field": {
+				distance: Infinity
+			},
+			"Bristol": {
+				distance: Infinity
+			},
+			"EMP Castle": {
+				distance: Infinity
+			}
+		},
+		"Bristol": {
+			"I2": {
+				distance: Infinity
+			}
+		},
+		"EMP Castle": {
+			"I2": {
+				distance: Infinity
+			},
+			"Blackberry": {
+				distance: Infinity
+			}
+		},
+		"I3": {
+			"Hell": {
+				distance: Infinity
+			}
+		},
+		"Hell": {
+			"Hell Flower": {
+				distance: Infinity
+			}
+		},
+		"Williston Field": {
+			"Williston City": {
+				distance: Infinity
+			},
+			"Red Apple Tree": {
+				distance: Infinity
+			},
+			"Pink Tree": {
+				distance: Infinity
+			},
+			"Williston Tree": {
+				distance: Infinity
+			},
+			"Well": {
+				distance: Infinity
+			},
+			"Purple Well": {
+				distance: Infinity
+			},
+			"Small White Flower": {
+				distance: Infinity
+			}
+		},
+		"Imp Cave": {
+			"Gnole Cave": {
+				distance: Infinity
+			}
+		},
+		"Gnole Cave": {
+			"Demon Cave": {
+				distance: Infinity
+			}
+		},
+		"Demon Cave": {
+			"Orc Cave": {
+				distance: Infinity
+			},
+			"Infinity Flower": {
+				distance: Infinity
+			}
+		},
+		"Orc Cave": {
+			"Beholder Cave": {
+				distance: Infinity
+			},
+			"Infinity Flower": {
+				distance: Infinity
+			}
+		},
+		"Tall Rail Tower": {
+			"Stoney Air": {
+				distance: 0
+			},
+			"Ying Forest": {
+				distance: 0
+			}
+		},
+		"Short Rail Tower": {
 			"Stoney Air": {
 				distance: 0
 			},
@@ -873,7 +1346,7 @@ export const inputGraph: InputGraph = {
 				distance: 20
 			},
 			"Blue Bubble": {
-				distance: Infinity
+				distance: 5
 			},
 			"Spider Air": {
 				distance: 0
@@ -924,6 +1397,9 @@ export const inputGraph: InputGraph = {
 			},
 			"Camel's Hump": {
 				distance: 0
+			},
+			"Tommy Gun Weapon Mod": {
+				distance: 0
 			}
 		},
 		"Stoney Air": {
@@ -932,7 +1408,7 @@ export const inputGraph: InputGraph = {
 				note: "Net shrink 0/1"
 			},
 			"Yellow Cube": {
-				distance: Infinity,
+				distance: 10,
 				note: "Need to be small enough"
 			},
 			"Green Shrink Box": {
@@ -994,6 +1470,33 @@ export const inputGraph: InputGraph = {
 		"Solar System": {
 			"Solar System Debris": {
 				distance: 10
+			},
+			"Tau Cave Moon": {
+				distance: 25
+			},
+			"Small Minigun Planet": {
+				distance: 10
+			},
+			"Moon Debris": {
+				distance: 10
+			},
+			"Alpha Moon": {
+				distance: 10
+			},
+			"Ice Moon": {
+				distance: 10
+			},
+			"Gamma Moon": {
+				distance: 10
+			},
+			"Clay Planet": {
+				distance: 10
+			},
+			"Beta Moon": {
+				distance: 10
+			},
+			"Sun": {
+				distance: 15
 			}
 		},
 		"Solar System Debris": {
@@ -1070,7 +1573,7 @@ export const inputGraph: InputGraph = {
 			}
 		},
 		"Mossy Island": {
-			"Railgun Tower": {
+			"Tall Rail Tower": {
 				distance: 5
 			},
 			"Buttercup": {
@@ -1103,6 +1606,28 @@ export const inputGraph: InputGraph = {
 			},
 			"Richmond Sewers": {
 				distance: 5
+			},
+			"Richmond Building": {
+				distance: 5
+			}
+		},
+		"Richmond Building": {
+			"Ying Forest": {
+				distance: 5
+			},
+			"Stoney Air": {
+				distance: 0
+			},
+			"Red Cave": {
+				distance: 5
+			}
+		},
+		"Red Cave": {
+			"Jumbo Yellow Flower": {
+				distance: 15
+			},
+			"Red Rose": {
+				distance: 15
 			}
 		},
 		"Richmond Sewers": {
@@ -1168,6 +1693,12 @@ export const inputGraph: InputGraph = {
 			"Type 3 Tau Cave": {
 				distance: 0,
 				note: "Random"
+			},
+			"Ying Forest": {
+				distance: 0
+			},
+			"Imp Disco": {
+				distance: 0
 			}
 		},
 		"Type 2 Tau Cave": {
@@ -1207,13 +1738,19 @@ export const inputGraph: InputGraph = {
 			}
 		},
 		"Type 1 Tau Cave": {
+			"Type 2 Tau Cave": {
+				distance: Infinity
+			},
+			"Ying Flower": {
+				distance: 20
+			},
+			"Hard Pink Tree": {
+				distance: 40
+			},
 			"Stoney Air": {
 				distance: 0
 			},
 			"Alpha Cube": {
-				distance: Infinity
-			},
-			"Type 2 Tau Cave": {
 				distance: Infinity
 			}
 		},
@@ -1285,6 +1822,9 @@ export const inputGraph: InputGraph = {
 			},
 			"Quicksand Grass": {
 				distance: 0
+			},
+			"Country Store": {
+				distance: Infinity
 			}
 		},
 		"Tweedle Haunted House 1": {
@@ -1297,8 +1837,18 @@ export const inputGraph: InputGraph = {
 			}
 		},
 		"Tweedle Haunted House 2": {
-			"Weapon Library": {
+			"Flare Weapon Mod": {
 				distance: 10
+			}
+		},
+		"Flare Weapon Mod": {
+			"Weapon Library": {
+				distance: 0
+			}
+		},
+		"Tommy Gun Weapon Mod": {
+			"Weapon Library": {
+				distance: 0
 			}
 		},
 		"Tweedle-Dee Cave": {
@@ -1314,6 +1864,11 @@ export const inputGraph: InputGraph = {
 			"Quicksand Grass": {
 				distance: 0,
 				note: "Layer 11"
+			}
+		},
+		"Pink Tree": {
+			"Quicksand Grass": {
+				distance: 0
 			}
 		},
 		"Ice Cube": {
@@ -1341,30 +1896,256 @@ export const inputGraph: InputGraph = {
 				pinkRing: true
 			}
 		},
-		"Outer Space Level 0": {
-			"Outer Space Level 1": {
+		"Outer Space -1": {
+			"Outer Space 0": {
 				distance: Infinity
+			}
+		},
+		"Outer Space 0": {
+			"Outer Space 1": {
+				distance: 25
 			},
 			"Mylantis": {
-				distance: 20
+				distance: 40
+			},
+			"Large Gold Asteroid": {
+				distance: 5
 			}
 		},
-		"Outer Space Level 1": {
-			"Outer Space Level 2": {
-				distance: Infinity
-			}
-		},
-		"Outer Space Level 2": {
-			"Galaxy": {
+		"Mylantis": {
+			"Mylantis City": {
+				distance: 0
+			},
+			"Mylantis Caves": {
+				distance: 0
+			},
+			"Laser Genesis Planet": {
 				distance: Infinity
 			},
-			"Alpha Menger Sponge": {
+			"RejuvenX Refinery": {
+				distance: 5,
+				note: "3 on Surface"
+			}
+		},
+		"Mylantis Caves": {
+			"RejuvenX Refinery": {
 				distance: Infinity
+			}
+		},
+		"Mylantis City": {
+			"Mylantis Top Garden": {
+				distance: 0
+			},
+			"Ying Forest": {
+				distance: 0
+			},
+			"Galaxy Flower": {
+				distance: 20,
+				note: "Inside Buildings"
+			},
+			"House of 5 Lampreys": {
+				distance: Infinity
+			}
+		},
+		"Mylantis Top Garden": {
+			"Ying Forest": {
+				distance: 0
+			},
+			"Orange": {
+				distance: 0
+			},
+			"Jumbo Yellow Flower": {
+				distance: 0
+			},
+			"Ying Flower": {
+				distance: 0
+			},
+			"Small White Flower": {
+				distance: 0
+			},
+			"Main Branch Library": {
+				distance: 5
+			},
+			"Mylantis City Underground": {
+				distance: Infinity,
+				note: "Key to the Universe"
+			}
+		},
+		"Main Branch Library": {
+			"Orange": {
+				distance: 0
+			}
+		},
+		"Mylantis City Underground": {
+			"Beta Menger Sponge": {
+				distance: Infinity
+			},
+			"The Bulk 1": {
+				distance: Infinity
+			}
+		},
+		"Outer Space 1": {
+			"Outer Space 2": {
+				distance: 20
+			},
+			"Outer Space 1 Bunker": {
+				distance: 5
+			},
+			"Medium Gold Asteroid": {
+				distance: 5
+			}
+		},
+		"Medium Gold Asteroid": {
+			"The Bulk 1": {
+				distance: 10
+			},
+			"Ying Air": {
+				distance: 10
+			}
+		},
+		"The Bulk 1": {
+			"Ice Castle": {
+				distance: 0
+			},
+			"Ying Forest": {
+				distance: 0
+			}
+		},
+		"Ice Castle": {
+			"Ice Moon": {
+				distance: 40
+			}
+		},
+		"Outer Space 2": {
+			"Galaxy": {
+				distance: 20
+			},
+			"Alpha Menger Sponge": {
+				distance: 5
+			},
+			"Outer Space 2 Debris": {
+				distance: 5
+			}
+		},
+		"Alpha Menger Sponge": {
+			"Hinesburg": {
+				distance: 5
+			}
+		},
+		"Outer Space 2 Debris": {
+			"Hinesburg": {
+				distance: 0
+			},
+			"Ying Forest": {
+				distance: 0
+			},
+			"Stoney Air": {
+				distance: 0
+			}
+		},
+		"Hinesburg": {
+			"Ying Forest": {
+				distance: 0
+			},
+			"Tau Cave Moon": {
+				distance: 0
+			},
+			"Stoney Air": {
+				distance: 0
+			},
+			"Orange": {
+				distance: 0
+			},
+			"Red Apple Tree": {
+				distance: 0
+			},
+			"Yellow Apple Tree": {
+				distance: 0
+			},
+			"Green Apple Tree": {
+				distance: 0
 			}
 		},
 		"Galaxy": {
-			"Ying Flower": {
-				distance: 80
+			"Solar System": {
+				distance: 20
+			}
+		},
+		"Sun": {
+			"Red-Green Elevator": {
+				distance: 0,
+				note: "Net Shrink 1"
+			},
+			"Solar System Elevator": {
+				distance: 0,
+				note: "Way out of Solar System"
+			},
+			"Infinity Flower": {
+				distance: 40
+			}
+		},
+		"Clay Planet": {
+			"Blue Bubble Gauntlet": {
+				distance: 5
+			}
+		},
+		"Ice Moon": {
+			"Ice Cube": {
+				distance: 10
+			},
+			"Orange": {
+				distance: 0
+			},
+			"Ying Forest": {
+				distance: 5
+			},
+			"Jumbo Yellow Flower": {
+				distance: 5
+			},
+			"Ying Air": {
+				distance: 0
+			}
+		},
+		"Gamma Moon": {
+			"Orange": {
+				distance: 0
+			}
+		},
+		"Small Minigun Planet": {
+			"Ying Forest": {
+				distance: 0
+			},
+			"Ying Air": {
+				distance: 15
+			},
+			"Buttercup": {
+				distance: 0
+			},
+			"Orange Flower": {
+				distance: 0,
+				note: "Orange Pyramid"
+			},
+			"Jumbo Yellow Flower": {
+				distance: 0
+			}
+		},
+		"Moon Debris": {
+			"Stoney Air": {
+				distance: 0
+			},
+			"Ying Forest": {
+				distance: 0
+			}
+		},
+		"Planet Debris": {
+			"Richmond": {
+				distance: 0
+			},
+			"Stoney Air": {
+				distance: 0
+			},
+			"Ying Forest": {
+				distance: 0
 			}
 		},
 		"Small Yellow Flower": {
@@ -1477,6 +2258,6 @@ export const inputGraph: InputGraph = {
 		}
 	},
 	root: {
-		name: "Outer Space Level 0"
+		name: "Outer Space -1"
 	}
 };

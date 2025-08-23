@@ -15,11 +15,14 @@ export type pickups =
 	| "Dark Hole"
 	| "Gold"
 	| "RejuvenX"
-	| "Telekinesis";
+	| "Telekinesis"
+	| "WeaponMod"
+	| "EXP";
 
 export type interactables =
 	| "Sleep"
 	| "CommonSell"
+	| "ScarceSell"
 	| "Buy"
 	| "BuyNuke"
 	| "Markers"

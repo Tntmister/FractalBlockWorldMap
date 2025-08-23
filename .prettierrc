@@ -5,7 +5,7 @@
 	"insertPragma": false,
 	"jsxBracketSameLine": false,
 	"jsxSingleQuote": true,
-	"printWidth": 100,
+	"printWidth": 160,
 	"proseWrap": "never",
 	"quoteProps": "preserve",
 	"requirePragma": false,
@@ -13,5 +13,13 @@
 	"singleQuote": false,
 	"tabWidth": 4,
 	"trailingComma": "none",
-	"useTabs": true
+	"useTabs": true,
+	"overrides": [
+		{
+			"files": "**/*.tsx",
+			"options": {
+				"printWidth": 100
+			}
+		}
+	]
 }
