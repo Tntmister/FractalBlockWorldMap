@@ -885,7 +885,8 @@ export const inputNodes = [
 		upgrades: ["Health", "Plasma"]
 	},
 	{
-		name: "Quicksand Grass"
+		name: "Quicksand Grass",
+		deadEnd: true
 	},
 	{
 		name: "Quicksand Grass Basement",
@@ -1028,7 +1029,7 @@ export const inputNodes = [
 		name: "Gated Community"
 	},
 	{
-		name: "Yellow Flower City Secret Treasure",
+		name: "Yellow Flower City Secret",
 		upgrades: ["Minigun"],
 		items: ["Railgun", "Rocket", "Minigun", "Laser", "Armor", "Health"]
 	}

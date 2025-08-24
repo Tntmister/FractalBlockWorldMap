@@ -47,8 +47,7 @@ const inputEdges: InputGraph["edges"] = {
 		},
 		"Quicksand Grass": {
 			distance: 0,
-			oneWay: true,
-			note: "Around save points"
+			note: "Save Points"
 		},
 		"Menace Hive": {
 			distance: 20,
@@ -140,7 +139,7 @@ const inputEdges: InputGraph["edges"] = {
 		},
 		"Small White Flower": {
 			distance: 0,
-			note: "Under Tutorial Island"
+			note: "Under Island"
 		},
 		"Tutorial": {
 			distance: 0
@@ -1787,7 +1786,7 @@ const inputEdges: InputGraph["edges"] = {
 		"Quicksand Grass": {
 			distance: 5
 		},
-		"Yellow Flower City Secret Treasure": {
+		"Yellow Flower City Secret": {
 			distance: 20,
 			note: "Shrink until level 8"
 		},
@@ -1809,7 +1808,7 @@ const inputEdges: InputGraph["edges"] = {
 		},
 		"Large Cannon Pyramid": {
 			distance: 20,
-			note: "Shrink into waypoint room back"
+			note: "Waypoint Room"
 		},
 		"Ying Cave Island": {
 			distance: 20

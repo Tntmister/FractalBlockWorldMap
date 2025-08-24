@@ -46,13 +46,7 @@ export default function Home() {
 		{
 			node: nodes.get(startingPath[0])!,
 			distance: 0
-		},
-		...startingPath.slice(1).map((nodeName, index) => {
-			console.log(nodeName);
-			return nodes
-				.get(startingPath[index])!
-				.edges.find((edge) => edge.node.name == nodeName)!;
-		})
+		}
 	]);
 
 	function currentNode() {
@@ -67,7 +61,7 @@ export default function Home() {
 	function getTraversedPath(path: Edge[]) {
 		let pathStackAux = pathStack.slice();
 		for (const edge of path) {
-			if (edge.pinkRing || edge.up)
+			if (edge.up)
 				pathStackAux = pathStackAux.slice(
 					0,
 					pathStackAux.findLastIndex((edge2) => edge.node.name == edge2.node.name)
@@ -88,6 +82,7 @@ export default function Home() {
 			const distancesToStart = new Map<Node, number>();
 			const visitedNodes = new Map<Node, number>();
 			const predecessors = new Map<Node, Node>();
+			// initialize distances to start, start = 0, rest = Infinity
 			nodes
 				.values()
 				.forEach((node) =>
@@ -145,75 +140,93 @@ export default function Home() {
 		)[0];
 	}
 
+	useEffect(() => {
+		setPathStack([
+			...pathStack,
+			...startingPath
+				.slice(1)
+				.map(
+					(nodeName, index) =>
+						nodes
+							.get(startingPath[index])!
+							.edges.find((edge) => edge.node.name == nodeName)!
+				)
+		]);
+	}, []);
+
+	useEffect(() => {
+		const path = document.getElementsByClassName("pathNode");
+		path[path.length - 1].scrollIntoView();
+	}, [pathStack]);
+
 	return (
 		<div id='base'>
-			{pathStack.length > 1 && (
-				<div id='pathContainer'>
-					Path up to root:
-					<div id='pathList'>
-						{pathStack.map((edge, index, path) => (
-							<Fragment key={`path${index}`}>
-								{index != 0 ? (
-									edge.oneWay ? (
+			<div id='pathContainer'>
+				<div id='pathHeader'>Path To Root</div>
+				<div id='pathList'>
+					{pathStack.map((edge, index, path) => (
+						<Fragment key={`path${index}`}>
+							{index != 0 ? (
+								edge.node.deadEnd ? (
+									<Image
+										className='icon'
+										src='./images/icons/oneway.jpg'
+										alt='One Way'
+									/>
+								) : (
+									"↑"
+								)
+							) : (
+								""
+							)}
+							<div
+								className={`pathNode`}
+								onClick={() =>
+									traversePath(
+										path
+											.slice(index + 1, path.length)
+											.toReversed()
+											.map((edge) => ({ ...edge, up: true }))
+									)
+								}
+							>
+								{currentNode().interactables?.includes("Pink Ring") &&
+									index ==
+										pathStack.findLastIndex((edge) =>
+											edge.node.interactables?.includes("Pink Sphere")
+										) && (
 										<Image
 											className='icon'
-											src='./images/icons/oneway.jpg'
-											alt='One Way'
+											src='./images/icons/pinkring.png'
+											alt='(Pink Ring) '
 										/>
-									) : (
-										"→"
-									)
-								) : (
-									""
-								)}
-								<span className={`pathNode`} onClick={() => traverseTo(edge.node)}>
-									{currentNode().interactables?.includes("Pink Ring") &&
-										index ==
-											pathStack.findLastIndex((edge) =>
-												edge.node.interactables?.includes("Pink Sphere")
-											) && (
-											<Image
-												className='icon'
-												src='./images/icons/pinkring.png'
-												alt='(Pink Ring) '
-											/>
-										)}
-									{edge.node.name}
-								</span>
-							</Fragment>
-						))}
-					</div>
+									)}
+								{edge.node.name}
+							</div>
+						</Fragment>
+					))}
 				</div>
-			)}
-			<div id='current'>Current Area: {currentNode().name}</div>
-			{currentNode().edges.length > 0 && (
-				<div id='descendantsContainer'>
-					Areas inside {currentNode().name}:
-					<div id='descendantsList'>
-						{currentNode().edges.map(
-							(edge, index) =>
-								!edge.pinkRing &&
-								!edge.up && (
-									<Fragment key={`descendant${index}`}>
-										<span
-											className={`descendant`}
-											onClick={() => traversePath([edge])}
-										>
-											<div>{edge.node.name}</div>
-											<div>{edge.note && ` (${edge.note})`}</div>
-										</span>
-										<Image
-											className='descendantTooltip'
-											src={`./images/descendants/${currentNode().name}-${edge.node.name}.webp`}
-											fallbackSrc={edge.node.images?.[0].src}
-											alt=''
-										/>
-									</Fragment>
-								)
-						)}
-					</div>
+			</div>
+			<div id='current'>{currentNode().name}</div>
+			<div id='edgesContainer'>
+				Areas inside {currentNode().name}:
+				<div id='edgesList'>
+					{currentNode().edges.map((edge, index) => (
+						<Fragment key={`edge${index}`}>
+							<span className={`edge`} onClick={() => traversePath([edge])}>
+								{edge.node.name}
+								{edge.note && ` (${edge.note})`}
+							</span>
+							<Image
+								className='edgeTooltip'
+								src={`./images/edges/${currentNode().name}-${edge.node.name}.webp`}
+								fallbackSrc={edge.node.images?.[0].src}
+								alt=''
+							/>
+						</Fragment>
+					))}
 				</div>
-			)}
+			</div>
 		</div>
 	);
 }

@@ -36,6 +36,7 @@ export type InputNode = {
 	upgrades?: (upgrades | upgrades[])[]; // possible upgrades (including random ones)
 	items?: items[]; // possible items
 	interactables?: interactables[];
+	deadEnd?: boolean; // if there is no way to grow out of this node
 	images?: {
 		src: string;
 		info: string;
@@ -50,8 +51,6 @@ type edgeInfo = {
 	distance: number; // how hard is it to traverse to ingame (enemy difficulty/time)
 	depth?: number; // actual depth ("level" number ingame)
 	note?: string; // required keys/specifc method to enter
-	oneWay?: boolean;
-	pinkRing?: boolean; // is a pink ring -> ping sphere edge
 	up?: boolean;
 };
 
