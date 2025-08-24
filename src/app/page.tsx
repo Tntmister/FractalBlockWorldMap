@@ -157,6 +157,22 @@ export default function Home() {
 	useEffect(() => {
 		const path = document.getElementsByClassName("pathNode");
 		path[path.length - 1].scrollIntoView();
+
+		const tooltipListener = (e: MouseEvent) => {
+			const tooltip = document.querySelector<HTMLElement>(".edge:hover");
+			if (tooltip) {
+				const tooltipImage = tooltip.children[0] as HTMLImageElement;
+				if (tooltipImage?.complete && tooltipImage?.offsetWidth) {
+					console.log(tooltipImage);
+					tooltipImage.style.left = e.clientX - tooltipImage.offsetWidth - 5 + "px";
+					tooltipImage.style.top = e.clientY - tooltipImage.offsetHeight - 5 + "px";
+				}
+			}
+		};
+		window.addEventListener("mousemove", tooltipListener);
+		return () => {
+			window.removeEventListener("mousemove", tooltipListener);
+		};
 	}, [pathStack]);
 
 	return (
@@ -216,13 +232,13 @@ export default function Home() {
 							<span className={`edge`} onClick={() => traversePath([edge])}>
 								{edge.node.name}
 								{edge.note && ` (${edge.note})`}
+								<Image
+									className='edgeTooltip'
+									src={`./images/edges/${currentNode().name} - ${edge.node.name}.jpg`}
+									fallbackSrc={edge.node.images?.[0].src}
+									alt=''
+								/>
 							</span>
-							<Image
-								className='edgeTooltip'
-								src={`./images/edges/${currentNode().name}-${edge.node.name}.webp`}
-								fallbackSrc={edge.node.images?.[0].src}
-								alt=''
-							/>
 						</Fragment>
 					))}
 				</div>

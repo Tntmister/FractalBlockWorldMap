@@ -116,12 +116,14 @@ body {
 .edgeTooltip {
 	visibility: hidden;
 	position: absolute;
-	bottom: 5vh;
-	max-height: 20vh;
+	max-height: 40vh;
 	width: auto;
+	top: 0;
+	left: 0;
 }
 
-.edge:hover + .edgeTooltip {
+.edge:hover > .edgeTooltip,
+.edgeTooltip:hover {
 	visibility: visible;
 }
 
