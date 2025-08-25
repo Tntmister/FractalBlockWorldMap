@@ -3,6 +3,8 @@ import { Fragment, useEffect, useState } from "react";
 import { nodeNames, Node, Edge } from "./types";
 import Image from "./Image";
 import { inputGraph } from "./input/graph";
+import NodeInfo from "./nodeInfo";
+import "./page.css";
 
 const nodes: Map<nodeNames, Node> = new Map();
 // initialize nodes from input.ts
@@ -37,7 +39,10 @@ const startingPath: nodeNames[] = [
 	"Type 1 Tau Cave",
 	"Ying Flower",
 	"Ying World",
-	"Tutorial Island"
+	"Tutorial Island",
+	"Tutorial Chambers",
+	"Tutorial 2",
+	"Tutorial 1"
 ];
 
 export default function Home() {
@@ -176,7 +181,7 @@ export default function Home() {
 	}, [pathStack]);
 
 	return (
-		<div id='base'>
+		<>
 			<div id='pathContainer'>
 				<div id='pathHeader'>Path To Root</div>
 				<div id='pathList'>
@@ -223,26 +228,7 @@ export default function Home() {
 					))}
 				</div>
 			</div>
-			<div id='current'>{currentNode().name}</div>
-			<div id='edgesContainer'>
-				Areas inside {currentNode().name}:
-				<div id='edgesList'>
-					{currentNode().edges.map((edge, index) => (
-						<Fragment key={`edge${index}`}>
-							<span className={`edge`} onClick={() => traversePath([edge])}>
-								{edge.node.name}
-								{edge.note && ` (${edge.note})`}
-								<Image
-									className='edgeTooltip'
-									src={`./images/edges/${currentNode().name} - ${edge.node.name}.jpg`}
-									fallbackSrc={edge.node.images?.[0].src}
-									alt=''
-								/>
-							</span>
-						</Fragment>
-					))}
-				</div>
-			</div>
-		</div>
+			<NodeInfo node={currentNode()} onEdgeClick={traversePath}></NodeInfo>
+		</>
 	);
 }

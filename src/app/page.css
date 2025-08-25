@@ -1,0 +1,68 @@
+body {
+	display: flex;
+	flex-direction: row;
+	height: 100vh;
+}
+
+#pathContainer {
+	text-align: center;
+	border-right: var(--foreground) 1px solid;
+	overflow: auto;
+	width: 15vw;
+	max-height: 100vh;
+	overflow: auto;
+}
+
+#pathHeader {
+	position: sticky;
+	top: 0;
+	background-color: var(--background);
+	padding: 0.25rem 0;
+}
+
+#pathList {
+	display: flex;
+}
+
+#pathList {
+	flex-direction: column;
+	gap: 0.25rem;
+	margin: 0 1rem;
+	line-height: 12px;
+}
+
+#pathList > .pathNode:not(:first-child) {
+	margin-top: 5px;
+}
+
+.pathNode {
+	line-height: 100%;
+}
+
+.pathNode {
+	padding: 0.25rem 0.5rem;
+	border: 1px solid var(--foreground);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.edgeTooltip {
+	visibility: hidden;
+	position: absolute;
+	max-height: 40vh;
+	width: auto;
+	top: 0;
+	left: 0;
+}
+
+.pathNode:has(> .icon) {
+	border-color: #f901fd;
+	color: #f901fd;
+}
+
+.icon {
+	height: 2rem;
+	align-self: center;
+}

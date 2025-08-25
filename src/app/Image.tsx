@@ -8,6 +8,7 @@ interface Props extends React.ImgHTMLAttributes<HTMLImageElement> {
 export default function Image({ src, fallbackSrc, ...props }: Props) {
 	const [errored, setErrored] = useState(false);
 
+	console.log(props);
 	function onError() {
 		if (!errored) {
 			setErrored(true);

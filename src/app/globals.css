@@ -1,11 +1,13 @@
 :root {
 	--background: #ffffff;
+	--backgroundTransparent: #ffffff99;
 	--foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
 	:root {
 		--background: #0a0a0a;
+		--backgroundTransparent: #0a0a0a99;
 		--foreground: #ededed;
 	}
 }
@@ -13,8 +15,10 @@
 html,
 body {
 	font-size: 20px;
-	max-height: 100vh;
+	height: 100%;
+	width: 100%;
 	max-width: 100vw;
+	max-height: 100vh;
 }
 
 body {
@@ -35,104 +39,4 @@ body {
 	html {
 		color-scheme: dark;
 	}
-}
-
-#base {
-	display: grid;
-	grid-template-columns: auto 1fr;
-	grid-template-rows: 1fr auto;
-	grid-column-gap: 0px;
-	grid-row-gap: 0px;
-	height: 100vh;
-}
-
-#current {
-	text-align: center;
-	grid-row: 1;
-	grid-column: 2;
-}
-
-#pathContainer,
-#edgesContainer {
-	text-align: center;
-}
-
-#pathContainer {
-	border-right: var(--foreground) 1px solid;
-	grid-row: span 2;
-	overflow: auto;
-	width: 15vw;
-}
-
-#edgesContainer {
-	border-top: var(--foreground) 1px solid;
-	grid-area: 2 / 2;
-	padding: 0.25rem 0.5rem;
-}
-#pathHeader {
-	position: sticky;
-	top: 0;
-	background-color: var(--background);
-	padding: 0.25rem 0;
-}
-
-#pathList,
-#edgesList {
-	display: flex;
-}
-
-#pathList {
-	flex-direction: column;
-	gap: 0.25rem;
-	margin: 0 1rem;
-}
-
-#edgesList {
-	justify-content: center;
-	gap: 0.5rem;
-	align-items: flex-start;
-	flex-wrap: wrap;
-	margin: 0.25rem 0;
-}
-
-#pathList > .pathNode:not(:first-child) {
-	margin-top: 5px;
-}
-
-.edge,
-.pathNode {
-	padding: 0.25rem 0.5rem;
-	border: 1px solid var(--foreground);
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.edge {
-	white-space: nowrap;
-}
-
-.edgeTooltip {
-	visibility: hidden;
-	position: absolute;
-	max-height: 40vh;
-	width: auto;
-	top: 0;
-	left: 0;
-}
-
-.edge:hover > .edgeTooltip,
-.edgeTooltip:hover {
-	visibility: visible;
-}
-
-.pathNode:has(> .icon) {
-	border-color: #f901fd;
-	color: #f901fd;
-}
-
-.icon {
-	height: 2rem;
-	align-self: center;
 }
