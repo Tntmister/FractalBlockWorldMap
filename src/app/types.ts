@@ -2,11 +2,11 @@ import { monsters } from "./input/monsters";
 import { inputNodes } from "./input/nodes";
 
 type weaponTypes = "Plasma" | "Cannon" | "Laser" | "Rocket" | "Homing" | "Minigun" | "Railgun" | "EMP" | "Nuke" | "Dark Hole";
-type defenceTypes = "Health" | "Armor";
-type items = weaponTypes | defenceTypes | "Gold" | "EXP" | "Key";
-type upgradeTypes = "Max Ammo" | "Regen" | "Fire Rate" | "Damage" | "Velocity" | "Radius" | "Freeze Time" | "Number" | "Weapon Mod";
+type weaponUpgrades = "Max Ammo" | "Regen" | "Fire Rate" | "Damage" | "Velocity" | "Radius" | "Freeze Time" | "Number" | "Weapon Mod";
+type defenceUpgrades = "Max Health" | "Health Regen" | "Armor Regen" | "RejuvenX";
+type items = weaponTypes | "Gold" | "EXP" | "Key" | "Shield" | "Health" | "Armor";
 
-export type upgrades = `${weaponTypes | defenceTypes} ${upgradeTypes}` | "RejuvenX" | "Telekinesis" | "Weapon Mod" | items; // | items temporary until upgrades everywhere are specified
+export type upgrades = `${weaponTypes} ${weaponUpgrades}` | defenceUpgrades | "Telekinesis" | items; // | items temporary until upgrades everywhere are specified
 
 export type interactables =
 	| "Sleep"
@@ -21,7 +21,9 @@ export type interactables =
 	| "Pink Ring"
 	| "Pink Sphere"
 	| "Blue Ring"
-	| "Save";
+	| "Save"
+	| "In-Only Waypoint"
+	| "Out-Only Waypoint";
 
 export type monster = {
 	name: string;

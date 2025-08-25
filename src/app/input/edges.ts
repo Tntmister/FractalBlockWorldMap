@@ -2,6 +2,14 @@ import { InputGraph, nodeNames } from "../types";
 
 const inputEdges: InputGraph["edges"] = {
 	"Tutorial": {
+		"Stable Singletons": {
+			distance: 0
+		},
+		"Happy Land": {
+			distance: 0
+		}
+	},
+	"Tutorial Chambers": {
 		"Ying Forest": {
 			distance: 0
 		},
@@ -9,12 +17,6 @@ const inputEdges: InputGraph["edges"] = {
 			distance: 0
 		},
 		"Small Yellow Flower": {
-			distance: 0
-		},
-		"Stable Singletons": {
-			distance: 0
-		},
-		"Happy Land": {
 			distance: 0
 		}
 	},
@@ -134,14 +136,14 @@ const inputEdges: InputGraph["edges"] = {
 		}
 	},
 	"Tutorial Island": {
-		"Small Cannon Pyramid": {
-			distance: 5
-		},
 		"Small White Flower": {
 			distance: 0,
 			note: "Under Island"
 		},
-		"Tutorial": {
+		"Tutorial Chambers": {
+			distance: 0
+		},
+		"Ying Island": {
 			distance: 0
 		}
 	},
@@ -1505,6 +1507,12 @@ const inputEdges: InputGraph["edges"] = {
 			distance: 0
 		}
 	},
+	"Slow Exit Maze": {
+		"Easy Minigun Tower": {
+			distance: 0
+		}
+	},
+
 	"Pure Menger Sponge": {
 		"Pure Menger Sponge Treasure": {
 			distance: 10,

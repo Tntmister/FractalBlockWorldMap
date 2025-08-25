@@ -4,13 +4,21 @@ export const inputNodes = [
 	{
 		name: "Ying Forest",
 		upgrades: ["Cannon", "Plasma", "Health"],
-		interactables: ["Waypoint", "Save", "Respawn"]
+		interactables: ["Waypoint", "Save", "Respawn", "Bookmark", "Out-Only Waypoint"]
 	},
 	{
 		name: "Tutorial",
-		items: ["Plasma"],
+		items: ["Plasma", "Key", "Gold"],
+		monsters: ["Goblin"],
 		upgrades: ["Laser", "Nuke"],
-		interactables: ["Save", "Respawn", "Pink Sphere", "Pink Ring", "Blue Ring", "Waypoint"],
+		interactables: ["Save", "Respawn", "Pink Sphere", "Blue Ring", "Waypoint"],
+		secretTrophy: true
+	},
+	{
+		name: "Tutorial Chambers",
+		items: ["Plasma"],
+		monsters: ["Menace"],
+		interactables: ["Save", "Respawn", "Pink Sphere", "Blue Ring"],
 		secretTrophy: true
 	},
 	{
@@ -362,7 +370,7 @@ export const inputNodes = [
 	},
 	{
 		name: "Ying Air Cube",
-		monsters: ["Imp", "Grey Lamprey", "Eternal Plague"],
+		monsters: ["Imp", "Lamprey", "Eternal Plague"],
 		interactables: ["Respawn", "Save", "Blue Ring", "Waypoint"],
 		upgrades: ["Plasma Velocity", "Cannon Velocity"],
 		items: ["Plasma", "Health", "Armor", "Cannon", "Gold"]
@@ -379,17 +387,18 @@ export const inputNodes = [
 		secretTrophy: true
 	},
 	{
-		name: "Ying Air"
+		name: "Ying Air",
+		monsters: ["Goblin"]
 	},
 	{
 		name: "Ying Air Core",
 		upgrades: ["Rocket"]
 	},
 	{
-		name: "Noob Maze"
-	},
-	{
-		name: "Ying World Library"
+		name: "Noob Maze",
+		interactables: ["Pink Ring", "Pink Sphere"],
+		upgrades: ["Plasma Max Ammo"],
+		trophy: true
 	},
 	{
 		name: "I1"
@@ -406,7 +415,7 @@ export const inputNodes = [
 	},
 	{
 		name: "Williston Trees",
-		monsters: ["Green Spider", "Bee", "Queen Bee", "Gnole", "Formidable Juggernaut", "Locust"],
+		monsters: ["Spider", "Bee", "Queen Bee", "Gnole", "Formidable Juggernaut", "Locust"],
 		interactables: ["Waypoint", "Save", "Bookmark"],
 		items: ["Gold", "Nuke", "EMP", "Railgun", "Rocket", "Laser", "Minigun"]
 	},
@@ -435,7 +444,7 @@ export const inputNodes = [
 	},
 	{
 		name: "EMP Castle",
-		monsters: ["Guardian", "Green Spider", "Green Baby Spider"],
+		monsters: ["Guardian", "Spider", "Baby Spider"],
 		interactables: ["Pink Sphere"]
 	},
 	{
@@ -538,7 +547,7 @@ export const inputNodes = [
 	},
 	{
 		name: "Orc Cave",
-		monsters: ["Orc", "Legless Great Spider"]
+		monsters: ["Orc", "Great Spider"]
 	},
 	{
 		name: "Beholder Cave",
@@ -621,7 +630,7 @@ export const inputNodes = [
 		name: "EMP City",
 		upgrades: ["EMP Radius", "EMP Max Ammo", "EMP Freeze Time", "Nuke Velocity"],
 		items: ["Gold"],
-		monsters: ["Green Spider", "Green Baby Spider", "Guardian", "Demon", "Fanatic"]
+		monsters: ["Spider", "Baby Spider", "Guardian", "Demon", "Fanatic"]
 	},
 	{
 		name: "Weed Ring",
@@ -818,11 +827,32 @@ export const inputNodes = [
 	},
 	{
 		name: "Grey Lattice",
-		items: ["Armor"]
+		items: ["Armor", "Health", "Shield", "Laser", "Minigun", "Homing", "Cannon", "Rocket"],
+		upgrades: [
+			"Plasma Velocity",
+			[
+				"Plasma Max Ammo",
+				"Cannon Max Ammo",
+				"Rocket Max Ammo",
+				"Homing Max Ammo",
+				"Minigun Max Ammo",
+				"Railgun Max Ammo",
+				"EMP Max Ammo",
+				"Nuke Max Ammo",
+				"Dark Hole Max Ammo"
+			]
+		]
 	},
 	{
 		name: "Slow Exit Maze",
+		interactables: ["Save", "Waypoint"],
 		items: ["Armor"]
+	},
+	{
+		name: "Easy Minigun Tower",
+		interactables: ["Pink Ring", "Pink Sphere"],
+		items: ["Armor", "Health"],
+		upgrades: ["Minigun Damage", "Minigun Max Ammo", "Laser Damage"]
 	},
 	{
 		name: "Mylantis"
@@ -877,12 +907,16 @@ export const inputNodes = [
 	{
 		name: "Happy Land",
 		items: ["Plasma"],
-		upgrades: ["Plasma"],
+		upgrades: ["Plasma Velocity"],
 		interactables: ["Blue Ring"]
 	},
 	{
 		name: "Small Noob Flower",
-		upgrades: ["Health", "Plasma"]
+		interactables: ["Pink Sphere", "Pink Ring"],
+		upgrades: [["Max Health", "Plasma Max Ammo"]]
+	},
+	{
+		name: "Ying World Library"
 	},
 	{
 		name: "Quicksand Grass",
@@ -931,7 +965,7 @@ export const inputNodes = [
 	},
 	{
 		name: "Stoney Air",
-		monsters: ["Small Goon"],
+		monsters: ["Small Goon", "Goblin"],
 		items: ["Laser"],
 		interactables: ["Save"]
 	},
