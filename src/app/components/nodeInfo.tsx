@@ -1,6 +1,6 @@
-import { nodeNames, Node, Edge } from "./types";
+import { nodeNames, Node, Edge } from "../types";
 import Image from "./Image";
-import "./nodeInfo.css";
+import "../css/nodeInfo.css";
 import { Fragment } from "react";
 
 interface NodeInfoProps {

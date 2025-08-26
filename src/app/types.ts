@@ -44,14 +44,13 @@ export type InputNode = {
 		info: string;
 	}[];
 	trophy?: boolean;
-	secretTrophy?: boolean;
+	secretTrophy?: boolean | 2 | 3; // some locations have more than 1 secret trophy
 };
 
 export type nodeNames = (typeof inputNodes)[number]["name"];
 
 type edgeInfo = {
 	distance: number; // how hard is it to traverse to ingame (enemy difficulty/time)
-	depth?: number; // actual depth ("level" number ingame)
 	note?: string; // required keys/specifc method to enter
 	up?: boolean;
 };
