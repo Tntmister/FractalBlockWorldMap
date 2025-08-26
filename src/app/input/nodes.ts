@@ -1,6 +1,6 @@
 import { InputNode } from "../types";
 
-export const inputNodes = [
+const INPUT_NODES = [
 	{
 		name: "Ying Forest",
 		upgrades: ["Cannon", "Plasma", "Health"],
@@ -1068,3 +1068,7 @@ export const inputNodes = [
 		items: ["Railgun", "Rocket", "Minigun", "Laser", "Armor", "Health"]
 	}
 ] as const satisfies readonly InputNode[];
+
+export type nodeNames = (typeof INPUT_NODES)[number]["name"];
+
+export const inputNodes = INPUT_NODES as unknown as InputNode[];

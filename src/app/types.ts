@@ -1,5 +1,5 @@
 import { monsters } from "./input/monsters";
-import { inputNodes } from "./input/nodes";
+import { inputNodes, nodeNames } from "./input/nodes";
 
 type weaponTypes = "Plasma" | "Cannon" | "Laser" | "Rocket" | "Homing" | "Minigun" | "Railgun" | "EMP" | "Nuke" | "Dark Hole";
 type weaponUpgrades = "Max Ammo" | "Regen" | "Fire Rate" | "Damage" | "Velocity" | "Radius" | "Freeze Time" | "Number" | "Weapon Mod";
@@ -47,30 +47,31 @@ export type InputNode = {
 	secretTrophy?: boolean | 2 | 3; // some locations have more than 1 secret trophy
 };
 
-export type nodeNames = (typeof inputNodes)[number]["name"];
-
 type edgeInfo = {
 	distance: number; // how hard is it to traverse to ingame (enemy difficulty/time)
 	note?: string; // required keys/specifc method to enter
 	up?: boolean;
 };
 
-export interface InputGraph {
-	nodes: readonly InputNode[];
-	edges: {
-		[from in nodeNames]?: {
-			[to in nodeNames]?: edgeInfo;
-		};
+export type InputEdges = {
+	[from in nodeNames]?: {
+		[to in nodeNames]?: edgeInfo;
 	};
-	root: {
-		name: nodeNames;
-	};
-}
+};
 
 export interface Edge extends edgeInfo {
 	node: Node;
 }
 
-export interface Node extends InputNode {
+export type Node = {
+	name: nodeNames;
+	upgrades: InputNode["upgrades"];
+	items: InputNode["items"];
+	interactables: InputNode["interactables"];
+	deadEnd: InputNode["deadEnd"];
+	images: InputNode["images"];
+	trophy: InputNode["trophy"];
+	secretTrophy: InputNode["secretTrophy"];
+	monsters: monster[];
 	edges: Edge[];
-}
+};

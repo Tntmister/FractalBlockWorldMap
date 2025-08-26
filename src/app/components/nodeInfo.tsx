@@ -1,4 +1,4 @@
-import { nodeNames, Node, Edge } from "../types";
+import { Node, Edge } from "../types";
 import Image from "./Image";
 import "../css/nodeInfo.css";
 import { Fragment } from "react";

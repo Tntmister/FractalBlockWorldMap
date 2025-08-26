@@ -1,21 +1,31 @@
 "use client";
 import { Fragment, useEffect, useState } from "react";
-import { nodeNames, Node, Edge } from "../types";
+import { Node, Edge } from "../types";
 import Image from "./Image";
-import { inputGraph } from "../input/graph";
 import NodeInfo from "./nodeInfo";
 import "../css/main.css";
+import { inputNodes, nodeNames } from "../input/nodes";
+import { inputEdges } from "../input/edges";
+import { monsters } from "../input/monsters";
 
 const nodes: Map<nodeNames, Node> = new Map();
 // initialize nodes from input.ts
-for (const node of inputGraph.nodes) {
+for (const node of inputNodes) {
 	nodes.set(node.name as nodeNames, {
-		...node,
+		name: node.name as nodeNames,
+		interactables: node.interactables,
+		upgrades: node.upgrades,
+		items: node.items,
+		deadEnd: node.deadEnd,
+		images: node.images,
+		trophy: node.trophy,
+		secretTrophy: node.secretTrophy,
+		monsters: monsters.filter((monster) => node.monsters?.includes(monster.name)),
 		edges: []
 	});
 }
 // initialialize edges from input.ts
-for (const [fromName, edge] of Object.entries(inputGraph.edges)) {
+for (const [fromName, edge] of Object.entries(inputEdges)) {
 	for (const [toName, edgeInfo] of Object.entries(edge)) {
 		const fromNode = nodes.get(fromName as nodeNames)!;
 		const toNode = nodes.get(toName as nodeNames)!;
@@ -27,7 +37,7 @@ for (const [fromName, edge] of Object.entries(inputGraph.edges)) {
 }
 
 const startingPath: nodeNames[] = [
-	inputGraph.root.name,
+	"Outer Space -1",
 	"Outer Space 0",
 	"Outer Space 1",
 	"Outer Space 2",

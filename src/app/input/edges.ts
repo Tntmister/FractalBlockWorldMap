@@ -1,6 +1,7 @@
-import { InputGraph, nodeNames } from "../types";
+import { InputEdges } from "../types";
+import { nodeNames } from "./nodes";
 
-const inputEdges: InputGraph["edges"] = {
+const inputEdges: InputEdges = {
 	"Tutorial": {
 		"Stable Singletons": {
 			distance: 0
