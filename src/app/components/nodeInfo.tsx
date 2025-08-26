@@ -9,12 +9,51 @@ interface NodeInfoProps {
 }
 
 export default function NodeInfo({ node, onEdgeClick }: NodeInfoProps) {
-	console.log(node.edges);
 	return (
-		<div id='nodeInfoContainer'>
-			<div id='nodeContainer'>
-				<div id='nodeHeader'>{node.name}</div>
+		<div id='nodeContainer'>
+			<div id='nodeInfoContainer'>
+				<div id='nodeHeader'>
+					<span>
+						{node.trophy && (
+							<Image className='icon' src={`./images/icons/Trophy.webp`} />
+						)}
+					</span>
+					<span>{node.name}</span>
+					<span>
+						{node.secretTrophy &&
+							[...Array(node.secretTrophy)].map((_, i) => (
+								<Image
+									className='icon'
+									key={i}
+									src={`./images/icons/Secret Trophy.webp`}
+								/>
+							))}
+					</span>
+				</div>
 				<Image id='nodeImage' src={`./images/nodes/${node.name}.jpg`} alt='' />
+				<div id='nodeInfo'>
+					{node.interactables.length > 0 && (
+						<div className='nodeInfo'>
+							<div>Interactables</div>
+							{node.interactables.map((interactable) => (
+								<div key={interactable}>
+									<Image
+										className='icon'
+										src={`./images/icons/${interactable}.webp`}
+									/>
+									{interactable}
+								</div>
+							))}
+						</div>
+					)}
+					{node.monsters.length > 0 && (
+						<div className='nodeInfo'>
+							{node.monsters.map((monster) => monster.name)}
+						</div>
+					)}
+					{node.items?.length > 0 && <div className='nodeInfo'>{node.items}</div>}
+					{node.upgrades?.length > 0 && <div className='nodeInfo'>{node.upgrades}</div>}
+				</div>
 			</div>
 
 			{node.edges.length > 0 && (
@@ -29,7 +68,7 @@ export default function NodeInfo({ node, onEdgeClick }: NodeInfoProps) {
 									<Image
 										className='edgeTooltip'
 										src={`./images/edges/${node.name} - ${edge.node.name}.jpg`}
-										fallbackSrc={edge.node.images?.[0].src}
+										fallbackSrc={edge.node.images?.[0]?.src}
 										alt=''
 									/>
 								</span>

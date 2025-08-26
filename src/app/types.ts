@@ -12,6 +12,7 @@ export type interactables =
 	| "Sleep"
 	| "Common Sell Station"
 	| "Scarce Sell Station"
+	| "Rare Sell Station"
 	| "Buy"
 	| "Buy Nuke"
 	| "Markers"
@@ -65,13 +66,13 @@ export interface Edge extends edgeInfo {
 
 export type Node = {
 	name: nodeNames;
-	upgrades: InputNode["upgrades"];
-	items: InputNode["items"];
-	interactables: InputNode["interactables"];
-	deadEnd: InputNode["deadEnd"];
-	images: InputNode["images"];
-	trophy: InputNode["trophy"];
-	secretTrophy: InputNode["secretTrophy"];
+	upgrades: NonNullable<InputNode["upgrades"]>;
+	items: NonNullable<InputNode["items"]>;
+	interactables: NonNullable<InputNode["interactables"]>;
+	deadEnd: NonNullable<InputNode["deadEnd"]>;
+	images: NonNullable<InputNode["images"]>;
+	trophy: NonNullable<InputNode["trophy"]>;
+	secretTrophy: NonNullable<InputNode["secretTrophy"]>;
 	monsters: monster[];
 	edges: Edge[];
 };

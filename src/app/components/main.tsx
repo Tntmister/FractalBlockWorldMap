@@ -13,13 +13,13 @@ const nodes: Map<nodeNames, Node> = new Map();
 for (const node of inputNodes) {
 	nodes.set(node.name as nodeNames, {
 		name: node.name as nodeNames,
-		interactables: node.interactables,
-		upgrades: node.upgrades,
-		items: node.items,
-		deadEnd: node.deadEnd,
-		images: node.images,
-		trophy: node.trophy,
-		secretTrophy: node.secretTrophy,
+		interactables: node.interactables?.toSorted() ?? [],
+		upgrades: node.upgrades ?? [],
+		items: node.items ?? [],
+		deadEnd: node.deadEnd ?? false,
+		images: node.images ?? [],
+		trophy: node.trophy ?? false,
+		secretTrophy: node.secretTrophy ?? false,
 		monsters: monsters.filter((monster) => node.monsters?.includes(monster.name)),
 		edges: []
 	});
@@ -201,7 +201,7 @@ export default function Main() {
 								edge.node.deadEnd ? (
 									<Image
 										className='icon'
-										src='./images/icons/oneway.jpg'
+										src='./images/icons/One Way.webp'
 										alt='One Way'
 									/>
 								) : (
@@ -228,7 +228,7 @@ export default function Main() {
 										) && (
 										<Image
 											className='icon'
-											src='./images/icons/pinkring.png'
+											src='./images/icons/Pink Ring.webp'
 											alt='(Pink Ring) '
 										/>
 									)}
