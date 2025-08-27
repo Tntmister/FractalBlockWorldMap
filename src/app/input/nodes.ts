@@ -9,8 +9,7 @@ const INPUT_NODES = [
 	{
 		name: "Tutorial 1",
 		items: ["Gold"],
-		interactables: ["Save", "Pink Sphere", "Blue Ring"],
-		secretTrophy: true
+		interactables: ["Save", "Pink Sphere", "Blue Ring"]
 	},
 	{
 		name: "Tutorial 2",
@@ -41,8 +40,43 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Small Black Flower",
-		upgrades: ["Health", "Minigun", "Laser", "Cannon", "Plasma"],
-		items: ["Armor"]
+		monsters: ["Light Marine", "Marine", "Heavy Marine", "Menace"],
+		interactables: ["Pink Sphere", "Pink Ring", "Save", "Buy"],
+		upgrades: [
+			"Max Health",
+			"Health Regen",
+			"Plasma Velocity",
+			"Cannon Fire Rate",
+			"Cannon Damage",
+			"Cannon Velocity",
+			"Cannon Number",
+			"Nuke Velocity",
+			"Nuke Radius",
+			"Plasma Damage",
+			"Plasma Max Ammo",
+			"Laser Freeze Time",
+			"Minigun Max Ammo"
+		],
+		items: [
+			"Plasma Ammo",
+			"Minigun Ammo",
+			"Rocket Ammo",
+			"Railgun Ammo",
+			"EMP Ammo",
+			"Nuke Ammo",
+			"Laser Ammo",
+			"Cannon Ammo",
+			"200% Health 200% Armor",
+			"100% Health 100% Armor",
+			"Shield",
+			"200% Armor",
+			"1000% Armor",
+			"200% Health",
+			"Gold",
+			"EXP",
+			"Extra Health"
+		],
+		trophy: true
 	},
 	{
 		name: "Small Cannon Pyramid",
@@ -52,9 +86,36 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Small White Flower",
-		interactables: ["Save", "Pink Sphere", "Pink Ring", "Blue Ring"],
-		upgrades: ["Health", "Homing", "Plasma", "Nuke", "Rocket"],
-		items: ["Armor", "Nuke Ammo", "Rocket Ammo", "Plasma Ammo", "Homing Ammo", "Minigun Ammo", "Dark Hole Ammo", "EMP Ammo", "Railgun Ammo", "Gold"]
+		monsters: ["Light Marine", "Marine", "Heavy Marine"],
+		interactables: ["Save", "Pink Sphere", "Pink Ring", "Blue Ring", "Buy"],
+		upgrades: [
+			"Random Health",
+			"Health Regen",
+			"Max Health",
+			"Homing Max Ammo",
+			"Homing Velocity",
+			"Plasma Damage",
+			"Plasma Max Ammo",
+			"Nuke Max Ammo",
+			"Nuke Velocity",
+			"Rocket Radius",
+			"Rocket Max Ammo"
+		],
+		items: [
+			"600% Armor",
+			"Nuke Ammo",
+			"Rocket Ammo",
+			"Plasma Ammo",
+			"Homing Ammo",
+			"Minigun Ammo",
+			"Dark Hole Ammo",
+			"EMP Ammo",
+			"Railgun Ammo",
+			"Gold",
+			"200% Health",
+			"EXP"
+		],
+		trophy: true
 	},
 	{
 		name: "Ying Flower",
@@ -196,15 +257,18 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Cardboard Box",
-		upgrades: ["Health", "Cannon", "Minigun"],
-		items: ["Armor"],
+		monsters: ["Imp", "Light Marine", "Marine", "Heavy Marine", "Arch Menace Male", "Menace"],
+		upgrades: ["Max Health", "Cannon Velocity", "Minigun Damage", ["Minigun Damage", "Minigun Max Ammo"]],
+		items: ["Extra Health", "200% Armor", "Gold"],
 		interactables: ["Save"]
 	},
 	{
 		name: "Paper Box",
-		items: ["Health", "Armor", "Dark Hole Ammo", "Nuke Ammo", "Railgun Ammo", "Minigun Ammo", "Rocket Ammo"],
-		upgrades: ["Plasma", "Laser", "Minigun"],
-		interactables: ["Save"]
+		monsters: ["Menace", "Imp", "Marine"],
+		items: ["Extra Health", "150% Armor", "Dark Hole Ammo", "Nuke Ammo", "Railgun Ammo", "Minigun Ammo", "Rocket Ammo"],
+		upgrades: ["Random Health", "Health Regen", "Cannon Max Ammo", "Cannon Velocity"],
+		interactables: ["Save", "Buy"],
+		secretTrophy: true
 	},
 	{
 		name: "Tweedle-Dum Base"
@@ -338,7 +402,7 @@ const INPUT_NODES = [
 	{
 		name: "Clay Planet",
 		upgrades: ["Nuke"],
-		items: ["Armor"],
+		items: ["100% Armor"],
 		interactables: ["Waypoint", "Bookmark", "Save", "Markers", "Buy", "Common Sell Station"]
 	},
 	{
@@ -412,19 +476,20 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Williston City",
-		items: ["Gold", "Armor", "Rocket Ammo", "Nuke Ammo"],
+		items: ["Gold", "100% Armor", "Rocket Ammo", "Nuke Ammo"],
 		interactables: ["Buy", "Markers", "Waypoint", "Respawn", "Save", "Common Sell Station", "Buy Nuke"],
 		upgrades: ["Laser Damage"],
 		trophy: true
 	},
 	{
-		name: "Williston Field"
+		name: "Williston Field",
+		monsters: ["Spider", "Bee", "Queen Bee", "Gnole", "Unruly Juggernaut", "Formidable Juggernaut", "Locust"],
+		items: ["Gold", "Nuke Ammo", "EMP Ammo", "Railgun Ammo", "Rocket Ammo", "Laser Ammo", "Minigun Ammo"]
 	},
 	{
 		name: "Williston Trees",
-		monsters: ["Spider", "Bee", "Queen Bee", "Gnole", "Formidable Juggernaut", "Locust"],
-		interactables: ["Waypoint", "Save", "Bookmark"],
-		items: ["Gold", "Nuke Ammo", "EMP Ammo", "Railgun Ammo", "Rocket Ammo", "Laser Ammo", "Minigun Ammo"]
+		interactables: ["Waypoint", "Save", "Bookmark", "Buy"],
+		items: ["Minigun Ammo"]
 	},
 	{
 		name: "Williston Wall",
@@ -461,7 +526,9 @@ const INPUT_NODES = [
 		trophy: true
 	},
 	{
-		name: "Blackberry"
+		name: "Blackberry",
+		upgrades: ["Rocket Radius", "EMP Radius", "Nuke Radius"],
+		monsters: ["Great Spider"]
 	},
 	{
 		name: "I2 Well",
@@ -473,7 +540,18 @@ const INPUT_NODES = [
 		name: "I2 Purple Well",
 		interactables: ["Pink Ring", "Pink Sphere"],
 		upgrades: ["Dark Hole Damage", ["Dark Hole Max Ammo", "Dark Hole Velocity"]],
-		items: ["Rocket Ammo", "Homing Ammo", "Dark Hole Ammo", "Nuke Ammo", "Laser Ammo", "Cannon Ammo", "EMP Ammo", "Railgun Ammo", "Minigun Ammo"]
+		items: [
+			"200% Health 100% Armor",
+			"Rocket Ammo",
+			"Homing Ammo",
+			"Dark Hole Ammo",
+			"Nuke Ammo",
+			"Laser Ammo",
+			"Cannon Ammo",
+			"EMP Ammo",
+			"Railgun Ammo",
+			"Minigun Ammo"
+		]
 	},
 	{
 		name: "Zubeneschamali Castle",
@@ -549,7 +627,8 @@ const INPUT_NODES = [
 		items: ["Rocket Ammo", "Minigun Ammo", "EMP Ammo", "Dark Hole Ammo", "Nuke Ammo", "Laser Ammo", "Cannon Ammo", "Gold"]
 	},
 	{
-		name: "I2 Spiral"
+		name: "I2 Spiral",
+		noEscape: true
 	},
 	{
 		name: "I2 WIG Flower",
@@ -586,7 +665,7 @@ const INPUT_NODES = [
 	{
 		name: "Fanatic Weed",
 		items: ["Minigun Ammo", "Cannon Ammo", "Railgun Ammo", "Health"],
-		interactables: ["Save"],
+		interactables: ["Save", "Waypoint", "Out-Only Waypoint", "Bookmark"],
 		upgrades: ["Minigun Damage", "Health Regen"],
 		monsters: ["Fanatic"]
 	},
@@ -599,10 +678,19 @@ const INPUT_NODES = [
 	{
 		name: "Weed Ring",
 		interactables: ["Waypoint", "Save"],
-		upgrades: ["EMP Radius", "EMP Max Ammo", "Health"],
+		upgrades: ["EMP Radius", "EMP Max Ammo", "Max Health", "Non-Laser Max Ammo"],
 		monsters: ["Evil Goon", "Unsavory Goon", "Immoral Goon", "Minor Rat", "Lesser Silver", "Disciple", "Mystic"],
 		items: ["Rocket Ammo", "Gold", "Homing Ammo", "Key", "Nuke Ammo", "EMP Ammo", "Railgun Ammo"],
 		trophy: true
+	},
+	{
+		name: "Dark Willow Tree"
+	},
+	{
+		name: "Large White Flower"
+	},
+	{
+		name: "Danville"
 	},
 	{
 		name: "Scorpius Flower"
@@ -617,7 +705,7 @@ const INPUT_NODES = [
 	{
 		name: "Fanatic Air",
 		interactables: ["Common Sell Station", "Buy", "Markers"],
-		monsters: ["Overlord"]
+		monsters: ["Overlord", "Gnole"]
 	},
 	{
 		name: "Fanatic Caves",
@@ -636,10 +724,38 @@ const INPUT_NODES = [
 		interactables: ["Pink Sphere"]
 	},
 	{
+		name: "Minigun Forest Minor Pod",
+		items: ["Homing Ammo", "Minigun Ammo", "Nuke Ammo", "Railgun Ammo", "EMP Ammo", "Gold", "Armor", "Health"],
+		upgrades: ["Random Health", "Minigun Damage"],
+		interactables: ["Pink Sphere", "Pink Ring", "Save", "Buy"]
+	},
+	{
 		name: "Fanatic Vine",
 		monsters: ["Goliath"],
 		items: ["Gold"],
 		upgrades: ["Railgun Damage", "Non-Laser Max Ammo"]
+	},
+	{
+		name: "Spruce Tree",
+		items: ["Rocket Ammo", "EMP Ammo", "Nuke Ammo"],
+		upgrades: ["Rocket Radius", "Rocket Velocity"],
+		monsters: ["Troll", "Science Core", "War Vulcan"],
+		interactables: ["Save", "Out-Only Waypoint", "Blue Ring"],
+		secretTrophy: true
+	},
+	{
+		name: "Steel Box",
+		monsters: ["Menace", "Dissident", "Collapsed Spirit", "Collapsed Angel"],
+		upgrades: ["Railgun Max Ammo", "Rocket Max Ammo", "Cannon Max Ammo"],
+		interactables: ["Buy", "Common Sell Station", "Save"],
+		items: ["Extra Health", "200% Armor", "Gold", "Railgun Ammo"],
+		secretTrophy: true
+	},
+	{
+		name: "Cannon Ammo Grab",
+		monsters: ["Hired Gun", "Tough Juggernaut", "Mercinary"],
+		interactables: ["Pink Sphere", "Pink Ring", "Buy"],
+		items: ["Cannon Ammo", "100% Armor", "Plasma Ammo"]
 	},
 	{
 		name: "Fanatic Grass",
@@ -716,10 +832,17 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Outer Space 0",
-		upgrades: ["Laser"]
+		interactables: ["Out-Only Waypoint", "Waypoint"],
+		monsters: ["Vile Menace", "Unruly Juggernaut", "Tough Juggernaut", "I am the Juggernaut", "Formidable Juggernaut"],
+		upgrades: ["Laser", "Railgun Max Ammo", "Railgun Damage"]
 	},
 	{
-		name: "Outer Space 1"
+		name: "Outer Space 0 Lockbox",
+		upgrades: ["Laser Max Ammo", "Rocket Max Ammo", "Rocket Damage"]
+	},
+	{
+		name: "Outer Space 1",
+		monsters: ["Marine"]
 	},
 	{
 		name: "Outer Space 1 Bunker",
@@ -751,7 +874,8 @@ const INPUT_NODES = [
 		name: "Galaxy"
 	},
 	{
-		name: "Solar System"
+		name: "Solar System",
+		monsters: ["Spider", "Laboratory", "Evil Goon"]
 	},
 	{
 		name: "Solar System Debris"
@@ -762,23 +886,36 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Richmond",
+		monsters: ["Collapsed Spirit"],
 		upgrades: ["Cannon", "Health"],
-		items: ["Armor"],
-		interactables: ["Waypoint", "Common Sell Station", "Buy", "Markers", "Pink Ring", "Pink Sphere"]
+		items: ["100% Armor"],
+		interactables: ["Waypoint", "Save", "Common Sell Station", "Buy", "Respawn", "Markers", "Pink Ring", "Out-Only Waypoint"],
+		trophy: true
 	},
 	{
 		name: "Richmond Sewers",
-		monsters: ["Rebel", "Arch Menace Female"],
+		monsters: ["Minor Rat", "Rebel", "Arch Menace Female"],
 		upgrades: ["Cannon", "Rocket", "Homing", "Health", "EMP"],
 		interactables: ["Waypoint"]
 	},
 	{
-		name: "Richmond Building",
-		interactables: ["Save", "Pink Ring", "Pink Sphere"],
-		upgrades: ["Rocket", "Laser", "Minigun", "Cannon", "Plasma"],
-		items: ["Gold", "Cannon Ammo", "Laser Ammo", "Rocket Ammo", "Homing Ammo", "Minigun Ammo", "Dark Hole Ammo"],
-		trophy: true,
+		name: "Richmond Secret",
+		interactables: ["Pink Ring", "Save", "Pink Sphere"],
+		items: ["Minigun Ammo", "Rocket Ammo", "Laser Ammo", "Railgun Ammo", "EMP Ammo", "Nuke Ammo"],
+		upgrades: ["Laser Freeze Time"],
 		secretTrophy: true
+	},
+	{
+		name: "Richmond Building",
+		interactables: ["Pink Sphere", "Pink Ring", "Markers"],
+		monsters: ["War Vulcan"],
+		items: ["Minigun Ammo", "Laser Ammo", "Rocket Ammo"],
+		upgrades: [["Rocket Radius", "Rocket Velocity", "Minigun Max Ammo", "Railgun Fire Rate", "Laser Freeze Time"], "Cannon Number"], // TODO: support [[["Rocket Radius", "Rocket Velocity"], "Minigun Max Ammo", "Railgun Fire Rate", "Laser Freeze Time"], "Cannon Number"]
+		secretTrophy: true
+	},
+	{
+		name: "Yellow Flower Wall",
+		items: ["Gold", "Cannon Ammo", "Laser Ammo", "Rocket Ammo", "Homing Ammo", "Minigun Ammo", "Dark Hole Ammo"]
 	},
 	{
 		name: "Red Cave",
@@ -839,11 +976,12 @@ const INPUT_NODES = [
 		upgrades: ["Minigun Damage", "Minigun Max Ammo", "Laser Damage"]
 	},
 	{
-		name: "Mylantis"
+		name: "Mylantis",
+		monsters: ["Goliath"],
+		interactables: ["Waypoint", "Bookmark", "Save", "Out-Only Waypoint", "Pink Sphere"]
 	},
 	{
-		name: "Mylantis Caves",
-		interactables: ["Waypoint", "Bookmark", "Save"]
+		name: "Mylantis Caves"
 	},
 	{
 		name: "RejuvenX Refinery",
@@ -874,7 +1012,9 @@ const INPUT_NODES = [
 		name: "House of 5 Lampreys"
 	},
 	{
-		name: "Laser Genesis Planet"
+		name: "Laser Genesis Planet",
+		items: ["Laser Ammo"],
+		interactables: ["Waypoint", "Bookmark", "Save"]
 	},
 	{
 		name: "Mylantis City Underground"
@@ -923,18 +1063,24 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Fir Tree",
+		upgrades: ["Laser Damage"],
+		items: ["Laser Ammo", "Cannon Ammo"],
 		monsters: ["Goliath"]
 	},
 	{
 		name: "Alpha Cube",
-		items: ["Health", "Armor"],
-		upgrades: ["Laser", "Rocket", "EMP", "Dark Hole", "Railgun"]
+		monsters: ["Guerrilla", "Menace", "Vile Menace", "Heavy Marine", "War Vulcan", "Insurgent", "Rebel"],
+		interactables: ["Save"],
+		items: ["Extra Health", "200% Armor", "1000% Armor", "Nuke Ammo", "Railgun Ammo", "EMP Ammo"],
+		upgrades: ["Laser Damage", "Rocket Radius", "EMP Radius", "Dark Hole Velocity", "Railgun Fire Rate"],
+		trophy: true
 	},
 	{
 		name: "Health Tower",
+		monsters: ["Goblin", "Dragoon", "Greater Non-Piercing Scourge"],
 		interactables: ["Save"],
-		upgrades: ["Health", "Laser Damage", "Minigun Fire Rate", "Minigun Damage", "Nuke Velocity", "Rocket Velocity"],
-		items: ["Health", "Armor", "Minigun Ammo", "Laser Ammo", "Rocket Ammo", "Cannon Ammo", "EMP Ammo"],
+		upgrades: ["Max Health", "Health Regen", "Laser Damage", "Minigun Fire Rate", "Minigun Damage", "Nuke Velocity", "Rocket Velocity"],
+		items: ["Extra Health", "200% Armor", "Minigun Ammo", "Laser Ammo", "Rocket Ammo", "Cannon Ammo", "EMP Ammo", "Railgun Ammo", "Gold"],
 		secretTrophy: true,
 		trophy: true
 	},
@@ -977,10 +1123,14 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Stoney Air Cave",
+		monsters: ["Imp", "Light Marine"],
 		interactables: ["Pink Ring", "Save", "Pink Sphere"],
 		trophy: true,
-		upgrades: ["Health", "Plasma", "Cannon", "Laser"],
-		items: ["Nuke Ammo", "Minigun Ammo", "Cannon Ammo", "EMP Ammo", "Laser Ammo", "Health", "Armor"]
+		upgrades: [
+			["Random Health", "Plasma Max Ammo", "Plasma Velocity", "Cannon Max Ammo", "Cannon Damage", "Laser Max Ammo", "Laser Damage"],
+			"Rocket Max Ammo"
+		],
+		items: ["Nuke Ammo", "Minigun Ammo", "Cannon Ammo", "EMP Ammo", "Laser Ammo", "200% Health", "100% Armor", "Gold"]
 	},
 	{
 		name: "Yellow Cube"
@@ -1004,17 +1154,17 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Red Apple Tree",
-		upgrades: ["Rocket", "Homing"],
+		upgrades: ["Rocket", "Homing", "Non-Laser Max Ammo"],
 		items: ["Minigun Ammo", "Homing Ammo", "Rocket Ammo", "Cannon Ammo", "Nuke Ammo", "EMP Ammo", "Railgun Ammo", "Laser Ammo"]
 	},
 	{
 		name: "Yellow Apple Tree",
-		upgrades: ["Rocket", "Homing"],
+		upgrades: ["Rocket", "Homing", "Non-Laser Max Ammo"],
 		items: ["Minigun Ammo", "Homing Ammo", "Rocket Ammo", "Cannon Ammo", "Nuke Ammo", "EMP Ammo", "Railgun Ammo", "Laser Ammo"]
 	},
 	{
 		name: "Green Apple Tree",
-		upgrades: ["Rocket", "Homing"],
+		upgrades: ["Rocket", "Homing", "Non-Laser Max Ammo"],
 		items: ["Minigun Ammo", "Homing Ammo", "Rocket Ammo", "Cannon Ammo", "Nuke Ammo", "EMP Ammo", "Railgun Ammo", "Laser Ammo"]
 	},
 	{

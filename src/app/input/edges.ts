@@ -85,6 +85,9 @@ const inputEdges: InputEdges = {
 		"Red Apple Tree": {
 			distance: 10,
 			note: "x4"
+		},
+		"Quicksand Grass": {
+			distance: 0
 		}
 	},
 	"Red Apple Tree": {
@@ -550,6 +553,14 @@ const inputEdges: InputEdges = {
 		},
 		"Bristol": {
 			distance: 10
+		},
+		"I2 WIG Flower": {
+			distance: 5
+		}
+	},
+	"Williston Trees": {
+		"I1": {
+			distance: 0
 		}
 	},
 	"Williston City": {
@@ -564,31 +575,20 @@ const inputEdges: InputEdges = {
 		},
 		"Small Cannon Pyramid": {
 			distance: 0
+		},
+		"Bedroom": {
+			distance: 0
+		},
+		"Yellow Apple Tree": {
+			distance: 0
+		},
+		"Richmond Building": {
+			distance: 0
 		}
 	},
 	"Williston Wall": {
 		"Fir Tree": {
 			distance: 0
-		}
-	},
-	"Williston Trees": {
-		"I1": {
-			distance: 0
-		},
-		"I2 WIG Flower": {
-			distance: 5
-		},
-		"Red Apple Tree": {
-			distance: 0
-		},
-		"Pink Tree": {
-			distance: 5
-		},
-		"Small White Flower": {
-			distance: 0
-		},
-		"Bristol": {
-			distance: 10
 		}
 	},
 	"I2 WIG Flower": {
@@ -674,7 +674,7 @@ const inputEdges: InputEdges = {
 			distance: 0
 		},
 		"Weed Ring": {
-			distance: 10
+			distance: 20
 		},
 		"Small Cannon Gym": {
 			distance: 5,
@@ -693,7 +693,7 @@ const inputEdges: InputEdges = {
 		"EMP City": {
 			distance: 15
 		},
-		"Fanatic Vine": {
+		"Laboratory Vine": {
 			distance: 5
 		},
 		"Fanatic Weed": {
@@ -706,13 +706,27 @@ const inputEdges: InputEdges = {
 			distance: 5
 		},
 		"Fanatic Island": {
-			distance: 5
+			distance: 10,
+			note: "In center, without Montreal, Well and Library"
 		},
 		"Montreal": {
-			distance: 20
+			distance: 20,
+			note: "In center"
 		},
 		"Scorpius Portal": {
-			distance: 20
+			distance: 20,
+			note: "In center"
+		}
+	},
+	"Dark Willow Tree": {
+		"Danville": {
+			distance: Infinity
+		},
+		"Montreal": {
+			distance: Infinity
+		},
+		"Large White Flower": {
+			distance: Infinity
 		}
 	},
 	"Scorpius Portal": {
@@ -755,6 +769,9 @@ const inputEdges: InputEdges = {
 		}
 	},
 	"Fanatic Island": {
+		"Blackberry": {
+			distance: 5
+		},
 		"Montreal": {
 			distance: 5
 		},
@@ -774,6 +791,52 @@ const inputEdges: InputEdges = {
 			distance: 0
 		},
 		"Fanatic Caves": {
+			distance: 0
+		},
+		"Minigun Forest Minor Pod": {
+			distance: 5
+		},
+		"Mystic Vine": {
+			distance: 0
+		},
+		"Dark Willow Tree": {
+			distance: 10
+		},
+		"Spruce Tree": {
+			distance: 10
+		}
+	},
+	"Spruce Tree": {
+		"Fir Tree": {
+			distance: 0
+		},
+		"Spruce Tree": {
+			distance: 0
+		},
+		"Fanatic Weed": {
+			distance: 0
+		},
+		"Fanatic Air": {
+			distance: 5,
+			note: "Inside Trunk"
+		},
+		"Cannon Ammo Grab": {
+			distance: 10,
+			note: "Inside Inner Trunk"
+		},
+		"Cardboard Box": {
+			distance: 10,
+			note: "Inside Inner Trunk"
+		}
+	},
+	"Cannon Ammo Grab": {
+		"Montreal": {
+			distance: 0
+		},
+		"Oak Tree": {
+			distance: 0
+		},
+		"Green Apple Tree": {
 			distance: 0
 		}
 	},
@@ -809,6 +872,9 @@ const inputEdges: InputEdges = {
 	"Mystic Vine": {
 		"Toronto": {
 			distance: Infinity
+		},
+		"EMP City": {
+			distance: 5
 		}
 	},
 	"Toronto Vine": {
@@ -867,7 +933,7 @@ const inputEdges: InputEdges = {
 			distance: 0
 		},
 		"EMP City": {
-			distance: Infinity
+			distance: 5
 		}
 	},
 	"I2 Well": {
@@ -1278,18 +1344,38 @@ const inputEdges: InputEdges = {
 			distance: 5
 		},
 		"Richmond Building": {
-			distance: 5
+			distance: 10
+		},
+		"Richmond Secret": {
+			distance: 10
 		}
 	},
-	"Richmond Building": {
+	"Richmond Secret": {
 		"Ying Forest": {
 			distance: 5
 		},
 		"Stoney Air": {
 			distance: 0
+		}
+	},
+	"Richmond Building": {
+		"Ying Forest": {
+			distance: 0
+		},
+		"Stoney Air": {
+			distance: 0
+		},
+		"Yellow Flower Wall": {
+			distance: 0
 		},
 		"Red Cave": {
-			distance: 5
+			distance: 5,
+			note: "1 per Richmond"
+		}
+	},
+	"Yellow Flower Wall": {
+		"Ying Forest": {
+			distance: 0
 		}
 	},
 	"Red Cave": {
@@ -1479,6 +1565,10 @@ const inputEdges: InputEdges = {
 	"Cardboard Box": {
 		"Paper Box": {
 			distance: 10
+		},
+		"Small Black Flower": {
+			distance: 10,
+			note: "In Sub-air"
 		}
 	},
 	"Paper Box": {
@@ -1568,7 +1658,7 @@ const inputEdges: InputEdges = {
 	},
 	"Outer Space -1": {
 		"Outer Space 0": {
-			distance: Infinity
+			distance: 0
 		}
 	},
 	"Outer Space 0": {
@@ -1580,6 +1670,10 @@ const inputEdges: InputEdges = {
 		},
 		"Large Gold Asteroid": {
 			distance: 5
+		},
+		"Outer Space 0 Lockbox": {
+			distance: 10,
+			note: "Requires Key"
 		}
 	},
 	"Mylantis": {
@@ -1590,10 +1684,10 @@ const inputEdges: InputEdges = {
 			distance: 0
 		},
 		"Laser Genesis Planet": {
-			distance: Infinity
+			distance: 5
 		},
 		"RejuvenX Refinery": {
-			distance: 5,
+			distance: 0,
 			note: "3 on Surface"
 		}
 	},
