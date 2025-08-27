@@ -1,12 +1,13 @@
 import { monsters } from "./input/monsters";
 import { inputNodes, nodeNames } from "./input/nodes";
 
-type weaponTypes = "Plasma" | "Cannon" | "Laser" | "Rocket" | "Homing" | "Minigun" | "Railgun" | "EMP" | "Nuke" | "Dark Hole";
+export const weaponTypes = ["Plasma", "Cannon", "Laser", "Rocket", "Homing", "Minigun", "Railgun", "EMP", "Nuke", "Dark Hole"] as const;
+type weaponTypes = (typeof weaponTypes)[number];
 type weaponUpgrades = "Max Ammo" | "Regen" | "Fire Rate" | "Damage" | "Velocity" | "Radius" | "Freeze Time" | "Number" | "Weapon Mod";
 type defenceUpgrades = "Max Health" | "Health Regen" | "Armor Regen" | "RejuvenX";
-type items = weaponTypes | "Gold" | "EXP" | "Key" | "Shield" | "Health" | "Armor";
+type items = `${weaponTypes} Ammo` | "Gold" | "EXP" | "Key" | "Shield" | "Health" | "Armor";
 
-export type upgrades = `${weaponTypes} ${weaponUpgrades}` | defenceUpgrades | "Telekinesis" | items; // | items temporary until upgrades everywhere are specified
+export type upgrades = `${weaponTypes} ${weaponUpgrades}` | `Non-${weaponTypes} ${weaponUpgrades}` | defenceUpgrades | "Telekinesis" | weaponTypes | "Health"; // | items | "Health" temporary until upgrades everywhere are specified
 
 export type interactables =
 	| "Sleep"
@@ -39,7 +40,7 @@ export type InputNode = {
 	upgrades?: (upgrades | upgrades[])[]; // possible upgrades (including random ones)
 	items?: items[]; // possible items
 	interactables?: interactables[];
-	deadEnd?: boolean; // if there is no way to grow out of this node
+	noEscape?: boolean; // if there is no way to grow out of this node
 	images?: {
 		src: string;
 		info: string;
@@ -69,7 +70,7 @@ export type Node = {
 	upgrades: NonNullable<InputNode["upgrades"]>;
 	items: NonNullable<InputNode["items"]>;
 	interactables: NonNullable<InputNode["interactables"]>;
-	deadEnd: NonNullable<InputNode["deadEnd"]>;
+	noEscape: NonNullable<InputNode["noEscape"]>;
 	images: NonNullable<InputNode["images"]>;
 	trophy: NonNullable<InputNode["trophy"]>;
 	secretTrophy: NonNullable<InputNode["secretTrophy"]>;

@@ -2,15 +2,27 @@ import { InputEdges } from "../types";
 import { nodeNames } from "./nodes";
 
 const inputEdges: InputEdges = {
-	"Tutorial": {
-		"Stable Singletons": {
+	"Tutorial 1": {
+		"Happy Land": {
 			distance: 0
 		},
-		"Happy Land": {
+		"Ying Forest": {
+			distance: 5,
+			note: "Shrink into black cubes"
+		}
+	},
+	"Tutorial 2": {
+		"Tutorial 1": {
+			distance: 0
+		},
+		"Stable Singletons": {
 			distance: 0
 		}
 	},
 	"Tutorial Chambers": {
+		"Tutorial 2": {
+			distance: 0
+		},
 		"Ying Forest": {
 			distance: 0
 		},
@@ -39,6 +51,9 @@ const inputEdges: InputEdges = {
 		}
 	},
 	"Ying Forest": {
+		"Ying Air": {
+			distance: 0
+		},
 		"Small Noob Flower": {
 			distance: 0
 		},
@@ -55,6 +70,15 @@ const inputEdges: InputEdges = {
 		"Menace Hive": {
 			distance: 20,
 			note: "Depth 12+, hanging from branches"
+		},
+		"Unremembered Tower": {
+			distance: 20,
+			note: "Depth ?+"
+		}
+	},
+	"Unremembered Tower": {
+		"Mossy Basement": {
+			distance: Infinity
 		}
 	},
 	"Small Black Flower": {
@@ -118,9 +142,6 @@ const inputEdges: InputEdges = {
 		}
 	},
 	"Ying Island": {
-		"Ying Air": {
-			distance: 0
-		},
 		"Ying Forest": {
 			distance: 0
 		},
@@ -603,7 +624,7 @@ const inputEdges: InputEdges = {
 		}
 	},
 	"Nuke Radius Cave": {
-		"I3": {
+		"I3 WIG Flower": {
 			distance: Infinity
 		}
 	},
@@ -646,13 +667,26 @@ const inputEdges: InputEdges = {
 	},
 	"Fanatic Weed": {
 		"Orange Flower": {
-			distance: 0
+			distance: 5,
+			note: "On walls"
 		},
 		"Montreal": {
 			distance: 0
 		},
 		"Weed Ring": {
+			distance: 10
+		},
+		"Small Cannon Gym": {
+			distance: 5,
+			note: "On floor"
+		},
+		"Laboratory Vine": {
 			distance: 5
+		}
+	},
+	"Small Cannon Gym": {
+		"Fanatic Weed": {
+			distance: 10
 		}
 	},
 	"Weed Ring": {
@@ -722,8 +756,7 @@ const inputEdges: InputEdges = {
 	},
 	"Fanatic Island": {
 		"Montreal": {
-			distance: 5,
-			note: "Must Pass White Box Device"
+			distance: 5
 		},
 		"I2 Library": {
 			distance: Infinity
@@ -808,12 +841,20 @@ const inputEdges: InputEdges = {
 		"Fanatic Weed": {
 			distance: 0
 		},
+		"Fanatic Grass": {
+			distance: 0
+		},
 		"Scorpius Portal": {
 			distance: 10,
 			note: "Inside central shaft"
 		},
 		"Minigun Forest": {
 			distance: 0
+		}
+	},
+	"Fanatic Grass": {
+		"Large Cannon Pyramid": {
+			distance: 30
 		}
 	},
 	"Minigun Forest": {
@@ -944,12 +985,17 @@ const inputEdges: InputEdges = {
 		"Stoney Air": {
 			distance: 0
 		},
-		"Yellow Flower City": {
+		"Orange Ground City": {
 			distance: 0,
 			note: "On top"
 		},
 		"Outer Crust A": {
 			distance: 10
+		}
+	},
+	"Orange Ground City": {
+		"Yellow Flower City": {
+			distance: 0
 		}
 	},
 	"Outer Crust A": {
@@ -1048,7 +1094,7 @@ const inputEdges: InputEdges = {
 	},
 	"Green Shrink Box": {
 		"Small Yellow Flower": {
-			distance: 10
+			distance: 20
 		}
 	},
 	"Yellow Cube": {

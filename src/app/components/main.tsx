@@ -14,13 +14,13 @@ for (const node of inputNodes) {
 	nodes.set(node.name as nodeNames, {
 		name: node.name as nodeNames,
 		interactables: node.interactables?.toSorted() ?? [],
-		upgrades: node.upgrades ?? [],
-		items: node.items ?? [],
-		deadEnd: node.deadEnd ?? false,
+		upgrades: node.upgrades?.toSorted() ?? [],
+		items: node.items?.toSorted() ?? [],
+		noEscape: node.noEscape ?? false,
 		images: node.images ?? [],
 		trophy: node.trophy ?? false,
 		secretTrophy: node.secretTrophy ?? false,
-		monsters: monsters.filter((monster) => node.monsters?.includes(monster.name)),
+		monsters: monsters.filter((monster) => node.monsters?.includes(monster.name)).toSorted(),
 		edges: []
 	});
 }
@@ -156,6 +156,7 @@ export default function Main() {
 	}
 
 	useEffect(() => {
+		document.title = "Fractal Block World Map";
 		setPathStack([
 			...pathStack,
 			...startingPath
@@ -178,7 +179,6 @@ export default function Main() {
 			if (tooltip) {
 				const tooltipImage = tooltip.children[0] as HTMLImageElement;
 				if (tooltipImage?.complete && tooltipImage?.offsetWidth) {
-					console.log(tooltipImage);
 					tooltipImage.style.left = e.clientX - tooltipImage.offsetWidth - 5 + "px";
 					tooltipImage.style.top = e.clientY - tooltipImage.offsetHeight - 5 + "px";
 				}
@@ -198,7 +198,7 @@ export default function Main() {
 					{pathStack.map((edge, index, path) => (
 						<Fragment key={`path${index}`}>
 							{index != 0 ? (
-								edge.node.deadEnd ? (
+								edge.node.noEscape ? (
 									<Image
 										className='icon'
 										src='./images/icons/One Way.webp'
