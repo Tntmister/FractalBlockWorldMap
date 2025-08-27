@@ -3,11 +3,11 @@ import { monster } from "../types";
 export const monsters = [
 	{
 		name: "Juggernaut",
-		drop: "Cannon"
+		drop: "Cannon Ammo"
 	},
 	{
 		name: "Tough Juggernaut",
-		drop: "Cannon"
+		drop: "Cannon Ammo"
 	},
 	{
 		name: "Unruly Juggernaut",
@@ -19,91 +19,91 @@ export const monsters = [
 	},
 	{
 		name: "I am the Juggernaut",
-		drop: "Cannon"
+		drop: "Cannon Ammo"
 	},
 	{
 		name: "Light Marine",
-		drop: "Cannon"
+		drop: "Cannon Ammo"
 	},
 	{
 		name: "Marine",
-		drop: "Minigun"
+		drop: "Minigun Ammo"
 	},
 	{
 		name: "Heavy Marine",
-		drop: "Minigun"
+		drop: "Minigun Ammo"
 	},
 	{
 		name: "Rebel",
-		drop: "Cannon"
+		drop: "Cannon Ammo"
 	},
 	{
 		name: "Insurgent",
-		drop: "Minigun"
+		drop: "Minigun Ammo"
 	},
 	{
 		name: "Dissident",
-		drop: "Cannon"
+		drop: "Cannon Ammo"
 	},
 	{
 		name: "Hired Gun",
-		drop: "Cannon"
+		drop: "Cannon Ammo"
 	},
 	{
 		name: "Guerrilla",
-		drop: "Minigun"
+		drop: "Minigun Ammo"
 	},
 	{
 		name: "Hit Man",
-		drop: "Minigun"
+		drop: "Minigun Ammo"
 	},
 	{
 		name: "Mercinary",
-		drop: "Cannon"
+		drop: "Cannon Ammo"
 	},
 	{
 		name: "Commando",
-		drop: "Minigun"
+		drop: "Minigun Ammo"
 	},
 	{
 		name: "Petite Goon",
-		drop: "Laser"
+		drop: "Laser Ammo"
 	},
 	{
 		name: "Goon",
-		drop: "Laser"
+		drop: "Laser Ammo"
 	},
 	{
 		name: "Small Goon",
-		drop: "Laser"
+		drop: "Laser Ammo"
 	},
 	{
 		name: "Large Goon",
-		drop: "Laser"
+		drop: "Laser Ammo"
 	},
 	{
 		name: "Major Goon",
-		drop: "Laser"
+		drop: "Laser Ammo"
 	},
 	{
 		name: "Questionable Goon",
-		drop: "Laser"
+		drop: "Laser Ammo"
 	},
 	{
 		name: "Immoral Goon",
-		drop: "Laser"
+		drop: "Laser Ammo"
 	},
 	{
 		name: "Unsavory Goon",
-		drop: "Laser"
+		drop: "Laser Ammo"
 	},
 	{
 		name: "Evil Goon",
-		drop: "Laser"
+		drop: "Laser Ammo"
 	},
 	{
 		name: "Despicable Goon",
-		drop: "Laser"
+		drop: "Laser Ammo"
 	},
 	{
 		name: "Maniacal Goon",
@@ -119,23 +119,23 @@ export const monsters = [
 	},
 	{
 		name: "Pirate",
-		drop: "Homing"
+		drop: "Homing Ammo"
 	},
 	{
 		name: "First Mate",
-		drop: "Homing"
+		drop: "Homing Ammo"
 	},
 	{
 		name: "Captain",
-		drop: "Homing"
+		drop: "Homing Ammo"
 	},
 	{
 		name: "Baby Spider",
-		drop: "Minigun"
+		drop: "Minigun Ammo"
 	},
 	{
 		name: "Lesser Spider",
-		drop: "Minigun"
+		drop: "Minigun Ammo"
 	},
 	{
 		name: "Spider",
@@ -147,15 +147,15 @@ export const monsters = [
 	},
 	{
 		name: "Spider Lord",
-		drop: "Minigun"
+		drop: "Minigun Ammo"
 	},
 	{
 		name: "Probe",
-		drop: "EMP"
+		drop: "EMP Ammo"
 	},
 	{
 		name: "Satellite",
-		drop: "EMP"
+		drop: "EMP Ammo"
 	},
 	{
 		name: "Sentinel",
@@ -175,15 +175,15 @@ export const monsters = [
 	},
 	{
 		name: "Mechanized Sheath",
-		drop: "EMP"
+		drop: "EMP Ammo"
 	},
 	{
 		name: "Compromised Nuclear Silo",
-		drop: "Nuke"
+		drop: "Nuke Ammo"
 	},
 	{
 		name: "Nuclear Silo",
-		drop: "Nuke"
+		drop: "Nuke Ammo"
 	},
 	{
 		name: "Nuclear Ore Mining Location",
@@ -203,7 +203,7 @@ export const monsters = [
 	},
 	{
 		name: "Nuclear Doomsday Shelter",
-		drop: "Nuke"
+		drop: "Nuke Ammo"
 	},
 	{
 		name: "Fanatic",
@@ -463,5 +463,8 @@ export const monsters = [
 	},
 	{
 		name: "Locust"
+	},
+	{
+		name: "Greater Non-Piercing Scourge"
 	}
 ] as const satisfies readonly monster[];

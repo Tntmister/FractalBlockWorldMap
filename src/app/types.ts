@@ -1,13 +1,56 @@
 import { monsters } from "./input/monsters";
 import { inputNodes, nodeNames } from "./input/nodes";
 
-export const weaponTypes = ["Plasma", "Cannon", "Laser", "Rocket", "Homing", "Minigun", "Railgun", "EMP", "Nuke", "Dark Hole"] as const;
-type weaponTypes = (typeof weaponTypes)[number];
+export const imageTypes = [
+	"Plasma",
+	"Cannon",
+	"Laser",
+	"Rocket",
+	"Homing",
+	"Minigun",
+	"Railgun",
+	"EMP",
+	"Nuke",
+	"Dark Hole",
+	"Health",
+	"100% Health 100% Armor",
+	"200% Health 100% Armor",
+	"200% Health 200% Armor",
+	"5% Armor",
+	"10% Armor",
+	"100% Armor",
+	"150% Armor",
+	"200% Armor",
+	"600% Armor",
+	"1000% Armor",
+	"10% Health",
+	"25% Health",
+	"100% Health",
+	"200% Health",
+	"Extra Health"
+] as const;
+type weaponTypes = "Plasma" | "Cannon" | "Laser" | "Rocket" | "Homing" | "Minigun" | "Railgun" | "EMP" | "Nuke" | "Dark Hole";
 type weaponUpgrades = "Max Ammo" | "Regen" | "Fire Rate" | "Damage" | "Velocity" | "Radius" | "Freeze Time" | "Number" | "Weapon Mod";
-type defenceUpgrades = "Max Health" | "Health Regen" | "Armor Regen" | "RejuvenX";
-type items = `${weaponTypes} Ammo` | "Gold" | "EXP" | "Key" | "Shield" | "Health" | "Armor";
+type healthItems =
+	| "5% Armor"
+	| "10% Armor"
+	| "100% Armor"
+	| "150% Armor"
+	| "200% Armor"
+	| "600% Armor"
+	| "1000% Armor"
+	| "10% Health"
+	| "25% Health"
+	| "100% Health"
+	| "200% Health"
+	| "Extra Health"
+	| "100% Health 100% Armor"
+	| "200% Health 100% Armor"
+	| "200% Health 200% Armor";
+type defenceUpgrades = "Max Health" | "Health Regen" | "Armor Regen" | "RejuvenX" | "Random Health";
+type items = `${weaponTypes} Ammo` | healthItems | "Gold" | "EXP" | "Key" | "Shield" | "Health" | "Armor"; // | "Health" | "Armor" temporary until upgrades everywhere are specified
 
-export type upgrades = `${weaponTypes} ${weaponUpgrades}` | `Non-${weaponTypes} ${weaponUpgrades}` | defenceUpgrades | "Telekinesis" | weaponTypes | "Health"; // | items | "Health" temporary until upgrades everywhere are specified
+export type upgrades = `${weaponTypes} ${weaponUpgrades}` | `Non-${weaponTypes} ${weaponUpgrades}` | defenceUpgrades | "Telekinesis" | weaponTypes | "Health"; // | weaponTypes | "Health" temporary until upgrades everywhere are specified
 
 export type interactables =
 	| "Sleep"
