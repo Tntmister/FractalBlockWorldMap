@@ -444,9 +444,6 @@ const inputEdges: InputEdges = {
 		},
 		"Pink Tree": {
 			distance: 0
-		},
-		"Imp Cave": {
-			distance: 0
 		}
 	},
 	"Infinity Flower": {
@@ -498,17 +495,70 @@ const inputEdges: InputEdges = {
 	},
 	"EMP Castle": {
 		"Fanatic Lattice": {
-			distance: Infinity
+			distance: 15
 		},
 		"Blackberry": {
-			distance: Infinity
+			distance: 15
 		},
-		"Zubeneschamali Castle": {
-			distance: Infinity
+		"I1": {
+			distance: 15
+		},
+		"Quicksand Grass": {
+			distance: 15
+		},
+		"Orange Flower": {
+			distance: 15
+		}
+	},
+	"Zubeneschamali Castle": {
+		"Fanatic Lattice": {
+			distance: 30
+		},
+		"Quicksand Grass": {
+			distance: 30
+		},
+		"Stoney Air": {
+			distance: 30
+		}
+	},
+	"Blackberry": {
+		"Small White Flower": {
+			distance: 25
+		},
+		"Small Black Flower": {
+			distance: 25
 		}
 	},
 	"I3": {
 		"Hell": {
+			distance: Infinity
+		},
+		"Sagittarius Portal": {
+			distance: Infinity
+		},
+		"I3": {
+			distance: 0
+		},
+		"Hard Orange Flower": {
+			distance: 5
+		}
+	},
+	"Hard Orange Flower": {
+		"I2 WIG Flower": {
+			distance: 30
+		},
+		"Scorpius Flower": {
+			distance: 30
+		},
+		"Fir Tree": {
+			distance: 15
+		},
+		"Fanatic Weed": {
+			distance: 15
+		}
+	},
+	"Sagittarius Portal": {
+		"Fanatic Lattice": {
 			distance: Infinity
 		}
 	},
@@ -522,7 +572,7 @@ const inputEdges: InputEdges = {
 			distance: 0
 		},
 		"Williston Wall": {
-			distance: 0
+			distance: 5
 		},
 		"Red Apple Tree": {
 			distance: 0
@@ -539,17 +589,20 @@ const inputEdges: InputEdges = {
 		"Williston Trees": {
 			distance: 5
 		},
-		"I2 Well": {
+		"Williston Well": {
 			distance: 0
 		},
-		"I2 Purple Well": {
+		"Williston Purple Well": {
 			distance: 5
 		},
 		"Small White Flower": {
 			distance: 0
 		},
 		"EMP Castle": {
-			distance: 5
+			distance: 10
+		},
+		"Zubeneschamali Castle": {
+			distance: 15
 		},
 		"Bristol": {
 			distance: 10
@@ -574,6 +627,9 @@ const inputEdges: InputEdges = {
 			distance: 0
 		},
 		"Small Cannon Pyramid": {
+			distance: 0
+		},
+		"Large Cannon Pyramid": {
 			distance: 0
 		},
 		"Bedroom": {
@@ -606,11 +662,39 @@ const inputEdges: InputEdges = {
 		"Fanatic Spire": {
 			distance: 10
 		},
-		"Nuke Radius Cave": {
+		"Fanatic Grass": {
+			distance: 0
+		},
+		"Fanatic Lattice Treasure": {
+			distance: 10,
+			note: "Green Cubes"
+		},
+		"I2 Library": {
 			distance: 5
 		},
+		"Nuke Radius Cave": {
+			distance: 5,
+			note: "Tips of Vines on Weeds"
+		},
 		"Mirror Gate": {
+			distance: 10,
+			note: "Tips of Weeds"
+		},
+		"Small Blue Flower (Primary)": {
 			distance: Infinity
+		},
+		"Rainbow Flower": {
+			distance: Infinity
+		},
+		"Small White Flower": {
+			distance: 10
+		},
+		"Taurus Portal": {
+			distance: 0,
+			note: "Tips of Vines on Weeds"
+		},
+		"Scorpius Flower": {
+			distance: 10
 		}
 	},
 	"Mirror Gate": {
@@ -632,13 +716,19 @@ const inputEdges: InputEdges = {
 		"Fanatic Lattice": {
 			distance: 0
 		},
-		"Scorpius Flower": {
-			distance: 5
-		},
 		"Fanatic Spire Scaffold": {
 			distance: 5
 		},
-		"I2 Library": {
+		"Golden Yellow Flower": {
+			distance: Infinity,
+			note: "At bottom"
+		}
+	},
+	"Scorpius Flower": {
+		"Scorpius Portal": {
+			distance: 30
+		},
+		"Ying Forest": {
 			distance: 0
 		}
 	},
@@ -646,7 +736,21 @@ const inputEdges: InputEdges = {
 		"Quicksand Grass": {
 			distance: 0
 		},
-		"I3": {
+		"Ying Forest": {
+			distance: 0
+		},
+		"Montreal": {
+			distance: 0
+		},
+		"I2 WIG Flower": {
+			distance: 0
+		},
+		"I3 WIG Maze Room": {
+			distance: 0
+		}
+	},
+	"I3 WIG Maze Room": {
+		"I3 WIG Flower": {
 			distance: Infinity
 		}
 	},
@@ -663,6 +767,23 @@ const inputEdges: InputEdges = {
 		"Buttercup": {
 			distance: 5,
 			note: "Inside Grey Pillars"
+		},
+		"Creeping Jeni": {
+			distance: 5
+		}
+	},
+	"Creeping Jeni": {
+		"Toronto": {
+			distance: Infinity
+		},
+		"Violet": {
+			distance: Infinity
+		}
+	},
+	"Violet": {
+		"Fanatic Spire": {
+			distance: Infinity,
+			note: "Shell 2"
 		}
 	},
 	"Fanatic Weed": {
@@ -691,7 +812,7 @@ const inputEdges: InputEdges = {
 	},
 	"Weed Ring": {
 		"EMP City": {
-			distance: 15
+			distance: 10
 		},
 		"Laboratory Vine": {
 			distance: 5
@@ -705,9 +826,11 @@ const inputEdges: InputEdges = {
 		"Fanatic Air": {
 			distance: 5
 		},
-		"Fanatic Island": {
-			distance: 10,
-			note: "In center, without Montreal, Well and Library"
+		"Mystic Vine": {
+			distance: 10
+		},
+		"Dark Willow Tree": {
+			distance: 10
 		},
 		"Montreal": {
 			distance: 20,
@@ -741,6 +864,47 @@ const inputEdges: InputEdges = {
 		},
 		"Ying Air": {
 			distance: 30
+		}
+	},
+	"Small Blue Flower (Primary)": {
+		"I2 WIG Flower": {
+			distance: Infinity
+		},
+		"I2 Library": {
+			distance: Infinity
+		},
+		"Small Blue Flower (Secondary)": {
+			distance: Infinity,
+			note: "50% Chance"
+		},
+		"Laboratory Vine": {
+			distance: 10
+		},
+		"Fanatic Grass": {
+			distance: 10
+		},
+		"Fanatic Air": {
+			distance: 15
+		}
+	},
+	"Small Blue Flower (Secondary)": {
+		"Small Blue Flower (Tertiary)": {
+			distance: Infinity,
+			note: "50% Chance"
+		}
+	},
+	"Small Blue Flower (Tertiary)": {
+		"I3 WIG Flower": {
+			distance: Infinity
+		},
+		"Small Blue Flower (Quaternary)": {
+			distance: Infinity,
+			note: "50% Chance"
+		}
+	},
+	"Prank I3 WIG Flower": {
+		"Prank I3 WIG Flower": {
+			distance: Infinity
 		}
 	},
 	"EMP City": {
@@ -781,7 +945,7 @@ const inputEdges: InputEdges = {
 		"Willow Tree": {
 			distance: 0
 		},
-		"Fanatic Vine": {
+		"Laboratory Vine": {
 			distance: 0
 		},
 		"Fanatic Well": {
@@ -804,6 +968,17 @@ const inputEdges: InputEdges = {
 		},
 		"Spruce Tree": {
 			distance: 10
+		}
+	},
+	"Minigun Forest": {
+		"Creeping Jeni": {
+			distance: Infinity
+		},
+		"EMP City": {
+			distance: 0
+		},
+		"Minigun Forest Minor Pod": {
+			distance: 5
 		}
 	},
 	"Spruce Tree": {
@@ -896,10 +1071,22 @@ const inputEdges: InputEdges = {
 			distance: 5
 		}
 	},
-	"Fanatic Vine": {
+	"Laboratory Vine": {
+		"Pirate Vine": {
+			distance: Infinity,
+			note: "Vines 1 and 2"
+		},
+		"Laser Branch Vine": {
+			distance: Infinity,
+			note: "Vine 2"
+		},
 		"Toronto Vine": {
 			distance: Infinity,
-			note: "Shrink into numbers"
+			note: "Vine 3"
+		},
+		"Scorpius Vine": {
+			distance: Infinity,
+			note: "Vine 4"
 		},
 		"Small Black Flower": {
 			distance: 0
@@ -912,20 +1099,37 @@ const inputEdges: InputEdges = {
 		},
 		"Scorpius Portal": {
 			distance: 10,
-			note: "Inside central shaft"
+			note: "Inside Vine"
+		},
+		"Danville": {
+			distance: 10,
+			note: "Inside Vine"
 		},
 		"Minigun Forest": {
 			distance: 0
 		}
 	},
-	"Fanatic Grass": {
-		"Large Cannon Pyramid": {
+	"Taurus Portal": {
+		"I3": {
 			distance: 30
 		}
 	},
-	"Minigun Forest": {
-		"EMP City": {
-			distance: 0
+	"Laboratory Vine Bundle": {
+		"Laboratory Vine": {
+			distance: Infinity
+		},
+		"Blue Mushroom": {
+			distance: Infinity
+		}
+	},
+	"Blue Mushroom": {
+		"Rainbow Flower": {
+			distance: Infinity
+		}
+	},
+	"Fanatic Grass": {
+		"Large Cannon Pyramid": {
+			distance: 30
 		}
 	},
 	"Willow Tree": {
@@ -936,7 +1140,7 @@ const inputEdges: InputEdges = {
 			distance: 5
 		}
 	},
-	"I2 Well": {
+	"Williston Well": {
 		"Red Rose": {
 			distance: 5
 		},
@@ -944,7 +1148,7 @@ const inputEdges: InputEdges = {
 			distance: 5
 		}
 	},
-	"I2 Purple Well": {
+	"Williston Purple Well": {
 		"Red Rose": {
 			distance: 5
 		},
@@ -1182,6 +1386,11 @@ const inputEdges: InputEdges = {
 		"Yellow Cube Secret": {
 			distance: 5,
 			note: "Under Ying Forest"
+		}
+	},
+	"Stoney Sanctuary": {
+		"Blackberry": {
+			distance: Infinity
 		}
 	},
 	"Yellow Cube Secret": {

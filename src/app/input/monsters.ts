@@ -191,7 +191,7 @@ export const monsters = [
 	},
 	{
 		name: "Nuclear Refinery",
-		drop: "Nuke Velocity"
+		drop: "Nuke Projectile Speed"
 	},
 	{
 		name: "Nuclear Cyclotron",
@@ -211,7 +211,7 @@ export const monsters = [
 	},
 	{
 		name: "Disciple",
-		drop: "Dark Hole Velocity"
+		drop: "Dark Hole Projectile Speed"
 	},
 	{
 		name: "Mystic",
@@ -430,6 +430,9 @@ export const monsters = [
 		name: "War Vulcan"
 	},
 	{
+		name: "Iron War Vulcan"
+	},
+	{
 		name: "Overseer"
 	},
 	{
@@ -456,7 +459,7 @@ export const monsters = [
 	},
 	{
 		name: "Yellow Baby Spider",
-		drop: "Rocket Velocity"
+		drop: "Rocket Projectile Speed"
 	},
 	{
 		name: "Eternal Plague"

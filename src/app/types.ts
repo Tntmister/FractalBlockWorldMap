@@ -27,10 +27,10 @@ export const imageTypes = [
 	"25% Health",
 	"100% Health",
 	"200% Health",
-	"Extra Health"
+	"Extra 100% Health"
 ] as const;
 type weaponTypes = "Plasma" | "Cannon" | "Laser" | "Rocket" | "Homing" | "Minigun" | "Railgun" | "EMP" | "Nuke" | "Dark Hole";
-type weaponUpgrades = "Max Ammo" | "Regen" | "Fire Rate" | "Damage" | "Velocity" | "Radius" | "Freeze Time" | "Number" | "Weapon Mod";
+type weaponUpgrades = "Max Ammo" | "Regen" | "Fire Rate" | "Damage" | "Projectile Speed" | "Radius" | "Freeze Time" | "Number" | "Weapon Mod";
 type healthItems =
 	| "5% Armor"
 	| "10% Armor"
@@ -43,7 +43,7 @@ type healthItems =
 	| "25% Health"
 	| "100% Health"
 	| "200% Health"
-	| "Extra Health"
+	| "Extra 100% Health"
 	| "100% Health 100% Armor"
 	| "200% Health 100% Armor"
 	| "200% Health 200% Armor";
@@ -57,7 +57,7 @@ export type interactables =
 	| "Common Sell Station"
 	| "Scarce Sell Station"
 	| "Rare Sell Station"
-	| "Buy"
+	| "Buy Station"
 	| "Buy Nuke"
 	| "Markers"
 	| "Waypoint"
