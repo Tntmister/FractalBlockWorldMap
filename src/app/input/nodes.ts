@@ -3,7 +3,14 @@ import { InputNode } from "../types";
 const INPUT_NODES = [
 	{
 		name: "Ying Forest",
-		upgrades: ["Cannon", "Plasma", "Health"],
+		upgrades: ["Cannon Damage", "Plasma Damage", "Max Health"],
+		interactables: ["Waypoint", "Save", "Respawn", "Bookmark", "Out-Only Waypoint"]
+	},
+	{
+		name: "Ying Forest Depth 50+",
+		monsters: ["Minor Rat"],
+		items: ["200% Health 100% Armor", "Railgun Ammo", "Laser Ammo"],
+		upgrades: ["Cannon Damage", "Plasma Damage", "Health"],
 		interactables: ["Waypoint", "Save", "Respawn", "Bookmark", "Out-Only Waypoint"]
 	},
 	{
@@ -13,11 +20,25 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Tutorial 2",
-		items: ["Plasma Ammo", "Key", "Gold"],
+		items: ["Plasma Ammo", "40 Second Key", "Gold"],
 		monsters: ["Goblin"],
 		upgrades: ["Laser", "Nuke"],
-		interactables: ["Pink Ring", "Respawn", "Save", "Waypoint"],
+		interactables: ["Pink Ring", "Respawn"],
 		secretTrophy: 3
+	},
+	{
+		name: "EMERGENCY",
+		interactables: ["Save", "Waypoint"],
+		items: ["Gold"],
+		secretTrophy: true
+	},
+	{
+		name: "Safety Doppelganger",
+		interactables: ["Save", "Waypoint"],
+		items: ["200% Armor"]
+	},
+	{
+		name: "Fire Rate Moon"
 	},
 	{
 		name: "Tutorial Chambers",
@@ -31,9 +52,28 @@ const INPUT_NODES = [
 	{
 		name: "Small Yellow Flower",
 		trophy: true,
+		monsters: ["Light Marine"],
+		interactables: ["Save", "Pink Ring", "Pink Sphere"],
+		items: [
+			"100% Health",
+			"100% Armor",
+			"150% Armor",
+			"Shield",
+			"Plasma Ammo",
+			"Cannon Ammo",
+			"Extra 100% Health",
+			"Minigun Ammo",
+			"Rocket Ammo",
+			"Laser Ammo",
+			"EXP"
+		],
+		upgrades: ["Plasma Damage", "Plasma Regen", "Health"]
+	},
+	{
+		name: "Small Yellow Flower Secret",
 		secretTrophy: true,
-		interactables: ["Blue Ring"],
-		upgrades: ["Plasma", "Health"]
+		monsters: ["Blue Lamprey"],
+		interactables: ["Blue Ring"]
 	},
 	{
 		name: "Jumbo Yellow Flower"
@@ -45,12 +85,12 @@ const INPUT_NODES = [
 		upgrades: [
 			"Max Health",
 			"Health Regen",
-			"Plasma Projectile Speed",
+			"Plasma Velocity",
 			"Cannon Fire Rate",
 			"Cannon Damage",
-			"Cannon Projectile Speed",
+			"Cannon Velocity",
 			"Cannon Number",
-			"Nuke Projectile Speed",
+			"Nuke Velocity",
 			"Nuke Radius",
 			"Plasma Damage",
 			"Plasma Max Ammo",
@@ -93,11 +133,11 @@ const INPUT_NODES = [
 			"Health Regen",
 			"Max Health",
 			"Homing Max Ammo",
-			"Homing Projectile Speed",
+			"Homing Velocity",
 			"Plasma Damage",
 			"Plasma Max Ammo",
 			"Nuke Max Ammo",
-			"Nuke Projectile Speed",
+			"Nuke Velocity",
 			"Rocket Radius",
 			"Rocket Max Ammo"
 		],
@@ -125,7 +165,29 @@ const INPUT_NODES = [
 		interactables: ["Waypoint", "Save", "Bookmark", "Pink Sphere", "Out-Only Waypoint"]
 	},
 	{
-		name: "Unremembered Tower"
+		name: "Unremembered Tower",
+		interactables: ["Waypoint", "Save", "Buy Station", "Markers", "Common Sell Station"],
+		monsters: ["Light Marine", "Marine", "Heavy Marine", "Menace", "Minor Rat", "Rat"],
+		items: ["Cannon Ammo", "Rocket Ammo", "Gold", "200% Health 100% Armor", "1000% Armor", "Railgun Ammo", "Laser Ammo"],
+		upgrades: [
+			"Max Health",
+			"Laser Freeze Time",
+			"Railgun Max Ammo",
+			"Railgun Fire Rate",
+			[
+				"Plasma Fire Rate",
+				"Cannon Max Ammo",
+				"Laser Max Ammo",
+				"Rocket Radius",
+				"Homing Velocity",
+				"Minigun Max Ammo",
+				"Railgun Fire Rate",
+				"EMP Radius",
+				"Nuke Max Ammo",
+				"Dark Hole Velocity"
+			]
+		],
+		trophy: true
 	},
 	{
 		name: "Ying World"
@@ -151,12 +213,11 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Spider Air",
-		items: ["Rocket Ammo", "Railgun Ammo"]
-	},
-	{
-		name: "Baby Spider Air",
-		interactables: ["Pink Ring", "Waypoint", "Out-Only Waypoint", "Save"],
-		items: ["Minigun Ammo", "Railgun Ammo"]
+		interactables: ["Save", "Buy Station", "Pink Ring", "Waypoint", "Out-Only Waypoint"],
+		monsters: ["Baby Spider", "Marine", "Minor Gremlin"],
+		upgrades: ["Railgun Damage", "Minigun Damage"],
+		items: ["Rocket Ammo", "Railgun Ammo"],
+		secretTrophy: true
 	},
 	{
 		name: "Orange",
@@ -236,9 +297,10 @@ const INPUT_NODES = [
 	{
 		name: "Infinity Flower",
 		trophy: true,
-		items: ["Gold"],
-		interactables: ["Pink Sphere", "Save", "Pink Ring", "Waypoint"],
-		upgrades: ["Laser Damage", "Railgun Fire Rate"]
+		items: ["Gold", "Nuke Ammo"],
+		monsters: ["Baby Spider"],
+		interactables: ["Pink Sphere", "Save", "Pink Ring", "Waypoint", "Out-Only Waypoint"],
+		upgrades: ["Laser Damage", ["Railgun Fire Rate", "Railgun Damage"]]
 	},
 	{
 		name: "Ying Island"
@@ -258,7 +320,7 @@ const INPUT_NODES = [
 	{
 		name: "Cardboard Box",
 		monsters: ["Imp", "Light Marine", "Marine", "Heavy Marine", "Arch Menace Male", "Menace"],
-		upgrades: ["Max Health", "Cannon Projectile Speed", "Minigun Damage", ["Minigun Damage", "Minigun Max Ammo"]],
+		upgrades: ["Max Health", "Cannon Velocity", "Minigun Damage", ["Minigun Damage", "Minigun Max Ammo"]],
 		items: ["Extra 100% Health", "200% Armor", "Gold"],
 		interactables: ["Save"]
 	},
@@ -266,7 +328,7 @@ const INPUT_NODES = [
 		name: "Paper Box",
 		monsters: ["Menace", "Imp", "Marine"],
 		items: ["Extra 100% Health", "150% Armor", "Dark Hole Ammo", "Nuke Ammo", "Railgun Ammo", "Minigun Ammo", "Rocket Ammo"],
-		upgrades: ["Random Health", "Health Regen", "Cannon Max Ammo", "Cannon Projectile Speed"],
+		upgrades: ["Random Health", "Health Regen", "Cannon Max Ammo", "Cannon Velocity"],
 		interactables: ["Save", "Buy Station"],
 		secretTrophy: true
 	},
@@ -443,7 +505,7 @@ const INPUT_NODES = [
 		name: "Ying Air Cube",
 		monsters: ["Imp", "Lamprey", "Eternal Plague"],
 		interactables: ["Respawn", "Save", "Blue Ring", "Waypoint"],
-		upgrades: ["Plasma Projectile Speed", "Cannon Projectile Speed"],
+		upgrades: ["Plasma Velocity", "Cannon Velocity"],
 		items: ["Plasma Ammo", "Health", "Armor", "Cannon Ammo", "Gold"]
 	},
 	{
@@ -459,7 +521,8 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Ying Air",
-		monsters: ["Goblin"]
+		items: ["25% Health", "Extra 10% Health"],
+		monsters: ["Heavy Marine", "Minor Gremlin", "Goblin", "Gnole", "Demon", "Orc", "Troll"]
 	},
 	{
 		name: "Ying Air Core",
@@ -563,15 +626,20 @@ const INPUT_NODES = [
 		trophy: true
 	},
 	{
-		name: "Williston Well",
+		name: "Well",
 		interactables: ["Waypoint", "Pink Ring", "Pink Sphere", "Save"],
-		upgrades: ["Laser Damage", ["Railgun Damage", "Railgun Fire Rate"], ["Dark Hole Damage", "Dark Hole Max Ammo"], "Rocket Max Ammo"],
+		upgrades: [
+			"Laser Damage",
+			["Railgun Damage", "Railgun Fire Rate"],
+			["Dark Hole Damage", "Dark Hole Max Ammo", "Dark Hole Velocity"],
+			"Rocket Max Ammo"
+		],
 		items: ["Rocket Ammo", "Homing Ammo", "Dark Hole Ammo", "Nuke Ammo", "Laser Ammo", "Cannon Ammo", "EMP Ammo", "Railgun Ammo", "Minigun Ammo"]
 	},
 	{
 		name: "Williston Purple Well",
 		interactables: ["Pink Ring", "Pink Sphere"],
-		upgrades: ["Dark Hole Damage", ["Dark Hole Max Ammo", "Dark Hole Projectile Speed"]],
+		upgrades: ["Dark Hole Damage", ["Dark Hole Max Ammo", "Dark Hole Velocity"]],
 		items: [
 			"200% Health 100% Armor",
 			"Rocket Ammo",
@@ -587,7 +655,7 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Zubeneschamali Castle",
-		monsters: ["Collapsed Angel", "Guardian"],
+		monsters: ["Collapsed Spirit", "Guardian"],
 		items: [
 			"Cannon Ammo",
 			"Laser Ammo",
@@ -599,9 +667,9 @@ const INPUT_NODES = [
 			"Nuke Ammo",
 			"Dark Hole Ammo",
 			"Gold",
-			"Key"
+			"20 Second Key"
 		],
-		upgrades: ["Non-Laser Max Ammo", "Nuke Max Ammo", "Nuke Radius", "EMP Radius", "EMP Freeze Time", "Rocket Projectile Speed", "Nuke Damage"],
+		upgrades: ["Non-Laser Max Ammo", "Nuke Max Ammo", "Nuke Radius", "EMP Radius", "EMP Freeze Time", "Rocket Velocity", "Nuke Damage"],
 		interactables: ["Pink Ring", "Waypoint", "Save"],
 		trophy: true
 	},
@@ -645,7 +713,7 @@ const INPUT_NODES = [
 		name: "Demon Cave",
 		monsters: ["Demon"],
 		items: ["Minigun Ammo", "Homing Ammo", "Cannon Ammo", "Rocket Ammo", "EMP Ammo", "Laser Ammo"],
-		upgrades: ["Non-Laser Max Ammo", "Homing Damage", "Homing Projectile Speed"]
+		upgrades: ["Non-Laser Max Ammo", "Homing Damage", "Homing Velocity"]
 	},
 	{
 		name: "Orc Cave",
@@ -653,7 +721,7 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Beholder Cave",
-		upgrades: ["Rocket Projectile Speed", "Homing Projectile Speed", "Nuke Projectile Speed", "Dark Hole Projectile Speed"]
+		upgrades: ["Rocket Velocity", "Homing Velocity", "Nuke Velocity", "Dark Hole Velocity"]
 	},
 	{
 		name: "Black Cube"
@@ -744,7 +812,7 @@ const INPUT_NODES = [
 	},
 	{
 		name: "EMP City",
-		upgrades: ["EMP Radius", "EMP Max Ammo", "EMP Freeze Time", "Nuke Projectile Speed"],
+		upgrades: ["EMP Radius", "EMP Max Ammo", "EMP Freeze Time", "Nuke Velocity"],
 		items: ["Gold"],
 		monsters: ["Spider", "Baby Spider", "Guardian", "Demon", "Fanatic"]
 	},
@@ -752,8 +820,8 @@ const INPUT_NODES = [
 		name: "Weed Ring",
 		interactables: ["Waypoint", "Save"],
 		upgrades: ["EMP Radius", "EMP Max Ammo", "Max Health", "Non-Laser Max Ammo"],
-		monsters: ["Evil Goon", "Unsavory Goon", "Immoral Goon", "Minor Rat", "Lesser Silver", "Disciple", "Mystic"],
-		items: ["Rocket Ammo", "Gold", "Homing Ammo", "Key", "Nuke Ammo", "EMP Ammo", "Railgun Ammo"],
+		monsters: ["Evil Goon", "Unsavory Goon", "Immoral Goon", "Minor Rat", "Lesser Silver", "Disciple", "Mystic", "Pirate", "Hit Man"],
+		items: ["Rocket Ammo", "Gold", "Homing Ammo", "20 Second Key", "Nuke Ammo", "EMP Ammo", "Railgun Ammo"],
 		trophy: true
 	},
 	{
@@ -798,7 +866,7 @@ const INPUT_NODES = [
 			"Non-Laser Max Ammo",
 			"Max Health",
 			"Nuke Radius",
-			"Nuke Projectile Speed",
+			"Nuke Velocity",
 			"Railgun Damage",
 			"Railgun Max Ammo",
 			"Railgun Fire Rate"
@@ -835,7 +903,7 @@ const INPUT_NODES = [
 	{
 		name: "Fanatic Well",
 		items: ["Gold"],
-		upgrades: ["Nuke Projectile Speed", "EMP Freeze Time", "EMP Radius", "Dark Hole Projectile Speed", "Dark Hole Max Ammo"],
+		upgrades: ["Nuke Velocity", "EMP Freeze Time", "EMP Radius", "Dark Hole Velocity", "Dark Hole Max Ammo"],
 		interactables: ["Pink Ring", "Pink Sphere", "Buy Station", "Save", "Waypoint", "In-Only Waypoint"],
 		monsters: ["Yellow Baby Spider", "Insurgent", "Guerrilla"]
 	},
@@ -852,7 +920,7 @@ const INPUT_NODES = [
 	{
 		name: "Spruce Tree",
 		items: ["Rocket Ammo", "EMP Ammo", "Nuke Ammo"],
-		upgrades: ["Rocket Radius", "Rocket Projectile Speed"],
+		upgrades: ["Rocket Radius", "Rocket Velocity"],
 		monsters: ["Troll", "Science Core", "War Vulcan"],
 		interactables: ["Save", "Out-Only Waypoint", "Blue Ring"],
 		secretTrophy: true
@@ -906,8 +974,8 @@ const INPUT_NODES = [
 			"Cannon Ammo",
 			"Plasma Ammo"
 		],
-		upgrades: ["Cannon Fire Rate", "Cannon Projectile Speed", "Plasma Projectile Speed", "Non-Laser Max Ammo"],
-		interactables: ["Pink Sphere", "Save"]
+		upgrades: ["Cannon Fire Rate", "Cannon Velocity", "Plasma Velocity", "Non-Laser Max Ammo"],
+		interactables: ["Pink Sphere", "Save", "Pink Ring"]
 	},
 	{
 		name: "Laboratory Vine",
@@ -1051,7 +1119,7 @@ const INPUT_NODES = [
 		interactables: ["Pink Sphere", "Pink Ring", "Markers"],
 		monsters: ["War Vulcan"],
 		items: ["Minigun Ammo", "Laser Ammo", "Rocket Ammo"],
-		upgrades: [["Rocket Radius", "Rocket Projectile Speed", "Minigun Max Ammo", "Railgun Fire Rate", "Laser Freeze Time"], "Cannon Number"], // TODO: support [[["Rocket Radius", "Rocket Projectile Speed"], "Minigun Max Ammo", "Railgun Fire Rate", "Laser Freeze Time"], "Cannon Number"]
+		upgrades: [["Rocket Radius", "Rocket Velocity", "Minigun Max Ammo", "Railgun Fire Rate", "Laser Freeze Time"], "Cannon Number"], // TODO: support [[["Rocket Radius", "Rocket Velocity"], "Minigun Max Ammo", "Railgun Fire Rate", "Laser Freeze Time"], "Cannon Number"]
 		secretTrophy: true
 	},
 	{
@@ -1100,7 +1168,7 @@ const INPUT_NODES = [
 	{
 		name: "Grey Lattice",
 		items: ["Armor", "Health", "Shield", "Laser Ammo", "Minigun Ammo", "Homing Ammo", "Cannon Ammo", "Rocket Ammo"],
-		upgrades: ["Plasma Projectile Speed", "Non-Laser Max Ammo"]
+		upgrades: ["Plasma Velocity", "Non-Laser Max Ammo"]
 	},
 	{
 		name: "Slow Exit Maze",
@@ -1172,7 +1240,7 @@ const INPUT_NODES = [
 	{
 		name: "Happy Land",
 		items: ["Plasma Ammo"],
-		upgrades: ["Plasma Projectile Speed"],
+		upgrades: ["Plasma Velocity"],
 		interactables: ["Blue Ring"]
 	},
 	{
@@ -1213,14 +1281,14 @@ const INPUT_NODES = [
 		monsters: ["Guerrilla", "Menace", "Vile Menace", "Heavy Marine", "War Vulcan", "Insurgent", "Rebel"],
 		interactables: ["Save"],
 		items: ["Extra 100% Health", "200% Armor", "1000% Armor", "Nuke Ammo", "Railgun Ammo", "EMP Ammo"],
-		upgrades: ["Laser Damage", "Rocket Radius", "EMP Radius", "Dark Hole Projectile Speed", "Railgun Fire Rate"],
+		upgrades: ["Laser Damage", "Rocket Radius", "EMP Radius", "Dark Hole Velocity", "Railgun Fire Rate"],
 		trophy: true
 	},
 	{
 		name: "Health Tower",
 		monsters: ["Goblin", "Dragoon", "Greater Non-Piercing Scourge"],
 		interactables: ["Save"],
-		upgrades: ["Max Health", "Health Regen", "Laser Damage", "Minigun Fire Rate", "Minigun Damage", "Nuke Projectile Speed", "Rocket Projectile Speed"],
+		upgrades: ["Max Health", "Health Regen", "Laser Damage", "Minigun Fire Rate", "Minigun Damage", "Nuke Velocity", "Rocket Velocity"],
 		items: ["Extra 100% Health", "200% Armor", "Minigun Ammo", "Laser Ammo", "Rocket Ammo", "Cannon Ammo", "EMP Ammo", "Railgun Ammo", "Gold"],
 		secretTrophy: true,
 		trophy: true
@@ -1255,7 +1323,7 @@ const INPUT_NODES = [
 	{
 		name: "Buttercup",
 		interactables: ["Save"],
-		upgrades: [["Plasma Regen", "Plasma Damage", "Plasma Max Ammo", "Plasma Projectile Speed", "Health Regen"]],
+		upgrades: [["Plasma Regen", "Plasma Damage", "Plasma Max Ammo", "Plasma Velocity", "Health Regen"]],
 		items: ["Health", "Armor"]
 	},
 	{
@@ -1268,7 +1336,7 @@ const INPUT_NODES = [
 		interactables: ["Pink Ring", "Save", "Pink Sphere"],
 		trophy: true,
 		upgrades: [
-			["Random Health", "Plasma Max Ammo", "Plasma Projectile Speed", "Cannon Max Ammo", "Cannon Damage", "Laser Max Ammo", "Laser Damage"],
+			["Random Health", "Plasma Max Ammo", "Plasma Velocity", "Cannon Max Ammo", "Cannon Damage", "Laser Max Ammo", "Laser Damage"],
 			"Rocket Max Ammo"
 		],
 		items: ["Nuke Ammo", "Minigun Ammo", "Cannon Ammo", "EMP Ammo", "Laser Ammo", "200% Health", "100% Armor", "Gold"]

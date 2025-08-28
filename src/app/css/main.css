@@ -61,10 +61,14 @@ body {
 	border-color: #f901fd;
 	color: #f901fd;
 }
-
-.icon {
+[class^="icon"] {
 	height: 2rem;
 	width: 2rem;
 	object-fit: contain;
 	align-self: center;
+}
+
+.icon-small {
+	height: 1.5rem;
+	width: 1.5rem;
 }

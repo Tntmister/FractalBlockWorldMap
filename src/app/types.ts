@@ -12,6 +12,7 @@ export const imageTypes = [
 	"EMP",
 	"Nuke",
 	"Dark Hole",
+	"Buy",
 	"Health",
 	"100% Health 100% Armor",
 	"200% Health 100% Armor",
@@ -23,15 +24,17 @@ export const imageTypes = [
 	"200% Armor",
 	"600% Armor",
 	"1000% Armor",
-	"10% Health",
 	"25% Health",
 	"100% Health",
 	"200% Health",
+	"Extra 10% Health",
 	"Extra 100% Health"
 ] as const;
-type weaponTypes = "Plasma" | "Cannon" | "Laser" | "Rocket" | "Homing" | "Minigun" | "Railgun" | "EMP" | "Nuke" | "Dark Hole";
-type weaponUpgrades = "Max Ammo" | "Regen" | "Fire Rate" | "Damage" | "Projectile Speed" | "Radius" | "Freeze Time" | "Number" | "Weapon Mod";
-type healthItems =
+export const weaponTypes = ["Plasma", "Cannon", "Laser", "Rocket", "Homing", "Minigun", "Railgun", "EMP", "Nuke", "Dark Hole"] as const;
+type weaponTypes = (typeof weaponTypes)[number];
+export const weaponUpgrades = ["Max Ammo", "Regen", "Fire Rate", "Damage", "Velocity", "Radius", "Freeze Time", "Number", "Weapon Mod"] as const;
+type weaponUpgrades = (typeof weaponUpgrades)[number];
+type defenceItems =
 	| "5% Armor"
 	| "10% Armor"
 	| "100% Armor"
@@ -39,16 +42,17 @@ type healthItems =
 	| "200% Armor"
 	| "600% Armor"
 	| "1000% Armor"
-	| "10% Health"
 	| "25% Health"
 	| "100% Health"
 	| "200% Health"
+	| "Extra 10% Health"
 	| "Extra 100% Health"
 	| "100% Health 100% Armor"
 	| "200% Health 100% Armor"
 	| "200% Health 200% Armor";
+type keys = "20 Second Key" | "40 Second Key" | "Key";
 type defenceUpgrades = "Max Health" | "Health Regen" | "Armor Regen" | "RejuvenX" | "Random Health";
-type items = `${weaponTypes} Ammo` | healthItems | "Gold" | "EXP" | "Key" | "Shield" | "Health" | "Armor"; // | "Health" | "Armor" temporary until upgrades everywhere are specified
+type items = `${weaponTypes} Ammo` | defenceItems | "Gold" | "EXP" | keys | "Shield" | "Health" | "Armor"; // | "Health" | "Armor" temporary until upgrades everywhere are specified
 
 export type upgrades = `${weaponTypes} ${weaponUpgrades}` | `Non-${weaponTypes} ${weaponUpgrades}` | defenceUpgrades | "Telekinesis" | weaponTypes | "Health"; // | weaponTypes | "Health" temporary until upgrades everywhere are specified
 

@@ -15,7 +15,27 @@ const inputEdges: InputEdges = {
 		"Tutorial 1": {
 			distance: 0
 		},
+		"EMERGENCY": {
+			distance: 0
+		},
+		"Safety Doppelganger": {
+			distance: 0,
+			note: "Non-Original Tutorial"
+		}
+	},
+	"EMERGENCY": {
 		"Stable Singletons": {
+			distance: 0
+		},
+		"Tau Cave Moon": {
+			distance: 5
+		},
+		"Fire Rate Moon": {
+			distance: 5
+		}
+	},
+	"Safety Doppelganger": {
+		"Infinity Flower": {
 			distance: 0
 		}
 	},
@@ -72,13 +92,55 @@ const inputEdges: InputEdges = {
 			note: "Depth 12+, hanging from branches"
 		},
 		"Unremembered Tower": {
-			distance: 20,
-			note: "Depth ?+"
+			distance: 25,
+			note: "Depth 31+"
+		},
+		"Ying Forest Depth 50+": {
+			distance: 30
+		}
+	},
+	"Ying Forest Depth 50+": {
+		"Ying Air": {
+			distance: 0
+		},
+		"Small Noob Flower": {
+			distance: 0
+		},
+		"Small Yellow Flower": {
+			distance: 0
+		},
+		"Small Black Flower": {
+			distance: 0
+		},
+		"Quicksand Grass": {
+			distance: 0,
+			note: "Save Points"
+		},
+		"Menace Hive": {
+			distance: 0,
+			note: "Hanging from branches"
+		},
+		"Unremembered Tower": {
+			distance: 0
+		},
+		"Buttercup": {
+			distance: 0
 		}
 	},
 	"Unremembered Tower": {
 		"Mossy Basement": {
-			distance: Infinity
+			distance: 15
+		},
+		"Well": {
+			distance: 30,
+			note: "Floor 4"
+		},
+		"Tweedle-Dum Air": {
+			distance: 30,
+			note: "50% Chance"
+		},
+		"Spider Air": {
+			distance: 30
 		}
 	},
 	"Small Black Flower": {
@@ -285,11 +347,6 @@ const inputEdges: InputEdges = {
 		}
 	},
 	"Spider Air": {
-		"Baby Spider Air": {
-			distance: 10
-		}
-	},
-	"Baby Spider Air": {
 		"Orange": {
 			distance: 20,
 			note: "x7"
@@ -452,6 +509,12 @@ const inputEdges: InputEdges = {
 		},
 		"Ying Air": {
 			distance: 0
+		},
+		"Ying Flower": {
+			distance: 0
+		},
+		"Small Yellow Flower": {
+			distance: 0
 		}
 	},
 	"I1": {
@@ -589,7 +652,7 @@ const inputEdges: InputEdges = {
 		"Williston Trees": {
 			distance: 5
 		},
-		"Williston Well": {
+		"Well": {
 			distance: 0
 		},
 		"Williston Purple Well": {
@@ -802,6 +865,12 @@ const inputEdges: InputEdges = {
 			note: "On floor"
 		},
 		"Laboratory Vine": {
+			distance: 5
+		},
+		"Small White Flower": {
+			distance: 5
+		},
+		"Scorpius Flower": {
 			distance: 5
 		}
 	},
@@ -1140,7 +1209,7 @@ const inputEdges: InputEdges = {
 			distance: 5
 		}
 	},
-	"Williston Well": {
+	"Well": {
 		"Red Rose": {
 			distance: 5
 		},
@@ -2134,6 +2203,9 @@ const inputEdges: InputEdges = {
 		},
 		"Yellow Flower City": {
 			distance: 10
+		},
+		"Small Yellow Flower Secret": {
+			distance: 40
 		}
 	},
 	"Yellow Flower City": {

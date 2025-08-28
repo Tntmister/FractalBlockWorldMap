@@ -100,10 +100,10 @@
 .edgeTooltip {
 	visibility: hidden;
 	position: absolute;
-	max-height: 40vh;
+	max-height: 30vh;
 	width: auto;
-	top: 0;
-	left: 0;
+	top: 100vh;
+	left: 100;
 }
 
 .edge:hover > .edgeTooltip,

@@ -1,7 +1,8 @@
-import { Node, Edge, imageTypes } from "../types";
+import { Node, Edge, imageTypes, weaponUpgrades } from "../types";
 import Image from "./Image";
 import "../css/nodeInfo.css";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
+import { Mutable } from "next/dist/client/components/router-reducer/router-reducer-types";
 
 interface NodeInfoProps {
 	node: Node;
@@ -9,6 +10,42 @@ interface NodeInfoProps {
 }
 
 export default function NodeInfo({ node, onEdgeClick }: NodeInfoProps) {
+	useEffect(() => {
+		for (const tooltip of document.getElementsByClassName(
+			"edgeTooltip"
+		) as HTMLCollectionOf<HTMLImageElement>) {
+			tooltip.style.visibility = "hidden";
+		}
+		const tooltipListener = (e: MouseEvent) => {
+			const tooltip = document.querySelector<HTMLElement>(".edge:hover");
+			if (tooltip) {
+				const tooltipImage = tooltip.children[0] as HTMLImageElement;
+				if (tooltipImage?.complete && tooltipImage?.offsetWidth) {
+					tooltipImage.style.left = e.clientX - tooltipImage.offsetWidth - 5 + "px";
+					tooltipImage.style.top = e.clientY - tooltipImage.offsetHeight - 5 + "px";
+				}
+			}
+		};
+		const tooltipTimeout = setTimeout(() => {
+			for (const tooltip of document.getElementsByClassName(
+				"edgeTooltip"
+			) as HTMLCollectionOf<HTMLImageElement>) {
+				console.log(tooltip);
+				tooltip.style.visibility = "";
+			}
+			window.addEventListener("mousemove", tooltipListener);
+		}, 250);
+		return () => {
+			for (const tooltip of document.getElementsByClassName(
+				"edgeTooltip"
+			) as HTMLCollectionOf<HTMLImageElement>) {
+				tooltip.style.visibility = "";
+			}
+			window.clearTimeout(tooltipTimeout);
+			window.removeEventListener("mousemove", tooltipListener);
+		};
+	}, [node]);
+
 	return (
 		<div id='nodeContainer'>
 			<div id='nodeInfoContainer'>
@@ -38,8 +75,8 @@ export default function NodeInfo({ node, onEdgeClick }: NodeInfoProps) {
 							node.interactables.map((interactable) => (
 								<div key={interactable}>
 									<Image
-										className='icon'
-										src={`./images/icons/${interactable}.webp`}
+										className='icon-small'
+										src={`./images/icons/${imageTypes.filter((weaponType) => interactable.includes(weaponType))[0] ?? interactable}.webp`}
 									/>
 									{interactable}
 								</div>
@@ -55,10 +92,15 @@ export default function NodeInfo({ node, onEdgeClick }: NodeInfoProps) {
 										<>
 											(
 											<Image
-												className='icon'
+												className='icon-small'
 												src={`./images/icons/${imageTypes.filter((weaponType) => monster.drop!.includes(weaponType))[0] ?? monster.drop}.webp`}
 											/>
-											<div>{monster.drop}</div>)
+											<div>
+												{[...weaponUpgrades, "Ammo"].filter((dropType) =>
+													monster.drop!.includes(dropType)
+												)[0] ?? monster.drop}
+											</div>
+											)
 										</>
 									)}
 								</div>
@@ -67,48 +109,42 @@ export default function NodeInfo({ node, onEdgeClick }: NodeInfoProps) {
 					<div className='nodeInfo'>
 						<div>Items</div>
 						{node.items.length > 0 &&
-							node.items.map((item) => {
-								console.log(item);
-								return (
-									<div key={item}>
-										<Image
-											className='icon'
-											src={`./images/icons/${(imageTypes.filter((weaponType) => item.includes(weaponType))[0] ?? item).replaceAll("%", "%25")}.webp`}
-										/>
-										{item}
-									</div>
-								);
-							})}
+							node.items.map((item) => (
+								<div key={item}>
+									<Image
+										className='icon-small'
+										src={`./images/icons/${(imageTypes.filter((weaponType) => item == weaponType)[0] ?? imageTypes.filter((weaponType) => item.includes(weaponType))[0] ?? item).replaceAll("%", "%25")}.webp`}
+									/>
+									{item.includes("Ammo") ? "Ammo" : item}
+								</div>
+							))}
 					</div>
 					<div className='nodeInfo'>
 						<div>Upgrades</div>
 						{node.upgrades.length > 0 &&
-							node.upgrades.map((upgrade) =>
-								Array.isArray(upgrade) ? (
-									<div key={upgrade.join("")}>
-										{upgrade.map((u, index) => (
-											<Fragment key={`${upgrade.join("")}|${u}`}>
-												{!!index && " or "}
+							node.upgrades.map((upgrade) => {
+								const upgradeAux = Array.isArray(upgrade) ? upgrade : [upgrade];
+								return (
+									<div key={upgradeAux.join("")}>
+										{upgradeAux.map((upgrade, index) => (
+											<Fragment key={`${upgradeAux.join("")}|${upgrade}`}>
+												{!!index && "/"}
 												<Image
-													className='icon'
-													src={`./images/icons/${imageTypes.filter((weaponType) => u.includes(weaponType))[0] ?? u}.webp`}
+													className='icon-small'
+													src={`./images/icons/${
+														imageTypes.filter((weaponType) =>
+															upgrade.includes(weaponType)
+														)[0] ?? upgrade
+													}.webp`}
 												/>
-												{u}
+												{weaponUpgrades.filter((weaponUpgrade) =>
+													upgrade.includes(weaponUpgrade)
+												)[0] ?? upgrade}
 											</Fragment>
 										))}
 									</div>
-								) : (
-									<div key={upgrade}>
-										{!upgrade.includes("Non-") && (
-											<Image
-												className='icon'
-												src={`./images/icons/${imageTypes.filter((weaponType) => upgrade.includes(weaponType))[0] ?? upgrade}.webp`}
-											/>
-										)}
-										{upgrade}
-									</div>
-								)
-							)}
+								);
+							})}
 					</div>
 				</div>
 			</div>

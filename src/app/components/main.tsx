@@ -29,10 +29,11 @@ for (const [fromName, edge] of Object.entries(inputEdges)) {
 	for (const [toName, edgeInfo] of Object.entries(edge)) {
 		const fromNode = nodes.get(fromName as nodeNames)!;
 		const toNode = nodes.get(toName as nodeNames)!;
-		fromNode.edges.push({
-			node: toNode,
-			...edgeInfo
-		});
+		if (fromNode && toNode)
+			fromNode.edges.push({
+				node: toNode,
+				...edgeInfo
+			});
 	}
 }
 
@@ -173,21 +174,6 @@ export default function Main() {
 	useEffect(() => {
 		const path = document.getElementsByClassName("pathNode");
 		path[path.length - 1].scrollIntoView();
-
-		const tooltipListener = (e: MouseEvent) => {
-			const tooltip = document.querySelector<HTMLElement>(".edge:hover");
-			if (tooltip) {
-				const tooltipImage = tooltip.children[0] as HTMLImageElement;
-				if (tooltipImage?.complete && tooltipImage?.offsetWidth) {
-					tooltipImage.style.left = e.clientX - tooltipImage.offsetWidth - 5 + "px";
-					tooltipImage.style.top = e.clientY - tooltipImage.offsetHeight - 5 + "px";
-				}
-			}
-		};
-		window.addEventListener("mousemove", tooltipListener);
-		return () => {
-			window.removeEventListener("mousemove", tooltipListener);
-		};
 	}, [pathStack]);
 
 	return (
