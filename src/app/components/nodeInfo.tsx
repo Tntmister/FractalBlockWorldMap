@@ -174,7 +174,6 @@ export default function NodeInfo({ node, onEdgeClick }: NodeInfoProps) {
 									<Image
 										className='edgeTooltip'
 										src={`./images/edges/${node.name} - ${edge.node.name}.jpg`}
-										fallbackSrc={edge.node.images?.[0]?.src}
 										alt=''
 									/>
 								</span>

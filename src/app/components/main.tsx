@@ -17,11 +17,10 @@ for (const node of inputNodes) {
 		upgrades: node.upgrades?.toSorted() ?? [],
 		items: node.items?.toSorted() ?? [],
 		noEscape: node.noEscape ?? false,
-		images: node.images ?? [],
 		trophy: node.trophy ?? false,
 		secretTrophy: node.secretTrophy ?? false,
 		monsters: monsters.filter((monster) => node.monsters?.includes(monster.name)).toSorted(),
-		edges: []
+		edges: [],
 	});
 }
 // initialialize edges from input.ts
@@ -32,7 +31,7 @@ for (const [fromName, edge] of Object.entries(inputEdges)) {
 		if (fromNode && toNode)
 			fromNode.edges.push({
 				node: toNode,
-				...edgeInfo
+				...edgeInfo,
 			});
 	}
 }
@@ -53,7 +52,7 @@ const startingPath: nodeNames[] = [
 	"Tutorial Island",
 	"Tutorial Chambers",
 	"Tutorial 2",
-	"Tutorial 1"
+	"Tutorial 1",
 ];
 
 export default function Main() {
@@ -61,8 +60,8 @@ export default function Main() {
 	let [pathStack, setPathStack] = useState<Node["edges"]>([
 		{
 			node: nodes.get(startingPath[0])!,
-			distance: 0
-		}
+			distance: 0,
+		},
 	]);
 
 	function currentNode() {
@@ -80,7 +79,7 @@ export default function Main() {
 			if (edge.up)
 				pathStackAux = pathStackAux.slice(
 					0,
-					pathStackAux.findLastIndex((edge2) => edge.node.name == edge2.node.name)
+					pathStackAux.findLastIndex((edge2) => edge.node.name == edge2.node.name),
 				);
 			else pathStackAux.push(edge);
 		}
@@ -104,15 +103,15 @@ export default function Main() {
 				.forEach((node) =>
 					distancesToStart.set(
 						node,
-						node.name === currentPathStack.at(-1)!.node.name ? 0 : Infinity
-					)
+						node.name === currentPathStack.at(-1)!.node.name ? 0 : Infinity,
+					),
 				);
 			while (distancesToStart.size) {
 				// get the node with the smallest distance to start
 				const [currentNode, currentDistance] = distancesToStart
 					.entries()
 					.reduce((previousValue, currentValue) =>
-						previousValue[1] < currentValue[1] ? previousValue : currentValue
+						previousValue[1] < currentValue[1] ? previousValue : currentValue,
 					);
 				// remove from unvisited set and add to visited set
 				distancesToStart.delete(currentNode);
@@ -126,7 +125,7 @@ export default function Main() {
 					) {
 						distancesToStart.set(
 							edge.node,
-							prioritizeNumberOfNodes ? 1 : edge.distance + currentDistance
+							prioritizeNumberOfNodes ? 1 : edge.distance + currentDistance,
 						);
 						predecessors.set(edge.node, currentNode); // set predecessor node (for backtracking to create path)
 					}
@@ -136,7 +135,7 @@ export default function Main() {
 			const path: Edge[] = [];
 			for (let node = targetNode; predecessors.get(node); node = predecessors.get(node)!) {
 				path.unshift(
-					predecessors.get(node)!.edges.find((edge) => edge.node.name == node.name)!
+					predecessors.get(node)!.edges.find((edge) => edge.node.name == node.name)!,
 				);
 			}
 			return path;
@@ -150,7 +149,7 @@ export default function Main() {
 					.toReversed()
 					.slice(0, i)
 					.map((edge) => ({ ...edge, up: true })),
-				...pathfindToAux(targetNode, pathStack.slice(0, pathStack.length - i))
+				...pathfindToAux(targetNode, pathStack.slice(0, pathStack.length - i)),
 			];
 			// if theres no path to target node, the resulting pathStacks's last element won't be the target node
 			if (getTraversedPath(path).at(-1)?.node.name === targetNode.name) list.push(path);
@@ -159,7 +158,7 @@ export default function Main() {
 		return list.sort(
 			(a, b) =>
 				a.reduce((acc, edge) => acc + edge.distance, 0) -
-				b.reduce((acc, edge) => acc + edge.distance, 0)
+				b.reduce((acc, edge) => acc + edge.distance, 0),
 		)[0];
 	}
 
@@ -173,8 +172,8 @@ export default function Main() {
 					(nodeName, index) =>
 						nodes
 							.get(startingPath[index])!
-							.edges.find((edge) => edge.node.name == nodeName)!
-				)
+							.edges.find((edge) => edge.node.name == nodeName)!,
+				),
 		]);
 	}, []);
 
@@ -214,14 +213,14 @@ export default function Main() {
 										path
 											.slice(index + 1, path.length)
 											.toReversed()
-											.map((edge) => ({ ...edge, up: true }))
+											.map((edge) => ({ ...edge, up: true })),
 									)
 								}
 							>
 								{currentNode().interactables?.includes("Pink Ring") &&
 									index ==
 										pathStack.findLastIndex((edge) =>
-											edge.node.interactables?.includes("Pink Sphere")
+											edge.node.interactables?.includes("Pink Sphere"),
 										) && (
 										<Image
 											className='icon'

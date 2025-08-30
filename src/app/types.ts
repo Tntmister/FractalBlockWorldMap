@@ -130,10 +130,6 @@ export type InputNode = {
 	items?: items[]; // possible items
 	interactables?: interactables[];
 	noEscape?: boolean; // if there is no way to grow out of this node
-	images?: {
-		src: string;
-		info: string;
-	}[];
 	trophy?: boolean;
 	secretTrophy?: boolean | 2 | 3; // some locations have more than 1 secret trophy
 };
@@ -161,7 +157,6 @@ export type Node = {
 	items: NonNullable<InputNode["items"]>;
 	interactables: NonNullable<InputNode["interactables"]>;
 	noEscape: NonNullable<InputNode["noEscape"]>;
-	images: NonNullable<InputNode["images"]>;
 	trophy: NonNullable<InputNode["trophy"]>;
 	secretTrophy: NonNullable<InputNode["secretTrophy"]>;
 	monsters: monster[];
