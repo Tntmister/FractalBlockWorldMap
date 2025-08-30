@@ -1,7 +1,8 @@
-import { Node, Edge, imageTypes, weaponUpgrades } from "../types";
+import { Node, Edge, weaponUpgrades, defenceItems, weaponTypes, defenceUpgrades } from "../types";
 import Image from "./Image";
 import "../css/nodeInfo.css";
 import { Fragment, useEffect } from "react";
+import { labels } from "../input/labelMap";
 
 interface NodeInfoProps {
 	node: Node;
@@ -29,7 +30,6 @@ export default function NodeInfo({ node, onEdgeClick }: NodeInfoProps) {
 			for (const tooltip of document.getElementsByClassName(
 				"edgeTooltip",
 			) as HTMLCollectionOf<HTMLImageElement>) {
-				console.log(tooltip);
 				tooltip.style.visibility = "";
 			}
 			window.addEventListener("mousemove", tooltipListener);
@@ -75,7 +75,7 @@ export default function NodeInfo({ node, onEdgeClick }: NodeInfoProps) {
 								<div key={interactable}>
 									<Image
 										className='icon-small'
-										src={`./images/icons/${imageTypes.filter((weaponType) => interactable.includes(weaponType))[0] ?? interactable}.webp`}
+										src={`./images/icons/${interactable}.webp`}
 									/>
 									{interactable}
 								</div>
@@ -92,12 +92,11 @@ export default function NodeInfo({ node, onEdgeClick }: NodeInfoProps) {
 											(
 											<Image
 												className='icon-small'
-												src={`./images/icons/${imageTypes.filter((weaponType) => monster.drop!.includes(weaponType))[0] ?? monster.drop}.webp`}
+												src={`./images/icons/${labels.get(monster.drop)?.imageName ?? monster.drop}.webp`}
 											/>
 											<div>
-												{[...weaponUpgrades, "Ammo"].filter((dropType) =>
-													monster.drop!.includes(dropType),
-												)[0] ?? monster.drop}
+												{labels.get(monster.drop)?.imageName ??
+													monster.drop}
 											</div>
 											)
 										</>
@@ -112,7 +111,7 @@ export default function NodeInfo({ node, onEdgeClick }: NodeInfoProps) {
 								<div key={item}>
 									<Image
 										className='icon-small'
-										src={`./images/icons/${(imageTypes.filter((weaponType) => item == weaponType)[0] ?? imageTypes.filter((weaponType) => item.includes(weaponType))[0] ?? item).replaceAll("%", "%25")}.webp`}
+										src={`./images/icons/${labels.get(item)?.imageName ?? item}.webp`}
 									/>
 									{item.includes("Ammo") ? "Ammo" : item}
 								</div>
@@ -131,14 +130,10 @@ export default function NodeInfo({ node, onEdgeClick }: NodeInfoProps) {
 												<Image
 													className='icon-small'
 													src={`./images/icons/${
-														imageTypes.filter((weaponType) =>
-															upgrade.includes(weaponType),
-														)[0] ?? upgrade
+														labels.get(upgrade)?.imageName ?? upgrade
 													}.webp`}
 												/>
-												{weaponUpgrades.filter((weaponUpgrade) =>
-													upgrade.includes(weaponUpgrade),
-												)[0] ?? upgrade}
+												{labels.get(upgrade)?.label ?? upgrade}
 											</Fragment>
 										))}
 									</div>

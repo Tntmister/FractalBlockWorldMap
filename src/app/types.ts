@@ -1,40 +1,71 @@
 import { monsters } from "./input/monsters";
 import { inputNodes, nodeNames } from "./input/nodes";
 
-export const imageTypes = [
-	"Plasma",
-	"Cannon",
-	"Laser",
-	"Rocket",
-	"Homing",
-	"Minigun",
-	"Railgun",
-	"EMP",
-	"Nuke",
-	"Dark Hole",
-	"Buy",
-	"Health",
-	"100% Health 100% Armor",
-	"200% Health 100% Armor",
-	"200% Health 200% Armor",
-	"5% Armor",
-	"10% Armor",
-	"100% Armor",
-	"150% Armor",
-	"200% Armor",
-	"600% Armor",
-	"1000% Armor",
-	"25% Health",
-	"100% Health",
-	"200% Health",
-	"Extra 10% Health",
-	"Extra 100% Health",
-] as const;
-export const weaponTypes = ["Plasma", "Cannon", "Laser", "Rocket", "Homing", "Minigun", "Railgun", "EMP", "Nuke", "Dark Hole"] as const;
-type weaponTypes = (typeof weaponTypes)[number];
-export const weaponUpgrades = ["Max Ammo", "Regen", "Fire Rate", "Damage", "Velocity", "Radius", "Freeze Time", "Number", "Weapon Mod"] as const;
-type weaponUpgrades = (typeof weaponUpgrades)[number];
-type defenceItems =
+export type weaponTypes = "Plasma" | "Cannon" | "Laser" | "Rocket" | "Homing" | "Minigun" | "Railgun" | "EMP" | "Nuke" | "Dark Hole";
+
+type weaponUpgradeTypes = "Max Ammo" | "Regen" | "Fire Rate" | "Damage" | "Velocity" | "Radius" | "Freeze Time" | "Count";
+
+export type weaponUpgrades =
+	| "Plasma Max Ammo"
+	| "Plasma Regen"
+	| "Plasma Fire Rate"
+	| "Plasma Damage"
+	| "Plasma Velocity"
+	| "Plasma Shotgun Weapon Mod"
+	| "Plasma Hyper Rapid Fire Weapon Mod"
+	| "Plasma Lightning Rifle Weapon Mod"
+	| "Plasma Flair Weapon Mod"
+	| "Cannon Max Ammo"
+	| "Cannon Fire Rate"
+	| "Cannon Damage"
+	| "Cannon Velocity"
+	| "Cannon Num Shots"
+	| "Cannon Tommy Gun Weapon Mod"
+	| "Laser Max Ammo"
+	| "Laser Damage"
+	| "Laser Freeze Time"
+	| "Laser Super Damage"
+	| "Laser Freeze Ray Weapon Mod"
+	| "Rocket Max Ammo"
+	| "Rocket Fire Rate"
+	| "Rocket Damage"
+	| "Rocket Velocity"
+	| "Rocket Radius"
+	| "Rocket High Velocity Weapon Mod"
+	| "Rocket Big Radius Weapon Mod"
+	| "Rocket Progressive Weapon Mod"
+	| "Homing Max Ammo"
+	| "Homing Fire Rate"
+	| "Homing Damage"
+	| "Homing Velocity"
+	| "Minigun Max Ammo"
+	| "Minigun Fire Rate"
+	| "Minigun Damage"
+	| "Minigun Velocity"
+	| "Minigun Super"
+	| "Railgun Max Ammo"
+	| "Railgun Fire Rate"
+	| "Railgun Damage"
+	| "Railgun Rapid Weapon Mod"
+	| "Railgun Super Vampire Weapon Mod"
+	| "EMP Max Ammo"
+	| "EMP Damage"
+	| "EMP Radius"
+	| "EMP Freeze Time"
+	| "Nuke Max Ammo"
+	| "Nuke Damage"
+	| "Nuke Velocity"
+	| "Nuke Radius"
+	| "Nuke Propulsion Weapon Mod"
+	| "Dark Hole Max Ammo"
+	| "Dark Hole Damage"
+	| "Dark Hole Velocity"
+	| "Dark Hole Drive Weapon Mod";
+
+export type defenceItems =
+	| "100% Health 100% Armor"
+	| "200% Health 100% Armor"
+	| "200% Health 200% Armor"
 	| "5% Armor"
 	| "10% Armor"
 	| "100% Armor"
@@ -47,15 +78,22 @@ type defenceItems =
 	| "200% Health"
 	| "Extra 10% Health"
 	| "Extra 100% Health"
-	| "100% Health 100% Armor"
-	| "200% Health 100% Armor"
-	| "200% Health 200% Armor";
-export const keys = ["Yellow Key", "Buy Blue Key", "Blue Key", "Green Key", "Stable Singletons Key", "Laser Genesis Key", "Universe Key"] as const;
-type keyPickups = (typeof keys)[number] | `${number} Second Yellow Key` | `${"I1" | "I2" | "I3" | "Burlington" | "Hell"} Stable Singletons Key`;
-type defenceUpgrades = "Max Health" | "Health Regen" | "Armor Regen" | "RejuvenX" | "Random Health";
-type items = `${weaponTypes} Ammo` | defenceItems | "Gold" | "EXP" | keyPickups | "Shield" | "Health" | "Armor"; // | "Health" | "Armor" temporary until upgrades everywhere are specified
+	| "Shield";
 
-export type upgrades = `${weaponTypes} ${weaponUpgrades}` | `Non-${weaponTypes} ${weaponUpgrades}` | defenceUpgrades | "Telekinesis" | weaponTypes | "Health"; // | weaponTypes | "Health" temporary until upgrades everywhere are specified
+type keyTypes =
+	| "Yellow Key"
+	| `${number} Second Yellow Key`
+	| "Blue Key"
+	| "Green Key"
+	| "Laser Genesis Key"
+	| "Universe Key"
+	| `${"I1" | "I2" | "I3" | "Burlington" | "Hell"} Stable Singletons Key`;
+
+export type defenceUpgrades = "Random Health" | "Max Health" | "Health Regen" | "Armor Regen" | "RejuvenX";
+
+export type items = `${weaponTypes} Ammo` | defenceItems | "Gold" | "EXP" | keyTypes | "Health" | "Armor"; // | "Health" | "Armor" temporary
+
+export type upgrades = weaponUpgrades | `Non-${weaponTypes} ${weaponUpgradeTypes}` | defenceUpgrades | "Telekinesis" | weaponTypes | "Health"; // | weaponTypes | "Health" temporary
 
 export type interactables =
 	| "Sleep"
@@ -103,7 +141,7 @@ export type InputNode = {
 type edgeInfo = {
 	distance: number; // how hard is it to traverse to ingame (enemy difficulty/time)
 	note?: string; // specifc method to enter
-	requiresKey?: (typeof keys)[number];
+	requiresKey?: keyTypes;
 	up?: boolean; // used for pathfinding
 };
 

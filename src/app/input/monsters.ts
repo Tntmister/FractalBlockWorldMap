@@ -219,23 +219,23 @@ export const monsters = [
 	},
 	{
 		name: "Collapsed Spirit",
-		drop: "Health",
+		drop: "Extra 100% Health",
 	},
 	{
 		name: "Collapsed Angel",
-		drop: "Health",
+		drop: "Extra 100% Health",
 	},
 	{
 		name: "Collapsed Archangel",
-		drop: "Health",
+		drop: "Extra 100% Health",
 	},
 	{
 		name: "Collapsed Soul",
-		drop: "Health",
+		drop: "Extra 100% Health",
 	},
 	{
 		name: "Collapsed Star",
-		drop: "Health",
+		drop: "Extra 100% Health",
 	},
 	{
 		name: "Goblin",

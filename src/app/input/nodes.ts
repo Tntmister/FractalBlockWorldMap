@@ -3,7 +3,7 @@ import { InputNode } from "../types";
 const INPUT_NODES = [
 	{
 		name: "Ying Forest",
-		upgrades: ["Cannon Damage", "Plasma Damage", "Max Health"],
+		upgrades: ["Cannon Damage", "Plasma Damage", "Random Health"],
 		interactables: ["Waypoint", "Save", "Respawn", "Bookmark", "Out-Only Waypoint"],
 	},
 	{
@@ -99,7 +99,7 @@ const INPUT_NODES = [
 			"Cannon Fire Rate",
 			"Cannon Damage",
 			"Cannon Velocity",
-			"Cannon Count",
+			"Cannon Num Shots",
 			"Nuke Velocity",
 			"Nuke Radius",
 			"Plasma Damage",
@@ -210,29 +210,42 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Ying Cave Island",
+		interactables: ["Waypoint", "Out-Only Waypoint", "Waypoint", "Save"],
 	},
 	{
 		name: "Ying Cave Island Layer 1",
-		upgrades: ["Cannon", "Plasma"],
+		upgrades: [["Cannon Damage", "Plasma Damage"]],
+		items: ["150% Armor", "100% Health", "Gold", "Cannon Ammo"],
+		interactables: ["Save", "Pink Ring"],
+		trophy: true,
 	},
 	{
 		name: "Ying Cave Island Layer 2",
+		monsters: ["Gnole", "Heavy Marine"],
+		items: ["200% Health 200% Armor", "5% Armor", "25% Health", "Cannon Ammo"],
+		interactables: ["Save", "Pink Ring"],
+		trophy: true,
 	},
 	{
 		name: "Ying Cave Island Layer 3",
-		items: ["Armor"],
-		upgrades: ["Laser"],
+		monsters: ["Menace", "Marine"],
+		items: ["10% Armor", "25% Health", "Cannon Ammo", "Gold"],
+		interactables: ["Save", "Pink Ring"],
+		trophy: true,
 	},
 	{
 		name: "Ying Cave Island Layer 4",
-		upgrades: ["Health", "Minigun"],
+		upgrades: ["Random Health", "Laser Damage"],
+		items: ["Laser Ammo", "Gold"],
+		interactables: ["Save", "Pink Ring"],
+		trophy: true,
 	},
 	{
 		name: "Spider Air",
 		interactables: ["Save", "Buy Station", "Pink Ring", "Waypoint", "Out-Only Waypoint"],
 		monsters: ["Baby Spider", "Marine", "Minor Gremlin"],
 		upgrades: ["Railgun Damage", "Minigun Damage"],
-		items: ["Rocket Ammo", "Railgun Ammo"],
+		items: ["Rocket Ammo", "Railgun Ammo", "Laser Ammo", "25% Health"],
 		secretTrophy: true,
 	},
 	{
@@ -269,8 +282,8 @@ const INPUT_NODES = [
 		name: "Huntington",
 		trophy: true,
 		interactables: ["Pink Ring", "Save", "Scarce Sell Station", "Buy Station", "Markers", "Waypoint", "Respawn"],
-		items: ["Gold", "Armor"],
-		upgrades: ["Health", "Telekinesis", "RejuvenX", "Railgun", "Nuke", "EMP", "Cannon Weapon Mod"],
+		items: ["Gold", "100% Armor"],
+		upgrades: ["Health", "Telekinesis", "RejuvenX", "Railgun", "Nuke", "EMP", "Cannon Tommy Gun Weapon Mod"],
 	},
 	{
 		name: "Camel's Hump",
@@ -349,12 +362,15 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Menace Hive",
-		items: ["Health"],
-		upgrades: ["Minigun", "Rocket", "Cannon"],
+		monsters: ["Heavy Marine", "Menace", "Arch Menace Female"],
+		items: ["Extra 100% Health", "200% Armor"],
+		upgrades: ["Minigun Fire Rate", "Rocket Radius", "Cannon Num Shots", ["Rocket Max Ammo", "Rocket Velocity"]],
+		interactables: ["Pink Ring", "Pink Sphere"],
 	},
 	{
 		name: "Tau Cave Flower",
-		upgrades: ["Rocket", "Laser", "Health", "Railgun"],
+		interactables: ["Save", "Pink Sphere"],
+		upgrades: ["Rocket", "Laser", "Random Health", "Railgun"],
 	},
 	{
 		name: "Oak Tree",
@@ -439,7 +455,7 @@ const INPUT_NODES = [
 	{
 		name: "Tweedle Haunted House 2",
 		interactables: ["Pink Ring", "Waypoint", "Out-Only Waypoint", "Bookmark", "Save"],
-		upgrades: ["Plasma Velocity", "Rocket Max Ammo", "Plasma Weapon Mod"],
+		upgrades: ["Plasma Velocity", "Rocket Max Ammo", "Plasma Flair Weapon Mod"],
 		items: ["Gold", "Plasma Ammo"],
 		secretTrophy: true,
 	},
@@ -625,7 +641,7 @@ const INPUT_NODES = [
 	{
 		name: "Large Noob Maze",
 		interactables: ["Pink Sphere"],
-		upgrades: ["Plasma Regen", "Cannon Damage", "Cannon Count"],
+		upgrades: ["Plasma Regen", "Cannon Damage", "Cannon Num Shots"],
 		items: ["1000% Armor", "200% Health"],
 		secretTrophy: true,
 	},
@@ -860,7 +876,7 @@ const INPUT_NODES = [
 	{
 		name: "Golden Yellow Flower",
 		interactables: ["Save", "Pink Ring"],
-		upgrades: ["Rocket", "Rocket Weapon Mod"],
+		upgrades: ["Rocket", "Rocket High Velocity Weapon Mod"],
 		items: ["Rocket Ammo", "Minigun Ammo", "EMP Ammo", "Dark Hole Ammo", "Nuke Ammo", "Laser Ammo", "Cannon Ammo", "Gold"],
 	},
 	{
@@ -1175,9 +1191,9 @@ const INPUT_NODES = [
 		],
 		interactables: ["Waypoint", "Out-Only Waypoint", "Markers", "Buy Station", "Common Sell Station", "Scarce Sell Station", "Blue Ring"],
 		upgrades: [
-			"Cannon Weapon Mod",
+			"Cannon Tommy Gun Weapon Mod",
 			"Cannon Fire Rate",
-			"Cannon Count",
+			"Cannon Num Shots",
 			"Cannon Velocity",
 			"Cannon Damage",
 			"Homing Max Ammo",
@@ -1486,7 +1502,7 @@ const INPUT_NODES = [
 	{
 		name: "Richmond",
 		monsters: ["Collapsed Spirit"],
-		upgrades: ["Cannon Count", "Cannon Velocity", "Cannon Fire Rate", "Random Health"],
+		upgrades: ["Cannon Num Shots", "Cannon Velocity", "Cannon Fire Rate", "Random Health"],
 		items: ["100% Armor", "EXP"],
 		interactables: ["Waypoint", "Save", "Common Sell Station", "Buy Station", "Respawn", "Markers", "Pink Ring", "Out-Only Waypoint"],
 		trophy: true,
@@ -1509,7 +1525,7 @@ const INPUT_NODES = [
 		interactables: ["Pink Sphere", "Pink Ring", "Markers"],
 		monsters: ["War Vulcan"],
 		items: ["Minigun Ammo", "Laser Ammo", "Rocket Ammo"],
-		upgrades: [["Rocket Radius", "Rocket Velocity", "Minigun Max Ammo", "Railgun Fire Rate", "Laser Freeze Time"], "Cannon Count"], // TODO: support [[["Rocket Radius", "Rocket Velocity"], "Minigun Max Ammo", "Railgun Fire Rate", "Laser Freeze Time"], "Cannon Count"]
+		upgrades: [["Rocket Radius", "Rocket Velocity", "Minigun Max Ammo", "Railgun Fire Rate", "Laser Freeze Time"], "Cannon Num Shots"], // TODO: support [[["Rocket Radius", "Rocket Velocity"], "Minigun Max Ammo", "Railgun Fire Rate", "Laser Freeze Time"], "Cannon Num Shots"]
 		secretTrophy: true,
 	},
 	{
@@ -1664,7 +1680,7 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Purple House",
-		upgrades: ["EMP Max Ammo", "EMP Velocity", "EMP Damage", "RejuvenX"],
+		upgrades: ["EMP Max Ammo", "EMP", "EMP Damage", "RejuvenX"],
 	},
 	{
 		name: "Large Cannon Pyramid",
