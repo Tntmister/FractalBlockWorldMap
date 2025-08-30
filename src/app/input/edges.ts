@@ -54,11 +54,19 @@ const inputEdges: InputEdges = {
 		"Ying Forest": {
 			distance: 5,
 		},
-		"Noob Maze": {
+		"Noob Maze Bundle": {
 			distance: 5,
 		},
 		"Small Yellow Flower": {
 			distance: 5,
+		},
+	},
+	"Noob Maze Bundle": {
+		"Large Noob Maze": {
+			distance: 0,
+		},
+		"Noob Maze": {
+			distance: 0,
 		},
 	},
 	"Stable Singletons": {
@@ -82,7 +90,7 @@ const inputEdges: InputEdges = {
 		"Ying Air": {
 			distance: 0,
 		},
-		"Small Noob Flower": {
+		"Noob Maze Flower": {
 			distance: 0,
 		},
 		"Small Yellow Flower": {
@@ -111,7 +119,7 @@ const inputEdges: InputEdges = {
 		"Ying Air": {
 			distance: 0,
 		},
-		"Small Noob Flower": {
+		"Noob Maze Flower": {
 			distance: 0,
 		},
 		"Small Yellow Flower": {
@@ -157,8 +165,12 @@ const inputEdges: InputEdges = {
 		},
 	},
 	"Unremembered Tower Secret Totem": {
-		"Green I2 WIG Flower": {
+		"I2 WIG Flower": {
 			distance: 0,
+		},
+		"Rainbow Flower": {
+			distance: 0,
+			requiresKey: "Yellow Key",
 		},
 	},
 	"Small Black Flower": {
@@ -308,7 +320,7 @@ const inputEdges: InputEdges = {
 		"Gated Community": {
 			distance: 5,
 		},
-		"Noob Maze": {
+		"Noob Maze Bundle": {
 			distance: 5,
 		},
 	},
@@ -316,10 +328,10 @@ const inputEdges: InputEdges = {
 		"Ying World Library": {
 			distance: 0,
 		},
-		"Noob Maze": {
+		"Noob Maze Bundle": {
 			distance: 0,
 		},
-		"Small Noob Flower": {
+		"Noob Maze Flower": {
 			distance: 0,
 		},
 		"Small Cannon Pyramid": {
@@ -650,10 +662,33 @@ const inputEdges: InputEdges = {
 			distance: Infinity,
 		},
 		"Dandelions": {
-			distance: 0,
+			distance: 5,
 		},
 		"Hard Orange Flower": {
-			distance: 5,
+			distance: 10,
+		},
+		"Colchester": {
+			distance: 10,
+		},
+	},
+	"Colchester": {
+		"I3 WIG Flower": {
+			distance: 0,
+		},
+		"Ying Forest": {
+			distance: 0,
+		},
+		"Ying Air": {
+			distance: 0,
+		},
+		"Buttercup": {
+			distance: 0,
+		},
+		"Large White Flower": {
+			distance: 0,
+		},
+		"I3": {
+			distance: 0,
 		},
 	},
 	"Hard Orange Flower": {
@@ -761,15 +796,39 @@ const inputEdges: InputEdges = {
 		},
 	},
 	"I2 WIG Flower": {
+		"I2 WIG Flower": {
+			distance: 0,
+			note: "Prank Flower",
+		},
 		"Fanatic Lattice": {
 			distance: 0,
 		},
-	},
-	"Red I2 WIG Flower": {
+		"Fanatic Weed": {
+			distance: 0,
+		},
 		"Weed Ring": {
 			distance: 0,
 		},
 		"Mystic Vine 1": {
+			distance: 0,
+		},
+		"Blue Bubble Cave": {
+			distance: 0,
+		},
+	},
+	"Blue Bubble Cave": {
+		"Fir Tree": {
+			distance: 0,
+		},
+		"Fanatic Weed": {
+			distance: 5,
+		},
+		"Earthy Cellar": {
+			distance: 10,
+		},
+	},
+	"Earthy Cellar": {
+		"Green Apple Tree": {
 			distance: 0,
 		},
 	},
@@ -873,6 +932,16 @@ const inputEdges: InputEdges = {
 	"I3 WIG Maze Room": {
 		"I3 WIG Flower": {
 			distance: Infinity,
+			note: "Guranteed Not Prank",
+		},
+	},
+	"I3 WIG Flower": {
+		"I3 WIG Flower": {
+			distance: 0,
+			note: "Prank Flower",
+		},
+		"I3": {
+			distance: 0,
 		},
 	},
 	"Fanatic Spire Scaffold": {
@@ -931,6 +1000,12 @@ const inputEdges: InputEdges = {
 		"Scorpius Flower": {
 			distance: 5,
 		},
+		"Fanatic Grass": {
+			distance: 0,
+		},
+		"Fanatic Air": {
+			distance: 0,
+		},
 	},
 	"Small Cannon Gym": {
 		"Fanatic Weed": {
@@ -978,6 +1053,12 @@ const inputEdges: InputEdges = {
 		"Large White Flower": {
 			distance: Infinity,
 		},
+		"Fanatic Air": {
+			distance: 0,
+		},
+		"Laboratory Vine": {
+			distance: 0,
+		},
 	},
 	"Scorpius Portal": {
 		"Cardboard Box": {
@@ -995,10 +1076,10 @@ const inputEdges: InputEdges = {
 	},
 	"Small Blue Flower (Primary)": {
 		"I2 WIG Flower": {
-			distance: Infinity,
+			distance: 25,
 		},
 		"I2 Library": {
-			distance: Infinity,
+			distance: 25,
 		},
 		"Small Blue Flower (Secondary)": {
 			distance: Infinity,
@@ -1027,11 +1108,6 @@ const inputEdges: InputEdges = {
 		"Small Blue Flower (Quaternary)": {
 			distance: Infinity,
 			note: "50% Chance",
-		},
-	},
-	"Prank I3 WIG Flower": {
-		"Prank I3 WIG Flower": {
-			distance: Infinity,
 		},
 	},
 	"EMP City": {
@@ -1130,6 +1206,9 @@ const inputEdges: InputEdges = {
 			distance: 10,
 			note: "Inside Inner Trunk",
 		},
+		"Steel Box": {
+			distance: 20,
+		},
 	},
 	"Cannon Ammo Grab": {
 		"Montreal": {
@@ -1222,16 +1301,41 @@ const inputEdges: InputEdges = {
 	},
 	"Toronto": {
 		"Rainbow Flower": {
-			distance: Infinity,
-		},
-		"I3": {
-			distance: Infinity,
-			note: "Through Maze",
+			distance: 30,
 		},
 		"Jackfruit": {
 			distance: 20,
 		},
 		"Blackberry": {
+			distance: 20,
+		},
+		"Alpha Cube": {
+			distance: 20,
+		},
+		"Small Black Flower": {
+			distance: 20,
+		},
+		"Small White Flower": {
+			distance: 20,
+		},
+		"Alpha Menger Sponge": {
+			distance: 20,
+		},
+		"Raspberry": {
+			distance: 20,
+		},
+		"Jumbo Yellow Flower": {
+			distance: 20,
+		},
+		"Small Blue Flower (Primary)": {
+			distance: 20,
+		},
+		"Golden Yellow Flower": {
+			distance: 30,
+		},
+	},
+	"Raspberry": {
+		"Small Blue Flower (Primary)": {
 			distance: 20,
 		},
 	},
@@ -1304,7 +1408,7 @@ const inputEdges: InputEdges = {
 		"Ying Forest": {
 			distance: 0,
 		},
-		"Small Noob Flower": {
+		"Noob Maze Flower": {
 			distance: 0,
 		},
 		"Small White Flower": {
@@ -1355,9 +1459,6 @@ const inputEdges: InputEdges = {
 		"I3 WIG Flower": {
 			distance: 10,
 		},
-		"Prank I3 WIG Flower": {
-			distance: 10,
-		},
 		"Beets": {
 			distance: 10,
 		},
@@ -1371,6 +1472,11 @@ const inputEdges: InputEdges = {
 			distance: 0,
 		},
 	},
+	"Root Vegetable Basement": {
+		"Green Apple Tree": {
+			distance: 10,
+		},
+	},
 	"Yellow Mushroom": {
 		"Red Mushroom": {
 			distance: 5,
@@ -1378,21 +1484,40 @@ const inputEdges: InputEdges = {
 		"Carrots": {
 			distance: 5,
 		},
+		"Quicksand Grass": {
+			distance: 10,
+			note: "Level 11",
+		},
+		"I3 WIG Flower": {
+			distance: 10,
+		},
+		"Steel Box": {
+			distance: 10,
+			note: "50% Chance",
+		},
+	},
+	"Steel Box": {
+		"Small Black Flower": {
+			distance: 10,
+		},
 	},
 	"Red Mushroom": {
 		"Dandelions": {
 			distance: 5,
 		},
+		"Yellow Mushroom": {
+			distance: 15,
+		},
 	},
 	"I2 Fast Gate": {
-		"Red I2 WIG Flower": {
+		"I2 WIG Flower": {
 			distance: 20,
 		},
 	},
 	"Salmon Mushroom": {
 		"I3 WIG Flower": {
 			distance: 35,
-			note: "Chance, On Top",
+			note: "Tall Mushrooms, On Top",
 		},
 		"Quicksand Grass": {
 			distance: 0,
@@ -1469,6 +1594,18 @@ const inputEdges: InputEdges = {
 	"Blue Mushroom": {
 		"Rainbow Flower": {
 			distance: Infinity,
+		},
+	},
+	"Rainbow Flower": {
+		"Quicksand Grass": {
+			distance: 0,
+		},
+		"I3 WIG Flower": {
+			distance: 0,
+			note: "Guranteed Not Prank",
+		},
+		"Small White Flower": {
+			distance: 0,
 		},
 	},
 	"Fanatic Grass": {
@@ -1742,7 +1879,7 @@ const inputEdges: InputEdges = {
 			distance: 0,
 			note: "x8",
 		},
-		"Small Noob Flower": {
+		"Noob Maze Flower": {
 			distance: 0,
 			note: "x86",
 		},
@@ -2095,7 +2232,7 @@ const inputEdges: InputEdges = {
 		"Tweedle-Dee Cave": {
 			distance: 0,
 		},
-		"Noob Maze": {
+		"Noob Maze Bundle": {
 			distance: 0,
 		},
 		"Small Laser Fort": {

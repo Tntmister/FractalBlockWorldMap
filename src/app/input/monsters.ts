@@ -483,6 +483,15 @@ export const monsters = [
 		name: "Two Ball",
 	},
 	{
+		name: "Three Ball",
+	},
+	{
+		name: "Four Ball",
+	},
+	{
+		name: "Five Ball",
+	},
+	{
 		name: "Biblical Locust",
 	},
 	{
