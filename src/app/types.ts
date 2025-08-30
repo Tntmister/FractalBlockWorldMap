@@ -50,9 +50,10 @@ type defenceItems =
 	| "100% Health 100% Armor"
 	| "200% Health 100% Armor"
 	| "200% Health 200% Armor";
-type keys = "20 Second Key" | "40 Second Key" | "Key";
+export const keys = ["Yellow Key", "Buy Blue Key", "Blue Key", "Green Key", "Stable Singletons Key", "Laser Genesis Key", "Universe Key"] as const;
+type keyPickups = (typeof keys)[number] | `${number} Second Yellow Key` | `${"I1" | "I2" | "I3" | "Burlington" | "Hell"} Stable Singletons Key`;
 type defenceUpgrades = "Max Health" | "Health Regen" | "Armor Regen" | "RejuvenX" | "Random Health";
-type items = `${weaponTypes} Ammo` | defenceItems | "Gold" | "EXP" | keys | "Shield" | "Health" | "Armor"; // | "Health" | "Armor" temporary until upgrades everywhere are specified
+type items = `${weaponTypes} Ammo` | defenceItems | "Gold" | "EXP" | keyPickups | "Shield" | "Health" | "Armor"; // | "Health" | "Armor" temporary until upgrades everywhere are specified
 
 export type upgrades = `${weaponTypes} ${weaponUpgrades}` | `Non-${weaponTypes} ${weaponUpgrades}` | defenceUpgrades | "Telekinesis" | weaponTypes | "Health"; // | weaponTypes | "Health" temporary until upgrades everywhere are specified
 
@@ -72,7 +73,8 @@ export type interactables =
 	| "Blue Ring"
 	| "Save"
 	| "In-Only Waypoint"
-	| "Out-Only Waypoint";
+	| "Out-Only Waypoint"
+	| "Buy Blue Key";
 
 export type monster = {
 	name: string;
@@ -98,8 +100,9 @@ export type InputNode = {
 
 type edgeInfo = {
 	distance: number; // how hard is it to traverse to ingame (enemy difficulty/time)
-	note?: string; // required keys/specifc method to enter
-	up?: boolean;
+	note?: string; // specifc method to enter
+	requiresKey?: (typeof keys)[number];
+	up?: boolean; // used for pathfinding
 };
 
 export type InputEdges = {

@@ -2,7 +2,6 @@ import { Node, Edge, imageTypes, weaponUpgrades } from "../types";
 import Image from "./Image";
 import "../css/nodeInfo.css";
 import { Fragment, useEffect } from "react";
-import { Mutable } from "next/dist/client/components/router-reducer/router-reducer-types";
 
 interface NodeInfoProps {
 	node: Node;
@@ -156,6 +155,12 @@ export default function NodeInfo({ node, onEdgeClick }: NodeInfoProps) {
 						{node.edges.map((edge, index) => (
 							<Fragment key={`edge${index}`}>
 								<span className={`edge`} onClick={() => onEdgeClick([edge])}>
+									{edge.requiresKey && (
+										<Image
+											className='icon-small'
+											src={`./images/icons/${edge.requiresKey}.webp`}
+										/>
+									)}
 									{edge.node.name}
 									{edge.note && ` (${edge.note})`}
 									<Image

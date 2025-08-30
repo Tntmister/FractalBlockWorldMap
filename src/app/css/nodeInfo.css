@@ -81,7 +81,7 @@
 	display: flex;
 	justify-content: center;
 	gap: 0.5rem;
-	align-items: flex-start;
+	align-items: center;
 	flex-wrap: wrap;
 	margin: 0.25rem 0;
 	overflow-x: auto;
