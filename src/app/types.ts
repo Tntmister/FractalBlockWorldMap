@@ -74,7 +74,9 @@ export type interactables =
 	| "Save"
 	| "In-Only Waypoint"
 	| "Out-Only Waypoint"
-	| "Buy Blue Key";
+	| "Buy Blue Key"
+	| "Upgrade Station"
+	| "Black Market";
 
 export type monster = {
 	name: string;

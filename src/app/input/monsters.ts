@@ -379,6 +379,9 @@ export const monsters = [
 		name: "Minor Rat"
 	},
 	{
+		name: "Minor Bilge Rat"
+	},
+	{
 		name: "Lesser Rat"
 	},
 	{
@@ -472,5 +475,17 @@ export const monsters = [
 	},
 	{
 		name: "Greater Non-Piercing Scourge"
+	},
+	{
+		name: "Green Yin Yang"
+	},
+	{
+		name: "Two Ball"
+	},
+	{
+		name: "Biblical Locust"
+	},
+	{
+		name: "Plague"
 	}
 ] as const satisfies readonly monster[];

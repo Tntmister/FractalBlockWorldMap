@@ -27,16 +27,24 @@ const inputEdges: InputEdges = {
 		"Stable Singletons": {
 			distance: 0
 		},
+		"EMERGENCY Secret": {
+			distance: 20,
+			note: "Shrink"
+		}
+	},
+	"EMERGENCY Secret": {
 		"Tau Cave Moon": {
-			distance: 5
+			distance: 0
 		},
 		"Fire Rate Moon": {
-			distance: 5
+			distance: 0,
+			requiresKey: "Universe Key"
 		}
 	},
 	"Safety Doppelganger": {
 		"Infinity Flower": {
-			distance: 0
+			distance: 15,
+			note: "Instead of EMERGENCY secret"
 		}
 	},
 	"Tutorial Chambers": {
@@ -44,13 +52,13 @@ const inputEdges: InputEdges = {
 			distance: 0
 		},
 		"Ying Forest": {
-			distance: 0
+			distance: 5
 		},
 		"Noob Maze": {
-			distance: 0
+			distance: 5
 		},
 		"Small Yellow Flower": {
-			distance: 0
+			distance: 5
 		}
 	},
 	"Stable Singletons": {
@@ -67,7 +75,7 @@ const inputEdges: InputEdges = {
 			distance: 100
 		},
 		"Ying Forest": {
-			distance: 0
+			distance: 5
 		}
 	},
 	"Ying Forest": {
@@ -141,6 +149,16 @@ const inputEdges: InputEdges = {
 		},
 		"Spider Air": {
 			distance: 30
+		},
+		"Unremembered Tower Secret Totem": {
+			distance: 40,
+			note: "Tweedle-dum Air Anti-Plug Hole",
+			requiresKey: "Yellow Key"
+		}
+	},
+	"Unremembered Tower Secret Totem": {
+		"Green I2 WIG Flower": {
+			distance: 0
 		}
 	},
 	"Small Black Flower": {
@@ -387,6 +405,24 @@ const inputEdges: InputEdges = {
 		},
 		"Rocket Room": {
 			distance: 10
+		},
+		"Blue Bubble Lattice": {
+			distance: 20,
+			note: "Shrink in Black Hole Room"
+		}
+	},
+	"Blue Bubble Lattice": {
+		"Infinity Flower": {
+			distance: 10
+		},
+		"Ying Forest": {
+			distance: 0
+		},
+		"Small Cannon Pyramid": {
+			distance: 5
+		},
+		"Small White Flower": {
+			distance: 5
 		}
 	},
 	"Rocket Room": {
@@ -415,10 +451,10 @@ const inputEdges: InputEdges = {
 		"Buttercup": {
 			distance: 0
 		},
-		"Red Cube": {
-			distance: Infinity
+		"Botany Lab Red Cube": {
+			distance: 30
 		},
-		"Black Cube": {
+		"Botany Lab Black Cube": {
 			distance: 5
 		},
 		"Red-Green Elevator": {
@@ -438,6 +474,12 @@ const inputEdges: InputEdges = {
 		},
 		"Imp Cave": {
 			distance: 5
+		},
+		"Ying Flower": {
+			distance: 5
+		},
+		"Pink Tree": {
+			distance: 5
 		}
 	},
 	"Buttercup": {
@@ -445,7 +487,7 @@ const inputEdges: InputEdges = {
 			distance: 0
 		}
 	},
-	"Black Cube": {
+	"Botany Lab Black Cube": {
 		"Lighthouse": {
 			distance: 15
 		},
@@ -590,6 +632,14 @@ const inputEdges: InputEdges = {
 		},
 		"Small Black Flower": {
 			distance: 25
+		},
+		"Pink Tree": {
+			distance: 10,
+			note: "Inside Orange Cubes"
+		},
+		"Quicksand Grass": {
+			distance: 10,
+			note: "Inside Orange Cubes, Layer 11"
 		}
 	},
 	"I3": {
@@ -599,7 +649,7 @@ const inputEdges: InputEdges = {
 		"Sagittarius Portal": {
 			distance: Infinity
 		},
-		"I3": {
+		"Dandelions": {
 			distance: 0
 		},
 		"Hard Orange Flower": {
@@ -715,6 +765,14 @@ const inputEdges: InputEdges = {
 			distance: 0
 		}
 	},
+	"Red I2 WIG Flower": {
+		"Weed Ring": {
+			distance: 0
+		},
+		"Mystic Vine 1": {
+			distance: 0
+		}
+	},
 	"Fanatic Lattice": {
 		"Fanatic Weed": {
 			distance: 5
@@ -744,7 +802,7 @@ const inputEdges: InputEdges = {
 			note: "Tips of Weeds"
 		},
 		"Small Blue Flower (Primary)": {
-			distance: Infinity
+			distance: 10
 		},
 		"Rainbow Flower": {
 			distance: Infinity
@@ -895,7 +953,7 @@ const inputEdges: InputEdges = {
 		"Fanatic Air": {
 			distance: 5
 		},
-		"Mystic Vine": {
+		"Mystic Vine 1": {
 			distance: 10
 		},
 		"Dark Willow Tree": {
@@ -1029,7 +1087,7 @@ const inputEdges: InputEdges = {
 		"Minigun Forest Minor Pod": {
 			distance: 5
 		},
-		"Mystic Vine": {
+		"Mystic Vine 1": {
 			distance: 0
 		},
 		"Dark Willow Tree": {
@@ -1113,12 +1171,48 @@ const inputEdges: InputEdges = {
 			note: "Inside Maze"
 		}
 	},
-	"Mystic Vine": {
+	"Mystic Vine Shaft": {
+		"Fir Tree": {
+			distance: 0
+		},
+		"Fanatic Weed": {
+			distance: 0
+		}
+	},
+	"Mystic Vine 1": {
+		"Small Cannon Gym": {
+			distance: 10
+		},
+		"Mystic Vine Shaft": {
+			distance: 10
+		},
+		"Mystic Vine 2": {
+			distance: 25
+		}
+	},
+	"Mystic Vine 2": {
+		"Montreal": {
+			distance: 5
+		},
+		"Mystic Vine Shaft": {
+			distance: 10
+		},
+		"Mystic Vine 3": {
+			distance: 20
+		}
+	},
+	"Mystic Vine 3": {
+		"Montreal": {
+			distance: 5
+		},
 		"Toronto": {
 			distance: Infinity
 		},
 		"EMP City": {
-			distance: 5
+			distance: Infinity
+		},
+		"Mystic Vine 4": {
+			distance: 30
 		}
 	},
 	"Toronto Vine": {
@@ -1128,11 +1222,192 @@ const inputEdges: InputEdges = {
 	},
 	"Toronto": {
 		"Rainbow Flower": {
-			distance: 0
+			distance: Infinity
 		},
 		"I3": {
 			distance: Infinity,
 			note: "Through Maze"
+		},
+		"Jackfruit": {
+			distance: 20
+		},
+		"Blackberry": {
+			distance: 20
+		}
+	},
+	"Jackfruit": {
+		"Small White Flower": {
+			distance: 10
+		},
+		"Large White Flower": {
+			distance: 10
+		},
+		"Small Black Flower": {
+			distance: 10
+		},
+		"I3 WIG Flower": {
+			distance: 10
+		},
+		"Quicksand Grass": {
+			distance: 10,
+			note: "Level 11"
+		}
+	},
+	"Large White Flower": {
+		"Great White Cavern": {
+			distance: 30
+		}
+	},
+	"Great White Cavern": {
+		"Stoney Air": {
+			distance: 5,
+			note: "Debris"
+		},
+		"Ying Forest": {
+			distance: 5,
+			note: "Debris"
+		},
+		"Rail Showdown Caves": {
+			distance: 10
+		},
+		"Burlington": {
+			distance: 30
+		}
+	},
+	"Burlington": {
+		"Tegan's Garden": {
+			distance: 0
+		}
+	},
+	"Tegan's Garden": {
+		"Jackfruit": {
+			distance: 0
+		},
+		"I3 WIG Flower": {
+			distance: 0
+		},
+		"I2 WIG Flower": {
+			distance: 0
+		},
+		"Large White Flower": {
+			distance: 0
+		},
+		"Infinity Flower": {
+			distance: 0
+		},
+		"Fir Tree": {
+			distance: 0
+		},
+		"Spruce Tree": {
+			distance: 0
+		},
+		"Ying Forest": {
+			distance: 0
+		},
+		"Small Noob Flower": {
+			distance: 0
+		},
+		"Small White Flower": {
+			distance: 0
+		},
+		"Small Black Flower": {
+			distance: 0
+		},
+		"Small Yellow Flower": {
+			distance: 0
+		},
+		"Jumbo Yellow Flower": {
+			distance: 0
+		},
+		"Small Blue Flower (Primary)": {
+			distance: 0
+		},
+		"Red Maze Flower": {
+			distance: 0
+		},
+		"Carrots": {
+			distance: 0
+		},
+		"Turnips": {
+			distance: 0
+		}
+	},
+	"Red Maze Flower": {
+		"Quicksand Grass": {
+			distance: 0
+		}
+	},
+	"Carrots": {
+		"Dandelions": {
+			distance: 0
+		},
+		"Salmon Mushroom": {
+			distance: 5
+		}
+	},
+	"Turnips": {
+		"Dandelions": {
+			distance: 0
+		},
+		"Carrots": {
+			distance: 10
+		},
+		"I3 WIG Flower": {
+			distance: 10
+		},
+		"Prank I3 WIG Flower": {
+			distance: 10
+		},
+		"Beets": {
+			distance: 10
+		},
+		"Yellow Mushroom": {
+			distance: 10
+		},
+		"I3 Library": {
+			distance: 10
+		},
+		"Root Vegetable Basement": {
+			distance: 0
+		}
+	},
+	"Yellow Mushroom": {
+		"Red Mushroom": {
+			distance: 5
+		},
+		"Carrots": {
+			distance: 5
+		}
+	},
+	"Red Mushroom": {
+		"Dandelions": {
+			distance: 5
+		}
+	},
+	"I2 Fast Gate": {
+		"Red I2 WIG Flower": {
+			distance: 20
+		}
+	},
+	"Salmon Mushroom": {
+		"I3 WIG Flower": {
+			distance: 35,
+			note: "Chance, On Top"
+		},
+		"Quicksand Grass": {
+			distance: 0
+		},
+		"Black Mushroom": {
+			distance: 25,
+			note: "Very Rare, On Side Treasures"
+		}
+	},
+	"Black Mushroom": {
+		"Quicksand Grass": {
+			distance: 0
+		},
+		"Pink Tree": {
+			distance: 20
 		}
 	},
 	"Fanatic Well": {
@@ -1202,7 +1477,7 @@ const inputEdges: InputEdges = {
 		}
 	},
 	"Willow Tree": {
-		"Mystic Vine": {
+		"Mystic Vine 1": {
 			distance: 0
 		},
 		"EMP City": {
@@ -1613,19 +1888,22 @@ const inputEdges: InputEdges = {
 	},
 	"Richmond": {
 		"Red Apple Tree": {
-			distance: 5
+			distance: 0
 		},
 		"Bedroom": {
-			distance: 5
+			distance: 0
 		},
 		"Richmond Sewers": {
-			distance: 5
+			distance: 0
 		},
 		"Richmond Building": {
 			distance: 10
 		},
 		"Richmond Secret": {
 			distance: 10
+		},
+		"Ying Flower": {
+			distance: 0
 		}
 	},
 	"Richmond Secret": {
@@ -1737,7 +2015,7 @@ const inputEdges: InputEdges = {
 	},
 	"Type 2 Tau Cave": {
 		"Type 3 Tau Cave": {
-			distance: Infinity
+			distance: 5
 		},
 		"Oak Tree": {
 			distance: 0,
@@ -1755,7 +2033,7 @@ const inputEdges: InputEdges = {
 	},
 	"Type 3 Tau Cave": {
 		"Type 1 Tau Cave": {
-			distance: Infinity
+			distance: 5
 		},
 		"Oak Tree": {
 			distance: 0,
@@ -1768,24 +2046,33 @@ const inputEdges: InputEdges = {
 			distance: 0
 		},
 		"Basic Laser Maze": {
-			distance: Infinity
+			distance: 5
 		}
 	},
 	"Type 1 Tau Cave": {
 		"Type 2 Tau Cave": {
-			distance: Infinity
+			distance: 5
 		},
 		"Ying Flower": {
-			distance: 20
+			distance: 15
+		},
+		"Ying Forest": {
+			distance: 10
+		},
+		"Health Tower": {
+			distance: 15
 		},
 		"Hard Pink Tree": {
 			distance: 40
 		},
+		"Alpha Cube": {
+			distance: 20
+		},
 		"Stoney Air": {
 			distance: 0
 		},
-		"Alpha Cube": {
-			distance: Infinity
+		"Richmond": {
+			distance: 15
 		}
 	},
 	"Tweedle-Dum Base": {
@@ -1860,9 +2147,6 @@ const inputEdges: InputEdges = {
 		},
 		"Quicksand Grass": {
 			distance: 0
-		},
-		"Country Store": {
-			distance: Infinity
 		}
 	},
 	"Tweedle Haunted House 1": {
@@ -1951,7 +2235,7 @@ const inputEdges: InputEdges = {
 		},
 		"Outer Space 0 Lockbox": {
 			distance: 10,
-			note: "Requires Key"
+			requiresKey: "Yellow Key"
 		}
 	},
 	"Mylantis": {
@@ -1967,6 +2251,12 @@ const inputEdges: InputEdges = {
 		"RejuvenX Refinery": {
 			distance: 0,
 			note: "3 on Surface"
+		}
+	},
+	"Laser Genesis Planet": {
+		"Laser Genesis": {
+			distance: Infinity,
+			requiresKey: "Laser Genesis Key"
 		}
 	},
 	"Mylantis Caves": {
@@ -2010,7 +2300,7 @@ const inputEdges: InputEdges = {
 		},
 		"Mylantis City Underground": {
 			distance: Infinity,
-			note: "Key to the Universe"
+			requiresKey: "Universe Key"
 		}
 	},
 	"Main Branch Library": {
@@ -2051,11 +2341,37 @@ const inputEdges: InputEdges = {
 		},
 		"Ying Forest": {
 			distance: 0
+		},
+		"Bulk Castle": {
+			distance: 5
+		}
+	},
+	"Bulk Castle": {
+		"Quicksand Grass": {
+			distance: 0
+		},
+		"Orange Flower": {
+			distance: 0
+		},
+		"Blackberry": {
+			distance: 0
+		},
+		"Fake Blackberry": {
+			distance: 0
+		},
+		"I1": {
+			distance: 10
 		}
 	},
 	"Ice Castle": {
 		"Ice Moon": {
 			distance: 40
+		},
+		"Quicksand Grass": {
+			distance: 20
+		},
+		"Blackberry": {
+			distance: 20
 		}
 	},
 	"Outer Space 2": {
@@ -2262,6 +2578,11 @@ const inputEdges: InputEdges = {
 			note: "Level 11+"
 		}
 	},
+	"Quicksand Grass Basement": {
+		"Green Apple Tree": {
+			distance: 30
+		}
+	},
 	"Purple House": {
 		"Jumbo Yellow Flower": {
 			distance: 5
@@ -2286,11 +2607,6 @@ const inputEdges: InputEdges = {
 		"Health Tower": {
 			distance: 15,
 			note: "Down-Left-Back Corner"
-		}
-	},
-	"Country Store": {
-		"Richmond": {
-			distance: Infinity
 		}
 	},
 	"Fir Tree": {
