@@ -1,4 +1,4 @@
-An attempt at "mapping" the Fractal Block World map using a node graph approach, where each location is a "node", and each location you shrink down to is an "edge"
+An attempt at "mapping" the Fractal Block World map using a node graph approach, where each location is a "node", and each location you shrink down to is an "edge".
 
 # Running locally
 
@@ -27,7 +27,7 @@ npm install
 to use the configured ESLint and Prettier rules.
 
 # Data
-All data is stored in the 'src\app\input' folder, with a respective file for each data type
+All data is stored in the 'src\app\input' folder, with a respective file for each data type.
 
 ## Nodes
 Node Type:
@@ -78,3 +78,8 @@ type monster = {
 };
 ```
 Right now monsters only include information about what they drop. (Maybe in the future I'll add a bestiary with more detailed information, like HP values and specific mechanics, like Lampreys bypassing armor)
+
+# Attribution
+Fractal Block World and all its assets are made by Dan Hathaway.
+
+Special thanks to OldEclipse and the rest of the contributors to the "Inner Mapping Theory" diagram on the official Discord server, which helped me simplify parts of how i initially arranged some nodes/edges.
