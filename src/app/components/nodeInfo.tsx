@@ -53,17 +53,30 @@ export default function NodeInfo({ node, onEdgeClick }: NodeInfoProps) {
 						{node.trophy && (
 							<Image className='icon' src={`./images/icons/Trophy.webp`} />
 						)}
+						{[...Array(Math.max(+node.trophy, +node.secretTrophy) - +node.trophy)].map(
+							(_, i) => (
+								<span className='icon' key={`trophy${i}Blank`} />
+							),
+						)}
 					</span>
 					<span>{node.name}</span>
 					<span>
-						{node.secretTrophy &&
-							[...Array(node.secretTrophy)].map((_, i) => (
+						<>
+							{[...Array(+node.secretTrophy)].map((_, i) => (
 								<Image
 									className='icon'
-									key={i}
+									key={`secretTrophy${i}`}
 									src={`./images/icons/Secret Trophy.webp`}
 								/>
 							))}
+							{[
+								...Array(
+									Math.max(+node.trophy, +node.secretTrophy) - +node.secretTrophy,
+								),
+							].map((_, i) => (
+								<span className='icon' key={`secretTrophy${i}Blank`} />
+							))}
+						</>
 					</span>
 				</div>
 				<Image id='nodeImage' src={`./images/nodes/${node.name}.jpg`} alt='' />
