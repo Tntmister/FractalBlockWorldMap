@@ -1,20 +1,19 @@
 :root {
-	--background: #ffffff;
-	--backgroundTransparent: #ffffff99;
-	--foreground: #171717;
+	--background: #0a0a0a;
+	--backgroundTransparent: #0a0a0a99;
+	--foreground: #007f80;
 }
-
 @media (prefers-color-scheme: dark) {
 	:root {
 		--background: #0a0a0a;
 		--backgroundTransparent: #0a0a0a99;
-		--foreground: #ededed;
+		--foreground: #007f80;
 	}
 }
 
 @font-face {
 	font-family: "WhiteRabbit";
-	src: url("/whitrabt.ttf");
+	src: url("/whiterabbit.woff") format("woff");
 }
 
 html,
@@ -32,6 +31,11 @@ body {
 	font-family: "WhiteRabbit";
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	scrollbar-color: color-mix(in srgb, var(--foreground), #000 30%) var(--background);
+}
+
+::-webkit-scrollbar {
+	background-color: var(--foreground);
 }
 
 * {
