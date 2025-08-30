@@ -2,33 +2,34 @@ body {
 	display: flex;
 	flex-direction: row;
 	height: 100vh;
+	border: var(--foreground) 1px solid;
 }
 
 #pathContainer {
 	text-align: center;
 	border-right: var(--foreground) 1px solid;
-	overflow: auto;
 	width: 15vw;
-	max-height: 100vh;
-	overflow: auto;
+	display: flex;
+	flex-direction: column;
 }
 
 #pathHeader {
-	position: sticky;
-	top: 0;
 	background-color: var(--background);
-	padding: 0.25rem 0;
-}
-
-#pathList {
+	border-bottom: var(--foreground) 1px solid;
+	height: 2rem;
 	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 #pathList {
 	flex-direction: column;
 	gap: 0.25rem;
-	margin: 0 1rem;
+	padding: 0.25rem 1rem;
 	line-height: 12px;
+	display: flex;
+	max-height: 100%;
+	overflow: auto;
 }
 
 #pathList > .pathNode:not(:first-child) {

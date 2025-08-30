@@ -18,11 +18,17 @@
 	width: 100%;
 	background-color: var(--backgroundTransparent);
 	border-bottom: var(--foreground) 1px solid;
-	padding: 0 40%;
+	padding: 0 35%;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 }
+
+#nodeHeader > *:first-child,
+#nodeHeader > *:last-child {
+	height: 100%;
+}
+
 #nodeHeader > *:first-child > span,
 #nodeHeader > *:last-child > span {
 	width: 2rem;
