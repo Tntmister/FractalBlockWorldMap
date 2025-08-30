@@ -11,7 +11,7 @@ interface NodeInfoProps {
 export default function NodeInfo({ node, onEdgeClick }: NodeInfoProps) {
 	useEffect(() => {
 		for (const tooltip of document.getElementsByClassName(
-			"edgeTooltip"
+			"edgeTooltip",
 		) as HTMLCollectionOf<HTMLImageElement>) {
 			tooltip.style.visibility = "hidden";
 		}
@@ -27,7 +27,7 @@ export default function NodeInfo({ node, onEdgeClick }: NodeInfoProps) {
 		};
 		const tooltipTimeout = setTimeout(() => {
 			for (const tooltip of document.getElementsByClassName(
-				"edgeTooltip"
+				"edgeTooltip",
 			) as HTMLCollectionOf<HTMLImageElement>) {
 				console.log(tooltip);
 				tooltip.style.visibility = "";
@@ -36,7 +36,7 @@ export default function NodeInfo({ node, onEdgeClick }: NodeInfoProps) {
 		}, 250);
 		return () => {
 			for (const tooltip of document.getElementsByClassName(
-				"edgeTooltip"
+				"edgeTooltip",
 			) as HTMLCollectionOf<HTMLImageElement>) {
 				tooltip.style.visibility = "";
 			}
@@ -96,7 +96,7 @@ export default function NodeInfo({ node, onEdgeClick }: NodeInfoProps) {
 											/>
 											<div>
 												{[...weaponUpgrades, "Ammo"].filter((dropType) =>
-													monster.drop!.includes(dropType)
+													monster.drop!.includes(dropType),
 												)[0] ?? monster.drop}
 											</div>
 											)
@@ -132,12 +132,12 @@ export default function NodeInfo({ node, onEdgeClick }: NodeInfoProps) {
 													className='icon-small'
 													src={`./images/icons/${
 														imageTypes.filter((weaponType) =>
-															upgrade.includes(weaponType)
+															upgrade.includes(weaponType),
 														)[0] ?? upgrade
 													}.webp`}
 												/>
 												{weaponUpgrades.filter((weaponUpgrade) =>
-													upgrade.includes(weaponUpgrade)
+													upgrade.includes(weaponUpgrade),
 												)[0] ?? upgrade}
 											</Fragment>
 										))}

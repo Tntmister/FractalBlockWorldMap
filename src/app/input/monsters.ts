@@ -3,489 +3,489 @@ import { monster } from "../types";
 export const monsters = [
 	{
 		name: "Juggernaut",
-		drop: "Cannon Ammo"
+		drop: "Cannon Ammo",
 	},
 	{
 		name: "Tough Juggernaut",
-		drop: "Cannon Ammo"
+		drop: "Cannon Ammo",
 	},
 	{
 		name: "Unruly Juggernaut",
-		drop: "Cannon Max Ammo"
+		drop: "Cannon Max Ammo",
 	},
 	{
 		name: "Formidable Juggernaut",
-		drop: "Cannon Fire Rate"
+		drop: "Cannon Fire Rate",
 	},
 	{
 		name: "I am the Juggernaut",
-		drop: "Cannon Ammo"
+		drop: "Cannon Ammo",
 	},
 	{
 		name: "Light Marine",
-		drop: "Cannon Ammo"
+		drop: "Cannon Ammo",
 	},
 	{
 		name: "Marine",
-		drop: "Minigun Ammo"
+		drop: "Minigun Ammo",
 	},
 	{
 		name: "Heavy Marine",
-		drop: "Minigun Ammo"
+		drop: "Minigun Ammo",
 	},
 	{
 		name: "Rebel",
-		drop: "Cannon Ammo"
+		drop: "Cannon Ammo",
 	},
 	{
 		name: "Insurgent",
-		drop: "Minigun Ammo"
+		drop: "Minigun Ammo",
 	},
 	{
 		name: "Dissident",
-		drop: "Cannon Ammo"
+		drop: "Cannon Ammo",
 	},
 	{
 		name: "Hired Gun",
-		drop: "Cannon Ammo"
+		drop: "Cannon Ammo",
 	},
 	{
 		name: "Guerrilla",
-		drop: "Minigun Ammo"
+		drop: "Minigun Ammo",
 	},
 	{
 		name: "Hit Man",
-		drop: "Minigun Ammo"
+		drop: "Minigun Ammo",
 	},
 	{
 		name: "Mercinary",
-		drop: "Cannon Ammo"
+		drop: "Cannon Ammo",
 	},
 	{
 		name: "Commando",
-		drop: "Minigun Ammo"
+		drop: "Minigun Ammo",
 	},
 	{
 		name: "Petite Goon",
-		drop: "Laser Ammo"
+		drop: "Laser Ammo",
 	},
 	{
 		name: "Goon",
-		drop: "Laser Ammo"
+		drop: "Laser Ammo",
 	},
 	{
 		name: "Small Goon",
-		drop: "Laser Ammo"
+		drop: "Laser Ammo",
 	},
 	{
 		name: "Large Goon",
-		drop: "Laser Ammo"
+		drop: "Laser Ammo",
 	},
 	{
 		name: "Major Goon",
-		drop: "Laser Ammo"
+		drop: "Laser Ammo",
 	},
 	{
 		name: "Questionable Goon",
-		drop: "Laser Ammo"
+		drop: "Laser Ammo",
 	},
 	{
 		name: "Immoral Goon",
-		drop: "Laser Ammo"
+		drop: "Laser Ammo",
 	},
 	{
 		name: "Unsavory Goon",
-		drop: "Laser Ammo"
+		drop: "Laser Ammo",
 	},
 	{
 		name: "Evil Goon",
-		drop: "Laser Ammo"
+		drop: "Laser Ammo",
 	},
 	{
 		name: "Despicable Goon",
-		drop: "Laser Ammo"
+		drop: "Laser Ammo",
 	},
 	{
 		name: "Maniacal Goon",
-		drop: "Laser Damage"
+		drop: "Laser Damage",
 	},
 	{
 		name: "Ultimate Goon",
-		drop: "Laser Max Ammo"
+		drop: "Laser Max Ammo",
 	},
 	{
 		name: "Hexatrix",
-		drop: "RejuvenX"
+		drop: "RejuvenX",
 	},
 	{
 		name: "Pirate",
-		drop: "Homing Ammo"
+		drop: "Homing Ammo",
 	},
 	{
 		name: "First Mate",
-		drop: "Homing Ammo"
+		drop: "Homing Ammo",
 	},
 	{
 		name: "Captain",
-		drop: "Homing Ammo"
+		drop: "Homing Ammo",
 	},
 	{
 		name: "Baby Spider",
-		drop: "Minigun Ammo"
+		drop: "Minigun Ammo",
 	},
 	{
 		name: "Lesser Spider",
-		drop: "Minigun Ammo"
+		drop: "Minigun Ammo",
 	},
 	{
 		name: "Spider",
-		drop: "Minigun Damage"
+		drop: "Minigun Damage",
 	},
 	{
 		name: "Great Spider",
-		drop: "Minigun Max Ammo"
+		drop: "Minigun Max Ammo",
 	},
 	{
 		name: "Spider Lord",
-		drop: "Minigun Ammo"
+		drop: "Minigun Ammo",
 	},
 	{
 		name: "Probe",
-		drop: "EMP Ammo"
+		drop: "EMP Ammo",
 	},
 	{
 		name: "Satellite",
-		drop: "EMP Ammo"
+		drop: "EMP Ammo",
 	},
 	{
 		name: "Sentinel",
-		drop: "EMP Freeze Time"
+		drop: "EMP Freeze Time",
 	},
 	{
 		name: "Laboratory",
-		drop: "EMP Damage"
+		drop: "EMP Damage",
 	},
 	{
 		name: "Science Core",
-		drop: "EMP Max Ammo"
+		drop: "EMP Max Ammo",
 	},
 	{
 		name: "Mothership",
-		drop: "EMP Radius"
+		drop: "EMP Radius",
 	},
 	{
 		name: "Mechanized Sheath",
-		drop: "EMP Ammo"
+		drop: "EMP Ammo",
 	},
 	{
 		name: "Compromised Nuclear Silo",
-		drop: "Nuke Ammo"
+		drop: "Nuke Ammo",
 	},
 	{
 		name: "Nuclear Silo",
-		drop: "Nuke Ammo"
+		drop: "Nuke Ammo",
 	},
 	{
 		name: "Nuclear Ore Mining Location",
-		drop: "Nuke Radius"
+		drop: "Nuke Radius",
 	},
 	{
 		name: "Nuclear Refinery",
-		drop: "Nuke Velocity"
+		drop: "Nuke Velocity",
 	},
 	{
 		name: "Nuclear Cyclotron",
-		drop: "Nuke Max Ammo"
+		drop: "Nuke Max Ammo",
 	},
 	{
 		name: "Nuclear Launch Facility",
-		drop: "Nuke Damage"
+		drop: "Nuke Damage",
 	},
 	{
 		name: "Nuclear Doomsday Shelter",
-		drop: "Nuke Ammo"
+		drop: "Nuke Ammo",
 	},
 	{
 		name: "Fanatic",
-		drop: "Dark Hole Max Ammo"
+		drop: "Dark Hole Max Ammo",
 	},
 	{
 		name: "Disciple",
-		drop: "Dark Hole Velocity"
+		drop: "Dark Hole Velocity",
 	},
 	{
 		name: "Mystic",
-		drop: "Dark Hole Damage"
+		drop: "Dark Hole Damage",
 	},
 	{
 		name: "Collapsed Spirit",
-		drop: "Health"
+		drop: "Health",
 	},
 	{
 		name: "Collapsed Angel",
-		drop: "Health"
+		drop: "Health",
 	},
 	{
 		name: "Collapsed Archangel",
-		drop: "Health"
+		drop: "Health",
 	},
 	{
 		name: "Collapsed Soul",
-		drop: "Health"
+		drop: "Health",
 	},
 	{
 		name: "Collapsed Star",
-		drop: "Health"
+		drop: "Health",
 	},
 	{
-		name: "Goblin"
+		name: "Goblin",
 	},
 	{
 		name: "Imp",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Gnole",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Demon",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Orc",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Troll",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Hobgoblin",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Ogre",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
-		name: "Menace"
+		name: "Menace",
 	},
 	{
-		name: "Arch Menace Male"
+		name: "Arch Menace Male",
 	},
 	{
-		name: "Arch Menace Female"
+		name: "Arch Menace Female",
 	},
 	{
-		name: "Vile Menace"
+		name: "Vile Menace",
 	},
 	{
-		name: "Bee"
+		name: "Bee",
 	},
 	{
 		name: "Queen Bee",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Wasp",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Queen Wasp",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Hornet",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Queen Hornet",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
-		name: "Minor Guardian"
+		name: "Minor Guardian",
 	},
 	{
-		name: "Guardian"
+		name: "Guardian",
 	},
 	{
-		name: "Night Guard"
+		name: "Night Guard",
 	},
 	{
-		name: "Enforcer"
+		name: "Enforcer",
 	},
 	{
 		name: "Lamprey",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Yellow Lamprey",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Green Lamprey",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Red Lamprey",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Blue Lamprey",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Minor Beholder",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Lesser Beholder",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Beholder",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Greater Beholder",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Major Beholder",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Minor Sliver",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Lesser Sliver",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Sliver",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Greater Sliver",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Major Sliver",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
-		name: "Minor Rat"
+		name: "Minor Rat",
 	},
 	{
-		name: "Minor Bilge Rat"
+		name: "Minor Bilge Rat",
 	},
 	{
-		name: "Lesser Rat"
+		name: "Lesser Rat",
 	},
 	{
-		name: "Rat"
+		name: "Rat",
 	},
 	{
-		name: "Greater Rat"
+		name: "Greater Rat",
 	},
 	{
-		name: "Pool Ball 1"
+		name: "Pool Ball 1",
 	},
 	{
-		name: "Pool Ball 2"
+		name: "Pool Ball 2",
 	},
 	{
-		name: "Pool Ball 3"
+		name: "Pool Ball 3",
 	},
 	{
-		name: "Pool Ball 4"
+		name: "Pool Ball 4",
 	},
 	{
-		name: "Pool Ball 5"
+		name: "Pool Ball 5",
 	},
 	{
-		name: "Pool Ball 6"
+		name: "Pool Ball 6",
 	},
 	{
-		name: "Pool Ball 7"
+		name: "Pool Ball 7",
 	},
 	{
-		name: "Pool Ball 8"
+		name: "Pool Ball 8",
 	},
 	{
-		name: "Gremlin"
+		name: "Gremlin",
 	},
 	{
-		name: "Minor Gremlin"
+		name: "Minor Gremlin",
 	},
 	{
-		name: "Goliath"
+		name: "Goliath",
 	},
 	{
-		name: "Blood Boy"
+		name: "Blood Boy",
 	},
 	{
-		name: "Dragoon"
+		name: "Dragoon",
 	},
 	{
-		name: "Vulcan"
+		name: "Vulcan",
 	},
 	{
-		name: "War Vulcan"
+		name: "War Vulcan",
 	},
 	{
-		name: "Iron War Vulcan"
+		name: "Iron War Vulcan",
 	},
 	{
-		name: "Overseer"
+		name: "Overseer",
 	},
 	{
-		name: "Overlord"
+		name: "Overlord",
 	},
 	{
-		name: "Blue Abomination"
+		name: "Blue Abomination",
 	},
 	{
-		name: "Anti Blue Abomination"
+		name: "Anti Blue Abomination",
 	},
 	{
-		name: "Inner Core"
+		name: "Inner Core",
 	},
 	{
-		name: "Inner Core Minion"
+		name: "Inner Core Minion",
 	},
 	{
-		name: "Clockwork Watchman"
+		name: "Clockwork Watchman",
 	},
 	{
 		name: "Lesser Silver",
-		drop: "Gold"
+		drop: "Gold",
 	},
 	{
 		name: "Yellow Baby Spider",
-		drop: "Rocket Velocity"
+		drop: "Rocket Velocity",
 	},
 	{
-		name: "Eternal Plague"
+		name: "Eternal Plague",
 	},
 	{
-		name: "Locust"
+		name: "Locust",
 	},
 	{
-		name: "Greater Non-Piercing Scourge"
+		name: "Greater Non-Piercing Scourge",
 	},
 	{
-		name: "Green Yin Yang"
+		name: "Green Yin Yang",
 	},
 	{
-		name: "Two Ball"
+		name: "Two Ball",
 	},
 	{
-		name: "Biblical Locust"
+		name: "Biblical Locust",
 	},
 	{
-		name: "Plague"
-	}
+		name: "Plague",
+	},
 ] as const satisfies readonly monster[];

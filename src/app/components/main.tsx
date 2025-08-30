@@ -92,7 +92,7 @@ export default function Main() {
 		if (rerender) setPathStack(pathStack.slice());
 	}
 
-	function pathfindTo(targetNode: Node): Edge[] {
+	function pathfindTo(targetNode: Node, prioritizeNumberOfNodes: boolean = false): Edge[] {
 		//Dijkstra pathfinding
 		function pathfindToAux(targetNode: Node, currentPathStack: Edge[] = pathStack): Edge[] {
 			const distancesToStart = new Map<Node, number>();
@@ -119,8 +119,15 @@ export default function Main() {
 				visitedNodes.set(currentNode, currentDistance);
 				// iterate edge nodes, and set distance to unvisited node if smaller than current node distance to start
 				for (const edge of currentNode.edges) {
-					if (edge.distance + currentDistance < distancesToStart.get(edge.node)!) {
-						distancesToStart.set(edge.node, edge.distance + currentDistance);
+					if (
+						prioritizeNumberOfNodes
+							? 1
+							: edge.distance + currentDistance < distancesToStart.get(edge.node)!
+					) {
+						distancesToStart.set(
+							edge.node,
+							prioritizeNumberOfNodes ? 1 : edge.distance + currentDistance
+						);
 						predecessors.set(edge.node, currentNode); // set predecessor node (for backtracking to create path)
 					}
 				}
@@ -170,6 +177,10 @@ export default function Main() {
 				)
 		]);
 	}, []);
+
+	useEffect(() => {
+		console.log(pathfindTo(nodes.get("Small Yellow Flower")!));
+	}, [pathStack]);
 
 	useEffect(() => {
 		const path = document.getElementsByClassName("pathNode");

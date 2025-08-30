@@ -28,7 +28,7 @@ export const imageTypes = [
 	"100% Health",
 	"200% Health",
 	"Extra 10% Health",
-	"Extra 100% Health"
+	"Extra 100% Health",
 ] as const;
 export const weaponTypes = ["Plasma", "Cannon", "Laser", "Rocket", "Homing", "Minigun", "Railgun", "EMP", "Nuke", "Dark Hole"] as const;
 type weaponTypes = (typeof weaponTypes)[number];
