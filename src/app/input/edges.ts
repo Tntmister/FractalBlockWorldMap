@@ -831,6 +831,20 @@ const inputEdges: InputEdges = {
 		"Green Apple Tree": {
 			distance: 0,
 		},
+		"Catacombs 1": {
+			distance: 25,
+		},
+	},
+	"Earthy Basement": {
+		"Green Apple Tree": {
+			distance: 0,
+		},
+		"Cardboard Box": {
+			distance: 10,
+		},
+		"Steel Box": {
+			distance: 10,
+		},
 	},
 	"Fanatic Lattice": {
 		"Fanatic Weed": {
@@ -842,54 +856,52 @@ const inputEdges: InputEdges = {
 		"Fanatic Spire": {
 			distance: 10,
 		},
-		"Fanatic Grass": {
-			distance: 0,
-		},
-		"Fanatic Lattice Treasure": {
-			distance: 10,
-			note: "Green Cubes",
-		},
 		"I2 Library": {
-			distance: 5,
-		},
-		"Nuke Radius Cave": {
-			distance: 5,
-			note: "Tips of Vines on Weeds",
-		},
-		"Mirror Gate": {
 			distance: 10,
-			note: "Tips of Weeds",
-		},
-		"Small Blue Flower (Primary)": {
-			distance: 10,
-		},
-		"Rainbow Flower": {
-			distance: Infinity,
 		},
 		"Small White Flower": {
 			distance: 10,
-		},
-		"Taurus Portal": {
-			distance: 0,
-			note: "Tips of Vines on Weeds",
 		},
 		"Scorpius Flower": {
 			distance: 10,
 		},
 	},
-	"Mirror Gate": {
+	"I3 Mirror Gate": {
 		"I3": {
 			distance: Infinity,
 		},
 	},
-	"Common Gate": {
-		"I3": {
-			distance: Infinity,
+	"I3 Common Gate": {
+		"Small White Flower": {
+			distance: 15,
+		},
+		"Raspberry": {
+			distance: 10,
+		},
+		"Montreal": {
+			distance: 30,
+		},
+		"I3 WIG Flower": {
+			distance: 30,
+			note: "Guranteed Real",
+		},
+		"Hanging Fanatic Vine": {
+			distance: 30,
+			note: "Taurus Portal",
 		},
 	},
 	"Nuke Radius Cave": {
 		"I3 WIG Flower": {
 			distance: Infinity,
+		},
+		"Small Cannon Gym": {
+			distance: 15,
+		},
+		"Vine Shaft Column": {
+			distance: 5,
+		},
+		"Infinity Flower": {
+			distance: 25,
 		},
 	},
 	"Fanatic Spire": {
@@ -899,9 +911,72 @@ const inputEdges: InputEdges = {
 		"Fanatic Spire Scaffold": {
 			distance: 5,
 		},
-		"Golden Yellow Flower": {
+		"Small Blue Flower (Primary)": {
+			distance: 10,
+		},
+		"Healing Patch": {
 			distance: Infinity,
-			note: "At bottom",
+		},
+		"Fanatic Spire Treasure": {
+			distance: 30,
+		},
+	},
+	"Fanatic Spire Treasure": {
+		"Golden Yellow Flower": {
+			distance: 0,
+		},
+		"Montreal": {
+			distance: 0,
+		},
+		"Fanatic Island": {
+			distance: 0,
+			note: "Vegetation",
+		},
+		"Fanatic Island Caves": {
+			distance: 0,
+		},
+	},
+	"Fanatic Spire Scaffold": {
+		"Fanatic Island Caves": {
+			distance: 0,
+		},
+		"Fanatic Weed": {
+			distance: 0,
+		},
+		"Fanatic Air": {
+			distance: 0,
+		},
+		"Buttercup": {
+			distance: 5,
+			note: "Inside Grey Pillars",
+		},
+		"Creeping Jeni": {
+			distance: 5,
+		},
+	},
+	"Creeping Jeni": {
+		"Fanatic Air": {
+			distance: 0,
+		},
+		"Guerilla Jungle": {
+			distance: 0,
+		},
+		"Raspberry": {
+			distance: 5,
+			note: "Inside Vine",
+		},
+		"Montreal": {
+			distance: 5,
+			note: "Inside Vine",
+		},
+		"Violet": {
+			distance: 10,
+		},
+		"Toronto": {
+			distance: 30,
+		},
+		"Fanatic Vine 2": {
+			distance: 30,
 		},
 	},
 	"Scorpius Flower": {
@@ -944,8 +1019,24 @@ const inputEdges: InputEdges = {
 			distance: 0,
 		},
 	},
-	"Fanatic Spire Scaffold": {
-		"Fanatic Caves": {
+	"Violet": {
+		"Quicksand Grass": {
+			distance: 0,
+		},
+		"Fanatic Island Caves": {
+			distance: 0,
+		},
+		"Fanatic Spire": {
+			distance: Infinity,
+			note: "Shell 2",
+		},
+		"Violet Shell 3": {
+			distance: 30,
+			impassable: true,
+		},
+	},
+	"Violet Shell 3": {
+		"Fanatic Island Caves": {
 			distance: 0,
 		},
 		"Fanatic Weed": {
@@ -954,50 +1045,120 @@ const inputEdges: InputEdges = {
 		"Fanatic Air": {
 			distance: 0,
 		},
-		"Buttercup": {
-			distance: 5,
-			note: "Inside Grey Pillars",
+		"Cannon Ammo Grab": {
+			distance: 0,
 		},
-		"Creeping Jeni": {
-			distance: 5,
+		"Fir Tree": {
+			distance: 0,
+		},
+		"Violet Shell 2": {
+			distance: 25,
+		},
+		"Blackberry": {
+			distance: 15,
+		},
+		"Moldy Basement": {
+			distance: 25,
+		},
+		"Large White Flower": {
+			distance: 25,
+		},
+		"Ostrich Fern": {
+			distance: 10,
 		},
 	},
-	"Creeping Jeni": {
-		"Toronto": {
-			distance: Infinity,
+	"Violet Shell 2": {
+		"Fanatic Island Caves": {
+			distance: 0,
 		},
-		"Violet": {
-			distance: Infinity,
+		"Fanatic Weed": {
+			distance: 0,
 		},
-	},
-	"Violet": {
+		"Fanatic Air": {
+			distance: 0,
+		},
+		"Cannon Ammo Grab": {
+			distance: 0,
+		},
+		"Fir Tree": {
+			distance: 0,
+		},
+		"Violet Shell 1": {
+			distance: 20,
+		},
+		"Healing Patch": {
+			distance: 10,
+		},
 		"Fanatic Spire": {
-			distance: Infinity,
-			note: "Shell 2",
+			distance: 10,
+		},
+		"Fanatic Vine 2": {
+			distance: 20,
+			note: "Exit",
+		},
+	},
+	"Violet Shell 1": {
+		"Fanatic Island Caves": {
+			distance: 0,
+		},
+		"Fanatic Weed": {
+			distance: 0,
+		},
+		"Fanatic Air": {
+			distance: 0,
+		},
+		"Cannon Ammo Grab": {
+			distance: 0,
+		},
+		"Fir Tree": {
+			distance: 0,
+		},
+		"Violet Shell 0": {
+			distance: 15, // we take a blue ring here, but distance to leave
+		},
+		"Fanatic Lattice": {
+			distance: 10,
+		},
+		"Health Tower": {
+			distance: 10,
+		},
+		"Blue Bubble Cave": {
+			distance: 10,
+		},
+	},
+	"Moldy Basement": {
+		"Colchester": {
+			distance: 20,
+		},
+		"Green Apple Tree": {
+			distance: 0,
+		},
+	},
+	"Healing Patch": {
+		"Fanatic Weed": {
+			distance: 0,
+		},
+		"Minigun Forest": {
+			distance: 0,
+		},
+		"Small White Flower": {
+			distance: 0,
 		},
 	},
 	"Fanatic Weed": {
-		"Orange Flower": {
-			distance: 5,
-			note: "On walls",
+		"Fanatic Weed Caves": {
+			distance: 0,
 		},
 		"Montreal": {
+			distance: 5,
+		},
+		"Small Cannon Gym": {
 			distance: 0,
 		},
 		"Weed Ring": {
-			distance: 20,
-		},
-		"Small Cannon Gym": {
-			distance: 5,
-			note: "On floor",
+			distance: 10,
 		},
 		"Laboratory Vine": {
-			distance: 5,
-		},
-		"Small White Flower": {
-			distance: 5,
-		},
-		"Scorpius Flower": {
 			distance: 5,
 		},
 		"Fanatic Grass": {
@@ -1005,6 +1166,35 @@ const inputEdges: InputEdges = {
 		},
 		"Fanatic Air": {
 			distance: 0,
+		},
+	},
+	"Hanging Fanatic Weed": {
+		"Fanatic Weed Caves": {
+			distance: 0,
+		},
+		"Hanging Fanatic Vine": {
+			distance: 0,
+		},
+		"Laboratory Vine": {
+			distance: 0,
+		},
+		"Fanatic Air": {
+			distance: 0,
+		},
+		"Small White Flower": {
+			distance: 5,
+		},
+		"Orange Flower": {
+			distance: 5,
+		},
+		"Nuke Radius Cave": {
+			distance: 5,
+		},
+		"I3 Mirror Gate": {
+			distance: 10,
+		},
+		"Scorpius Flower": {
+			distance: 10,
 		},
 	},
 	"Small Cannon Gym": {
@@ -1022,7 +1212,7 @@ const inputEdges: InputEdges = {
 		"Fanatic Weed": {
 			distance: 5,
 		},
-		"Fanatic Caves": {
+		"Fanatic Weed Caves": {
 			distance: 5,
 		},
 		"Fanatic Air": {
@@ -1060,6 +1250,26 @@ const inputEdges: InputEdges = {
 			distance: 0,
 		},
 	},
+	"Danville": {
+		"Ying Forest": {
+			distance: 0,
+		},
+		"Infinity Flower": {
+			distance: 0,
+		},
+		"Stoney Air": {
+			distance: 0,
+		},
+		"I2 Library": {
+			distance: 0,
+		},
+		"Small Yellow Flower": {
+			distance: 0,
+		},
+		"Small Blue Flower (Primary)": {
+			distance: 0,
+		},
+	},
 	"Scorpius Portal": {
 		"Cardboard Box": {
 			distance: 0,
@@ -1075,39 +1285,83 @@ const inputEdges: InputEdges = {
 		},
 	},
 	"Small Blue Flower (Primary)": {
-		"I2 WIG Flower": {
-			distance: 25,
-		},
-		"I2 Library": {
-			distance: 25,
-		},
-		"Small Blue Flower (Secondary)": {
-			distance: Infinity,
-			note: "50% Chance",
-		},
 		"Laboratory Vine": {
-			distance: 10,
+			distance: 5,
 		},
 		"Fanatic Grass": {
+			distance: 5,
+		},
+		"Damp Basement": {
 			distance: 10,
 		},
 		"Fanatic Air": {
 			distance: 15,
 		},
+		"I2 WIG Flower": {
+			distance: 15,
+		},
+		"I2 Library": {
+			distance: 15,
+		},
+		"Small Blue Flower (Secondary)": {
+			distance: 15,
+			note: "50% Chance",
+		},
 	},
 	"Small Blue Flower (Secondary)": {
+		"Laboratory Vine": {
+			distance: 5,
+		},
+		"Fanatic Grass": {
+			distance: 5,
+		},
+		"Damp Basement": {
+			distance: 10,
+		},
+		"Fanatic Air": {
+			distance: 15,
+		},
+		"Danville": {
+			distance: 15,
+		},
 		"Small Blue Flower (Tertiary)": {
 			distance: Infinity,
 			note: "50% Chance",
 		},
 	},
 	"Small Blue Flower (Tertiary)": {
+		"Laboratory Vine": {
+			distance: 5,
+		},
+		"Fanatic Grass": {
+			distance: 5,
+		},
+		"Damp Basement": {
+			distance: 10,
+		},
+		"Fanatic Air": {
+			distance: 15,
+		},
 		"I3 WIG Flower": {
 			distance: Infinity,
 		},
 		"Small Blue Flower (Quaternary)": {
 			distance: Infinity,
 			note: "50% Chance",
+		},
+	},
+	"Small Blue Flower (Quaternary)": {
+		"Laboratory Vine": {
+			distance: 5,
+		},
+		"Fanatic Grass": {
+			distance: 5,
+		},
+		"Damp Basement": {
+			distance: 10,
+		},
+		"Fanatic Air": {
+			distance: 15,
 		},
 	},
 	"EMP City": {
@@ -1142,8 +1396,12 @@ const inputEdges: InputEdges = {
 		"Montreal": {
 			distance: 5,
 		},
+		"Raspberry": {
+			distance: 5,
+			note: "Library Tower",
+		},
 		"I2 Library": {
-			distance: Infinity,
+			distance: 15,
 		},
 		"Willow Tree": {
 			distance: 0,
@@ -1157,7 +1415,7 @@ const inputEdges: InputEdges = {
 		"Fir Tree": {
 			distance: 0,
 		},
-		"Fanatic Caves": {
+		"Fanatic Island Caves": {
 			distance: 0,
 		},
 		"Minigun Forest Minor Pod": {
@@ -1172,15 +1430,114 @@ const inputEdges: InputEdges = {
 		"Spruce Tree": {
 			distance: 10,
 		},
-	},
-	"Minigun Forest": {
-		"Creeping Jeni": {
+		"Woody Basement": {
 			distance: Infinity,
 		},
-		"EMP City": {
+	},
+	"Minigun Forest Minor Pod": {
+		"Fanatic Air": {
 			distance: 0,
 		},
+	},
+	"Fanatic Island Caves": {
+		"Fir Tree": {
+			distance: 0,
+		},
+		"Laboratory Vine": {
+			distance: 0,
+		},
+		"Stoney Air": {
+			distance: 5,
+		},
+	},
+	"Woody Basement": {
+		"Small Black Flower": {
+			distance: Infinity,
+		},
+		"Small White Flower": {
+			distance: Infinity,
+		},
+		"Green Apple Tree": {
+			distance: Infinity,
+		},
+	},
+	"Minigun Forest": {
+		"Fanatic Lattice": {
+			distance: 5,
+		},
+		"Cardboard Box": {
+			distance: 5,
+		},
+		"Hanging Fanatic Vine": {
+			distance: 0,
+		},
+		"Minigun Forest Hanging": {
+			distance: 5,
+		},
 		"Minigun Forest Minor Pod": {
+			distance: 5,
+		},
+		"Earthy Basement": {
+			distance: 5,
+		},
+		"I3 Common Gate": {
+			distance: 5,
+		},
+		"Ivory Pinhole Gauntlet": {
+			distance: 5,
+		},
+		"Montreal": {
+			distance: 5,
+		},
+		"Fanatic Weed": {
+			distance: 5,
+		},
+		"Fanatic Air": {
+			distance: 0,
+		},
+		"Large Cannon Pyramid": {
+			distance: 10,
+		},
+		"Healing Patch": {
+			distance: 10,
+		},
+		"I2 Library": {
+			distance: 10,
+		},
+	},
+	"Minigun Forest Hanging": {
+		"Guerilla Jungle": {
+			distance: 0,
+		},
+		"Blue Bubble Cave": {
+			distance: 0,
+		},
+		"Raspberry": {
+			distance: 0,
+		},
+		"Fanatic Air": {
+			distance: 0,
+		},
+		"Minigun Forest Big Pod": {
+			distance: 5,
+		},
+	},
+	"Minigun Forest Big Pod": {
+		"Small Blue Flower (Primary)": {
+			distance: Infinity,
+		},
+		"Fanatic Weed": {
+			distance: 0,
+		},
+	},
+	"Guerilla Jungle": {
+		"Alpha Cube": {
+			distance: 5,
+		},
+		"Hanging Fanatic Vine": {
+			distance: 0,
+		},
+		"I3 Common Gate": {
 			distance: 5,
 		},
 	},
@@ -1221,11 +1578,138 @@ const inputEdges: InputEdges = {
 			distance: 0,
 		},
 	},
-	"Fanatic Caves": {
+	"Fanatic Weed Caves": {
 		"Fir Tree": {
 			distance: 0,
 		},
+		"Spruce Tree": {
+			distance: 5,
+		},
 		"Stoney Air": {
+			distance: 0,
+		},
+		"Damp Basement": {
+			distance: 0,
+		},
+		"Fanatic Air": {
+			distance: 15,
+		},
+		"Minigun Forest Minor Pod": {
+			distance: 15,
+		},
+		"Hanging Fanatic Vine": {
+			distance: 0,
+		},
+		"Fanatic Weed Caves 2": {
+			distance: 10,
+		},
+	},
+	"Fanatic Weed Caves 2": {
+		"Fanatic Air": {
+			distance: 0,
+		},
+		"Laboratory Vine": {
+			distance: 0,
+		},
+		"Fanatic Weed": {
+			distance: 0,
+		},
+		"Fanatic Lattice": {
+			distance: 5,
+		},
+		"Damp Cellar": {
+			distance: 5,
+		},
+	},
+	"Damp Cellar": {
+		"Green Apple Tree": {
+			distance: 5,
+		},
+		"Catacombs 1": {
+			distance: 25,
+		},
+	},
+	"Catacombs 1": {
+		"Stoney Air": {
+			distance: 0,
+		},
+		"Ying Forest": {
+			distance: 5,
+		},
+		"Buttercup": {
+			distance: 5,
+		},
+		"Catacombs 2": {
+			distance: 10,
+		},
+	},
+	"Catacombs 2": {
+		"Stoney Air": {
+			distance: 0,
+		},
+		"Ying Forest": {
+			distance: 5,
+		},
+		"Buttercup": {
+			distance: 5,
+		},
+		"Catacombs 3": {
+			distance: 10,
+		},
+	},
+	"Catacombs 3": {
+		"Stoney Air": {
+			distance: 0,
+		},
+		"Catacombs 4": {
+			distance: 10,
+		},
+	},
+	"Catacombs 4": {
+		"Stoney Air": {
+			distance: 0,
+		},
+		"Catacombs 5": {
+			distance: 10,
+		},
+	},
+	"Catacombs 5": {
+		"Stoney Air": {
+			distance: 0,
+		},
+		"I2 WIG Flower": {
+			distance: 15,
+			note: "Guranteed Real",
+		},
+		"Alpha Cube": {
+			distance: 15,
+		},
+		"Galaxy Flower": {
+			distance: 15,
+		},
+	},
+	"Hanging Fanatic Vine": {
+		"Fanatic Air": {
+			distance: 0,
+		},
+		"Laboratory Vine": {
+			distance: 0,
+		},
+		"Fanatic Weed": {
+			distance: 0,
+		},
+		"Violet": {
+			distance: 0,
+		},
+		"Fanatic Lattice": {
+			distance: 0,
+		},
+		"Taurus Portal": {
+			distance: 0,
+		},
+	},
+	"Damp Basement": {
+		"Green Apple Tree": {
 			distance: 0,
 		},
 	},
@@ -1250,7 +1734,7 @@ const inputEdges: InputEdges = {
 			note: "Inside Maze",
 		},
 	},
-	"Mystic Vine Shaft": {
+	"Vine Shaft Column": {
 		"Fir Tree": {
 			distance: 0,
 		},
@@ -1262,7 +1746,7 @@ const inputEdges: InputEdges = {
 		"Small Cannon Gym": {
 			distance: 10,
 		},
-		"Mystic Vine Shaft": {
+		"Vine Shaft Column": {
 			distance: 10,
 		},
 		"Mystic Vine 2": {
@@ -1273,7 +1757,7 @@ const inputEdges: InputEdges = {
 		"Montreal": {
 			distance: 5,
 		},
-		"Mystic Vine Shaft": {
+		"Vine Shaft Column": {
 			distance: 10,
 		},
 		"Mystic Vine 3": {
@@ -1285,10 +1769,7 @@ const inputEdges: InputEdges = {
 			distance: 5,
 		},
 		"Toronto": {
-			distance: Infinity,
-		},
-		"EMP City": {
-			distance: Infinity,
+			distance: 20,
 		},
 		"Mystic Vine 4": {
 			distance: 30,
@@ -1300,9 +1781,32 @@ const inputEdges: InputEdges = {
 		},
 	},
 	"Toronto": {
-		"Rainbow Flower": {
-			distance: 30,
+		"Ying Air": {
+			distance: 0,
 		},
+		"I2 WIG Flower": {
+			distance: 0,
+		},
+		"Green Apple Tree": {
+			distance: 0,
+		},
+		"Jumbo Yellow Flower": {
+			distance: 0,
+		},
+		"Small White Flower": {
+			distance: 0,
+		},
+		"Small Black Flower": {
+			distance: 0,
+		},
+		"Small Blue Flower (Primary)": {
+			distance: 0,
+		},
+		"Toronto Maze": {
+			distance: 0,
+		},
+	},
+	"Toronto Maze": {
 		"Jackfruit": {
 			distance: 20,
 		},
@@ -1331,6 +1835,12 @@ const inputEdges: InputEdges = {
 			distance: 20,
 		},
 		"Golden Yellow Flower": {
+			distance: 30,
+		},
+		"Rainbow Flower": {
+			distance: 30,
+		},
+		"Toronto Maze": {
 			distance: 30,
 		},
 	},
@@ -1393,9 +1903,6 @@ const inputEdges: InputEdges = {
 		"I2 WIG Flower": {
 			distance: 0,
 		},
-		"Large White Flower": {
-			distance: 0,
-		},
 		"Infinity Flower": {
 			distance: 0,
 		},
@@ -1414,6 +1921,9 @@ const inputEdges: InputEdges = {
 		"Small White Flower": {
 			distance: 0,
 		},
+		"Large White Flower": {
+			distance: 0,
+		},
 		"Small Black Flower": {
 			distance: 0,
 		},
@@ -1424,6 +1934,9 @@ const inputEdges: InputEdges = {
 			distance: 0,
 		},
 		"Small Blue Flower (Primary)": {
+			distance: 0,
+		},
+		"Orange Flower": {
 			distance: 0,
 		},
 		"Red Maze Flower": {
@@ -1448,6 +1961,10 @@ const inputEdges: InputEdges = {
 		"Salmon Mushroom": {
 			distance: 5,
 		},
+		"Blue Mushroom": {
+			distance: 5,
+			note: "Rare",
+		},
 	},
 	"Turnips": {
 		"Dandelions": {
@@ -1469,6 +1986,62 @@ const inputEdges: InputEdges = {
 			distance: 10,
 		},
 		"Root Vegetable Basement": {
+			distance: 0,
+		},
+	},
+	"Beets": {
+		"Dandelions": {
+			distance: 15,
+		},
+		"Alpha Menger Sponge": {
+			distance: 20,
+		},
+		"Yellow Mushroom": {
+			distance: 15,
+		},
+		"I3 WIG Flower": {
+			distance: 30,
+		},
+		"Root Vegetable Basement": {
+			distance: 30,
+		},
+		"Turnips": {
+			distance: 30,
+		},
+		"Carrots": {
+			distance: 30,
+		},
+		"Fanatic Weed": {
+			distance: 30,
+		},
+		"Essex": {
+			distance: 30,
+		},
+		"Rainbow Flower": {
+			distance: 30,
+			note: "Not Guranteed",
+		},
+	},
+	"Essex": {
+		"Colchester": {
+			distance: 0,
+		},
+		"I3": {
+			distance: 0,
+		},
+		"I3 WIG Flower": {
+			distance: 0,
+		},
+		"I2 WIG Flower": {
+			distance: 0,
+		},
+		"Orange": {
+			distance: 0,
+		},
+		"Ying Forest": {
+			distance: 0,
+		},
+		"Basement Library": {
 			distance: 0,
 		},
 	},
@@ -1540,50 +2113,105 @@ const inputEdges: InputEdges = {
 			distance: 5,
 		},
 	},
-	"Laboratory Vine": {
+	"Fanatic Vine 1": {
+		"Fanatic Vine 2": {
+			distance: Infinity,
+		},
+		"Laboratory Vine": {
+			distance: Infinity,
+		},
 		"Pirate Vine": {
 			distance: Infinity,
-			note: "Vines 1 and 2",
 		},
-		"Laser Branch Vine": {
+		"Fir Tree": {
+			distance: 0,
+		},
+	},
+	"Fanatic Vine 2": {
+		"Fanatic Vine 3": {
 			distance: Infinity,
-			note: "Vine 2",
+		},
+		"Laboratory Vine": {
+			distance: Infinity,
+		},
+		"Pirate Vine": {
+			distance: Infinity,
+		},
+		"Fir Tree": {
+			distance: 0,
+		},
+	},
+	"Fanatic Vine 3": {
+		"Fanatic Vine 1": {
+			distance: 0,
+		},
+		"Fanatic Vine 4": {
+			distance: Infinity,
 		},
 		"Toronto Vine": {
 			distance: Infinity,
-			note: "Vine 3",
 		},
-		"Scorpius Vine": {
+		"Laser Branch Vine": {
 			distance: Infinity,
-			note: "Vine 4",
+		},
+		"Fir Tree": {
+			distance: 0,
+		},
+	},
+	"Fanatic Vine 4": {
+		"Laboratory Vine Bundle": {
+			distance: Infinity,
+		},
+		"Fanatic Yellow Vine": {
+			distance: Infinity,
+		},
+	},
+	"Fanatic Yellow Vine": {
+		"Scorpius Portal": {
+			distance: Infinity,
+		},
+	},
+	"Laboratory Vine": {
+		"Fanatic Air": {
+			distance: 0,
+		},
+		"Hanging Fanatic Vine": {
+			distance: 0,
 		},
 		"Small Black Flower": {
 			distance: 0,
-		},
-		"Fanatic Weed": {
-			distance: 0,
-		},
-		"Fanatic Grass": {
-			distance: 0,
-		},
-		"Scorpius Portal": {
-			distance: 10,
-			note: "Inside Vine",
-		},
-		"Danville": {
-			distance: 10,
-			note: "Inside Vine",
 		},
 		"Minigun Forest": {
 			distance: 0,
 		},
 	},
-	"Taurus Portal": {
-		"I3": {
+	"Laboratory Vine Inside": {
+		"Cannon Ammo Grab": {
+			distance: 5,
+		},
+		"Alpha Cube": {
+			distance: 5,
+		},
+		"Laboratory Vine": {
+			distance: 5,
+		},
+		"Vine Shaft Column": {
+			distance: 10,
+		},
+		"Scorpius Portal": {
 			distance: 30,
+		},
+		"Danville": {
+			distance: 35,
+		},
+		"I3 Common Gate": {
+			distance: 35,
 		},
 	},
 	"Laboratory Vine Bundle": {
+		"Fanatic Air": {
+			distance: 0,
+		},
 		"Laboratory Vine": {
 			distance: Infinity,
 		},
@@ -1594,6 +2222,11 @@ const inputEdges: InputEdges = {
 	"Blue Mushroom": {
 		"Rainbow Flower": {
 			distance: Infinity,
+		},
+	},
+	"Taurus Portal": {
+		"I3": {
+			distance: 30,
 		},
 	},
 	"Rainbow Flower": {
@@ -1614,6 +2247,9 @@ const inputEdges: InputEdges = {
 		},
 	},
 	"Willow Tree": {
+		"Stoney Air": {
+			distance: 0,
+		},
 		"Mystic Vine 1": {
 			distance: 0,
 		},

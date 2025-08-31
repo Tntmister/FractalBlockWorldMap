@@ -186,7 +186,7 @@ export const monsters = [
 		drop: "Nuke Ammo",
 	},
 	{
-		name: "Nuclear Ore Mining Location",
+		name: "Nuclear Ore Miner",
 		drop: "Nuke Radius",
 	},
 	{
@@ -430,6 +430,9 @@ export const monsters = [
 		name: "Dragoon",
 	},
 	{
+		name: "Greater Dragoon",
+	},
+	{
 		name: "Vulcan",
 	},
 	{
@@ -496,5 +499,8 @@ export const monsters = [
 	},
 	{
 		name: "Plague",
+	},
+	{
+		name: "Greater Scourge",
 	},
 ] as const satisfies readonly monster[];
