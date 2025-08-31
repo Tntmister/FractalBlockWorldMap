@@ -1,5 +1,5 @@
 "use client";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { Node, Edge } from "../types";
 import Image from "./Image";
 import NodeInfo from "./nodeInfo";
@@ -19,6 +19,7 @@ for (const node of inputNodes) {
 		noEscape: node.noEscape ?? false,
 		trophy: node.trophy ?? false,
 		secretTrophy: node.secretTrophy ?? false,
+		blueRingDownDestination: node.blueRingDownDestination,
 		monsters: monsters.filter((monster) => node.monsters?.includes(monster.name)).toSorted(),
 		edges: [],
 	});
@@ -177,9 +178,23 @@ export default function Main() {
 		]);
 	}, []);
 
-	useEffect(() => {
-		console.log(pathfindTo(nodes.get("Small Yellow Flower")!));
+	const blueRingParentEdge = useMemo(() => {
+		if (currentNode().interactables.includes("Blue Ring")) {
+			for (const edge of pathStack.toReversed()) {
+				if (edge.node.blueRingDownDestination) {
+					return edge;
+				}
+			}
+		}
+		return;
 	}, [pathStack]);
+
+	function traverseBlueRing() {
+		pathStack = pathStack.slice(0, pathStack.lastIndexOf(blueRingParentEdge!) + 1);
+		traverseTo(
+			nodes.get(blueRingParentEdge!.node.blueRingDownDestination!.nodeName as nodeNames)!,
+		);
+	}
 
 	useEffect(() => {
 		const path = document.getElementsByClassName("pathNode");
@@ -234,7 +249,47 @@ export default function Main() {
 					))}
 				</div>
 			</div>
-			<NodeInfo node={currentNode()} onEdgeClick={traversePath}></NodeInfo>
+			<div id='nodeContainer'>
+				<NodeInfo node={currentNode()}></NodeInfo>
+
+				{(currentNode().edges.length > 0 || blueRingParentEdge) && (
+					<div id='edgesContainer'>
+						Possible destinations:
+						<div id='edgesList'>
+							{currentNode().edges.map((edge, index) => (
+								<span
+									key={`edge${index}`}
+									className='edge'
+									onClick={() => traversePath([edge])}
+								>
+									{edge.requiresKey && (
+										<Image
+											className='icon-small'
+											src={`./images/icons/${edge.requiresKey}.webp`}
+										/>
+									)}
+									{edge.node.name}
+									{edge.note && ` (${edge.note})`}
+									<Image
+										className='edgeTooltip'
+										src={`./images/edges/${currentNode().name} - ${edge.node.name}.jpg`}
+										alt=''
+									/>
+								</span>
+							))}
+							{blueRingParentEdge && (
+								<span className='edgeBlueRing' onClick={traverseBlueRing}>
+									<Image
+										className='icon-small'
+										src={`./images/icons/Blue Ring.webp`}
+									/>
+									{`${blueRingParentEdge.node.blueRingDownDestination!.nodeName} ${blueRingParentEdge.node.blueRingDownDestination!.note ?? ""}`}
+								</span>
+							)}
+						</div>
+					</div>
+				)}
+			</div>
 		</>
 	);
 }

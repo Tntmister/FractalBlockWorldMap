@@ -49,19 +49,59 @@ body {
 	justify-content: center;
 }
 
+.pathNode:has(> .icon) {
+	border-color: #f901fd;
+	color: #f901fd;
+}
+
+#edgesContainer {
+	border-top: var(--foreground) 1px solid;
+	padding: 0.25rem 0.5rem;
+}
+
+#edgesContainer {
+	text-align: center;
+}
+#edgesList {
+	display: flex;
+	justify-content: center;
+	gap: 0.5rem;
+	align-items: center;
+	flex-wrap: wrap;
+	margin: 0.25rem 0;
+	overflow-x: auto;
+}
+
+.edge,
+.edgeBlueRing {
+	padding: 0.25rem 0.5rem;
+	border: 1px solid var(--foreground);
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	white-space: nowrap;
+}
+
+.edgeBlueRing {
+	border-color: #0004de;
+	color: #0004de;
+}
+
 .edgeTooltip {
 	visibility: hidden;
 	position: absolute;
-	max-height: 40vh;
+	max-height: 30vh;
 	width: auto;
 	top: 0;
 	left: 0;
 }
 
-.pathNode:has(> .icon) {
-	border-color: #f901fd;
-	color: #f901fd;
+.edge:hover > .edgeTooltip,
+.edgeTooltip:hover {
+	visibility: visible;
 }
+
 [class^="icon"] {
 	height: 2rem;
 	width: 2rem;

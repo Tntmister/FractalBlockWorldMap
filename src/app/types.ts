@@ -132,12 +132,18 @@ export type InputNode = {
 	noEscape?: boolean; // if there is no way to grow out of this node
 	trophy?: boolean;
 	secretTrophy?: boolean | 2 | 3; // some locations have more than 1 secret trophy
+	// every location by default is an "up" chunk for blue ring purposes. If declared, this location is a "down" chunk with the propery value being the name of the location of the terminal chunk
+	blueRingDownDestination?: {
+		nodeName: string;
+		note?: string;
+	};
 };
 
 type edgeInfo = {
 	distance: number; // how hard is it to traverse to ingame (enemy difficulty/time)
 	note?: string; // specifc method to enter
 	requiresKey?: keyTypes;
+	impassable?: boolean; // to visually indicate that the destination is only accessible through other ways, like blue rings (WIG Prison and Violet Shells, for example)
 	up?: boolean; // used for pathfinding
 };
 
@@ -159,6 +165,7 @@ export type Node = {
 	noEscape: NonNullable<InputNode["noEscape"]>;
 	trophy: NonNullable<InputNode["trophy"]>;
 	secretTrophy: NonNullable<InputNode["secretTrophy"]>;
+	blueRingDownDestination: InputNode["blueRingDownDestination"];
 	monsters: monster[];
 	edges: Edge[];
 };
