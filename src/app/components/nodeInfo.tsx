@@ -135,12 +135,14 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 									{upgradeAux.map((upgrade, index) => (
 										<Fragment key={`${upgradeAux.join("")}|${upgrade}`}>
 											{!!index && "/"}
-											<Image
-												className='icon-small'
-												src={`./images/icons/${
-													labels.get(upgrade)?.imageName ?? upgrade
-												}.webp`}
-											/>
+											{!upgrade.includes("Non-") && (
+												<Image
+													className='icon-small'
+													src={`./images/icons/${
+														labels.get(upgrade)?.imageName ?? upgrade
+													}.webp`}
+												/>
+											)}
 											{labels.get(upgrade)?.label ?? upgrade}
 										</Fragment>
 									))}
