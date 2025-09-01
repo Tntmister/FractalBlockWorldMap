@@ -92,7 +92,11 @@ export default function Main() {
 		if (rerender) setPathStack(pathStack.slice());
 	}
 
-	function pathfindTo(targetNode: Node, prioritizeNumberOfNodes: boolean = false): Edge[] {
+	function pathfindTo(
+		targetNode: Node,
+		pathUp: boolean = false,
+		prioritizeNumberOfNodes: boolean = false,
+	): Edge[] {
 		//Dijkstra pathfinding
 		function pathfindToAux(targetNode: Node, currentPathStack: Edge[] = pathStack): Edge[] {
 			const distancesToStart = new Map<Node, number>();
@@ -142,25 +146,29 @@ export default function Main() {
 			return path;
 		}
 
-		const list: Edge[][] = [];
-		// for each node in the stack, append the path from current -> stack to the path from stack -> target
-		for (let i = 0; i < pathStack.length; i++) {
-			const path = [
-				...pathStack
-					.toReversed()
-					.slice(0, i)
-					.map((edge) => ({ ...edge, up: true })),
-				...pathfindToAux(targetNode, pathStack.slice(0, pathStack.length - i)),
-			];
-			// if theres no path to target node, the resulting pathStacks's last element won't be the target node
-			if (getTraversedPath(path).at(-1)?.node.name === targetNode.name) list.push(path);
+		if (pathUp) {
+			const list: Edge[][] = [];
+			// for each node in the stack, append the path from current -> stack to the path from stack -> target
+			for (let i = 0; i < pathStack.length; i++) {
+				const path = [
+					...pathStack
+						.toReversed()
+						.slice(0, i)
+						.map((edge) => ({ ...edge, up: true })),
+					...pathfindToAux(targetNode, pathStack.slice(0, pathStack.length - i)),
+				];
+				// if theres no path to target node, the resulting pathStacks's last element won't be the target node
+				if (getTraversedPath(path).at(-1)?.node.name === targetNode.name) list.push(path);
+			}
+			// get path with smallest distance
+			return list.sort(
+				(a, b) =>
+					a.reduce((acc, edge) => acc + edge.distance, 0) -
+					b.reduce((acc, edge) => acc + edge.distance, 0),
+			)[0];
+		} else {
+			return pathfindToAux(targetNode);
 		}
-		// get path with smallest distance
-		return list.sort(
-			(a, b) =>
-				a.reduce((acc, edge) => acc + edge.distance, 0) -
-				b.reduce((acc, edge) => acc + edge.distance, 0),
-		)[0];
 	}
 
 	useEffect(() => {
