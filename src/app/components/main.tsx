@@ -1,8 +1,9 @@
 "use client";
 import { Fragment, useEffect, useMemo, useState } from "react";
-import { Node, Edge } from "../types";
+import { Node, Edge, interactables } from "../types";
 import Image from "./Image";
 import NodeInfo from "./nodeInfo";
+import _ from "lodash";
 import "../css/main.css";
 import { inputNodes, nodeNames } from "../input/nodes";
 import { inputEdges } from "../input/edges";
@@ -66,7 +67,7 @@ export default function Main() {
 	]);
 
 	function currentNode() {
-		return pathStack[pathStack.length - 1].node;
+		return pathStack.at(-1)!.node;
 	}
 
 	function traverseTo(node: Node, rerender: boolean = true) {
@@ -92,62 +93,53 @@ export default function Main() {
 		if (rerender) setPathStack(pathStack.slice());
 	}
 
-	function pathfindTo(
+	//Dijkstra pathfinding
+	function pathfindToAux(
+		currentNode: Node,
 		targetNode: Node,
-		pathUp: boolean = false,
-		prioritizeNumberOfNodes: boolean = false,
+		nodes: Map<nodeNames, Node>,
 	): Edge[] {
-		//Dijkstra pathfinding
-		function pathfindToAux(targetNode: Node, currentPathStack: Edge[] = pathStack): Edge[] {
-			const distancesToStart = new Map<Node, number>();
-			const visitedNodes = new Map<Node, number>();
-			const predecessors = new Map<Node, Node>();
-			// initialize distances to start, start = 0, rest = Infinity
-			nodes
-				.values()
-				.forEach((node) =>
-					distancesToStart.set(
-						node,
-						node.name === currentPathStack.at(-1)!.node.name ? 0 : Infinity,
-					),
+		const distancesToStart = new Map<Node, number>();
+		const visitedNodes = new Map<Node, number>();
+		const predecessors = new Map<Node, Node>();
+		// initialize distances to start, start = 0, rest = Infinity
+		nodes
+			.values()
+			.forEach((node) =>
+				distancesToStart.set(node, node.name === currentNode.name ? 0 : Infinity),
+			);
+		while (distancesToStart.size) {
+			// get the node with the smallest distance to start
+			const [currentNode, currentDistance] = distancesToStart
+				.entries()
+				.reduce((previousValue, currentValue) =>
+					previousValue[1] < currentValue[1] ? previousValue : currentValue,
 				);
-			while (distancesToStart.size) {
-				// get the node with the smallest distance to start
-				const [currentNode, currentDistance] = distancesToStart
-					.entries()
-					.reduce((previousValue, currentValue) =>
-						previousValue[1] < currentValue[1] ? previousValue : currentValue,
-					);
-				// remove from unvisited set and add to visited set
-				distancesToStart.delete(currentNode);
-				visitedNodes.set(currentNode, currentDistance);
-				// iterate edge nodes, and set distance to unvisited node if smaller than current node distance to start
-				for (const edge of currentNode.edges) {
-					if (
-						prioritizeNumberOfNodes
-							? 1
-							: edge.distance + currentDistance < distancesToStart.get(edge.node)!
-					) {
-						distancesToStart.set(
-							edge.node,
-							prioritizeNumberOfNodes ? 1 : edge.distance + currentDistance,
-						);
-						predecessors.set(edge.node, currentNode); // set predecessor node (for backtracking to create path)
-					}
+			// remove from unvisited set and add to visited set
+			distancesToStart.delete(currentNode);
+			visitedNodes.set(currentNode, currentDistance);
+			// iterate edge nodes, and set distance to unvisited node if smaller than current node distance to start
+			for (const edge of currentNode.edges) {
+				if (edge.distance + currentDistance < distancesToStart.get(edge.node)!) {
+					distancesToStart.set(edge.node, edge.distance + currentDistance);
+					predecessors.set(edge.node, currentNode); // set predecessor node (for backtracking to create path)
 				}
 			}
-			// create path from predecessors
-			const path: Edge[] = [];
-			for (let node = targetNode; predecessors.get(node); node = predecessors.get(node)!) {
-				path.unshift(
-					predecessors.get(node)!.edges.find((edge) => edge.node.name == node.name)!,
-				);
-			}
-			return path;
 		}
+		predecessors.get(targetNode);
+		// create path from predecessors
+		const path: Edge[] = [];
+		for (let node = targetNode; predecessors.get(node); node = predecessors.get(node)!) {
+			path.unshift(
+				predecessors.get(node)!.edges.find((edge) => edge.node.name == node.name)!,
+			);
+		}
+		return path;
+	}
 
+	function pathfindTo(targetNode: Node, pathUp: boolean = false): Edge[] {
 		if (pathUp) {
-			const list: Edge[][] = [];
+			const paths: Edge[][] = [];
 			// for each node in the stack, append the path from current -> stack to the path from stack -> target
 			for (let i = 0; i < pathStack.length; i++) {
 				const path = [
@@ -155,20 +147,62 @@ export default function Main() {
 						.toReversed()
 						.slice(0, i)
 						.map((edge) => ({ ...edge, up: true })),
-					...pathfindToAux(targetNode, pathStack.slice(0, pathStack.length - i)),
+					...pathfindToAux(
+						pathStack.slice(0, pathStack.length - i).at(-1)!.node,
+						targetNode,
+						nodes,
+					),
 				];
 				// if theres no path to target node, the resulting pathStacks's last element won't be the target node
-				if (getTraversedPath(path).at(-1)?.node.name === targetNode.name) list.push(path);
+				if (getTraversedPath(path).at(-1)?.node.name === targetNode.name) paths.push(path);
 			}
 			// get path with smallest distance
-			return list.sort(
+			return paths.sort(
 				(a, b) =>
 					a.reduce((acc, edge) => acc + edge.distance, 0) -
 					b.reduce((acc, edge) => acc + edge.distance, 0),
 			)[0];
 		} else {
-			return pathfindToAux(targetNode);
+			return pathfindToAux(currentNode(), targetNode, nodes);
 		}
+	}
+
+	function pathfindToInteractable(interactable: interactables) {
+		const nodesCopy = _.cloneDeep(nodes);
+		if (interactable == "Blue Ring") {
+			nodesCopy.values().forEach((node) => {
+				for (let i = node.edges.length - 1; i >= 0; i--) {
+					if (node.edges[i].node.blueRingDownDestination) {
+						node.edges.splice(i, 1);
+					}
+				}
+			});
+		} else if (interactable == "Pink Ring") {
+			nodesCopy.values().forEach((node) => {
+				for (let i = node.edges.length - 1; i >= 0; i--) {
+					if (node.edges[i].node.interactables.includes("Pink Sphere")) {
+						node.edges.splice(i, 1);
+					}
+				}
+			});
+		}
+		const possibleDestinations = nodesCopy.values().filter((node) => {
+			// small white flower only contains blue ring inside an alpha cube
+			if (node.name === "Small White Flower") {
+				return !!pathStack.find((edge) => edge.node.name === "Alpha Cube");
+			}
+			return node.interactables.includes(interactable);
+		});
+		const paths: Edge[][] = [];
+		for (const destination of possibleDestinations) {
+			const path = pathfindToAux(nodesCopy.get(currentNode().name)!, destination, nodesCopy);
+			if (getTraversedPath(path).at(-1)?.node.name === destination.name) paths.push(path);
+		}
+		return paths.sort(
+			(a, b) =>
+				a.reduce((acc, edge) => acc + edge.distance, 0) -
+				b.reduce((acc, edge) => acc + edge.distance, 0),
+		)[0];
 	}
 
 	useEffect(() => {
@@ -207,6 +241,8 @@ export default function Main() {
 	useEffect(() => {
 		const path = document.getElementsByClassName("pathNode");
 		path[path.length - 1].scrollIntoView();
+		console.log(pathfindToInteractable("Blue Ring"));
+		//console.log(pathfindTo(nodes.get("Small Yellow Flower")!));
 	}, [pathStack]);
 
 	return (

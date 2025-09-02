@@ -135,6 +135,10 @@ const INPUT_NODES = [
 			"EXP",
 			"Extra 100% Health",
 		],
+		blueRingDownDestination: {
+			nodeName: "Small Black Flower",
+			note: "Secret Entrance",
+		},
 		trophy: true,
 	},
 	{
@@ -633,6 +637,9 @@ const INPUT_NODES = [
 		interactables: ["Respawn", "Save", "Blue Ring", "Waypoint"],
 		upgrades: ["Plasma Velocity", "Cannon Velocity"],
 		items: ["Plasma Ammo", "Health", "Armor", "Cannon Ammo", "Gold"],
+		blueRingDownDestination: {
+			nodeName: "Ying Air Cube",
+		},
 	},
 	{
 		name: "Ying Deep Air",
