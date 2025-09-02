@@ -66,49 +66,27 @@ export default function Main() {
 		},
 	]);
 
+	useEffect(() => {
+		document.title = "Fractal Block World Map";
+		setPathStack([
+			...pathStack,
+			...startingPath
+				.slice(1)
+				.map(
+					(nodeName, index) =>
+						nodes
+							.get(startingPath[index])!
+							.edges.find((edge) => edge.node.name == nodeName)!,
+				),
+		]);
+	}, []);
+
 	function currentNode() {
 		return pathStack.at(-1)!.node;
 	}
 
-	function traverseTo(node: Node) {
-		traversePath(pathfindTo(currentNode(), node));
-	}
-
-	// returns resulting pathStack of traversing a path
-	function getTraversedPath(pathStack: Edge[], path: Edge[]) {
-		let pathStackAux = pathStack.slice();
-		for (const edge of path) {
-			if (edge.up) {
-				pathStackAux = pathStackAux.slice(
-					0,
-					pathStackAux.findLastIndex((edge2) => edge.node.name == edge2.node.name),
-				);
-			} else if (edge.blueRingUp) {
-				const blueDownChunk = pathStackAux.findLastIndex(
-					(edge2) => edge2.node.blueRingDownDestination,
-				);
-				pathStackAux = pathStackAux.slice(0, blueDownChunk + 1);
-				pathStackAux.push(
-					...pathfindToAux(
-						pathStackAux[blueDownChunk].node,
-						nodes.get(
-							pathStackAux[blueDownChunk].node.blueRingDownDestination!
-								.nodeName as nodeNames,
-						)!,
-						nodes,
-					),
-				);
-			} else pathStackAux.push(edge);
-		}
-		return pathStackAux;
-	}
-
-	function traversePath(path: Edge[]) {
-		setPathStack(getTraversedPath(pathStack, path));
-	}
-
 	//Dijkstra pathfinding
-	function pathfindToAux(
+	function dijkstraPathfind(
 		currentNode: Node,
 		targetNode: Node,
 		nodes: Map<nodeNames, Node>,
@@ -161,7 +139,7 @@ export default function Main() {
 						.toReversed()
 						.slice(0, i)
 						.map((edge) => ({ ...edge, up: true })),
-					...pathfindToAux(
+					...dijkstraPathfind(
 						pathStack.slice(0, pathStack.length - i).at(-1)!.node,
 						targetNode,
 						nodes,
@@ -169,6 +147,7 @@ export default function Main() {
 				];
 				// if theres no path to target node, the resulting pathStacks's last element won't be the target node
 				if (getTraversedPath(pathStack, path).at(-1)?.node.name === targetNode.name) {
+					// if destination is only accessible thorugh a blue ring, jump to before that then pathfind to a blue ring
 					const mustPathBlueRing = path.findIndex((edge) => edge.blueRingOnly);
 					if (mustPathBlueRing > -1) {
 						path = path.slice(0, mustPathBlueRing);
@@ -189,7 +168,8 @@ export default function Main() {
 					b.reduce((acc, edge) => acc + edge.distance, 0),
 			)[0];
 		} else {
-			let path = pathfindToAux(currentNode, targetNode, nodes);
+			let path = dijkstraPathfind(currentNode, targetNode, nodes);
+			// if destination is only accessible thorugh a blue ring, jump to before that then pathfind to a blue ring
 			const mustPathBlueRing = path.findIndex((edge) => edge.blueRingOnly);
 			if (mustPathBlueRing > -1) {
 				path = path.slice(0, mustPathBlueRing);
@@ -225,14 +205,14 @@ export default function Main() {
 		}
 		const possibleDestinations = nodesCopy.values().filter((node) => {
 			// small white flower only contains blue ring inside an alpha cube
-			if (node.name === "Small White Flower") {
+			if (node.name === "Small White Flower" && interactable == "Blue Ring") {
 				return !!pathStack.find((edge) => edge.node.name === "Alpha Cube");
 			}
 			return node.interactables.includes(interactable);
 		});
 		const paths: Edge[][] = [];
 		for (const destination of possibleDestinations) {
-			const path = pathfindToAux(nodesCopy.get(currentNode.name)!, destination, nodesCopy);
+			const path = dijkstraPathfind(nodesCopy.get(currentNode.name)!, destination, nodesCopy);
 			if (path.at(-1)?.node.name === destination.name) paths.push(path);
 		}
 		return paths.sort(
@@ -241,21 +221,6 @@ export default function Main() {
 				b.reduce((acc, edge) => acc + edge.distance, 0),
 		)[0];
 	}
-
-	useEffect(() => {
-		document.title = "Fractal Block World Map";
-		setPathStack([
-			...pathStack,
-			...startingPath
-				.slice(1)
-				.map(
-					(nodeName, index) =>
-						nodes
-							.get(startingPath[index])!
-							.edges.find((edge) => edge.node.name == nodeName)!,
-				),
-		]);
-	}, []);
 
 	const blueRingParentEdge = useMemo(() => {
 		if (currentNode().interactables.includes("Blue Ring")) {
@@ -273,6 +238,43 @@ export default function Main() {
 		traverseTo(
 			nodes.get(blueRingParentEdge!.node.blueRingDownDestination!.nodeName as nodeNames)!,
 		);
+	}
+
+	// returns resulting pathStack of traversing a path
+	function getTraversedPath(pathStack: Edge[], path: Edge[]) {
+		let pathStackAux = pathStack.slice();
+		for (const edge of path) {
+			if (edge.up) {
+				pathStackAux = pathStackAux.slice(
+					0,
+					pathStackAux.findLastIndex((edge2) => edge.node.name == edge2.node.name),
+				);
+			} else if (edge.blueRingUp) {
+				const blueDownChunk = pathStackAux.findLastIndex(
+					(edge2) => edge2.node.blueRingDownDestination,
+				);
+				pathStackAux = pathStackAux.slice(0, blueDownChunk + 1);
+				pathStackAux.push(
+					...dijkstraPathfind(
+						pathStackAux[blueDownChunk].node,
+						nodes.get(
+							pathStackAux[blueDownChunk].node.blueRingDownDestination!
+								.nodeName as nodeNames,
+						)!,
+						nodes,
+					),
+				);
+			} else pathStackAux.push(edge);
+		}
+		return pathStackAux;
+	}
+
+	function traversePath(path: Edge[]) {
+		setPathStack(getTraversedPath(pathStack, path));
+	}
+
+	function traverseTo(node: Node) {
+		traversePath(pathfindTo(currentNode(), node));
 	}
 
 	useEffect(() => {
