@@ -2,6 +2,8 @@
 	--background: #0a0a0a;
 	--backgroundTransparent: #0a0a0a99;
 	--foreground: #007f80;
+	--blue: #0004de;
+	--pink: #f901fd;
 }
 @media (prefers-color-scheme: dark) {
 	:root {

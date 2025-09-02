@@ -224,11 +224,7 @@ export default function Main() {
 
 	const blueRingParentEdge = useMemo(() => {
 		if (currentNode().interactables.includes("Blue Ring")) {
-			for (const edge of pathStack.toReversed()) {
-				if (edge.node.blueRingDownDestination) {
-					return edge;
-				}
-			}
+			return pathStack.findLast((edge) => edge.node.blueRingDownDestination);
 		}
 		return;
 	}, [pathStack]);
@@ -238,6 +234,17 @@ export default function Main() {
 		traverseTo(
 			nodes.get(blueRingParentEdge!.node.blueRingDownDestination!.nodeName as nodeNames)!,
 		);
+	}
+
+	const pinkRingParentEdge = useMemo(() => {
+		if (currentNode().interactables.includes("Pink Ring")) {
+			return pathStack.findLast((edge) => edge.node.interactables.includes("Pink Sphere"));
+		}
+		return;
+	}, [pathStack]);
+
+	function traversePinkRing() {
+		setPathStack(pathStack.slice(0, pathStack.lastIndexOf(pinkRingParentEdge!) + 1));
 	}
 
 	// returns resulting pathStack of traversing a path
@@ -281,7 +288,7 @@ export default function Main() {
 		const path = document.getElementsByClassName("pathNode");
 		path[path.length - 1].scrollIntoView();
 		//console.log(pathfindToInteractable(currentNode(), "Waypoint"));
-		console.log(pathfindTo(currentNode(), nodes.get("Violet Shell 0")!));
+		console.log(pathfindTo(currentNode(), nodes.get("Tutorial 1")!));
 		//console.log(getTraversedPath(pathStack, pathfindTo(currentNode(), nodes.get("Violet Shell 0")!)));
 	}, [pathStack]);
 
@@ -306,7 +313,21 @@ export default function Main() {
 								""
 							)}
 							<div
-								className={`pathNode`}
+								className={`pathNode${
+									index ==
+									pathStack.findLastIndex((edge) =>
+										edge.node.interactables?.includes("Pink Sphere"),
+									)
+										? " pinkRing"
+										: ""
+								}${
+									index ==
+									pathStack.findLastIndex(
+										(edge) => edge.node.blueRingDownDestination,
+									)
+										? " blueRing"
+										: ""
+								}`}
 								onClick={() =>
 									traversePath(
 										path
@@ -316,17 +337,6 @@ export default function Main() {
 									)
 								}
 							>
-								{currentNode().interactables?.includes("Pink Ring") &&
-									index ==
-										pathStack.findLastIndex((edge) =>
-											edge.node.interactables?.includes("Pink Sphere"),
-										) && (
-										<Image
-											className='icon'
-											src='./images/icons/Pink Ring.webp'
-											alt='(Pink Ring) '
-										/>
-									)}
 								{edge.node.name}
 							</div>
 						</Fragment>
@@ -362,12 +372,21 @@ export default function Main() {
 								</span>
 							))}
 							{blueRingParentEdge && (
-								<span className='edgeBlueRing' onClick={traverseBlueRing}>
+								<span className='edge blueRing' onClick={traverseBlueRing}>
 									<Image
 										className='icon-small'
 										src={`./images/icons/Blue Ring.webp`}
 									/>
 									{`${blueRingParentEdge.node.blueRingDownDestination!.nodeName} ${blueRingParentEdge.node.blueRingDownDestination!.note ?? ""}`}
+								</span>
+							)}
+							{pinkRingParentEdge && (
+								<span className='edge pinkRing' onClick={traversePinkRing}>
+									<Image
+										className='icon-small'
+										src={`./images/icons/Pink Ring.webp`}
+									/>
+									{pinkRingParentEdge.node.name}
 								</span>
 							)}
 						</div>

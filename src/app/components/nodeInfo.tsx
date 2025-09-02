@@ -119,7 +119,7 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 							<div key={item}>
 								<Image
 									className='icon-small'
-									src={`./images/icons/${labels.get(item)?.imageName ?? item}.webp`}
+									src={`./images/icons/${labels.get(item)?.imageName ?? (item.includes("Yellow Key") ? "Yellow Key" : item)}.webp`}
 								/>
 								{item.includes("Ammo") ? "Ammo" : item}
 							</div>

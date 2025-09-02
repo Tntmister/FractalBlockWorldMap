@@ -47,11 +47,8 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-}
-
-.pathNode:has(> .icon) {
-	border-color: #f901fd;
-	color: #f901fd;
+	position: relative;
+	background-color: var(--background);
 }
 
 #edgesContainer {
@@ -72,8 +69,7 @@ body {
 	overflow-x: auto;
 }
 
-.edge,
-.edgeBlueRing {
+.edge {
 	padding: 0.25rem 0.5rem;
 	border: 1px solid var(--foreground);
 	cursor: pointer;
@@ -83,9 +79,43 @@ body {
 	white-space: nowrap;
 }
 
-.edgeBlueRing {
-	border-color: #0004de;
-	color: #0004de;
+.blueRing {
+	border-color: var(--blue);
+	color: var(--blue);
+}
+.pinkRing {
+	border-color: var(--pink);
+	color: var(--pink);
+}
+
+.blueRing.pinkRing::before {
+	background: var(--background);
+	position: absolute;
+	content: "";
+	height: 0;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+}
+.blueRing.pinkRing {
+	border-width: 0 !important;
+	background: repeating-linear-gradient(-45deg, var(--blue) 0 15%, var(--pink) 15% 30%);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+.blueRing.pinkRing::after {
+	background: repeating-linear-gradient(-45deg, var(--blue) 0 15%, var(--pink) 15% 30%);
+	position: absolute;
+	content: "";
+	height: 1px;
+	left: -1px;
+	top: -1px;
+	width: calc(100% + 2px);
+	height: calc(100% + 2px);
+	z-index: -2;
 }
 
 .edgeTooltip {
