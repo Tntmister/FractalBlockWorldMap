@@ -70,27 +70,41 @@ export default function Main() {
 		return pathStack.at(-1)!.node;
 	}
 
-	function traverseTo(node: Node, rerender: boolean = true) {
-		traversePath(pathfindTo(node), rerender);
+	function traverseTo(node: Node) {
+		traversePath(pathfindTo(currentNode(), node));
 	}
 
 	// returns resulting pathStack of traversing a path
-	function getTraversedPath(path: Edge[]) {
+	function getTraversedPath(pathStack: Edge[], path: Edge[]) {
 		let pathStackAux = pathStack.slice();
 		for (const edge of path) {
-			if (edge.up)
+			if (edge.up) {
 				pathStackAux = pathStackAux.slice(
 					0,
 					pathStackAux.findLastIndex((edge2) => edge.node.name == edge2.node.name),
 				);
-			else pathStackAux.push(edge);
+			} else if (edge.blueRingUp) {
+				const blueDownChunk = pathStackAux.findLastIndex(
+					(edge2) => edge2.node.blueRingDownDestination,
+				);
+				pathStackAux = pathStackAux.slice(0, blueDownChunk + 1);
+				pathStackAux.push(
+					...pathfindToAux(
+						pathStackAux[blueDownChunk].node,
+						nodes.get(
+							pathStackAux[blueDownChunk].node.blueRingDownDestination!
+								.nodeName as nodeNames,
+						)!,
+						nodes,
+					),
+				);
+			} else pathStackAux.push(edge);
 		}
 		return pathStackAux;
 	}
 
-	function traversePath(path: Edge[], rerender: boolean = true) {
-		pathStack = getTraversedPath(path);
-		if (rerender) setPathStack(pathStack.slice());
+	function traversePath(path: Edge[]) {
+		setPathStack(getTraversedPath(pathStack, path));
 	}
 
 	//Dijkstra pathfinding
@@ -137,12 +151,12 @@ export default function Main() {
 		return path;
 	}
 
-	function pathfindTo(targetNode: Node, pathUp: boolean = false): Edge[] {
+	function pathfindTo(currentNode: Node, targetNode: Node, pathUp: boolean = false): Edge[] {
 		if (pathUp) {
 			const paths: Edge[][] = [];
 			// for each node in the stack, append the path from current -> stack to the path from stack -> target
 			for (let i = 0; i < pathStack.length; i++) {
-				const path = [
+				let path = [
 					...pathStack
 						.toReversed()
 						.slice(0, i)
@@ -154,7 +168,19 @@ export default function Main() {
 					),
 				];
 				// if theres no path to target node, the resulting pathStacks's last element won't be the target node
-				if (getTraversedPath(path).at(-1)?.node.name === targetNode.name) paths.push(path);
+				if (getTraversedPath(pathStack, path).at(-1)?.node.name === targetNode.name) {
+					const mustPathBlueRing = path.findIndex((edge) => edge.blueRingOnly);
+					if (mustPathBlueRing > -1) {
+						path = path.slice(0, mustPathBlueRing);
+						path.push(...pathfindToInteractable(path.at(-1)!.node, "Blue Ring"));
+						path.push({
+							node: targetNode,
+							distance: 0,
+							blueRingUp: true,
+						});
+					}
+					paths.push(path);
+				}
 			}
 			// get path with smallest distance
 			return paths.sort(
@@ -163,11 +189,22 @@ export default function Main() {
 					b.reduce((acc, edge) => acc + edge.distance, 0),
 			)[0];
 		} else {
-			return pathfindToAux(currentNode(), targetNode, nodes);
+			let path = pathfindToAux(currentNode, targetNode, nodes);
+			const mustPathBlueRing = path.findIndex((edge) => edge.blueRingOnly);
+			if (mustPathBlueRing > -1) {
+				path = path.slice(0, mustPathBlueRing);
+				path.push(...pathfindToInteractable(path.at(-1)!.node, "Blue Ring"));
+				path.push({
+					node: targetNode,
+					distance: 0,
+					blueRingUp: true,
+				});
+			}
+			return path;
 		}
 	}
 
-	function pathfindToInteractable(interactable: interactables) {
+	function pathfindToInteractable(currentNode: Node, interactable: interactables) {
 		const nodesCopy = _.cloneDeep(nodes);
 		if (interactable == "Blue Ring") {
 			nodesCopy.values().forEach((node) => {
@@ -195,8 +232,8 @@ export default function Main() {
 		});
 		const paths: Edge[][] = [];
 		for (const destination of possibleDestinations) {
-			const path = pathfindToAux(nodesCopy.get(currentNode().name)!, destination, nodesCopy);
-			if (getTraversedPath(path).at(-1)?.node.name === destination.name) paths.push(path);
+			const path = pathfindToAux(nodesCopy.get(currentNode.name)!, destination, nodesCopy);
+			if (path.at(-1)?.node.name === destination.name) paths.push(path);
 		}
 		return paths.sort(
 			(a, b) =>
@@ -241,8 +278,9 @@ export default function Main() {
 	useEffect(() => {
 		const path = document.getElementsByClassName("pathNode");
 		path[path.length - 1].scrollIntoView();
-		console.log(pathfindToInteractable("Blue Ring"));
-		//console.log(pathfindTo(nodes.get("Small Yellow Flower")!));
+		//console.log(pathfindToInteractable(currentNode(), "Waypoint"));
+		console.log(pathfindTo(currentNode(), nodes.get("Violet Shell 0")!));
+		//console.log(getTraversedPath(pathStack, pathfindTo(currentNode(), nodes.get("Violet Shell 0")!)));
 	}, [pathStack]);
 
 	return (

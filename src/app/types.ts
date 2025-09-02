@@ -143,8 +143,10 @@ type edgeInfo = {
 	distance: number; // how hard is it to traverse to ingame (enemy difficulty/time)
 	note?: string; // specifc method to enter
 	requiresKey?: keyTypes;
-	impassable?: boolean; // to visually indicate that the destination is only accessible through other ways, like blue rings (WIG Prison and Violet Shells, for example)
-	up?: boolean; // used for pathfinding
+	blueRingOnly?: boolean; // to indicate that the destination is only accessible blue rings (i.e. WIG Prison and Violet Shells)
+	// used for pathfinding
+	blueRingUp?: boolean;
+	up?: boolean;
 };
 
 export type InputEdges = {

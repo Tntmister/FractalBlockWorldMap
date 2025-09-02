@@ -1438,6 +1438,10 @@ const INPUT_NODES = [
 		upgrades: ["Rocket Radius", "Rocket Velocity"],
 		monsters: ["Troll", "Science Core", "War Vulcan"],
 		interactables: ["Save", "Out-Only Waypoint", "Blue Ring"],
+		blueRingDownDestination: {
+			nodeName: "Spruce Tree",
+			note: "Treasure",
+		},
 		secretTrophy: true,
 	},
 	{
