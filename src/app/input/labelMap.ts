@@ -194,8 +194,8 @@ export const labels: Map<items | upgrades, { label?: string; imageName?: string 
 			label: "Velocity",
 			imageName: "Minigun",
 		},
-		"Minigun Super": {
-			label: "Super",
+		"Minigun Super Damage": {
+			label: "Super Damage",
 			imageName: "Minigun",
 		},
 		"Railgun Max Ammo": {

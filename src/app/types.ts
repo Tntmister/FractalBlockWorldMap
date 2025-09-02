@@ -42,7 +42,7 @@ export type weaponUpgrades =
 	| "Minigun Fire Rate"
 	| "Minigun Damage"
 	| "Minigun Velocity"
-	| "Minigun Super"
+	| "Minigun Super Damage"
 	| "Railgun Max Ammo"
 	| "Railgun Fire Rate"
 	| "Railgun Damage"

@@ -41,6 +41,11 @@ const inputEdges: InputEdges = {
 			requiresKey: "Universe Key",
 		},
 	},
+	"Fire Rate Moon": {
+		"Moon Debris": {
+			distance: 0,
+		},
+	},
 	"Safety Doppelganger": {
 		"Infinity Flower": {
 			distance: 15,
@@ -717,8 +722,43 @@ const inputEdges: InputEdges = {
 		},
 	},
 	"Hell": {
+		"Green Apple Tree": {
+			distance: 10,
+		},
+		"Quicksand Grass": {
+			distance: 10,
+		},
+		"Small White Flower": {
+			distance: 10,
+		},
+		"Small Black Flower": {
+			distance: 10,
+		},
 		"Hell Flower": {
-			distance: Infinity,
+			distance: 20,
+		},
+		"Below Hell": {
+			distance: 20,
+			requiresKey: "Universe Key",
+			note: "More to Come",
+		},
+	},
+	"Hell Flower": {
+		"Boss Battle": {
+			distance: 40,
+		},
+	},
+	"Boss Battle": {
+		"Ying Forest": {
+			distance: 5,
+		},
+		"Credits": {
+			distance: 40,
+		},
+	},
+	"Credits": {
+		"Small White Flower": {
+			distance: 0,
 		},
 	},
 	"Williston Field": {
@@ -2069,7 +2109,7 @@ const inputEdges: InputEdges = {
 			distance: 0,
 		},
 		"Hell": {
-			distance: Infinity,
+			distance: 15,
 			note: "Under Pyramid",
 		},
 	},
@@ -2136,6 +2176,23 @@ const inputEdges: InputEdges = {
 	"Red Maze Flower": {
 		"Quicksand Grass": {
 			distance: 0,
+		},
+		"Gate Back to I2": {
+			distance: 5,
+		},
+		"Ying Forest": {
+			distance: 15,
+		},
+		"Jumbo Yellow Flower": {
+			distance: 15,
+		},
+	},
+	"Gate Back to I2": {
+		"Red Rose": {
+			distance: 10,
+		},
+		"I2 WIG Flower": {
+			distance: 15,
 		},
 	},
 	"Carrots": {
@@ -3034,6 +3091,14 @@ const inputEdges: InputEdges = {
 		"Red Rose": {
 			distance: 15,
 		},
+		"Stone Corral": {
+			distance: 25,
+		},
+	},
+	"Red Rose": {
+		"Red Apple Tree": {
+			distance: 0,
+		},
 	},
 	"Richmond Sewers": {
 		"Ying Forest": {
@@ -3365,11 +3430,14 @@ const inputEdges: InputEdges = {
 			distance: 0,
 		},
 		"Galaxy Flower": {
-			distance: 20,
-			note: "Inside Buildings",
+			distance: 10,
+		},
+		"The Bulk 1": {
+			distance: 10,
 		},
 		"House of 5 Lampreys": {
-			distance: Infinity,
+			distance: 20,
+			note: "Random Building, Coordinates In Buildings",
 		},
 	},
 	"Mylantis Top Garden": {
@@ -3392,7 +3460,7 @@ const inputEdges: InputEdges = {
 			distance: 5,
 		},
 		"Mylantis City Underground": {
-			distance: Infinity,
+			distance: 0,
 			requiresKey: "Universe Key",
 		},
 	},
@@ -3403,10 +3471,30 @@ const inputEdges: InputEdges = {
 	},
 	"Mylantis City Underground": {
 		"Beta Menger Sponge": {
-			distance: Infinity,
+			distance: 0,
 		},
 		"The Bulk 1": {
-			distance: Infinity,
+			distance: 0,
+		},
+	},
+	"Beta Menger Sponge": {
+		"Hinesburg": {
+			distance: 10,
+		},
+		"Beta Sponge Town": {
+			distance: 50,
+			note: "Depth >100",
+		},
+	},
+	"Beta Sponge Town": {
+		"Tau Cave Moon": {
+			distance: 0,
+		},
+		"Ying Forest": {
+			distance: 0,
+		},
+		"Jackfruit": {
+			distance: 0,
 		},
 	},
 	"Outer Space 1": {
