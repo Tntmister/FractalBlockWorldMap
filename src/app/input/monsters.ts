@@ -506,4 +506,7 @@ export const monsters = [
 	{
 		name: "Eternal Virus",
 	},
+	{
+		name: "Scourge",
+	},
 ] as const satisfies readonly monster[];

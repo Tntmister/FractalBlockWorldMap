@@ -287,8 +287,8 @@ export default function Main() {
 	useEffect(() => {
 		const path = document.getElementsByClassName("pathNode");
 		path[path.length - 1].scrollIntoView();
-		//console.log(pathfindToInteractable(currentNode(), "Waypoint"));
-		console.log(pathfindTo(currentNode(), nodes.get("Tutorial 1")!));
+		console.log(pathfindToInteractable(currentNode(), "Pink Ring"));
+		//console.log(pathfindTo(currentNode(), nodes.get("I2 Library")!));
 		//console.log(getTraversedPath(pathStack, pathfindTo(currentNode(), nodes.get("Violet Shell 0")!)));
 	}, [pathStack]);
 

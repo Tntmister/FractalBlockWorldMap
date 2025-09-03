@@ -87,7 +87,8 @@ type keyTypes =
 	| "Green Key"
 	| "Laser Genesis Key"
 	| "Universe Key"
-	| `${"I1" | "I2" | "I3" | "Burlington" | "Hell"} Stable Singletons Key`;
+	| `${"I1" | "I2" | "I3" | "Burlington" | "Hell"} Stable Singletons Key`
+	| "Secret Farmhouse Key";
 
 export type defenceUpgrades = "Random Health" | "Max Health" | "Health Regen" | "Armor Regen" | "RejuvenX";
 

@@ -662,24 +662,287 @@ const inputEdges: InputEdges = {
 	},
 	"I3": {
 		"Hell": {
-			distance: Infinity,
+			distance: 15,
 		},
 		"Sagittarius Portal": {
-			distance: Infinity,
+			distance: 15,
 		},
+		"Mahogany Tree": {
+			distance: 5,
+		},
+		"Desert": {
+			distance: 15,
+		},
+		"Ascend Temple": {
+			distance: 40,
+		},
+		"River": {
+			distance: 10,
+		},
+	},
+	"River": {
+		"Tangerine": {
+			distance: 10,
+		},
+		"River Pyramid": {
+			distance: 5,
+		},
+		"River Reed": {
+			distance: 0,
+		},
+	},
+	"River Pyramid": {
+		"Quicksand Grass": {
+			distance: 0,
+		},
+		"Yellow Mushroom": {
+			distance: 0,
+		},
+		"Colchester": {
+			distance: 0,
+		},
+		"I3 Library": {
+			distance: 0,
+		},
+		"Deep Silver Maze": {
+			distance: Infinity,
+			note: "Rainbow Flower - Sagittarius Portal - Rainbow Flower - Sagittarius Portal",
+		},
+	},
+	"River Reed": {
+		"Yellow Mushroom": {
+			distance: 5,
+		},
+		"Wood Box": {
+			distance: 5,
+		},
+		"I2 Fast Gate": {
+			distance: 5,
+		},
+		"I2 Standard Gate": {
+			distance: 5,
+		},
+		"Fir Tree": {
+			distance: 5,
+		},
+		"Earthy Basement": {
+			distance: 10,
+		},
+	},
+	"Wood Box": {
+		"Cardboard Box": {
+			distance: 10,
+		},
+		"Small Black Flower": {
+			distance: 10,
+		},
+	},
+	"Tangerine": {
+		"Blackberry": {
+			distance: 10,
+		},
+		"I2 WIG Flower": {
+			distance: 15,
+		},
+		"Huntington": {
+			distance: 40,
+		},
+	},
+	"Desert": {
+		"Desert Cactus": {
+			distance: 10,
+		},
+		"Desert Flower": {
+			distance: 10,
+		},
+		"Desert Caves": {
+			distance: 15,
+		},
+		"Desert Oasis": {
+			distance: 15,
+		},
+	},
+	"Desert Oasis": {
+		"River": {
+			distance: 0,
+		},
+		"Carrots": {
+			distance: 0,
+		},
+		"I3 Library": {
+			distance: 0,
+		},
+	},
+	"Ascend Temple": {
+		"Jumbo Yellow Flower": {
+			distance: 30,
+		},
+		"Ying Forest": {
+			distance: 30,
+		},
+	},
+	"Desert Caves": {
+		"I3 WIG Flower": {
+			distance: 20,
+			note: "Keith's Coffee Bar",
+		},
+		"Rainbow Flower": {
+			distance: 20,
+			note: "La Belle's Bar",
+		},
+	},
+	"Mahogany Tree": {
 		"Dandelions": {
 			distance: 5,
 		},
+		"Small White Flower": {
+			distance: 5,
+		},
+		"Duplication Tube": {
+			distance: 5,
+		},
+		"Large White Flower": {
+			distance: 5,
+		},
 		"Hard Orange Flower": {
-			distance: 10,
+			distance: 5,
+		},
+		"Red Maze Flower": {
+			distance: 5,
+		},
+		"Jackfruit": {
+			distance: 5,
 		},
 		"Colchester": {
+			distance: 5,
+		},
+		"I2 Standard Gate": {
+			distance: 5,
+		},
+		"I3 WIG Flower": {
+			distance: 5,
+		},
+		"I3": {
+			distance: 5,
+		},
+		"I3 Library": {
+			distance: 5,
+		},
+		"Mahogany Tree Inside": {
+			distance: 0,
+		},
+	},
+	"Mahogany Tree Inside": {
+		"Fir Tree": {
+			distance: 0,
+		},
+		"Colchester": {
+			distance: 5,
+		},
+		"I3 WIG Flower": {
+			distance: 5,
+		},
+		"Dandelions": {
+			distance: 5,
+			note: "On Vines",
+		},
+		"Alpha Cube": {
+			distance: 5,
+		},
+		"Mahogany Basement": {
+			distance: 5,
+		},
+		"Large Cannon Pyramid": {
+			distance: 5,
+		},
+		"Mahogany Tree Central Shaft": {
+			distance: 25,
+		},
+	},
+	"Mahogany Tree Central Shaft": {
+		"Carrots": {
+			distance: 0,
+		},
+		"I3 WIG Flower": {
+			distance: 5,
+		},
+		"I2 Fast Gate": {
+			distance: 5,
+		},
+		"I2 Standard Gate": {
+			distance: 5,
+		},
+		"Colchester": {
+			distance: 5,
+		},
+		"Hard Orange Flower": {
+			distance: 5,
+		},
+		"Turnips": {
 			distance: 10,
+		},
+		"I3 Library": {
+			distance: 10,
+		},
+		"Essex": {
+			distance: 15,
+		},
+		"Mahogany Cellar": {
+			distance: 15,
+		},
+		"Mahogany Core": {
+			distance: 40,
+		},
+	},
+	"Mahogany Core": {
+		"Montreal": {
+			distance: 15,
+		},
+	},
+	"Mahogany Cellar": {
+		"Alpha Cube": {
+			distance: Infinity,
+		},
+		"Green Apple Tree": {
+			distance: 5,
+		},
+		"I2 WIG Flower": {
+			distance: 15,
+		},
+	},
+	"Mahogany Basement": {
+		"Green Apple Tree": {
+			distance: 5,
+		},
+		"Small White Flower": {
+			distance: 15,
+		},
+	},
+	"I3 Library": {
+		"I3 WIG Flower": {
+			distance: 0,
+		},
+		"I2 Library": {
+			distance: 0,
+		},
+		"Hell": {
+			distance: 20,
+			note: "Pink Sphere Exit",
+		},
+		"Dandelions": {
+			distance: 20,
+			note: "Pink Sphere Exit",
 		},
 	},
 	"Dandelions": {
 		"Salmon Mushroom": {
-			distance: Infinity,
+			distance: 5,
+		},
+		"Yellow Mushroom": {
+			distance: 5,
+		},
+		"Pumpkin": {
+			distance: 5,
 		},
 	},
 	"Colchester": {
@@ -701,6 +964,10 @@ const inputEdges: InputEdges = {
 		"I3": {
 			distance: 0,
 		},
+		"Colchester Secret": {
+			distance: 20,
+			blueRingOnly: true,
+		},
 	},
 	"Hard Orange Flower": {
 		"I2 WIG Flower": {
@@ -718,7 +985,7 @@ const inputEdges: InputEdges = {
 	},
 	"Sagittarius Portal": {
 		"Fanatic Lattice": {
-			distance: Infinity,
+			distance: 10,
 		},
 	},
 	"Hell": {
@@ -737,7 +1004,7 @@ const inputEdges: InputEdges = {
 		"Hell Flower": {
 			distance: 20,
 		},
-		"Below Hell": {
+		"Hell Debug": {
 			distance: 20,
 			requiresKey: "Universe Key",
 			note: "More to Come",
@@ -842,10 +1109,6 @@ const inputEdges: InputEdges = {
 		},
 	},
 	"I2 WIG Flower": {
-		"I2 WIG Flower": {
-			distance: 0,
-			note: "Prank Flower",
-		},
 		"Fanatic Lattice": {
 			distance: 0,
 		},
@@ -868,11 +1131,18 @@ const inputEdges: InputEdges = {
 		"Prank I2 WIG Flower": {
 			distance: 0,
 		},
+		"Quicksand Grass": {
+			distance: 0,
+			note: "Level 11",
+		},
 	},
 	"Prank I2 WIG Flower": {
 		"WIG Prison 2": {
 			distance: 20,
 			blueRingOnly: true,
+		},
+		"Quicksand Grass": {
+			distance: 0,
 		},
 	},
 	"WIG Prison 2": {
@@ -2177,7 +2447,7 @@ const inputEdges: InputEdges = {
 		"Quicksand Grass": {
 			distance: 0,
 		},
-		"Gate Back to I2": {
+		"I2 Standard Gate": {
 			distance: 5,
 		},
 		"Ying Forest": {
@@ -2187,7 +2457,7 @@ const inputEdges: InputEdges = {
 			distance: 15,
 		},
 	},
-	"Gate Back to I2": {
+	"I2 Standard Gate": {
 		"Red Rose": {
 			distance: 10,
 		},
@@ -2325,7 +2595,7 @@ const inputEdges: InputEdges = {
 	},
 	"I2 Fast Gate": {
 		"I2 WIG Flower": {
-			distance: 20,
+			distance: 10,
 		},
 	},
 	"Salmon Mushroom": {
@@ -2648,6 +2918,10 @@ const inputEdges: InputEdges = {
 		},
 		"Health Tower": {
 			distance: 5,
+		},
+		"Secret Cave of Jerichos": {
+			distance: Infinity,
+			note: "Well With No Pink Sphere",
 		},
 	},
 	"Imp Cave": {
@@ -2979,25 +3253,36 @@ const inputEdges: InputEdges = {
 			distance: 0,
 		},
 		"Orange": {
-			distance: 0,
+			distance: 5,
 		},
 		"Ying Flower": {
-			distance: 0,
+			distance: 5,
 		},
 		"Tweedle-Dum Air": {
-			distance: 0,
+			distance: 5,
 		},
 		"Tau Cave Flower": {
-			distance: 0,
+			distance: 5,
+		},
+		"Small Yellow Flower": {
+			distance: 5,
+		},
+		"Jumbo Yellow Flower": {
+			distance: 5,
 		},
 		"Small White Flower": {
-			distance: 0,
+			distance: 5,
 		},
 		"Small Black Flower": {
-			distance: 0,
+			distance: 5,
+		},
+		"Ying Air": {
+			distance: 10,
+			note: "In Between Shells",
 		},
 		"Mossy Basement": {
 			distance: 20,
+			note: "Center",
 		},
 	},
 	"Mossy Basement": {
@@ -3429,15 +3714,28 @@ const inputEdges: InputEdges = {
 		"Ying Forest": {
 			distance: 0,
 		},
+		"Jumbo Yellow Flower": {
+			distance: 5,
+		},
 		"Galaxy Flower": {
-			distance: 10,
+			distance: 5,
 		},
 		"The Bulk 1": {
-			distance: 10,
+			distance: 5,
 		},
 		"House of 5 Lampreys": {
-			distance: 20,
+			distance: 15,
 			note: "Random Building, Coordinates In Buildings",
+		},
+		"Secret Farmhouse": {
+			distance: 15,
+			note: "S-10",
+			requiresKey: "Secret Farmhouse Key",
+		},
+	},
+	"House of 5 Lampreys": {
+		"Hell": {
+			distance: 10,
 		},
 	},
 	"Mylantis Top Garden": {
@@ -3747,6 +4045,9 @@ const inputEdges: InputEdges = {
 		},
 		"Upgrade Station": {
 			distance: 20,
+		},
+		"Ying Forest": {
+			distance: 0,
 		},
 	},
 	"Quicksand Grass": {
