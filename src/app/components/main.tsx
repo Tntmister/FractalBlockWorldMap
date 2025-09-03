@@ -173,7 +173,7 @@ export default function Main() {
 			const mustPathBlueRing = path.findIndex((edge) => edge.blueRingOnly);
 			if (mustPathBlueRing > -1) {
 				path = path.slice(0, mustPathBlueRing);
-				path.push(...pathfindToInteractable(path.at(-1)!.node, "Blue Ring"));
+				path.push(...pathfindToInteractable(path.at(-1)?.node ?? currentNode, "Blue Ring"));
 				path.push({
 					node: targetNode,
 					distance: 0,
