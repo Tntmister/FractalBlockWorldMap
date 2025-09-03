@@ -49,30 +49,38 @@
 	background-color: var(--backgroundTransparent);
 	width: 100%;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	border-top: var(--foreground) 1px solid;
-	justify-content: space-evenly;
-	min-height: 5rem;
 }
 
-.nodeInfo > * {
-	padding: 0 0.25rem;
-}
-.nodeInfo > *:first-child {
-	padding: 0.25rem 0.5rem;
-	margin-bottom: 0.25rem;
-}
-
-.nodeInfo {
-	border-right: var(--foreground) 1px solid;
-	border-left: var(--foreground) 1px solid;
-}
-
-.nodeInfo > *:first-child {
+#nodeInfoHeader {
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
 	border-bottom: var(--foreground) 1px solid;
+	padding: 0.25rem 0;
 }
-.nodeInfo > *:not(:first-child) {
-	text-align: left;
+
+#nodeInfoHeader > * {
+	padding: 0.25rem 0.5rem;
+	border: var(--foreground) 1px solid;
+	cursor: pointer;
+}
+
+#nodeInfoHeader > .active {
+	border-width: 2px;
+}
+
+#nodeInfoContent {
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	margin: 0.5rem;
+	flex-wrap: wrap;
+	white-space: pre;
+}
+
+#nodeInfoContent > * {
 	display: flex;
 	align-items: center;
 }
