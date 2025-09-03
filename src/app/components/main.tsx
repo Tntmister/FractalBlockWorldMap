@@ -129,59 +129,20 @@ export default function Main() {
 		return path;
 	}
 
-	function pathfindTo(currentNode: Node, targetNode: Node, pathUp: boolean = false): Edge[] {
-		if (pathUp) {
-			const paths: Edge[][] = [];
-			// for each node in the stack, append the path from current -> stack to the path from stack -> target
-			for (let i = 0; i < pathStack.length; i++) {
-				let path = [
-					...pathStack
-						.toReversed()
-						.slice(0, i)
-						.map((edge) => ({ ...edge, up: true })),
-					...dijkstraPathfind(
-						pathStack.slice(0, pathStack.length - i).at(-1)!.node,
-						targetNode,
-						nodes,
-					),
-				];
-				// if theres no path to target node, the resulting pathStacks's last element won't be the target node
-				if (getTraversedPath(pathStack, path).at(-1)?.node.name === targetNode.name) {
-					// if destination is only accessible thorugh a blue ring, jump to before that then pathfind to a blue ring
-					const mustPathBlueRing = path.findIndex((edge) => edge.blueRingOnly);
-					if (mustPathBlueRing > -1) {
-						path = path.slice(0, mustPathBlueRing);
-						path.push(...pathfindToInteractable(path.at(-1)!.node, "Blue Ring"));
-						path.push({
-							node: targetNode,
-							distance: 0,
-							blueRingUp: true,
-						});
-					}
-					paths.push(path);
-				}
-			}
-			// get path with smallest distance
-			return paths.sort(
-				(a, b) =>
-					a.reduce((acc, edge) => acc + edge.distance, 0) -
-					b.reduce((acc, edge) => acc + edge.distance, 0),
-			)[0];
-		} else {
-			let path = dijkstraPathfind(currentNode, targetNode, nodes);
-			// if destination is only accessible thorugh a blue ring, jump to before that then pathfind to a blue ring
-			const mustPathBlueRing = path.findIndex((edge) => edge.blueRingOnly);
-			if (mustPathBlueRing > -1) {
-				path = path.slice(0, mustPathBlueRing);
-				path.push(...pathfindToInteractable(path.at(-1)?.node ?? currentNode, "Blue Ring"));
-				path.push({
-					node: targetNode,
-					distance: 0,
-					blueRingUp: true,
-				});
-			}
-			return path;
+	function pathfindTo(currentNode: Node, targetNode: Node): Edge[] {
+		let path = dijkstraPathfind(currentNode, targetNode, nodes);
+		// if destination is only accessible thorugh a blue ring, jump to before that then pathfind to a blue ring
+		const mustPathBlueRing = path.findIndex((edge) => edge.blueRingOnly);
+		if (mustPathBlueRing > -1) {
+			path = path.slice(0, mustPathBlueRing);
+			path.push(...pathfindToInteractable(path.at(-1)?.node ?? currentNode, "Blue Ring"));
+			path.push({
+				node: targetNode,
+				distance: 0,
+				blueRingUp: true,
+			});
 		}
+		return path;
 	}
 
 	function pathfindToInteractable(currentNode: Node, interactable: interactables) {
