@@ -62,6 +62,7 @@
 }
 
 #nodeInfoHeader > * {
+	position: relative;
 	padding: 0.25rem 0.5rem;
 	border: var(--foreground) 1px solid;
 	cursor: pointer;
@@ -69,6 +70,14 @@
 
 #nodeInfoHeader > .active {
 	border-width: 2px;
+}
+#nodeInfoHeader > :not(.active) {
+	margin-top: 1px;
+	margin-bottom: 1px;
+}
+
+#nodeInfoHeader > .unavailable {
+	opacity: 0.5;
 }
 
 #nodeInfoContent {
