@@ -60,7 +60,6 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 	function changeInfoWindow(infoType: typeof currentInfoWindow) {
 		setCurrentInfoWindow(infoType);
 		for (const el of document.querySelectorAll<HTMLElement>("#nodeInfoHeader > span")) {
-			console.log(el);
 			el.classList.remove("active");
 			if (el.dataset.infotype == infoType) {
 				el.classList.add("active");

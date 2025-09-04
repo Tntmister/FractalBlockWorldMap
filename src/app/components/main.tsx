@@ -8,6 +8,12 @@ import "../css/main.css";
 import { inputNodes, nodeNames } from "../input/nodes";
 import { inputEdges } from "../input/edges";
 import { monsters } from "../input/monsters";
+import {
+	dijkstraPathfind,
+	getTraversedPath,
+	pathfindTo,
+	pathfindToInteractable,
+} from "./pathfinding";
 
 const nodes: Map<nodeNames, Node> = new Map();
 // initialize nodes from input.ts
@@ -81,110 +87,10 @@ export default function Main() {
 		]);
 	}, []);
 
-	function currentNode() {
-		return pathStack.at(-1)!.node;
-	}
-
-	//Dijkstra pathfinding
-	function dijkstraPathfind(
-		currentNode: Node,
-		targetNode: Node,
-		nodes: Map<nodeNames, Node>,
-	): Edge[] {
-		const distancesToStart = new Map<Node, number>();
-		const visitedNodes = new Map<Node, number>();
-		const predecessors = new Map<Node, Node>();
-		// initialize distances to start, start = 0, rest = Infinity
-		nodes
-			.values()
-			.forEach((node) =>
-				distancesToStart.set(node, node.name === currentNode.name ? 0 : Infinity),
-			);
-		while (distancesToStart.size) {
-			// get the node with the smallest distance to start
-			const [currentNode, currentDistance] = distancesToStart
-				.entries()
-				.reduce((previousValue, currentValue) =>
-					previousValue[1] < currentValue[1] ? previousValue : currentValue,
-				);
-			// remove from unvisited set and add to visited set
-			distancesToStart.delete(currentNode);
-			visitedNodes.set(currentNode, currentDistance);
-			// iterate edge nodes, and set distance to unvisited node if smaller than current node distance to start
-			for (const edge of currentNode.edges) {
-				if (edge.distance + currentDistance < distancesToStart.get(edge.node)!) {
-					distancesToStart.set(edge.node, edge.distance + currentDistance);
-					predecessors.set(edge.node, currentNode); // set predecessor node (for backtracking to create path)
-				}
-			}
-		}
-		predecessors.get(targetNode);
-		// create path from predecessors
-		const path: Edge[] = [];
-		for (let node = targetNode; predecessors.get(node); node = predecessors.get(node)!) {
-			path.unshift(
-				predecessors.get(node)!.edges.find((edge) => edge.node.name == node.name)!,
-			);
-		}
-		return path;
-	}
-
-	function pathfindTo(currentNode: Node, targetNode: Node): Edge[] {
-		let path = dijkstraPathfind(currentNode, targetNode, nodes);
-		// if destination is only accessible thorugh a blue ring, jump to before that then pathfind to a blue ring
-		const mustPathBlueRing = path.findIndex((edge) => edge.blueRingOnly);
-		if (mustPathBlueRing > -1) {
-			path = path.slice(0, mustPathBlueRing);
-			path.push(...pathfindToInteractable(path.at(-1)?.node ?? currentNode, "Blue Ring"));
-			path.push({
-				node: targetNode,
-				distance: 0,
-				blueRingUp: true,
-			});
-		}
-		return path;
-	}
-
-	function pathfindToInteractable(currentNode: Node, interactable: interactables) {
-		const nodesCopy = _.cloneDeep(nodes);
-		if (interactable == "Blue Ring") {
-			nodesCopy.values().forEach((node) => {
-				for (let i = node.edges.length - 1; i >= 0; i--) {
-					if (node.edges[i].node.blueRingDownDestination) {
-						node.edges.splice(i, 1);
-					}
-				}
-			});
-		} else if (interactable == "Pink Ring") {
-			nodesCopy.values().forEach((node) => {
-				for (let i = node.edges.length - 1; i >= 0; i--) {
-					if (node.edges[i].node.interactables.includes("Pink Sphere")) {
-						node.edges.splice(i, 1);
-					}
-				}
-			});
-		}
-		const possibleDestinations = nodesCopy.values().filter((node) => {
-			// small white flower only contains blue ring inside an alpha cube
-			if (node.name === "Small White Flower" && interactable == "Blue Ring") {
-				return !!pathStack.find((edge) => edge.node.name === "Alpha Cube");
-			}
-			return node.interactables.includes(interactable);
-		});
-		const paths: Edge[][] = [];
-		for (const destination of possibleDestinations) {
-			const path = dijkstraPathfind(nodesCopy.get(currentNode.name)!, destination, nodesCopy);
-			if (path.at(-1)?.node.name === destination.name) paths.push(path);
-		}
-		return paths.sort(
-			(a, b) =>
-				a.reduce((acc, edge) => acc + edge.distance, 0) -
-				b.reduce((acc, edge) => acc + edge.distance, 0),
-		)[0];
-	}
+	const currentNode = useMemo(() => pathStack.at(-1)!.node, [pathStack]);
 
 	const blueRingParentEdge = useMemo(() => {
-		if (currentNode().interactables.includes("Blue Ring")) {
+		if (currentNode.interactables.includes("Blue Ring")) {
 			return pathStack.findLast((edge) => edge.node.blueRingDownDestination);
 		}
 		return;
@@ -198,7 +104,7 @@ export default function Main() {
 	}
 
 	const pinkRingParentEdge = useMemo(() => {
-		if (currentNode().interactables.includes("Pink Ring")) {
+		if (currentNode.interactables.includes("Pink Ring")) {
 			return pathStack.findLast((edge) => edge.node.interactables.includes("Pink Sphere"));
 		}
 		return;
@@ -208,55 +114,32 @@ export default function Main() {
 		setPathStack(pathStack.slice(0, pathStack.lastIndexOf(pinkRingParentEdge!) + 1));
 	}
 
-	// returns resulting pathStack of traversing a path
-	function getTraversedPath(pathStack: Edge[], path: Edge[]) {
-		let pathStackAux = pathStack.slice();
-		for (const edge of path) {
-			if (edge.up) {
-				pathStackAux = pathStackAux.slice(
-					0,
-					pathStackAux.findLastIndex((edge2) => edge.node.name == edge2.node.name),
-				);
-			} else if (edge.blueRingUp) {
-				const blueDownChunk = pathStackAux.findLastIndex(
-					(edge2) => edge2.node.blueRingDownDestination,
-				);
-				pathStackAux = pathStackAux.slice(0, blueDownChunk + 1);
-				pathStackAux.push(
-					...dijkstraPathfind(
-						pathStackAux[blueDownChunk].node,
-						nodes.get(
-							pathStackAux[blueDownChunk].node.blueRingDownDestination!
-								.nodeName as nodeNames,
-						)!,
-						nodes,
-					),
-				);
-			} else pathStackAux.push(edge);
-		}
-		return pathStackAux;
-	}
-
 	function traversePath(path: Edge[]) {
-		setPathStack(getTraversedPath(pathStack, path));
+		setPathStack(getTraversedPath(path, pathStack, nodes));
 	}
 
 	function traverseTo(node: Node) {
-		traversePath(pathfindTo(currentNode(), node));
+		traversePath(pathfindTo(node, pathStack, nodes)!);
 	}
 
 	useEffect(() => {
 		const path = document.getElementsByClassName("pathNode");
 		path[path.length - 1].scrollIntoView();
-		console.log(pathfindToInteractable(currentNode(), "Pink Ring"));
-		//console.log(pathfindTo(currentNode(), nodes.get("I2 Library")!));
-		//console.log(getTraversedPath(pathStack, pathfindTo(currentNode(), nodes.get("Violet Shell 0")!)));
+		//console.log(pathfindToInteractable("Blue Ring", pathStack, nodes));
+		//console.log(pathfindTo(currentNode(), nodes.get("Toronto Vine")!));
+		console.log(
+			getTraversedPath(
+				pathfindTo(nodes.get("Violet Shell 0")!, pathStack, nodes)!,
+				pathStack,
+				nodes,
+			),
+		);
 	}, [pathStack]);
 
 	return (
 		<>
-			<div id='pathContainer'>
-				<div id='pathHeader'>Path To Root</div>
+			<div className='pathContainer' id='currentPathContainer'>
+				<div className='pathHeader'>Path To Root</div>
 				<div id='pathList'>
 					{pathStack.map((edge, index, path) => (
 						<Fragment key={`path${index}`}>
@@ -305,13 +188,13 @@ export default function Main() {
 				</div>
 			</div>
 			<div id='nodeContainer'>
-				<NodeInfo node={currentNode()}></NodeInfo>
+				<NodeInfo node={currentNode}></NodeInfo>
 
-				{(currentNode().edges.length > 0 || blueRingParentEdge) && (
+				{(currentNode.edges.length > 0 || blueRingParentEdge) && (
 					<div id='edgesContainer'>
 						Possible destinations:
 						<div id='edgesList'>
-							{currentNode().edges.map((edge, index) => (
+							{currentNode.edges.map((edge, index) => (
 								<span
 									key={`edge${index}`}
 									className='edge'
@@ -327,7 +210,7 @@ export default function Main() {
 									{edge.note && ` (${edge.note})`}
 									<Image
 										className='edgeTooltip'
-										src={`./images/edges/${currentNode().name} - ${edge.node.name}.jpg`}
+										src={`./images/edges/${currentNode.name} - ${edge.node.name}.jpg`}
 										alt=''
 									/>
 								</span>
@@ -353,6 +236,13 @@ export default function Main() {
 						</div>
 					</div>
 				)}
+			</div>
+			<div className='pathContainer' id='pathfindContainer'>
+				<div className='pathHeader'>Path To Location</div>
+				<div className='pathHeader'>
+					<input name='location' type='radio' />
+					<input name='interactable' type='radio' />
+				</div>
 			</div>
 		</>
 	);

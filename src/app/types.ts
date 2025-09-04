@@ -146,7 +146,7 @@ type edgeInfo = {
 	requiresKey?: keyTypes;
 	blueRingOnly?: boolean; // to indicate that the destination is only accessible blue rings (i.e. WIG Prison and Violet Shells)
 	// used for pathfinding
-	blueRingUp?: boolean;
+	blueRing?: boolean;
 	up?: boolean;
 };
 
