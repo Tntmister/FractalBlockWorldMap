@@ -146,6 +146,10 @@ export const monsters = [
 		drop: "Minigun Max Ammo",
 	},
 	{
+		name: "Legless Great Spider",
+		drop: "Minigun Max Ammo",
+	},
+	{
 		name: "Spider Lord",
 		drop: "Minigun Ammo",
 	},
@@ -463,10 +467,6 @@ export const monsters = [
 		name: "Clockwork Watchman",
 	},
 	{
-		name: "Lesser Silver",
-		drop: "Gold",
-	},
-	{
 		name: "Yellow Baby Spider",
 		drop: "Rocket Velocity",
 	},
@@ -508,5 +508,15 @@ export const monsters = [
 	},
 	{
 		name: "Scourge",
+	},
+	{
+		name: "Infinity Wolf",
+	},
+	{
+		name: "Anti Sentinel",
+		drop: "EMP Freeze Time",
+	},
+	{
+		name: "Viral Greater Scourge",
 	},
 ] as const satisfies readonly monster[];

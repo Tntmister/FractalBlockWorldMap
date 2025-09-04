@@ -1077,6 +1077,8 @@ const INPUT_NODES = [
 	},
 	{
 		name: "I3 Mirror Gate",
+		interactables: ["Pink Ring", "Pink Sphere"],
+		items: ["Laser Ammo", "Cannon Ammo", "Rocket Ammo", "Railgun Ammo"],
 	},
 	{
 		name: "I3 Common Gate",
@@ -1176,12 +1178,17 @@ const INPUT_NODES = [
 		name: "Weed Ring",
 		interactables: ["Waypoint", "Save"],
 		upgrades: ["EMP Radius", "EMP Max Ammo", "Max Health", "Non-Laser Max Ammo"],
-		monsters: ["Evil Goon", "Unsavory Goon", "Immoral Goon", "Minor Rat", "Lesser Silver", "Disciple", "Mystic", "Pirate", "Hit Man"],
+		monsters: ["Evil Goon", "Unsavory Goon", "Immoral Goon", "Minor Rat", "Lesser Sliver", "Disciple", "Mystic", "Pirate", "Hit Man"],
 		items: ["Rocket Ammo", "Gold", "Homing Ammo", "20 Second Yellow Key", "Nuke Ammo", "EMP Ammo", "Railgun Ammo"],
 		trophy: true,
 	},
 	{
 		name: "Dark Willow Tree",
+		items: ["Cannon Ammo", "Laser Ammo", "Rocket Ammo", "Homing Ammo", "Minigun Ammo", "Nuke Ammo", "EMP Ammo", "Railgun Ammo"],
+		upgrades: ["Railgun Max Ammo", "Railgun Fire Rate", "Nuke Damage", "Nuke Max Ammo", "Nuke Velocity", "Cannon Max Ammo", "Max Health"],
+		interactables: ["Waypoint", "Buy Station"],
+		monsters: ["Night Guard"],
+		trophy: true,
 	},
 	{
 		name: "Large White Flower",
@@ -1227,12 +1234,35 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Fanatic Island Caves",
+		monsters: ["Disciple"],
+	},
+	{
+		name: "Woody Cellar",
+		interactables: ["Save", "Buy Station", "Pink Sphere", "Pink Ring", "Waypoint", "Out-Only Waypoint", "Bookmark"],
+		upgrades: [
+			"Plasma Velocity",
+			"Max Health",
+			"Railgun Damage",
+			"Railgun Fire Rate",
+			"Railgun Max Ammo",
+			"EMP Radius",
+			"EMP Freeze Time",
+			"Non-Laser Max Ammo",
+		],
+		monsters: ["Pool Ball 4"],
+		items: ["Rocket Ammo", "Homing Ammo", "Laser Ammo", "Cannon Ammo", "Minigun Ammo", "Railgun Ammo", "Gold", "Nuke Ammo", "EMP Ammo"],
+		secretTrophy: true,
 	},
 	{
 		name: "Fanatic Yellow Vine",
 	},
 	{
 		name: "Woody Basement",
+		interactables: ["Save", "Buy Station", "Pink Sphere", "Pink Ring", "Waypoint", "Out-Only Waypoint", "Bookmark", "Common Sell Station"],
+		items: ["Rocket Ammo", "Homing Ammo", "Laser Ammo", "Cannon Ammo", "Minigun Ammo", "Railgun Ammo", "Gold", "Nuke Ammo", "EMP Ammo"],
+		monsters: ["Pool Ball 3", "Large Goon", "Lesser Sliver", "Arch Menace Female"],
+		upgrades: ["Plasma Velocity", "Railgun Damage", "Non-Railgun Fire Rate", "EMP Radius", "EMP Freeze Time", "Non-Laser Max Ammo"],
+		secretTrophy: true,
 	},
 	{
 		name: "Fanatic Air",
@@ -1408,7 +1438,24 @@ const INPUT_NODES = [
 		items: ["Gold", "Cannon Ammo", "Laser Ammo", "Rocket Ammo", "Homing Ammo", "Minigun Ammo", "Railgun Ammo", "EMP Ammo", "Nuke Ammo"],
 		upgrades: ["Nuke Velocity", "EMP Freeze Time", "EMP Radius", "Dark Hole Velocity", "Dark Hole Max Ammo"],
 		interactables: ["Pink Ring", "Pink Sphere", "Buy Station", "Save", "Waypoint", "In-Only Waypoint"],
-		monsters: ["Yellow Baby Spider", "Insurgent", "Guerrilla"],
+		monsters: ["Yellow Baby Spider", "Baby Spider", "Insurgent", "Guerrilla"],
+	},
+	{
+		name: "Fanatic Well Secret",
+		interactables: ["Pink Ring"],
+		upgrades: ["EMP Radius", "EMP Freeze Time", "Cannon Fire Rate", "Cannon Num Shots", "Cannon Velocity", "Nuke Radius"],
+		items: ["Gold"],
+		secretTrophy: true,
+	},
+	{
+		name: "Spirit Pocket",
+		interactables: ["Common Sell Station", "Buy Station", "Markers", "Save"],
+		monsters: ["Collapsed Spirit", "Collapsed Angel"],
+		upgrades: ["Nuke Velocity", "Nuke Max Ammo", "Railgun Damage", "Max Health", "Laser Max Ammo"],
+		items: ["1000% Armor"],
+		blueRingDownDestination: {
+			nodeName: "Spirit Pocket",
+		},
 	},
 	{
 		name: "Minigun Forest",
@@ -1635,6 +1682,11 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Toronto Vine",
+		monsters: ["Plague", "Guardian", "Vulcan", "Minor Guardian"],
+		blueRingDownDestination: {
+			nodeName: "Toronto Vine",
+		},
+		secretTrophy: true,
 	},
 	{
 		name: "Pirate Vine",
@@ -1649,7 +1701,7 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Toronto",
-		monsters: ["Collapsed Spirit", "Collapsed Soul"],
+		monsters: ["Collapsed Spirit", "Collapsed Soul", "Guerrilla"],
 		upgrades: ["Railgun Max Ammo"],
 		items: ["100% Armor"],
 		interactables: ["Waypoint", "Buy Station", "Scarce Sell Station", "Markers", "Out-Only Waypoint", "Respawn", "Save"],
@@ -1739,12 +1791,75 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Burlington",
-		interactables: ["Waypoint", "Out-Only Waypoint", "Respawn", "Save", "Markers", "Buy Station", "Scarce Sell Station"],
-		items: ["Burlington Stable Singletons Key", "150% Armor"],
+		interactables: [
+			"Waypoint",
+			"Out-Only Waypoint",
+			"Respawn",
+			"Save",
+			"Markers",
+			"Buy Station",
+			"Scarce Sell Station",
+			"Common Sell Station",
+			"Pink Ring",
+			"Blue Ring",
+		],
+		items: [
+			"Burlington Stable Singletons Key",
+			"150% Armor",
+			"Plasma Ammo",
+			"Minigun Ammo",
+			"Laser Ammo",
+			"Rocket Ammo",
+			"Homing Ammo",
+			"200% Health 200% Armor", //purple box under bridges
+		],
+		monsters: [
+			"Anti Sentinel",
+			"Minor Rat",
+			"Spider Lord", // yellow under bridges
+			"Mechanized Sheath", // purple box under bridges
+			"Satellite", // purple box under bridges
+		],
+		upgrades: [
+			"Cannon Damage",
+			"Rocket Damage",
+			"Laser Damage",
+			"EMP Damage",
+			"Plasma Lightning Rifle Weapon Mod",
+			"EMP Freeze Time",
+			"Minigun Damage", // yellow under bridges
+		],
 		trophy: true,
 		blueRingDownDestination: {
 			nodeName: "Burlington",
 		},
+	},
+	{
+		name: "Yellow Gato Box",
+		items: ["Nuke Ammo", "Gold"],
+		monsters: ["Nuclear Cyclotron", "Science Core"],
+		interactables: ["Blue Ring"],
+	},
+	{
+		name: "Blue Gato Box",
+		monsters: ["Blue Abomination"],
+		upgrades: ["Railgun Damage", "Laser Damage", "Laser Freeze Time", "Dark Hole Damage"],
+		items: ["Railgun Ammo", "Laser Ammo", "Dark Hole Ammo", "Nuke Ammo"],
+		interactables: ["Blue Ring"],
+	},
+	{
+		name: "Purple Gato Box",
+		items: ["Gold", "Laser Ammo"],
+		upgrades: ["Nuke Radius", "EMP Radius"],
+		monsters: ["Nuclear Ore Miner", "Mothership"],
+		interactables: ["Blue Ring"],
+	},
+	{
+		name: "Green Gato Box",
+		items: ["EMP Ammo"],
+		upgrades: ["Nuke Velocity", "EMP Damage"],
+		monsters: ["Nuclear Refinery", "Laboratory"],
+		interactables: ["Blue Ring"],
 	},
 	{
 		name: "Burlington Showdown Tower",
@@ -1879,6 +1994,10 @@ const INPUT_NODES = [
 		name: "Black Market",
 	},
 	{
+		name: "I3 Air",
+		monsters: ["Wasp"],
+	},
+	{
 		name: "Dandelions",
 		upgrades: ["Cannon Damage", "Cannon Velocity", "Plasma Velocity", "Laser Damage", "Random Health"],
 		items: ["Gold"],
@@ -1906,6 +2025,13 @@ const INPUT_NODES = [
 		trophy: true,
 	},
 	{
+		name: "Desert Flower Cloud",
+		monsters: ["Greater Sliver"],
+		upgrades: ["Random Health", "Laser Damage", "Laser Freeze Time", "Telekinesis"],
+		interactables: ["Pink Ring", "Save"],
+		secretTrophy: true,
+	},
+	{
 		name: "Desert Oasis",
 		monsters: ["Troll"],
 		interactables: ["Buy Station", "Common Sell Station", "Markers", "Waypoint", "Out-Only Waypoint", "Bookmark", "Save"],
@@ -1920,9 +2046,96 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Mahogany Tree",
-		monsters: ["Goliath", "Wasp"],
+		monsters: ["Goliath"],
 		interactables: ["Buy Station", "Markers"],
 		upgrades: ["Nuke Velocity", "Rocket Damage", "Rocket Velocity", "Nuke Velocity", "Random Health"],
+	},
+	{
+		name: "Mahogany Treetop",
+		items: [
+			"Plasma Ammo",
+			"Cannon Ammo",
+			"Laser Ammo",
+			"Rocket Ammo",
+			"Homing Ammo",
+			"Minigun Ammo",
+			"Railgun Ammo",
+			"Nuke Ammo",
+			"EMP Ammo",
+			"Dark Hole Ammo",
+			"Gold",
+		],
+		interactables: ["Waypoint", "Save", "Out-Only Waypoint", "Bookmark", "Common Sell Station", "Buy Station", "Markers"],
+		monsters: ["Orc", "Troll", "Minor Guardian", "Legless Great Spider", "Clockwork Watchman"],
+		upgrades: ["Rocket Radius", "Plasma Velocity", "Cannon Fire Rate", "Random Health", "Non-Laser Max Ammo"],
+	},
+	{
+		name: "Mahogany Treetop Center",
+		interactables: ["Save", "Waypoint", "Bookmark", "Pink Ring"],
+		upgrades: ["RejuvenX", "Homing Fire Rate", "Nuke Radius", "Rocket Radius", "Rocket Big Radius Weapon Mod", "Armor Regen"],
+		items: ["Gold"],
+		trophy: true,
+	},
+	{
+		name: "Mahogany Treetop Inner Tree",
+		items: ["Plasma Ammo", "Cannon Ammo", "Gold"],
+		interactables: ["Common Sell Station", "Buy Station", "Markers", "Save"],
+		monsters: [
+			"Mothership",
+			"Minor Rat",
+			"Dragoon",
+			"Collapsed Star",
+			"Blue Abomination",
+			"Light Marine",
+			"Marine",
+			"Hired Gun",
+			"Pirate",
+			"Lesser Rat",
+			"Menace",
+			"Sentinel",
+			"Evil Goon",
+			"Despicable Goon",
+			"Goliath",
+			"Ogre",
+			"Hit Man",
+			"Vulcan",
+			"Arch Menace Female",
+			"Unruly Juggernaut",
+		],
+		upgrades: ["Random Health", "Nuke Radius", "Plasma Velocity", "Rocket Radius", "Cannon Fire Rate", "Nuke Damage", "Nuke Max Ammo", "Nuke Velocity"],
+		trophy: true,
+	},
+	{
+		name: "Amethyst",
+	},
+	{
+		name: "Iolite",
+	},
+	{
+		name: "Emerald",
+		interactables: ["Waypoint", "Buy Station", "Save", "Blue Ring", "Buy Station", "Scarce Sell Station"],
+		items: ["Gold", "100% Armor", "Green Key"],
+		upgrades: ["EMP Damage", "Random Health"],
+		monsters: ["Lamprey", "Compromised Nuclear Silo", "Spider Lord"],
+		blueRingDownDestination: {
+			nodeName: "Emerald",
+			note: "(Inside)",
+		},
+	},
+	{
+		name: "Emerald City",
+		interactables: ["Waypoint", "Respawn", "Save", "Buy Station", "Markers", "Common Sell Station", "Out-Only Waypoint"],
+		items: ["Gold", "100% Armor"],
+		upgrades: ["EMP Damage"],
+		monsters: ["Minor Sliver", "Lesser Sliver", "Sliver", "Greater Sliver"],
+		trophy: true,
+	},
+	{
+		name: "Denver Pyramid",
+		monsters: ["Greater Beholder"],
+	},
+	{
+		name: "Topaz",
 	},
 	{
 		name: "Mahogany Tree Inside",
@@ -2313,7 +2526,7 @@ const INPUT_NODES = [
 			"Nuclear Silo",
 			"Nuclear Ore Miner",
 		],
-		interactables: ["Buy Station", "Waypoint", "Bookmark", "Save", "Buy Station", "Markers", "Pink Ring"],
+		interactables: ["Buy Station", "Waypoint", "Bookmark", "Save", "Markers", "Pink Ring"],
 		items: [
 			"150% Armor",
 			"200% Health 200% Armor",
@@ -2349,7 +2562,7 @@ const INPUT_NODES = [
 		monsters: ["Minor Rat", "Unsavory Goon", "Mechanized Sheath", "Evil Goon", "Scourge"],
 	},
 	{
-		name: "Deep Silver Maze",
+		name: "Deep Sliver Maze",
 	},
 	{
 		name: "Wood Box",
@@ -2568,6 +2781,20 @@ const INPUT_NODES = [
 			"Satellite",
 		],
 		trophy: true,
+	},
+	{
+		name: "Secret Wolf Forest",
+		interactables: ["Waypoint", "Bookmark", "Save"],
+		monsters: ["Infinity Wolf"],
+		upgrades: ["Dark Hole Damage"],
+	},
+	{
+		name: "Moon Flower",
+		interactables: ["Pink Sphere", "Buy Station", "Save", "Pink Ring"],
+		monsters: ["Night Guard"],
+		upgrades: ["Dark Hole Damage", "Dark Hole Max Ammo", "Dark Hole Velocity"],
+		items: ["Nuke Ammo"],
+		secretTrophy: true,
 	},
 	{
 		name: "Hell Debug",
