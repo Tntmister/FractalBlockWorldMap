@@ -101,10 +101,17 @@ export default function Main() {
 	}, [pathStack]);
 
 	function traverseBlueRing() {
-		pathStack = pathStack.slice(0, pathStack.lastIndexOf(blueRingParentEdge!) + 1);
-		traverseTo(
-			nodes.get(blueRingParentEdge!.node.blueRingDownDestination!.nodeName as nodeName)!,
-		);
+		const destinationNode = nodes.get(
+			blueRingParentEdge!.node.blueRingDownDestination!.nodeName as nodeName,
+		)!;
+		traversePath([
+			{
+				node: destinationNode,
+				id: blueRingParentEdge!.id,
+				distance: 0,
+				blueRing: true,
+			},
+		]);
 	}
 
 	const pinkRingParentEdge = useMemo(() => {
