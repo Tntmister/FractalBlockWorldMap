@@ -3201,6 +3201,6 @@ const INPUT_NODES = [
 	},
 ] as const satisfies readonly InputNode[];
 
-export type nodeNames = (typeof INPUT_NODES)[number]["name"];
+export type nodeName = (typeof INPUT_NODES)[number]["name"];
 
 export const inputNodes = INPUT_NODES as unknown as InputNode[];

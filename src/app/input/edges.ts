@@ -1,7 +1,7 @@
-import { InputEdges } from "../types";
-import { nodeNames } from "./nodes";
+import { InputEdge } from "../types";
+import { nodeName } from "./nodes";
 
-const inputEdges: InputEdges = {
+const inputEdges: InputEdge = {
 	"Tutorial 1": {
 		"Happy Land": {
 			distance: 1,
@@ -4303,8 +4303,8 @@ const inputEdges: InputEdges = {
 };
 
 for (const a in inputEdges) {
-	for (const b in inputEdges[a as nodeNames]) {
-		if (inputEdges[a as nodeNames]![b as nodeNames]!.distance == Infinity) inputEdges[a as nodeNames]![b as nodeNames]!.distance = 100;
+	for (const b in inputEdges[a as nodeName]) {
+		if (inputEdges[a as nodeName]![b as nodeName]!.distance == Infinity) inputEdges[a as nodeName]![b as nodeName]!.distance = 100;
 	}
 }
 

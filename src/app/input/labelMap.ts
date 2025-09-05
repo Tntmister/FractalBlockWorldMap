@@ -1,9 +1,9 @@
 // maps items/upgrades to their respective images
 // if not specified, use self string
 
-import { weaponUpgrades, defenceItems, defenceUpgrades, weaponTypes, upgrades, items } from "../types";
+import { weaponUpgrade, defenceItem, defenceUpgrade, weaponType, upgrade, item } from "../types";
 
-export const labels: Map<items | upgrades, { label?: string; imageName?: string }> = new Map(
+export const labels: Map<item | upgrade, { label?: string; imageName?: string }> = new Map(
 	Object.entries({
 		"100% Health 100% Armor": {
 			imageName: "100%25 Health 100%25 Armor",
@@ -319,5 +319,5 @@ export const labels: Map<items | upgrades, { label?: string; imageName?: string 
 			imageName: "Dark Hole",
 			label: "Ammo",
 		},
-	}) as [items | upgrades, { label?: string; imageName?: string }][],
+	}) as [item | upgrade, { label?: string; imageName?: string }][],
 );

@@ -1,4 +1,4 @@
-import { Node, Edge, weaponUpgrades, defenceItems, weaponTypes, defenceUpgrades } from "../types";
+import { Node, Edge, weaponUpgrade, defenceItem, weaponType, defenceUpgrade } from "../types";
 import Image from "./Image";
 import "../css/nodeInfo.css";
 import { Fragment, useEffect, useState } from "react";

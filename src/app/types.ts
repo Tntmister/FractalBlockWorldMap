@@ -1,11 +1,11 @@
 import { monsters } from "./input/monsters";
-import { inputNodes, nodeNames } from "./input/nodes";
+import { nodeName } from "./input/nodes";
 
-export type weaponTypes = "Plasma" | "Cannon" | "Laser" | "Rocket" | "Homing" | "Minigun" | "Railgun" | "EMP" | "Nuke" | "Dark Hole";
+export type weaponType = "Plasma" | "Cannon" | "Laser" | "Rocket" | "Homing" | "Minigun" | "Railgun" | "EMP" | "Nuke" | "Dark Hole";
 
-type weaponUpgradeTypes = "Max Ammo" | "Regen" | "Fire Rate" | "Damage" | "Velocity" | "Radius" | "Freeze Time" | "Count";
+type weaponUpgradeType = "Max Ammo" | "Regen" | "Fire Rate" | "Damage" | "Velocity" | "Radius" | "Freeze Time" | "Count";
 
-export type weaponUpgrades =
+export type weaponUpgrade =
 	| "Plasma Max Ammo"
 	| "Plasma Regen"
 	| "Plasma Fire Rate"
@@ -62,7 +62,7 @@ export type weaponUpgrades =
 	| "Dark Hole Velocity"
 	| "Dark Hole Drive Weapon Mod";
 
-export type defenceItems =
+export type defenceItem =
 	| "100% Health 100% Armor"
 	| "200% Health 100% Armor"
 	| "200% Health 200% Armor"
@@ -80,7 +80,7 @@ export type defenceItems =
 	| "Extra 100% Health"
 	| "Shield";
 
-type keyTypes =
+type key =
 	| "Yellow Key"
 	| `${number} Second Yellow Key`
 	| "Blue Key"
@@ -90,36 +90,38 @@ type keyTypes =
 	| `${"I1" | "I2" | "I3" | "Burlington" | "Hell"} Stable Singletons Key`
 	| "Secret Farmhouse Key";
 
-export type defenceUpgrades = "Random Health" | "Max Health" | "Health Regen" | "Armor Regen" | "RejuvenX";
+export type defenceUpgrade = "Random Health" | "Max Health" | "Health Regen" | "Armor Regen" | "RejuvenX";
 
-export type items = `${weaponTypes} Ammo` | defenceItems | "Gold" | "EXP" | keyTypes | "Health" | "Armor"; // | "Health" | "Armor" temporary
+export type item = `${weaponType} Ammo` | defenceItem | "Gold" | "EXP" | key | "Health" | "Armor"; // | "Health" | "Armor" temporary
 
-export type upgrades = weaponUpgrades | `Non-${weaponTypes} ${weaponUpgradeTypes}` | defenceUpgrades | "Telekinesis" | weaponTypes | "Health"; // | weaponTypes | "Health" temporary
+export type upgrade = weaponUpgrade | `Non-${weaponType} ${weaponUpgradeType}` | defenceUpgrade | "Telekinesis" | weaponType | "Health"; // | weaponType | "Health" temporary
 
-export type interactables =
-	| "Sleep"
-	| "Common Sell Station"
-	| "Scarce Sell Station"
-	| "Rare Sell Station"
-	| "Buy Station"
-	| "Buy Nuke"
-	| "Markers"
-	| "Waypoint"
-	| "Bookmark"
-	| "Respawn"
-	| "Pink Ring"
-	| "Pink Sphere"
-	| "Blue Ring"
-	| "Save"
-	| "In-Only Waypoint"
-	| "Out-Only Waypoint"
-	| "Buy Blue Key"
-	| "Upgrade Station"
-	| "Black Market";
+export const interactables = [
+	"Sleep",
+	"Common Sell Station",
+	"Scarce Sell Station",
+	"Rare Sell Station",
+	"Buy Station",
+	"Buy Nuke",
+	"Markers",
+	"Waypoint",
+	"Bookmark",
+	"Respawn",
+	"Pink Ring",
+	"Pink Sphere",
+	"Blue Ring",
+	"Save",
+	"In-Only Waypoint",
+	"Out-Only Waypoint",
+	"Buy Blue Key",
+	"Upgrade Station",
+	"Black Market",
+] as const;
+export type interactable = (typeof interactables)[number];
 
 export type monster = {
 	name: string;
-	drop?: upgrades | items;
+	drop?: upgrade | item;
 };
 
 export type monsterName = (typeof monsters)[number]["name"];
@@ -127,9 +129,9 @@ export type monsterName = (typeof monsters)[number]["name"];
 export type InputNode = {
 	name: string;
 	monsters?: monsterName[];
-	upgrades?: (upgrades | upgrades[])[]; // possible upgrades (including random ones)
-	items?: items[]; // possible items
-	interactables?: interactables[];
+	upgrades?: (upgrade | upgrade[])[]; // possible upgrades (including random ones)
+	items?: item[]; // possible items
+	interactables?: interactable[];
 	noEscape?: boolean; // if there is no way to grow out of this node
 	trophy?: boolean;
 	secretTrophy?: boolean | 2 | 3; // some locations have more than 1 secret trophy
@@ -143,16 +145,16 @@ export type InputNode = {
 type edgeInfo = {
 	distance: number; // how hard is it to traverse to ingame (enemy difficulty/time)
 	note?: string; // specifc method to enter
-	requiresKey?: keyTypes;
+	requiresKey?: key;
 	blueRingOnly?: boolean; // to indicate that the destination is only accessible blue rings (i.e. WIG Prison and Violet Shells)
 	// used for pathfinding
 	blueRing?: boolean;
 	up?: boolean;
 };
 
-export type InputEdges = {
-	[from in nodeNames]?: {
-		[to in nodeNames]?: edgeInfo;
+export type InputEdge = {
+	[from in nodeName]?: {
+		[to in nodeName]?: edgeInfo;
 	};
 };
 
@@ -161,7 +163,7 @@ export interface Edge extends edgeInfo {
 }
 
 export type Node = {
-	name: nodeNames;
+	name: nodeName;
 	upgrades: NonNullable<InputNode["upgrades"]>;
 	items: NonNullable<InputNode["items"]>;
 	interactables: NonNullable<InputNode["interactables"]>;

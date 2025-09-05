@@ -1,10 +1,10 @@
 import _ from "lodash";
-import { nodeNames } from "../input/nodes";
-import { Edge, interactables, Node } from "../types";
+import { nodeName } from "../input/nodes";
+import { Edge, interactable, Node } from "../types";
 
 //Dijkstra pathfinding
 // empty array = already at location, undefined = no path
-export function dijkstraPathfind(currentNode: Node, targetNode: Node, nodes: Map<nodeNames, Node>): Edge[] | undefined {
+export function dijkstraPathfind(currentNode: Node, targetNode: Node, nodes: Map<nodeName, Node>): Edge[] | undefined {
 	if (currentNode == targetNode) return [];
 	const distancesToStart = new Map<Node, number>();
 	const visitedNodes = new Map<Node, number>();
@@ -36,7 +36,7 @@ export function dijkstraPathfind(currentNode: Node, targetNode: Node, nodes: Map
 	return path.length > 0 ? path : undefined;
 }
 
-export function pathfindTo(targetNode: Node, pathStack: Node["edges"], nodes: Map<nodeNames, Node>): Edge[] | undefined {
+export function pathfindTo(targetNode: Node, pathStack: Node["edges"], nodes: Map<nodeName, Node>): Edge[] | undefined {
 	let path = dijkstraPathfind(pathStack.at(-1)!.node, targetNode, nodes);
 	if (path) {
 		// if destination is only accessible thorugh a blue ring, jump to before that then pathfind to a blue ring
@@ -54,7 +54,7 @@ export function pathfindTo(targetNode: Node, pathStack: Node["edges"], nodes: Ma
 	return path;
 }
 
-export function pathfindToInteractable(interactable: interactables, pathStack: Node["edges"], nodes: Map<nodeNames, Node>) {
+export function pathfindToInteractable(interactable: interactable, pathStack: Node["edges"], nodes: Map<nodeName, Node>) {
 	const nodesCopy = _.cloneDeep(nodes);
 	const currentNode = pathStack.at(-1)!.node;
 	if (interactable == "Blue Ring") {
@@ -90,7 +90,7 @@ export function pathfindToInteractable(interactable: interactables, pathStack: N
 }
 
 // returns resulting pathStack of traversing a path
-export function getTraversedPath(path: Edge[], pathStack: Edge[], nodes: Map<nodeNames, Node>) {
+export function getTraversedPath(path: Edge[], pathStack: Edge[], nodes: Map<nodeName, Node>) {
 	let pathStackAux = pathStack.slice();
 	for (const edge of path) {
 		if (edge.up) {
@@ -104,7 +104,7 @@ export function getTraversedPath(path: Edge[], pathStack: Edge[], nodes: Map<nod
 			pathStackAux.push(
 				...dijkstraPathfind(
 					pathStackAux[blueDownChunk].node,
-					nodes.get(pathStackAux[blueDownChunk].node.blueRingDownDestination!.nodeName as nodeNames)!,
+					nodes.get(pathStackAux[blueDownChunk].node.blueRingDownDestination!.nodeName as nodeName)!,
 					nodes,
 				)!,
 			);

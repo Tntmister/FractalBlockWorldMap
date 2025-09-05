@@ -1,11 +1,11 @@
 "use client";
 import { Fragment, useEffect, useMemo, useState } from "react";
-import { Node, Edge, interactables } from "../types";
+import { Node, Edge, interactable, interactables } from "../types";
 import Image from "./Image";
 import NodeInfo from "./nodeInfo";
 import _ from "lodash";
 import "../css/main.css";
-import { inputNodes, nodeNames } from "../input/nodes";
+import { inputNodes, nodeName } from "../input/nodes";
 import { inputEdges } from "../input/edges";
 import { monsters } from "../input/monsters";
 import {
@@ -15,11 +15,11 @@ import {
 	pathfindToInteractable,
 } from "./pathfinding";
 
-const nodes: Map<nodeNames, Node> = new Map();
+const nodes: Map<nodeName, Node> = new Map();
 // initialize nodes from input.ts
 for (const node of inputNodes) {
-	nodes.set(node.name as nodeNames, {
-		name: node.name as nodeNames,
+	nodes.set(node.name as nodeName, {
+		name: node.name as nodeName,
 		interactables: node.interactables?.toSorted() ?? [],
 		upgrades: node.upgrades?.toSorted() ?? [],
 		items: node.items?.toSorted() ?? [],
@@ -34,8 +34,8 @@ for (const node of inputNodes) {
 // initialialize edges from input.ts
 for (const [fromName, edge] of Object.entries(inputEdges)) {
 	for (const [toName, edgeInfo] of Object.entries(edge)) {
-		const fromNode = nodes.get(fromName as nodeNames)!;
-		const toNode = nodes.get(toName as nodeNames)!;
+		const fromNode = nodes.get(fromName as nodeName)!;
+		const toNode = nodes.get(toName as nodeName)!;
 		if (fromNode && toNode)
 			fromNode.edges.push({
 				node: toNode,
@@ -44,7 +44,7 @@ for (const [fromName, edge] of Object.entries(inputEdges)) {
 	}
 }
 
-const startingPath: nodeNames[] = [
+const startingPath: nodeName[] = [
 	"Outer Space -1",
 	"Outer Space 0",
 	"Outer Space 1",
@@ -99,7 +99,7 @@ export default function Main() {
 	function traverseBlueRing() {
 		pathStack = pathStack.slice(0, pathStack.lastIndexOf(blueRingParentEdge!) + 1);
 		traverseTo(
-			nodes.get(blueRingParentEdge!.node.blueRingDownDestination!.nodeName as nodeNames)!,
+			nodes.get(blueRingParentEdge!.node.blueRingDownDestination!.nodeName as nodeName)!,
 		);
 	}
 
