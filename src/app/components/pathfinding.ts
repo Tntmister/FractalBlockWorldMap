@@ -40,23 +40,28 @@ export function pathfindTo(targetNode: Node, pathStack: Node["edges"], nodes: Ma
 	let path = dijkstraPathfind(pathStack.at(-1)!.node, targetNode, nodes);
 	if (path) {
 		// if destination is only accessible thorugh a blue ring, jump to before that then pathfind to a blue ring
-		const mustPathBlueRing = path.findIndex((edge) => edge.blueRingOnly);
-		if (mustPathBlueRing > -1) {
-			path = path.slice(0, mustPathBlueRing);
-			path.push(...pathfindToInteractable("Blue Ring", getTraversedPath(path, pathStack, nodes), nodes));
+		const blueDownEdgeIndex = path.findIndex((edge) => edge.blueRingOnly);
+		if (blueDownEdgeIndex > -1) {
+			const blueDownEdge = path[blueDownEdgeIndex];
+			path = path.slice(0, blueDownEdgeIndex);
+			path.push(...pathfindToInteractable("Blue Ring", getTraversedPath(path, pathStack, nodes), nodes).slice(1));
 			path.push({
-				node: targetNode,
+				node: nodes.get(path.findLast((edge) => edge.node.blueRingDownDestination)!.node.blueRingDownDestination!.nodeName as nodeName)!,
 				distance: 0,
 				blueRing: true,
+				id: blueDownEdgeIndex,
 			});
+			if (path.at(-1)?.node.name != targetNode.name) {
+				console.log("a");
+				path.push(...pathfindTo(targetNode, getTraversedPath(path, pathStack, nodes), nodes)!.slice(1));
+			}
 		}
 	}
-	return path;
+	if (path) return [pathStack.at(-1)!, ...path];
 }
 
 export function pathfindToInteractable(interactable: interactable, pathStack: Node["edges"], nodes: Map<nodeName, Node>) {
 	const nodesCopy = _.cloneDeep(nodes);
-	const currentNode = pathStack.at(-1)!.node;
 	if (interactable == "Blue Ring") {
 		nodesCopy.values().forEach((node) => {
 			for (let i = node.edges.length - 1; i >= 0; i--) {
@@ -83,16 +88,18 @@ export function pathfindToInteractable(interactable: interactable, pathStack: No
 	});
 	const paths: Edge[][] = [];
 	for (const destination of possibleDestinations) {
-		const path = dijkstraPathfind(nodesCopy.get(currentNode.name)!, destination, nodesCopy);
+		const path = dijkstraPathfind(nodesCopy.get(pathStack.at(-1)!.node.name)!, destination, nodesCopy);
 		if (path) paths.push(path);
 	}
-	return paths.sort((a, b) => a.reduce((acc, edge) => acc + edge.distance, 0) - b.reduce((acc, edge) => acc + edge.distance, 0))[0];
+	const path = paths.sort((a, b) => a.reduce((acc, edge) => acc + edge.distance, 0) - b.reduce((acc, edge) => acc + edge.distance, 0))[0];
+	return [pathStack.at(-1)!, ...path];
 }
 
 // returns resulting pathStack of traversing a path
 export function getTraversedPath(path: Edge[], pathStack: Edge[], nodes: Map<nodeName, Node>) {
 	let pathStackAux = pathStack.slice();
-	for (const edge of path) {
+	console.log("a");
+	for (const edge of path[0].id == pathStack.at(-1)!.id ? path.slice(1) : path) {
 		if (edge.up) {
 			pathStackAux = pathStackAux.slice(
 				0,

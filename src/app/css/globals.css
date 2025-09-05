@@ -4,6 +4,7 @@
 	--foreground: #007f80;
 	--blue: #0004de;
 	--pink: #f901fd;
+	--green: #23b04c;
 }
 
 html,
@@ -18,7 +19,6 @@ body {
 body {
 	color: var(--foreground);
 	background: var(--background);
-	font-family: "WhiteRabbit";
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	scrollbar-color: color-mix(in srgb, var(--foreground), #000 30%) var(--background);

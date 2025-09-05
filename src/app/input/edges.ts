@@ -114,7 +114,7 @@ const inputEdges: InputEdge = {
 		},
 		"Unremembered Tower": {
 			distance: 25,
-			note: "Depth 31+",
+			note: "Depth 30+",
 		},
 		"Ying Forest Depth 50+": {
 			distance: 30,
@@ -164,7 +164,7 @@ const inputEdges: InputEdge = {
 			distance: 30,
 		},
 		"Unremembered Tower Secret Totem": {
-			distance: 40,
+			distance: Infinity,
 			note: "Tweedle-dum Air Anti-Plug Hole",
 			requiresKey: "Yellow Key",
 		},
@@ -664,6 +664,9 @@ const inputEdges: InputEdge = {
 		"I3 Air": {
 			distance: 1,
 		},
+		"I3 Clouds": {
+			distance: 10,
+		},
 		"Dandelions": {
 			distance: 5,
 		},
@@ -684,6 +687,11 @@ const inputEdges: InputEdge = {
 		},
 		"River": {
 			distance: 10,
+		},
+	},
+	"I3 Clouds": {
+		"White Rose": {
+			distance: Infinity,
 		},
 	},
 	"I3 Air": {
@@ -922,6 +930,9 @@ const inputEdges: InputEdge = {
 		},
 		"Emerald": {
 			distance: 60,
+		},
+		"Starksboro": {
+			distance: 80,
 		},
 	},
 	"Emerald": {
@@ -3878,7 +3889,7 @@ const inputEdges: InputEdge = {
 			distance: 5,
 		},
 		"Outer Space 0 Lockbox": {
-			distance: 10,
+			distance: 5,
 			requiresKey: "Yellow Key",
 		},
 	},

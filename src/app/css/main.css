@@ -5,15 +5,22 @@ body {
 	border: var(--foreground) 1px solid;
 }
 
-#pathContainer {
+.pathContainer {
 	text-align: center;
-	border-right: var(--foreground) 1px solid;
 	width: 15vw;
 	display: flex;
 	flex-direction: column;
 }
 
-#pathHeader {
+#currentPathContainer {
+	border-right: var(--foreground) 1px solid;
+}
+
+#pathfindContainer {
+	border-left: var(--foreground) 1px solid;
+}
+
+.pathHeader {
 	background-color: var(--background);
 	border-bottom: var(--foreground) 1px solid;
 	height: 2rem;
@@ -22,7 +29,7 @@ body {
 	justify-content: center;
 }
 
-#pathList {
+.pathList {
 	flex-direction: column;
 	gap: 0.25rem;
 	padding: 0.25rem 1rem;
@@ -32,11 +39,13 @@ body {
 	overflow: auto;
 }
 
-#pathList > .pathNode:not(:first-child) {
+.pathList > .pathNode {
 	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
-.pathNode {
+.pathNode,
+.path {
 	line-height: 100%;
 }
 
@@ -86,6 +95,10 @@ body {
 .pinkRing {
 	border-color: var(--pink);
 	color: var(--pink);
+}
+.current {
+	border-color: var(--green);
+	color: var(--green);
 }
 
 .blueRing.pinkRing::before {
@@ -142,4 +155,21 @@ body {
 .icon-small {
 	height: 1.5rem;
 	width: 1.5rem;
+}
+
+#pathfindSelector {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	border-bottom: var(--foreground) 1px solid;
+	padding: 0.25rem 0.5rem;
+	align-items: center;
+}
+
+#pathfindSelector input {
+	margin-left: 0.25rem;
+}
+
+#pathfindSelector > select {
+	width: 100%;
 }

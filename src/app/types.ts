@@ -160,6 +160,7 @@ export type InputEdge = {
 
 export interface Edge extends edgeInfo {
 	node: Node;
+	id: number;
 }
 
 export type Node = {

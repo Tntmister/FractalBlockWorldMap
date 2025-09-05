@@ -95,7 +95,7 @@ const INPUT_NODES = [
 		monsters: ["Menace"],
 		interactables: ["Save", "Respawn", "Pink Sphere", "Blue Ring"],
 		blueRingDownDestination: {
-			nodeName: "Tutorial 1",
+			nodeName: "Tutorial 2",
 		},
 	},
 	{
@@ -260,7 +260,7 @@ const INPUT_NODES = [
 	{
 		name: "Ying World",
 		blueRingDownDestination: {
-			nodeName: "Tutorial 1",
+			nodeName: "Tutorial 2",
 		},
 	},
 	{
@@ -2138,6 +2138,14 @@ const INPUT_NODES = [
 		name: "Topaz",
 	},
 	{
+		name: "Starksboro",
+		items: ["Green Key"],
+	},
+	{
+		name: "Library Library",
+		interactables: ["Waypoint"],
+	},
+	{
 		name: "Mahogany Tree Inside",
 		items: ["Gold", "Nuke Ammo", "Plasma Ammo", "Laser Ammo", "Cannon Ammo", "Rocket Ammo", "Minigun Ammo", "Homing Ammo", "Railgun Ammo", "EMP Ammo"],
 		interactables: ["Save"],
@@ -2542,6 +2550,12 @@ const INPUT_NODES = [
 			"Gold",
 		],
 		upgrades: ["Non-Laser Max Ammo", "EMP Radius", "EMP Freeze Time"],
+	},
+	{
+		name: "I3 Clouds",
+	},
+	{
+		name: "White Rose",
 	},
 	{
 		name: "Secret Cave of Jerichos",
