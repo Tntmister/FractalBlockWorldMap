@@ -44,7 +44,7 @@ export function pathfindTo(targetNode: Node, pathStack: Node["edges"], nodes: Ma
 		if (blueDownEdgeIndex > -1) {
 			const blueDownEdge = path[blueDownEdgeIndex];
 			path = path.slice(0, blueDownEdgeIndex);
-			path.push(...pathfindToInteractable("Blue Ring", getTraversedPath(path, pathStack, nodes), nodes).slice(1));
+			path.push(...pathfindToInteractable("Blue Ring", getTraversedPath(path, pathStack, nodes), nodes)!.slice(1));
 			path.push({
 				node: nodes.get(path.findLast((edge) => edge.node.blueRingDownDestination)!.node.blueRingDownDestination!.nodeName as nodeName)!,
 				distance: 0,
@@ -91,8 +91,11 @@ export function pathfindToInteractable(interactable: interactable, pathStack: No
 		const path = dijkstraPathfind(nodesCopy.get(pathStack.at(-1)!.node.name)!, destination, nodesCopy);
 		if (path) paths.push(path);
 	}
-	const path = paths.sort((a, b) => a.reduce((acc, edge) => acc + edge.distance, 0) - b.reduce((acc, edge) => acc + edge.distance, 0))[0];
-	return [pathStack.at(-1)!, ...path];
+	if (paths.length > 0)
+		return [
+			pathStack.at(-1)!,
+			...paths.sort((a, b) => a.reduce((acc, edge) => acc + edge.distance, 0) - b.reduce((acc, edge) => acc + edge.distance, 0))[0],
+		];
 }
 
 // returns resulting pathStack of traversing a path

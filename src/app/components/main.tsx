@@ -316,17 +316,18 @@ export default function Main() {
 					)}
 				</div>
 				<div className='pathList'>
-					{pathfindResult &&
-						pathfindResult.map((edge, index, path) => (
-							<Fragment key={`pathfind${index}`}>
-								{index != 0 ? "↓" : ""}
-								<div
-									className={`pathNode${pathStack.at(-1)!.id == edge.id ? " current" : ""}`}
-								>
-									{edge.node.name}
-								</div>
-							</Fragment>
-						))}
+					{pathfindResult
+						? pathfindResult.map((edge, index, path) => (
+								<Fragment key={`pathfind${index}`}>
+									{index != 0 ? "↓" : ""}
+									<div
+										className={`pathNode${pathStack.at(-1)!.id == edge.id ? " current" : ""}`}
+									>
+										{edge.node.name}
+									</div>
+								</Fragment>
+							))
+						: "No Path Available!"}
 				</div>
 			</div>
 		</>
