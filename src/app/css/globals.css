@@ -6,11 +6,6 @@
 	--pink: #f901fd;
 }
 
-@font-face {
-	font-family: "WhiteRabbit";
-	src: url("/whiterabbit.woff") format("woff");
-}
-
 html,
 body {
 	font-size: 20px;

@@ -1,3 +1,7 @@
+import localFont from "next/font/local";
+
+const font = localFont({ src: "../../public/whiterabbit.woff" });
+
 export default function RootLayout({
 	children,
 }: Readonly<{
@@ -5,7 +9,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
-			<body>{children}</body>
+			<body className={font.className}>{children}</body>
 		</html>
 	);
 }
