@@ -146,6 +146,7 @@ type edgeInfo = {
 	distance: number; // how hard is it to traverse to ingame (enemy difficulty/time)
 	note?: string; // specifc method to enter
 	requiresKey?: key;
+	whiteBoxDevice?: boolean;
 	blueRingOnly?: boolean; // to indicate that the destination is only accessible blue rings (i.e. WIG Prison and Violet Shells)
 	// used for pathfinding
 	blueRing?: boolean;

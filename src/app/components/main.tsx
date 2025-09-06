@@ -244,6 +244,12 @@ export default function Main() {
 											src={`./images/icons/${edge.requiresKey}.webp`}
 										/>
 									)}
+									{edge.whiteBoxDevice && (
+										<Image
+											className='icon-small'
+											src={`./images/icons/White Box Device.webp`}
+										/>
+									)}
 									{edge.node.name}
 									{edge.note && ` (${edge.note})`}
 									<Image
