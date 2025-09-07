@@ -151,6 +151,9 @@ body {
 	object-fit: contain;
 	align-self: center;
 }
+[class^="icon"]:has(~ *) {
+	margin-right: 0.25rem;
+}
 
 .icon-small {
 	height: 1.5rem;

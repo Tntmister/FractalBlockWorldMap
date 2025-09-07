@@ -319,5 +319,8 @@ export const labels: Map<item | upgrade, { label?: string; imageName?: string }>
 			imageName: "Dark Hole",
 			label: "Ammo",
 		},
+		"Burlington Combination Lock": {
+			imageName: "Omega",
+		},
 	}) as [item | upgrade, { label?: string; imageName?: string }][],
 );

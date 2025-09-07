@@ -76,16 +76,24 @@ const inputEdges: InputEdge = {
 	},
 	"Stable Singletons": {
 		"I1": {
-			distance: 20,
+			distance: 1,
+			requiresKey: "I1 Stable Singletons Key",
 		},
 		"Fanatic Lattice": {
-			distance: 100,
+			distance: 1,
+			requiresKey: "I2 Stable Singletons Key",
 		},
 		"I3": {
-			distance: 100,
+			distance: 1,
+			requiresKey: "I3 Stable Singletons Key",
+		},
+		"Burlington": {
+			distance: 1,
+			requiresKey: "Burlington Stable Singletons Key",
 		},
 		"Hell": {
-			distance: 100,
+			distance: 1,
+			requiresKey: "Hell Stable Singletons Key",
 		},
 		"Ying Forest": {
 			distance: 5,
@@ -665,7 +673,7 @@ const inputEdges: InputEdge = {
 			distance: 1,
 		},
 		"I3 Clouds": {
-			distance: 10,
+			distance: 15,
 		},
 		"Dandelions": {
 			distance: 5,
@@ -691,7 +699,12 @@ const inputEdges: InputEdge = {
 	},
 	"I3 Clouds": {
 		"White Rose": {
-			distance: Infinity,
+			distance: 15,
+		},
+	},
+	"White Rose": {
+		"Red Apple Tree": {
+			distance: 5,
 		},
 	},
 	"I3 Air": {
@@ -931,8 +944,51 @@ const inputEdges: InputEdge = {
 		"Emerald": {
 			distance: 60,
 		},
+		"Topaz": {
+			distance: 60,
+		},
 		"Starksboro": {
 			distance: 80,
+		},
+		"Iolite": {
+			distance: 60,
+		},
+		"Amethyst": {
+			distance: 90,
+		},
+	},
+	"Starksboro": {
+		"I1 Library": {
+			distance: 1,
+		},
+		"I2 Library": {
+			distance: 1,
+		},
+		"I3 Library": {
+			distance: 1,
+		},
+		"Library Library": {
+			distance: 1,
+		},
+		"Mahogany Basement": {
+			distance: 1,
+		},
+		"Mahogany Cellar": {
+			distance: 1,
+		},
+		"Small Yellow Flower": {
+			distance: 1,
+		},
+	},
+	"Amethyst": {
+		"Jumbo Yellow Flower": {
+			distance: 10,
+		},
+		"Small White Flower": {
+			distance: 10,
+		},
+		"Orange": {
+			distance: 10,
 		},
 	},
 	"Emerald": {
@@ -1157,6 +1213,10 @@ const inputEdges: InputEdge = {
 		"Moon Flower": {
 			distance: 5,
 		},
+		"Quicksand Grass": {
+			distance: 5,
+			note: "Level 11",
+		},
 	},
 	"Moon Flower": {
 		"Quicksand Grass": {
@@ -1178,6 +1238,9 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Williston Field": {
+		"Williston Caves": {
+			distance: 5,
+		},
 		"Williston City": {
 			distance: 1,
 		},
@@ -1219,6 +1282,11 @@ const inputEdges: InputEdge = {
 		},
 		"I2 WIG Flower": {
 			distance: 5,
+		},
+	},
+	"Williston Caves": {
+		"Well": {
+			distance: 10,
 		},
 	},
 	"Williston Trees": {
@@ -1468,9 +1536,6 @@ const inputEdges: InputEdge = {
 		"Small Blue Flower (Primary)": {
 			distance: 10,
 		},
-		"Healing Patch": {
-			distance: Infinity,
-		},
 		"Fanatic Spire Treasure": {
 			distance: 30,
 		},
@@ -1565,15 +1630,12 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"I3 WIG Flower": {
-		"I3 WIG Flower": {
-			distance: 1,
-			note: "Prank Flower",
-		},
 		"I3": {
 			distance: 1,
 		},
 		"Quicksand Grass": {
 			distance: 1,
+			note: "Level 11",
 		},
 		"WIG Prison": {
 			distance: 20,
@@ -1584,6 +1646,9 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Prank I3 WIG Flower": {
+		"Quicksand Grass": {
+			distance: 1,
+		},
 		"WIG Prison 2": {
 			distance: 20,
 			blueRingOnly: true,
@@ -1595,10 +1660,6 @@ const inputEdges: InputEdge = {
 		},
 		"Fanatic Island Caves": {
 			distance: 1,
-		},
-		"Fanatic Spire": {
-			distance: Infinity,
-			note: "Shell 2",
 		},
 		"Violet Shell 3": {
 			distance: 50,
@@ -1659,12 +1720,46 @@ const inputEdges: InputEdge = {
 		"Healing Patch": {
 			distance: 10,
 		},
+		"Fanatic Lattice": {
+			distance: 10,
+			note: "Walls",
+		},
 		"Fanatic Spire": {
 			distance: 10,
 		},
 		"Fanatic Vine 2": {
 			distance: 20,
 			note: "Exit",
+		},
+		"Violet Shell 2 Map": {
+			distance: 10,
+		},
+	},
+	"Violet Shell 2 Map": {
+		"Quicksand Grass": {
+			distance: 5,
+		},
+		"Fanatic Air": {
+			distance: 1,
+		},
+		"Cannon Ammo Grab": {
+			distance: 1,
+		},
+		"Healing Patch": {
+			distance: 10,
+		},
+		"Fanatic Spire": {
+			distance: 10,
+		},
+		"Fanatic Lattice": {
+			distance: 10,
+			note: "Walls",
+		},
+		"Fir Tree": {
+			distance: 1,
+		},
+		"Violet Shell 2 Map": {
+			distance: 10,
 		},
 	},
 	"Violet Shell 1": {
@@ -1688,6 +1783,7 @@ const inputEdges: InputEdge = {
 		},
 		"Fanatic Lattice": {
 			distance: 10,
+			note: "Walls",
 		},
 		"Health Tower": {
 			distance: 10,
@@ -2540,11 +2636,22 @@ const inputEdges: InputEdge = {
 			distance: 5,
 			note: "Debris",
 		},
-		"Rail Showdown Caves": {
+		"Rail Showdown Cave": {
 			distance: 10,
 		},
 		"Burlington": {
 			distance: 30,
+		},
+	},
+	"Rail Showdown Cave": {
+		"Small Black Flower": {
+			distance: 20,
+		},
+		"Small White Flower": {
+			distance: 20,
+		},
+		"Small Yellow Flower": {
+			distance: 20,
 		},
 	},
 	"Burlington": {
@@ -2575,7 +2682,8 @@ const inputEdges: InputEdge = {
 		},
 		"Burlington Combination Lock Treasure": {
 			distance: 25,
-			note: "Omega Box = 1, Orange Box = 2, Purple Box Under Bridges",
+			note: "Combination Lock",
+			//note: "Omega Box = 1, Orange Box = 2, Purple Box Under Bridges = 3",
 		},
 	},
 	"Club Green Apple": {
@@ -3323,23 +3431,62 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Stoney Air": {
-		"Stoney Air Cave": {
+		"Stoney Air Cave 1": {
 			distance: 1,
 			note: "Net shrink 0/1",
 		},
 		"Yellow Cube": {
-			distance: 10,
-			note: "Need to be small enough",
+			distance: 8,
 		},
 		"Green Shrink Box": {
 			distance: 1,
-			note: "Net shrink 1(?)",
+			note: "Net shrink 1	",
+		},
+		"Stoney Air Totem": {
+			distance: 4,
 		},
 	},
-	"Stoney Air Cave": {
-		"Stoney Air Cave": {
+	"Stoney Air Totem": {
+		"Green Apple Tree": {
+			distance: 1,
+		},
+		"Ying Flower": {
+			distance: 1,
+		},
+		"Small White Flower": {
+			distance: 1,
+		},
+	},
+	"Stoney Air Cave 1": {
+		"Stoney Air Cave 2": {
+			distance: 7,
+			note: "Chance Based on Length",
+		},
+		"Blue Bubble": {
+			distance: 22,
+			note: "Thorugh Cave 2 Cement",
+		},
+	},
+	"Stoney Air Cave 2": {
+		"Small Black Flower": {
+			distance: 5,
+		},
+		"Stoney Air Cave 3": {
+			distance: 12,
+			note: "Chance Based on Length",
+		},
+		"Ying Forest": {
+			distance: 12,
+			note: "Through Cave 3",
+		},
+		"Ying Flower": {
+			distance: 12,
+			note: "Through Cave 3",
+		},
+	},
+	"Stoney Air Cave 3": {
+		"Ying Forest": {
 			distance: 10,
-			note: "Deeper = more rewards",
 		},
 	},
 	"Green Shrink Box": {
@@ -3873,6 +4020,53 @@ const inputEdges: InputEdge = {
 			note: "Very Deep",
 		},
 	},
+	"Top of the World": {
+		"Outer Space -4 B": {
+			distance: 1,
+		},
+		"Outer Space -4": {
+			distance: 1,
+		},
+		"Alpha Cube": {
+			distance: 0,
+		},
+	},
+	"Outer Space -4 B": {
+		"Outer Space -3 B": {
+			distance: 1,
+		},
+	},
+	"Outer Space -4": {
+		"Outer Space -3": {
+			distance: 1,
+		},
+		"Outer Space -3 B": {
+			distance: 1,
+		},
+	},
+	"Outer Space -3 B": {
+		"Outer Space -2 B": {
+			distance: 1,
+		},
+	},
+	"Outer Space -3": {
+		"Outer Space -2": {
+			distance: 1,
+		},
+		"Outer Space -2 B": {
+			distance: 5,
+		},
+	},
+	"Outer Space -2 B": {
+		"Outer Space -1": {
+			distance: 1,
+		},
+	},
+	"Outer Space -2": {
+		"Outer Space -1": {
+			distance: 1,
+		},
+	},
 	"Outer Space -1": {
 		"Outer Space 0": {
 			distance: 1,
@@ -3888,16 +4082,55 @@ const inputEdges: InputEdge = {
 		"Large Gold Asteroid": {
 			distance: 5,
 		},
-		"Outer Space 0 Lockbox": {
+		"Lockbox": {
 			distance: 5,
 			requiresKey: "Yellow Key",
+		},
+	},
+	"Outer Space 0 B": {
+		"Outer Space 1": {
+			distance: 20,
+		},
+		"Large Gold Asteroid": {
+			distance: 5,
+		},
+		"Lockbox": {
+			distance: 5,
+			requiresKey: "Yellow Key",
+		},
+	},
+	"Topaz": {
+		"Blackberry": {
+			distance: 5,
+		},
+		"Small Blue Flower (Primary)": {
+			distance: 5,
+		},
+	},
+	"Iolite": {
+		"Jade Museum": {
+			distance: 5,
+		},
+	},
+	"Jade Museum": {
+		"Fir Tree": {
+			distance: 2,
+		},
+		"Health Tower": {
+			distance: 2,
+		},
+		"Small White Flower": {
+			distance: 15,
+		},
+		"Quicksand Grass": {
+			distance: 15,
 		},
 	},
 	"Mylantis": {
 		"Mylantis City": {
 			distance: 1,
 		},
-		"Mylantis Caves": {
+		"Mylantis Crust": {
 			distance: 1,
 		},
 		"Laser Genesis Planet": {
@@ -3907,16 +4140,327 @@ const inputEdges: InputEdge = {
 			distance: 1,
 			note: "3 on Surface",
 		},
+		"Grand Lockbox": {
+			distance: 20,
+		},
+	},
+	"Mylantis Crust": {
+		"I3 WIG Flower": {
+			distance: 5,
+		},
+		"Mylantis Caves 1": {
+			distance: 10,
+		},
+	},
+	"Mylantis Caves Library": {
+		"I3 WIG Flower": {
+			distance: 1,
+		},
+		"Taurus Portal": {
+			distance: 1,
+		},
+	},
+	"Mylantis Caves 1": {
+		"I3 WIG Flower": {
+			distance: 5,
+		},
+		"RejuvenX Refinery": {
+			distance: 8,
+		},
+		"Mylantis Caves Library": {
+			distance: 5,
+		},
+		"Mylantis Cave Shaft": {
+			distance: 15,
+		},
+		"Mylantis Caves 2": {
+			distance: 20,
+		},
+	},
+	"Mylantis Caves 2": {
+		"I3 WIG Flower": {
+			distance: 5,
+		},
+		"Blackberry": {
+			distance: 15,
+		},
+		"Nuclear Silo": {
+			distance: 25,
+		},
+		"Mylantis Caves Library": {
+			distance: 5,
+		},
+		"RejuvenX Refinery": {
+			distance: 10,
+		},
+		"Mylantis Cave Shaft": {
+			distance: 18,
+		},
+		"Mylantis Caves 3": {
+			distance: 25,
+		},
+	},
+	"Mylantis Caves 3": {
+		"I3 WIG Flower": {
+			distance: 5,
+		},
+		"Alpha Menger Sponge": {
+			distance: 20,
+		},
+		"Nuclear Silo": {
+			distance: 25,
+		},
+		"Mylantis Caves Library": {
+			distance: 8,
+		},
+		"RejuvenX Refinery": {
+			distance: Infinity,
+		},
+		"Mylantis Cave Shaft": {
+			distance: Infinity,
+		},
+		"Mylantis Caves 4": {
+			distance: Infinity,
+		},
+	},
+	"Mylantis Caves 4": {
+		"I3 WIG Flower": {
+			distance: 5,
+		},
+		"Topaz": {
+			distance: Infinity,
+		},
+		"Nuclear Silo": {
+			distance: Infinity,
+		},
+		"Mylantis Caves Library": {
+			distance: Infinity,
+		},
+		"RejuvenX Refinery": {
+			distance: Infinity,
+		},
+		"Mylantis Cave Shaft": {
+			distance: Infinity,
+		},
+		"Mylantis Caves 5": {
+			distance: Infinity,
+		},
+	},
+	"Mylantis Caves 5": {
+		"I3 WIG Flower": {
+			distance: 5,
+		},
+		"Red Maze Flower": {
+			distance: Infinity,
+		},
+		"Nuclear Silo": {
+			distance: Infinity,
+		},
+		"Mylantis Caves Library": {
+			distance: Infinity,
+		},
+		"RejuvenX Refinery": {
+			distance: Infinity,
+		},
+		"Mylantis Cave Shaft": {
+			distance: Infinity,
+		},
+		"Mylantis Caves 6": {
+			distance: Infinity,
+		},
+	},
+	"Mylantis Caves 6": {
+		"I3 WIG Flower": {
+			distance: 5,
+		},
+		"Iolite": {
+			distance: Infinity,
+		},
+		"Large White Flower": {
+			distance: Infinity,
+		},
+		"Nuclear Silo": {
+			distance: Infinity,
+		},
+		"Mylantis Caves Library": {
+			distance: Infinity,
+		},
+		"RejuvenX Refinery": {
+			distance: Infinity,
+		},
+		"Mylantis Cave Shaft": {
+			distance: Infinity,
+		},
+		"Mylantis Caves 7": {
+			distance: Infinity,
+		},
+	},
+	"Mylantis Caves 7": {
+		"I3 WIG Flower": {
+			distance: 5,
+		},
+		"Jackfruit": {
+			distance: Infinity,
+		},
+		"Nuclear Silo": {
+			distance: Infinity,
+		},
+		"Mylantis Caves Library": {
+			distance: Infinity,
+		},
+		"RejuvenX Refinery": {
+			distance: Infinity,
+		},
+		"Mylantis Cave Shaft": {
+			distance: Infinity,
+		},
+		"Mylantis Caves 8": {
+			distance: Infinity,
+		},
+	},
+	"Mylantis Caves 8": {
+		"I3 WIG Flower": {
+			distance: 5,
+		},
+		"Yellow Mushroom": {
+			distance: Infinity,
+		},
+		"Emerald": {
+			distance: Infinity,
+		},
+		"Nuclear Silo": {
+			distance: Infinity,
+		},
+		"Mylantis Caves Library": {
+			distance: Infinity,
+		},
+		"RejuvenX Refinery": {
+			distance: Infinity,
+		},
+		"Mylantis Cave Shaft": {
+			distance: Infinity,
+		},
+		"Mylantis Caves 9": {
+			distance: Infinity,
+		},
+	},
+	"Mylantis Caves 9": {
+		"I3 WIG Flower": {
+			distance: 5,
+		},
+		"Turnips": {
+			distance: Infinity,
+		},
+		"Nuclear Silo": {
+			distance: Infinity,
+		},
+		"RejuvenX Refinery": {
+			distance: Infinity,
+		},
+		"Mylantis Cave Shaft": {
+			distance: Infinity,
+		},
+		"Mylantis Caves Library": {
+			distance: Infinity,
+		},
+		"Mylantis Caves 10": {
+			distance: Infinity,
+		},
+	},
+	"Mylantis Caves 10": {
+		"I3 WIG Flower": {
+			distance: 5,
+		},
+		"Hell": {
+			distance: Infinity,
+		},
+		"Denver": {
+			distance: Infinity,
+		},
+		"Nuclear Silo": {
+			distance: Infinity,
+		},
+		"RejuvenX Refinery": {
+			distance: Infinity,
+		},
+		"Mylantis Caves Library": {
+			distance: Infinity,
+		},
+		"Mylantis Cave Shaft": {
+			distance: Infinity,
+		},
+		"Mylantis Caves 11": {
+			distance: Infinity,
+		},
+	},
+	"Mylantis Caves 11": {
+		"I3 WIG Flower": {
+			distance: 5,
+		},
+		"Moon Flower": {
+			distance: Infinity,
+		},
+		"RejuvenX Refinery": {
+			distance: Infinity,
+		},
+		"Mylantis Caves Library": {
+			distance: Infinity,
+		},
+		"Mylantis Cave Shaft": {
+			distance: Infinity,
+		},
+		"Mylantis Great Cavern": {
+			distance: Infinity,
+		},
+	},
+	"Mylantis Great Cavern": {
+		"Mylantis Red Caves": {
+			distance: Infinity,
+		},
+	},
+	"Mylantis Red Caves": {
+		"Amethyst": {
+			distance: Infinity,
+		},
+	},
+	"Denver": {
+		"Denver Pyramid": {
+			distance: 1,
+		},
+		"Ying Forest": {
+			distance: 1,
+		},
+		"Ying Air": {
+			distance: 1,
+		},
+		"Dandelions": {
+			distance: 1,
+		},
+		"Desert": {
+			distance: 1,
+		},
+		"Denver Green Mountain": {
+			distance: 1,
+		},
+		"Fire Rate Moon": {
+			distance: 1,
+		},
+		"Blue Library": {
+			distance: 1,
+		},
+	},
+	"Denver Green Mountain": {
+		"Buttercup": {
+			distance: 1,
+		},
+		"Ying Forest": {
+			distance: 1,
+		},
 	},
 	"Laser Genesis Planet": {
 		"Laser Genesis": {
 			distance: Infinity,
 			requiresKey: "Laser Genesis Key",
-		},
-	},
-	"Mylantis Caves": {
-		"RejuvenX Refinery": {
-			distance: Infinity,
 		},
 	},
 	"Mylantis City": {
@@ -3937,12 +4481,20 @@ const inputEdges: InputEdge = {
 		},
 		"House of 5 Lampreys": {
 			distance: 15,
-			note: "Random Building, Coordinates In Buildings",
+			note: "U-11",
 		},
 		"Secret Farmhouse": {
 			distance: 15,
 			note: "S-10",
 			requiresKey: "Secret Farmhouse Key",
+		},
+	},
+	"Secret Farmhouse": {
+		"Ying Forest": {
+			distance: 1,
+		},
+		"Galaxy Flower": {
+			distance: 5,
 		},
 	},
 	"House of 5 Lampreys": {
@@ -4134,8 +4686,21 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Clay Planet": {
+		"Ying Forest": {
+			distance: 1,
+		},
+		"Ying Air": {
+			distance: 5,
+		},
 		"Blue Bubble Gauntlet": {
 			distance: 5,
+		},
+		"The Bulk 1": {
+			distance: 20,
+		},
+		"I3 WIG Flower": {
+			distance: 20,
+			note: "Guranteed Real",
 		},
 	},
 	"Ice Moon": {
@@ -4292,6 +4857,9 @@ const inputEdges: InputEdge = {
 		},
 		"Quicksand Grass": {
 			distance: 1,
+		},
+		"Small White Flower Maze": {
+			distance: 15,
 		},
 	},
 	"Alpha Cube": {

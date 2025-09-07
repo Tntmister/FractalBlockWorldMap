@@ -88,7 +88,8 @@ type key =
 	| "Laser Genesis Key"
 	| "Universe Key"
 	| `${"I1" | "I2" | "I3" | "Burlington" | "Hell"} Stable Singletons Key`
-	| "Secret Farmhouse Key";
+	| "Secret Farmhouse Key"
+	| "Burlington Combination Lock";
 
 export type defenceUpgrade = "Random Health" | "Max Health" | "Health Regen" | "Armor Regen" | "RejuvenX";
 
@@ -114,6 +115,7 @@ export const interactables = [
 	"In-Only Waypoint",
 	"Out-Only Waypoint",
 	"Buy Blue Key",
+	"Max Ammo Upgrade Station",
 	"Upgrade Station",
 	"Black Market",
 ] as const;

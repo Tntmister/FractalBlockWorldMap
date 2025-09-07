@@ -48,6 +48,10 @@ for (const [fromName, edge] of Object.entries(inputEdges)) {
 }
 
 const startingPath: nodeName[] = [
+	"Top of the World",
+	"Outer Space -4",
+	"Outer Space -3",
+	"Outer Space -2",
 	"Outer Space -1",
 	"Outer Space 0",
 	"Outer Space 1",
@@ -284,7 +288,7 @@ export default function Main() {
 									{edge.requiresKey && (
 										<Image
 											className='icon-small'
-											src={`./images/icons/${edge.requiresKey}.webp`}
+											src={`./images/icons/${edge.requiresKey.includes("Singleton") ? "Stable Singletons Key" : edge.requiresKey}.webp`}
 										/>
 									)}
 									{edge.whiteBoxDevice && (
