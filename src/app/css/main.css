@@ -29,11 +29,14 @@ body {
 	justify-content: center;
 }
 
+#currentPathContainer .pathList {
+	line-height: 12px;
+}
+
 .pathList {
 	flex-direction: column;
 	gap: 0.25rem;
 	padding: 0.25rem 1rem;
-	line-height: 12px;
 	display: flex;
 	max-height: 100%;
 	overflow: auto;

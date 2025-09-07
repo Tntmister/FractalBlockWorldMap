@@ -149,7 +149,7 @@ type edgeInfo = {
 	note?: string; // specifc method to enter
 	requiresKey?: key;
 	whiteBoxDevice?: boolean;
-	blueRingOnly?: boolean; // to indicate that the destination is only accessible blue rings (i.e. WIG Prison and Violet Shells)
+	impassable?: boolean; // to indicate that the destination is not directly accessible, only through waypoints/blue rings (i.e. WIG Prison and Violet Shells)
 	// used for pathfinding
 	blueRing?: boolean;
 	up?: boolean;

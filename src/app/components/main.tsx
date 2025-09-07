@@ -97,7 +97,7 @@ export default function Main() {
 
 	const currentNode = useMemo(() => pathStack.at(-1)!.node, [pathStack]);
 
-	const blueRingParentEdge = useMemo(() => {
+	const blueActiveZoneEdge = useMemo(() => {
 		if (currentNode.interactables.includes("Blue Ring")) {
 			return pathStack.findLast((edge) => edge.node.blueRingDownDestination);
 		}
@@ -106,19 +106,19 @@ export default function Main() {
 
 	function traverseBlueRing() {
 		const destinationNode = nodes.get(
-			blueRingParentEdge!.node.blueRingDownDestination!.nodeName as nodeName,
+			blueActiveZoneEdge!.node.blueRingDownDestination!.nodeName as nodeName,
 		)!;
 		traversePath([
 			{
 				node: destinationNode,
-				id: blueRingParentEdge!.id,
+				id: blueActiveZoneEdge!.id,
 				distance: 0,
 				blueRing: true,
 			},
 		]);
 	}
 
-	const pinkRingParentEdge = useMemo(() => {
+	const pinkSphereEdge = useMemo(() => {
 		if (currentNode.interactables.includes("Pink Ring")) {
 			return pathStack.findLast((edge) => edge.node.interactables.includes("Pink Sphere"));
 		}
@@ -126,7 +126,7 @@ export default function Main() {
 	}, [pathStack]);
 
 	function traversePinkRing() {
-		setPathStack(pathStack.slice(0, pathStack.lastIndexOf(pinkRingParentEdge!) + 1));
+		setPathStack(pathStack.slice(0, pathStack.lastIndexOf(pinkSphereEdge!) + 1));
 	}
 
 	function traversePath(path: Edge[]) {
@@ -136,7 +136,7 @@ export default function Main() {
 	}
 
 	function traverseTo(node: Node) {
-		traversePath(pathfindTo(node, pathStack, nodes)!);
+		traversePath(pathfindTo(node.name, pathStack, nodes, true)!);
 	}
 
 	useEffect(() => {
@@ -157,7 +157,7 @@ export default function Main() {
 	const [pathfindType, setPathfindType] = useState<"interactable" | "node">("node");
 	const pathfindTarget = useRef<Node | interactable>(null);
 	const pathfindPathstack = useRef<Edge[]>(null);
-	const [pathfindResult, setPathfindResult] = useState<Edge[]>();
+	const [pathfindResult, setPathfindResult] = useState<Edge[] | null>();
 
 	function pathfindSelectEvent(e: ChangeEvent<HTMLSelectElement>) {
 		switch (pathfindType) {
@@ -174,6 +174,9 @@ export default function Main() {
 	}
 
 	function pathfindEvent() {
+		const stableSingletons = (
+			document.getElementsByName("pathfindStableSingleton")[0] as HTMLInputElement
+		).checked;
 		switch (pathfindType) {
 			case "interactable":
 				setPathfindResult(
@@ -181,12 +184,20 @@ export default function Main() {
 						pathfindTarget.current as interactable,
 						pathStack,
 						nodes,
+						stableSingletons,
 					),
 				);
 				break;
 
 			case "node":
-				setPathfindResult(pathfindTo(pathfindTarget.current as Node, pathStack, nodes));
+				setPathfindResult(
+					pathfindTo(
+						(pathfindTarget.current as Node).name,
+						pathStack,
+						nodes,
+						stableSingletons,
+					),
+				);
 				break;
 			default:
 				break;
@@ -271,7 +282,7 @@ export default function Main() {
 			<div id='nodeContainer'>
 				<NodeInfo node={currentNode}></NodeInfo>
 
-				{(currentNode.edges.length > 0 || blueRingParentEdge) && (
+				{(currentNode.edges.length > 0 || blueActiveZoneEdge) && (
 					<div id='edgesContainer'>
 						Possible destinations:
 						<div id='edgesList'>
@@ -297,6 +308,12 @@ export default function Main() {
 											src={`./images/icons/White Box Device.webp`}
 										/>
 									)}
+									{edge.impassable && (
+										<Image
+											className='icon-small'
+											src={`./images/icons/One Way.webp`}
+										/>
+									)}
 									{edge.node.name}
 									{edge.note && ` (${edge.note})`}
 									<Image
@@ -306,22 +323,22 @@ export default function Main() {
 									/>
 								</span>
 							))}
-							{blueRingParentEdge && (
+							{blueActiveZoneEdge && (
 								<span className='edge blueRing' onClick={traverseBlueRing}>
 									<Image
 										className='icon-small'
 										src={`./images/icons/Blue Ring.webp`}
 									/>
-									{`${blueRingParentEdge.node.blueRingDownDestination!.nodeName} ${blueRingParentEdge.node.blueRingDownDestination!.note ?? ""}`}
+									{`${blueActiveZoneEdge.node.blueRingDownDestination!.nodeName} ${blueActiveZoneEdge.node.blueRingDownDestination!.note ?? ""}`}
 								</span>
 							)}
-							{pinkRingParentEdge && (
+							{pinkSphereEdge && (
 								<span className='edge pinkRing' onClick={traversePinkRing}>
 									<Image
 										className='icon-small'
 										src={`./images/icons/Pink Ring.webp`}
 									/>
-									{pinkRingParentEdge.node.name}
+									{pinkSphereEdge.node.name}
 								</span>
 							)}
 						</div>
@@ -374,6 +391,10 @@ export default function Main() {
 							))}
 						</select>
 					)}
+					<label>
+						Include Stable Singletons
+						<input name='pathfindStableSingleton' type='checkbox' />
+					</label>
 					<div className='pathNode' onClick={pathfindEvent}>
 						Find Path
 					</div>
@@ -403,7 +424,7 @@ export default function Main() {
 					) : pathfindResult === undefined ? (
 						""
 					) : (
-						"No Path Available!"
+						"No Path Available! Try traversing up first. (Note: Paths that require going through a blue ring must start before the corresponding blue active zone)"
 					)}
 				</div>
 			</div>

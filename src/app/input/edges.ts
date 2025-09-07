@@ -272,7 +272,7 @@ const inputEdges: InputEdge = {
 		},
 		"Tutorial Chambers": {
 			distance: 1,
-			blueRingOnly: true,
+			impassable: true,
 		},
 		"Ying Island": {
 			distance: 1,
@@ -1157,7 +1157,7 @@ const inputEdges: InputEdge = {
 		},
 		"Colchester Secret": {
 			distance: 20,
-			blueRingOnly: true,
+			impassable: true,
 		},
 	},
 	"Hard Orange Flower": {
@@ -1343,7 +1343,7 @@ const inputEdges: InputEdge = {
 		},
 		"WIG Prison": {
 			distance: 20,
-			blueRingOnly: true,
+			impassable: true,
 		},
 		"Prank I2 WIG Flower": {
 			distance: 1,
@@ -1356,7 +1356,7 @@ const inputEdges: InputEdge = {
 	"Prank I2 WIG Flower": {
 		"WIG Prison 2": {
 			distance: 20,
-			blueRingOnly: true,
+			impassable: true,
 		},
 		"Quicksand Grass": {
 			distance: 1,
@@ -1639,7 +1639,7 @@ const inputEdges: InputEdge = {
 		},
 		"WIG Prison": {
 			distance: 20,
-			blueRingOnly: true,
+			impassable: true,
 		},
 		"Prank I3 WIG Flower": {
 			distance: 1,
@@ -1651,7 +1651,7 @@ const inputEdges: InputEdge = {
 		},
 		"WIG Prison 2": {
 			distance: 20,
-			blueRingOnly: true,
+			impassable: true,
 		},
 	},
 	"Violet": {
@@ -1663,7 +1663,7 @@ const inputEdges: InputEdge = {
 		},
 		"Violet Shell 3": {
 			distance: 50,
-			blueRingOnly: true,
+			impassable: true,
 		},
 	},
 	"Violet Shell 3": {
