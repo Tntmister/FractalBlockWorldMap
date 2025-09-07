@@ -52,7 +52,6 @@ export function pathfindTo(targetNode: Node, pathStack: Node["edges"], nodes: Ma
 				id: blueDownEdgeIndex,
 			});
 			if (path.at(-1)?.node.name != targetNode.name) {
-				console.log("a");
 				path.push(...pathfindTo(targetNode, getTraversedPath(path, pathStack, nodes), nodes)!.slice(1));
 			}
 		}

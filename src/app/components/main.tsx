@@ -1,5 +1,5 @@
 "use client";
-import { ChangeEvent, Fragment, useEffect, useMemo, useState } from "react";
+import { ChangeEvent, Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { Node, Edge, interactable, interactables } from "../types";
 import Image from "./Image";
 import NodeInfo from "./nodeInfo";
@@ -126,7 +126,9 @@ export default function Main() {
 	}
 
 	function traversePath(path: Edge[]) {
-		setPathStack(getTraversedPath(path, pathStack, nodes));
+		const pathStackResult = getTraversedPath(path, pathStack, nodes);
+		setPathStack(pathStackResult);
+		return pathStackResult;
 	}
 
 	function traverseTo(node: Node) {
@@ -134,33 +136,74 @@ export default function Main() {
 	}
 
 	useEffect(() => {
-		const currentPath = document.querySelectorAll(
-			"#currentPathContainer > .pathList > .pathNode",
-		);
-		currentPath[currentPath.length - 1].scrollIntoView();
-		const pathfindPath = document.querySelectorAll("#pathfindContainer > .pathList > .current");
-		if (pathfindPath.length > 0) pathfindPath[pathfindPath.length - 1].scrollIntoView();
+		document
+			.querySelectorAll("#currentPathContainer > .pathList > .pathNode")
+			.values()
+			.toArray()
+			.at(-1)
+			?.scrollIntoView();
+		document
+			.querySelectorAll("#pathfindContainer > .pathList > .current")
+			.values()
+			.toArray()
+			.at(-1)
+			?.scrollIntoView();
 	}, [pathStack]);
 
 	const [pathfindType, setPathfindType] = useState<"interactable" | "node">("node");
+	const pathfindTarget = useRef<Node | interactable>(null);
+	const pathfindPathstack = useRef<Edge[]>(null);
 	const [pathfindResult, setPathfindResult] = useState<Edge[]>();
 
 	function pathfindSelectEvent(e: ChangeEvent<HTMLSelectElement>) {
 		switch (pathfindType) {
 			case "interactable":
-				setPathfindResult(
-					pathfindToInteractable(e.target.value as interactable, pathStack, nodes),
-				);
+				pathfindTarget.current = e.target.value as interactable;
 				break;
 
 			case "node":
-				setPathfindResult(
-					pathfindTo(nodes.get(e.target.value as nodeName)!, pathStack, nodes),
-				);
+				pathfindTarget.current = nodes.get(e.target.value as nodeName)!;
 				break;
 			default:
 				break;
 		}
+	}
+
+	function pathfindEvent() {
+		switch (pathfindType) {
+			case "interactable":
+				setPathfindResult(
+					pathfindToInteractable(
+						pathfindTarget.current as interactable,
+						pathStack,
+						nodes,
+					),
+				);
+				break;
+
+			case "node":
+				setPathfindResult(pathfindTo(pathfindTarget.current as Node, pathStack, nodes));
+				break;
+			default:
+				break;
+		}
+		pathfindPathstack.current = pathStack.slice();
+	}
+
+	function traversePathfind(path: Edge[], pathIndex: number, pathCurrentIndex: number) {
+		pathStack = pathfindPathstack.current!;
+		pathfindPathstack.current = traversePath(
+			pathIndex >= pathCurrentIndex
+				? path.slice(pathCurrentIndex, pathIndex + 1)
+				: path
+						.slice(pathIndex + 1, pathCurrentIndex + 1)
+						.toReversed()
+						.map((edge) => ({
+							...edge,
+							up: true,
+							id: -edge.id,
+						})),
+		);
 	}
 
 	return (
@@ -327,20 +370,37 @@ export default function Main() {
 							))}
 						</select>
 					)}
+					<div className='pathNode' onClick={pathfindEvent}>
+						Find Path
+					</div>
 				</div>
 				<div className='pathList'>
-					{pathfindResult
-						? pathfindResult.map((edge, index, path) => (
-								<Fragment key={`pathfind${index}`}>
-									{index != 0 ? "↓" : ""}
-									<div
-										className={`pathNode${pathStack.at(-1)!.id == edge.id ? " current" : ""}`}
-									>
-										{edge.node.name}
-									</div>
-								</Fragment>
-							))
-						: "No Path Available!"}
+					{pathfindResult ? (
+						<>
+							{pathfindResult.map((edge, index, path) => {
+								const indexOfCurrent = path.findIndex(
+									(edge) => pathfindPathstack.current!.at(-1)!.id == edge.id,
+								);
+								return (
+									<Fragment key={`pathfind${index}`}>
+										{index != 0 ? "↓" : ""}
+										<div
+											className={`pathNode${indexOfCurrent == index ? " current" : ""}`}
+											onClick={() =>
+												traversePathfind(path, index, indexOfCurrent)
+											}
+										>
+											{edge.node.name}
+										</div>
+									</Fragment>
+								);
+							})}
+						</>
+					) : pathfindResult === undefined ? (
+						""
+					) : (
+						"No Path Available!"
+					)}
 				</div>
 			</div>
 		</>
