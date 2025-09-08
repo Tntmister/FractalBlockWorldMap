@@ -3,7 +3,6 @@ import { ChangeEvent, Fragment, useEffect, useMemo, useRef, useState } from "rea
 import { Node, Edge, interactable, interactables } from "../types";
 import Image from "./Image";
 import NodeInfo from "./nodeInfo";
-import _ from "lodash";
 import "../css/main.css";
 import { inputNodes, nodeName } from "../input/nodes";
 import { inputEdges } from "../input/edges";
@@ -165,7 +164,7 @@ export default function Main() {
 	}
 
 	function pathfindEvent() {
-		const nodesCopy = _.cloneDeep(nodes);
+		const nodesCopy = structuredClone(nodes);
 		if (
 			!(document.getElementsByName("pathfindStableSingleton")[0] as HTMLInputElement).checked
 		) {

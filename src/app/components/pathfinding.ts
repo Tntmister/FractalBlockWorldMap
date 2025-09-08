@@ -1,4 +1,3 @@
-import _ from "lodash";
 import { nodeName } from "../input/nodes";
 import { Edge, interactable, Node } from "../types";
 
