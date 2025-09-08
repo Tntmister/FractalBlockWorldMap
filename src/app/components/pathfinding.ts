@@ -1,7 +1,6 @@
 import _ from "lodash";
 import { nodeName } from "../input/nodes";
 import { Edge, interactable, Node } from "../types";
-import path from "path";
 
 //Dijkstra pathfinding
 // empty array = already at location, undefined = no path
@@ -55,27 +54,8 @@ export function pathfindTo(
 	targetNodeName: nodeName,
 	pathStack: Node["edges"],
 	nodes: Map<nodeName, Node>,
-	stableSingletons: boolean,
-	keys: boolean,
 ) {
-	const nodesCopy = _.cloneDeep(nodes);
-	if (!stableSingletons)
-		nodesCopy.get("EMERGENCY")!.edges.splice(
-			nodesCopy
-				.get("EMERGENCY")!
-				.edges.findIndex((edge) => edge.node.name == "Stable Singletons"),
-			1,
-		);
-	if (!keys) {
-		nodesCopy.values().forEach((node) => {
-			for (let i = node.edges.length - 1; i >= 0; i--) {
-				if (node.edges[i].requiresKey == "Yellow Key") {
-					node.edges.splice(i, 1);
-				}
-			}
-		});
-	}
-	let path = dijkstraPathfind(pathStack.at(-1)!.node.name, targetNodeName, nodesCopy);
+	let path = dijkstraPathfind(pathStack.at(-1)!.node.name, targetNodeName, nodes);
 	if (path) {
 		// if destination is only accessible thorugh a blue ring, jump to before that then pathfind to a blue ring
 		const impassableEdgeIndex = path.findIndex((edge) => edge.impassable);
@@ -84,10 +64,8 @@ export function pathfindTo(
 			path.push(
 				...pathfindToInteractable(
 					"Blue Ring",
-					getTraversedPath(path, pathStack, nodesCopy),
-					nodesCopy,
-					stableSingletons,
-					keys,
+					getTraversedPath(path, pathStack, nodes),
+					nodes,
 				)!.slice(1),
 			);
 			const blueActiveZoneNode = path.findLast(
@@ -95,9 +73,7 @@ export function pathfindTo(
 			)?.node;
 			if (!blueActiveZoneNode) return null;
 			path.push({
-				node: nodesCopy.get(
-					blueActiveZoneNode.blueRingDownDestination!.nodeName as nodeName,
-				)!,
+				node: nodes.get(blueActiveZoneNode.blueRingDownDestination!.nodeName as nodeName)!,
 				distance: 0,
 				blueRing: true,
 				id: impassableEdgeIndex,
@@ -106,10 +82,8 @@ export function pathfindTo(
 				path.push(
 					...pathfindTo(
 						targetNodeName,
-						getTraversedPath(path, pathStack, nodesCopy),
-						nodesCopy,
-						stableSingletons,
-						keys,
+						getTraversedPath(path, pathStack, nodes),
+						nodes,
 					)!.slice(1),
 				);
 			}
@@ -123,28 +97,9 @@ export function pathfindToInteractable(
 	interactable: interactable,
 	pathStack: Node["edges"],
 	nodes: Map<nodeName, Node>,
-	stableSingletons: boolean,
-	keys: boolean,
 ) {
-	const nodesCopy = _.cloneDeep(nodes);
-	if (!stableSingletons)
-		nodesCopy.get("EMERGENCY")!.edges.splice(
-			nodesCopy
-				.get("EMERGENCY")!
-				.edges.findIndex((edge) => edge.node.name == "Stable Singletons"),
-			1,
-		);
-	if (!keys) {
-		nodesCopy.values().forEach((node) => {
-			for (let i = node.edges.length - 1; i >= 0; i--) {
-				if (node.edges[i].requiresKey == "Yellow Key") {
-					node.edges.splice(i, 1);
-				}
-			}
-		});
-	}
 	if (interactable == "Blue Ring") {
-		nodesCopy.values().forEach((node) => {
+		nodes.values().forEach((node) => {
 			for (let i = node.edges.length - 1; i >= 0; i--) {
 				if (node.edges[i].node.blueRingDownDestination) {
 					node.edges.splice(i, 1);
@@ -152,7 +107,7 @@ export function pathfindToInteractable(
 			}
 		});
 	} else if (interactable == "Pink Ring") {
-		nodesCopy.values().forEach((node) => {
+		nodes.values().forEach((node) => {
 			for (let i = node.edges.length - 1; i >= 0; i--) {
 				if (node.edges[i].node.interactables.includes("Pink Sphere")) {
 					node.edges.splice(i, 1);
@@ -160,7 +115,7 @@ export function pathfindToInteractable(
 			}
 		});
 	}
-	const possibleDestinations = nodesCopy.values().filter((node) => {
+	const possibleDestinations = nodes.values().filter((node) => {
 		// small white flower only contains blue ring inside an alpha cube
 		if (node.name === "Small White Flower" && interactable == "Blue Ring") {
 			return !!pathStack.find((edge) => edge.node.name === "Alpha Cube");
@@ -169,7 +124,7 @@ export function pathfindToInteractable(
 	});
 	const paths: Edge[][] = [];
 	for (const destination of possibleDestinations) {
-		const path = dijkstraPathfind(pathStack.at(-1)!.node.name, destination.name, nodesCopy);
+		const path = dijkstraPathfind(pathStack.at(-1)!.node.name, destination.name, nodes);
 		if (path) paths.push(path);
 	}
 	if (paths.length > 0)

@@ -130,10 +130,6 @@ export default function Main() {
 		return pathStackResult;
 	}
 
-	function traverseTo(node: Node) {
-		traversePath(pathfindTo(node.name, pathStack, nodes, true, true)!);
-	}
-
 	useEffect(() => {
 		document
 			.querySelectorAll("#currentPathContainer > .pathList > .pathNode")
@@ -169,32 +165,40 @@ export default function Main() {
 	}
 
 	function pathfindEvent() {
-		const stableSingletons = (
-			document.getElementsByName("pathfindStableSingleton")[0] as HTMLInputElement
-		).checked;
-		const keys = (document.getElementsByName("pathfindKeys")[0] as HTMLInputElement).checked;
+		const nodesCopy = _.cloneDeep(nodes);
+		if (
+			!(document.getElementsByName("pathfindStableSingleton")[0] as HTMLInputElement).checked
+		) {
+			nodesCopy.get("EMERGENCY")!.edges.splice(
+				nodesCopy
+					.get("EMERGENCY")!
+					.edges.findIndex((edge) => edge.node.name == "Stable Singletons"),
+				1,
+			);
+		}
+		if ((document.getElementsByName("pathfindKeys")[0] as HTMLInputElement).checked) {
+			nodesCopy.values().forEach((node) => {
+				for (let i = node.edges.length - 1; i >= 0; i--) {
+					if (node.edges[i].requiresKey == "Yellow Key") {
+						node.edges.splice(i, 1);
+					}
+				}
+			});
+		}
 		switch (pathfindType) {
 			case "interactable":
 				setPathfindResult(
 					pathfindToInteractable(
 						pathfindTarget.current as interactable,
 						pathStack,
-						nodes,
-						stableSingletons,
-						keys,
+						nodesCopy,
 					),
 				);
 				break;
 
 			case "node":
 				setPathfindResult(
-					pathfindTo(
-						(pathfindTarget.current as Node).name,
-						pathStack,
-						nodes,
-						stableSingletons,
-						keys,
-					),
+					pathfindTo((pathfindTarget.current as Node).name, pathStack, nodesCopy),
 				);
 				break;
 			default:
@@ -426,7 +430,7 @@ export default function Main() {
 					) : pathfindResult === undefined ? (
 						""
 					) : (
-						"No Path Available! Try traversing up first. (Note: Paths that require going through a blue ring must start before the corresponding blue active zone)"
+						"No Path Available!"
 					)}
 				</div>
 			</div>
