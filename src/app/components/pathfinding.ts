@@ -1,6 +1,7 @@
 import _ from "lodash";
 import { nodeName } from "../input/nodes";
 import { Edge, interactable, Node } from "../types";
+import path from "path";
 
 //Dijkstra pathfinding
 // empty array = already at location, undefined = no path
@@ -55,6 +56,7 @@ export function pathfindTo(
 	pathStack: Node["edges"],
 	nodes: Map<nodeName, Node>,
 	stableSingletons: boolean,
+	keys: boolean,
 ) {
 	const nodesCopy = _.cloneDeep(nodes);
 	if (!stableSingletons)
@@ -64,6 +66,15 @@ export function pathfindTo(
 				.edges.findIndex((edge) => edge.node.name == "Stable Singletons"),
 			1,
 		);
+	if (!keys) {
+		nodesCopy.values().forEach((node) => {
+			for (let i = node.edges.length - 1; i >= 0; i--) {
+				if (node.edges[i].requiresKey == "Yellow Key") {
+					node.edges.splice(i, 1);
+				}
+			}
+		});
+	}
 	let path = dijkstraPathfind(pathStack.at(-1)!.node.name, targetNodeName, nodesCopy);
 	if (path) {
 		// if destination is only accessible thorugh a blue ring, jump to before that then pathfind to a blue ring
@@ -76,6 +87,7 @@ export function pathfindTo(
 					getTraversedPath(path, pathStack, nodesCopy),
 					nodesCopy,
 					stableSingletons,
+					keys,
 				)!.slice(1),
 			);
 			const blueActiveZoneNode = path.findLast(
@@ -97,6 +109,7 @@ export function pathfindTo(
 						getTraversedPath(path, pathStack, nodesCopy),
 						nodesCopy,
 						stableSingletons,
+						keys,
 					)!.slice(1),
 				);
 			}
@@ -111,6 +124,7 @@ export function pathfindToInteractable(
 	pathStack: Node["edges"],
 	nodes: Map<nodeName, Node>,
 	stableSingletons: boolean,
+	keys: boolean,
 ) {
 	const nodesCopy = _.cloneDeep(nodes);
 	if (!stableSingletons)
@@ -120,6 +134,15 @@ export function pathfindToInteractable(
 				.edges.findIndex((edge) => edge.node.name == "Stable Singletons"),
 			1,
 		);
+	if (!keys) {
+		nodesCopy.values().forEach((node) => {
+			for (let i = node.edges.length - 1; i >= 0; i--) {
+				if (node.edges[i].requiresKey == "Yellow Key") {
+					node.edges.splice(i, 1);
+				}
+			}
+		});
+	}
 	if (interactable == "Blue Ring") {
 		nodesCopy.values().forEach((node) => {
 			for (let i = node.edges.length - 1; i >= 0; i--) {

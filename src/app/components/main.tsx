@@ -8,12 +8,7 @@ import "../css/main.css";
 import { inputNodes, nodeName } from "../input/nodes";
 import { inputEdges } from "../input/edges";
 import { monsters } from "../input/monsters";
-import {
-	dijkstraPathfind,
-	getTraversedPath,
-	pathfindTo,
-	pathfindToInteractable,
-} from "./pathfinding";
+import { getTraversedPath, pathfindTo, pathfindToInteractable } from "./pathfinding";
 
 const nodes: Map<nodeName, Node> = new Map();
 // initialize nodes from input.ts
@@ -136,7 +131,7 @@ export default function Main() {
 	}
 
 	function traverseTo(node: Node) {
-		traversePath(pathfindTo(node.name, pathStack, nodes, true)!);
+		traversePath(pathfindTo(node.name, pathStack, nodes, true, true)!);
 	}
 
 	useEffect(() => {
@@ -177,6 +172,7 @@ export default function Main() {
 		const stableSingletons = (
 			document.getElementsByName("pathfindStableSingleton")[0] as HTMLInputElement
 		).checked;
+		const keys = (document.getElementsByName("pathfindKeys")[0] as HTMLInputElement).checked;
 		switch (pathfindType) {
 			case "interactable":
 				setPathfindResult(
@@ -185,6 +181,7 @@ export default function Main() {
 						pathStack,
 						nodes,
 						stableSingletons,
+						keys,
 					),
 				);
 				break;
@@ -196,6 +193,7 @@ export default function Main() {
 						pathStack,
 						nodes,
 						stableSingletons,
+						keys,
 					),
 				);
 				break;
@@ -216,7 +214,7 @@ export default function Main() {
 						.map((edge) => ({
 							...edge,
 							up: true,
-							id: -edge.id,
+							id: edge.id,
 						})),
 		);
 	}
@@ -267,7 +265,7 @@ export default function Main() {
 														.map((edge) => ({
 															...edge,
 															up: true,
-															id: -edge.id,
+															id: edge.id,
 														})),
 												)
 										: undefined
@@ -394,6 +392,10 @@ export default function Main() {
 					<label>
 						Include Stable Singletons
 						<input name='pathfindStableSingleton' type='checkbox' />
+					</label>
+					<label>
+						Include Key Required Paths
+						<input name='pathfindKeys' type='checkbox' />
 					</label>
 					<div className='pathNode' onClick={pathfindEvent}>
 						Find Path
