@@ -172,9 +172,14 @@ const inputEdges: InputEdge = {
 			distance: 30,
 		},
 		"Unremembered Tower Secret Totem": {
-			distance: Infinity,
+			distance: 60,
 			note: "Tweedle-dum Air Anti-Plug Hole",
 			requiresKey: "Yellow Key",
+		},
+		"Unremembered Tower Secret Room": {
+			distance: 30,
+			impassable: true,
+			note: "Pink Ring",
 		},
 	},
 	"Unremembered Tower Secret Totem": {
@@ -184,6 +189,15 @@ const inputEdges: InputEdge = {
 		"Rainbow Flower": {
 			distance: 1,
 			requiresKey: "Yellow Key",
+		},
+	},
+	"Unremembered Tower Secret Room": {
+		"Purple Gato Box": {
+			distance: 1,
+		},
+		"Unremembered Tower Secret Shrine": {
+			distance: 50,
+			requiresKey: "Universe Key",
 		},
 	},
 	"Small Black Flower": {

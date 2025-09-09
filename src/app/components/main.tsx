@@ -20,7 +20,8 @@ for (const node of inputNodes) {
 		noEscape: node.noEscape ?? false,
 		trophy: node.trophy ?? false,
 		secretTrophy: node.secretTrophy ?? false,
-		blueRingDownDestination: node.blueRingDownDestination,
+		blueActiveZoneDestination: node.blueActiveZoneDestination,
+		pinkSphereDestination: node.pinkSphereDestination,
 		monsters: monsters.filter((monster) => node.monsters?.includes(monster.name)).toSorted(),
 		edges: [],
 	});
@@ -93,14 +94,14 @@ export default function Main() {
 
 	const blueActiveZoneEdge = useMemo(() => {
 		if (currentNode.interactables.includes("Blue Ring")) {
-			return pathStack.findLast((edge) => edge.node.blueRingDownDestination);
+			return pathStack.findLast((edge) => edge.node.blueActiveZoneDestination);
 		}
 		return;
 	}, [pathStack]);
 
 	function traverseBlueRing() {
 		const destinationNode = nodes.get(
-			blueActiveZoneEdge!.node.blueRingDownDestination!.nodeName as nodeName,
+			blueActiveZoneEdge!.node.blueActiveZoneDestination!.nodeName as nodeName,
 		)!;
 		traversePath([
 			{
@@ -120,7 +121,19 @@ export default function Main() {
 	}, [pathStack]);
 
 	function traversePinkRing() {
-		setPathStack(pathStack.slice(0, pathStack.lastIndexOf(pinkSphereEdge!) + 1));
+		if (pinkSphereEdge!.node.pinkSphereDestination) {
+			const destinationNode = nodes.get(
+				pinkSphereEdge!.node.pinkSphereDestination!.nodeName as nodeName,
+			)!;
+			traversePath([
+				{
+					node: destinationNode,
+					id: pinkSphereEdge!.id,
+					distance: 0,
+					pinkRing: true,
+				},
+			]);
+		} else setPathStack(pathStack.slice(0, pathStack.lastIndexOf(pinkSphereEdge!) + 1));
 	}
 
 	function traversePath(path: Edge[]) {
@@ -193,7 +206,7 @@ export default function Main() {
 					i >
 					(pathUp
 						? interactable == "Blue Ring"
-							? pathStack.findLastIndex((edge) => edge.node.blueRingDownDestination)
+							? pathStack.findLastIndex((edge) => edge.node.blueActiveZoneDestination)
 							: 0
 						: pathStack.length - 1);
 					i--
@@ -292,7 +305,7 @@ export default function Main() {
 								}${
 									index ==
 									pathStack.findLastIndex(
-										(edge) => edge.node.blueRingDownDestination,
+										(edge) => edge.node.blueActiveZoneDestination,
 									)
 										? " blueRing"
 										: ""
@@ -365,7 +378,7 @@ export default function Main() {
 										className='icon-small'
 										src={`./images/icons/Blue Ring.webp`}
 									/>
-									{`${blueActiveZoneEdge.node.blueRingDownDestination!.nodeName} ${blueActiveZoneEdge.node.blueRingDownDestination!.note ?? ""}`}
+									{`${blueActiveZoneEdge.node.blueActiveZoneDestination!.nodeName} ${blueActiveZoneEdge.node.blueActiveZoneDestination!.note ?? ""}`}
 								</span>
 							)}
 							{pinkSphereEdge && (
@@ -374,7 +387,9 @@ export default function Main() {
 										className='icon-small'
 										src={`./images/icons/Pink Ring.webp`}
 									/>
-									{pinkSphereEdge.node.name}
+									{pinkSphereEdge.node.pinkSphereDestination
+										? pinkSphereEdge.node.pinkSphereDestination.nodeName
+										: pinkSphereEdge.node.name}
 								</span>
 							)}
 						</div>

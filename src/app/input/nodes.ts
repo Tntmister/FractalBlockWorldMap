@@ -17,7 +17,7 @@ const INPUT_NODES = [
 		name: "Tutorial 1",
 		items: ["Gold"],
 		interactables: ["Save", "Pink Sphere", "Blue Ring"],
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "Tutorial 1",
 		},
 	},
@@ -28,7 +28,7 @@ const INPUT_NODES = [
 		upgrades: ["Laser", "Nuke"],
 		interactables: ["Pink Ring", "Respawn"],
 		secretTrophy: 3,
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "Tutorial 1",
 		},
 	},
@@ -94,7 +94,7 @@ const INPUT_NODES = [
 		name: "Tutorial Chambers",
 		monsters: ["Menace"],
 		interactables: ["Save", "Respawn", "Pink Sphere", "Blue Ring"],
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "Tutorial 2",
 		},
 	},
@@ -162,7 +162,7 @@ const INPUT_NODES = [
 			"EXP",
 			"Extra 100% Health",
 		],
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "Small Black Flower",
 			note: "Secret Entrance",
 		},
@@ -231,6 +231,9 @@ const INPUT_NODES = [
 				"Dark Hole Velocity",
 			],
 		],
+		pinkSphereDestination: {
+			nodeName: "Unremembered Tower Secret Room",
+		},
 		trophy: true,
 	},
 	{
@@ -240,8 +243,17 @@ const INPUT_NODES = [
 		secretTrophy: true,
 	},
 	{
+		name: "Unremembered Tower Secret Room",
+	},
+	{
+		name: "Unremembered Tower Secret Shrine",
+		upgrades: ["Railgun Max Ammo", "Armor Regen", "Laser Super Damage"],
+		interactables: ["Waypoint", "Pink Ring", "Blue Ring"],
+		secretTrophy: true,
+	},
+	{
 		name: "Ying World",
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "Tutorial 2",
 		},
 	},
@@ -664,7 +676,7 @@ const INPUT_NODES = [
 		interactables: ["Respawn", "Save", "Blue Ring", "Waypoint"],
 		upgrades: ["Plasma Velocity", "Cannon Velocity"],
 		items: ["Plasma Ammo", "Health", "Armor", "Cannon Ammo", "Gold"],
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "Ying Air Cube",
 		},
 	},
@@ -916,14 +928,14 @@ const INPUT_NODES = [
 	{
 		name: "I2 WIG Flower",
 		interactables: ["Pink Sphere", "Pink Ring", "Save"],
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "WIG Prison",
 		},
 	},
 	{
 		name: "Prank I2 WIG Flower",
 		interactables: ["Pink Ring", "Pink Sphere"],
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "WIG Prison 2",
 		},
 	},
@@ -986,14 +998,14 @@ const INPUT_NODES = [
 		items: ["Gold", "150% Armor", "Cannon Ammo", "Rocket Ammo", "Laser Ammo", "Minigun Ammo", "Homing Ammo", "Railgun Ammo", "EMP Ammo", "Nuke Ammo", "Dark Hole Ammo"],
 		upgrades: ["Non-Laser Freeze Time"],
 		interactables: ["Pink Sphere", "Pink Ring", "Save", "Buy Station", "Markers"],
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "WIG Prison",
 		},
 	},
 	{
 		name: "Prank I3 WIG Flower",
 		interactables: ["Pink Ring", "Pink Sphere"],
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "WIG Prison 2",
 		},
 	},
@@ -1042,7 +1054,7 @@ const INPUT_NODES = [
 		items: ["Gold"],
 		upgrades: ["Nuke Radius", "Random Health"],
 		monsters: ["Greater Dragoon"],
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "Fanatic Spire",
 			note: "Entrance",
 		},
@@ -1208,7 +1220,7 @@ const INPUT_NODES = [
 		upgrades: ["Cannon Damage", "Random Health", "Cannon Max Ammo"],
 		items: ["Laser Ammo", "Rocket Ammo", "200% Health 100% Armor", "Gold"],
 		interactables: ["Pink Sphere", "Waypoint", "Bookmark", "Save"],
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "Catacombs 5",
 			note: "Treasure Room",
 		},
@@ -1327,7 +1339,7 @@ const INPUT_NODES = [
 		monsters: ["Collapsed Spirit", "Collapsed Angel"],
 		upgrades: ["Nuke Velocity", "Nuke Max Ammo", "Railgun Damage", "Max Health", "Laser Max Ammo"],
 		items: ["1000% Armor"],
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "Spirit Pocket",
 		},
 	},
@@ -1383,7 +1395,7 @@ const INPUT_NODES = [
 		upgrades: ["Rocket Radius", "Rocket Velocity"],
 		monsters: ["Troll", "Science Core", "War Vulcan"],
 		interactables: ["Save", "Out-Only Waypoint", "Blue Ring"],
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "Spruce Tree",
 			note: "Treasure",
 		},
@@ -1477,7 +1489,7 @@ const INPUT_NODES = [
 	{
 		name: "Toronto Vine",
 		monsters: ["Plague", "Guardian", "Vulcan", "Minor Guardian"],
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "Toronto Vine",
 		},
 		secretTrophy: true,
@@ -1500,7 +1512,7 @@ const INPUT_NODES = [
 		items: ["100% Armor"],
 		interactables: ["Waypoint", "Buy Station", "Scarce Sell Station", "Markers", "Out-Only Waypoint", "Respawn", "Save"],
 		trophy: true,
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "Toronto",
 		},
 	},
@@ -1608,7 +1620,7 @@ const INPUT_NODES = [
 			"Minigun Damage", // yellow under bridges
 		],
 		trophy: true,
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "Burlington",
 		},
 	},
@@ -1859,7 +1871,7 @@ const INPUT_NODES = [
 		items: ["Gold", "100% Armor", "Cannon Ammo", "Rocket Ammo", "Homing Ammo", "Minigun Ammo", "Railgun Ammo", "EMP Ammo", "Nuke Ammo", "Dark Hole Ammo"],
 		upgrades: ["Nuke Radius", "Random Health"],
 		monsters: ["Sentinel"],
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "Iolite",
 			note: "(Inside)",
 		},
@@ -1879,7 +1891,7 @@ const INPUT_NODES = [
 		items: ["Gold", "100% Armor", "Green Key"],
 		upgrades: ["EMP Damage", "Random Health"],
 		monsters: ["Lamprey", "Compromised Nuclear Silo", "Spider Lord"],
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "Emerald",
 			note: "(Inside)",
 		},
@@ -1934,7 +1946,7 @@ const INPUT_NODES = [
 		],
 		interactables: ["Waypoint", "Save", "Blue Ring", "Buy Station", "Scarce Sell Station"],
 		monsters: ["Baby Spider", "Anti Blue Abomination"],
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "Topaz",
 			note: "(Inside)",
 		},
@@ -2073,7 +2085,7 @@ const INPUT_NODES = [
 		name: "Tegan's Garden",
 		items: ["Extra 100% Health", "1000% Armor", "Cannon Ammo", "Rocket Ammo", "EMP Ammo", "Nuke Ammo", "Gold"],
 		upgrades: ["Random Health", "Railgun Max Ammo", "RejuvenX"],
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "Tegan's Garden",
 			note: "Treasure Room",
 		},
@@ -2174,7 +2186,7 @@ const INPUT_NODES = [
 		],
 		interactables: ["Waypoint", "Bookmark", "Blue Ring", "Out-Only Waypoint", "Save", "Pink Ring"],
 		monsters: ["Greater Dragoon"],
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "Creeping Jeni",
 			note: "Entrance",
 		},
@@ -2184,7 +2196,7 @@ const INPUT_NODES = [
 		interactables: ["Blue Ring"],
 		monsters: ["Night Guard"],
 		upgrades: ["EMP Freeze Time"],
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "Violet Shell 0",
 		},
 	},
@@ -2402,7 +2414,7 @@ const INPUT_NODES = [
 		upgrades: ["Nuke Max Ammo", "Railgun Fire Rate", "Nuke Damage"],
 		interactables: ["Buy Station", "Common Sell Station", "Markers", "Waypoint", "Out-Only Waypoint", "Respawn", "Save", "Buy Nuke"],
 		trophy: true,
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "Colchester Secret",
 		},
 	},
@@ -2416,7 +2428,7 @@ const INPUT_NODES = [
 		name: "Top of the World",
 		noEscape: true,
 		upgrades: ["Plasma Regen", "Minigun Super Damage", "Laser Super Damage", "Armor Regen", "Telekinesis"],
-		blueRingDownDestination: {
+		blueActiveZoneDestination: {
 			nodeName: "Mylantis Top City",
 		},
 		trophy: true,

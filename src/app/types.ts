@@ -131,16 +131,20 @@ export type monsterName = (typeof monsters)[number]["name"];
 export type InputNode = {
 	name: string;
 	monsters?: monsterName[];
-	upgrades?: (upgrade | upgrade[])[]; // possible upgrades (including random ones)
-	items?: item[]; // possible items
+	upgrades?: (upgrade | upgrade[])[];
+	items?: item[];
 	interactables?: interactable[];
-	noEscape?: boolean; // if there is no way to grow out of this node
+	noEscape?: boolean; // no accessible grow rings
 	trophy?: boolean;
-	secretTrophy?: boolean | 2 | 3; // some locations have more than 1 secret trophy
-	// every location by default is an "up" chunk for blue ring purposes. If declared, this location is a "down" chunk with the propery value being the name of the location of the terminal chunk
-	blueRingDownDestination?: {
+	secretTrophy?: boolean | number; // some locations have more than 1 secret trophy
+	// if declared, defines this node as a blue "active zone", with "nodeName" as the respective blue ring destination node
+	blueActiveZoneDestination?: {
 		nodeName: string;
 		note?: string;
+	};
+	// rare case where a pink sphere in a node might be hidden inside a location at the same level (unremembered tower secret room)
+	pinkSphereDestination?: {
+		nodeName: string;
 	};
 };
 
@@ -152,6 +156,7 @@ type edgeInfo = {
 	impassable?: boolean; // to indicate that the destination is not directly accessible, only through waypoints/blue rings (i.e. WIG Prison and Violet Shells)
 	// used for pathfinding
 	blueRing?: boolean;
+	pinkRing?: boolean;
 	up?: boolean;
 };
 
@@ -174,7 +179,8 @@ export type Node = {
 	noEscape: NonNullable<InputNode["noEscape"]>;
 	trophy: NonNullable<InputNode["trophy"]>;
 	secretTrophy: NonNullable<InputNode["secretTrophy"]>;
-	blueRingDownDestination: InputNode["blueRingDownDestination"];
+	blueActiveZoneDestination: InputNode["blueActiveZoneDestination"];
+	pinkSphereDestination: InputNode["pinkSphereDestination"];
 	monsters: monster[];
 	edges: Edge[];
 };

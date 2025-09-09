@@ -69,7 +69,7 @@ export function pathfindTo(
 			);
 			// index of blue active zone in path
 			const blueActiveZoneNode = path.findLast(
-				(edge) => edge.node.blueRingDownDestination,
+				(edge) => edge.node.blueActiveZoneDestination,
 			)?.node;
 			//if pathfind started between blue active zone and impassable zone, ignore the impassable edge and return new path
 			if (!blueActiveZoneNode) {
@@ -86,7 +86,9 @@ export function pathfindTo(
 			}
 			// add blue ring edge to path (will be parsed to jump directly to the destination node)
 			path.push({
-				node: nodes.get(blueActiveZoneNode.blueRingDownDestination!.nodeName as nodeName)!,
+				node: nodes.get(
+					blueActiveZoneNode.blueActiveZoneDestination!.nodeName as nodeName,
+				)!,
 				distance: 0,
 				blueRing: true,
 				id: impassableEdgeIndex,
@@ -117,7 +119,7 @@ export function pathfindToInteractables(
 	if (interactables.includes("Blue Ring")) {
 		nodesCopy.values().forEach((node) => {
 			for (let i = node.edges.length - 1; i >= 0; i--) {
-				if (node.edges[i].node.blueRingDownDestination) {
+				if (node.edges[i].node.blueActiveZoneDestination) {
 					node.edges.splice(i, 1);
 				}
 			}
@@ -168,13 +170,27 @@ export function getTraversedPath(path: Edge[], pathStack: Edge[], nodes: Map<nod
 			);
 		} else if (edge.blueRing) {
 			const blueDownChunk = pathStackAux.findLastIndex(
-				(edge2) => edge2.node.blueRingDownDestination,
+				(edge2) => edge2.node.blueActiveZoneDestination,
 			);
 			pathStackAux = pathStackAux.slice(0, blueDownChunk + 1);
 			pathStackAux.push(
 				...dijkstraPathfind(
 					pathStackAux[blueDownChunk].node.name,
-					pathStackAux[blueDownChunk].node.blueRingDownDestination!.nodeName as nodeName,
+					pathStackAux[blueDownChunk].node.blueActiveZoneDestination!
+						.nodeName as nodeName,
+
+					nodes,
+				)!,
+			);
+		} else if (edge.pinkRing) {
+			const pinkSphereChunk = pathStackAux.findLastIndex(
+				(edge2) => edge2.node.pinkSphereDestination,
+			);
+			pathStackAux = pathStackAux.slice(0, pinkSphereChunk + 1);
+			pathStackAux.push(
+				...dijkstraPathfind(
+					pathStackAux[pinkSphereChunk].node.name,
+					pathStackAux[pinkSphereChunk].node.pinkSphereDestination!.nodeName as nodeName,
 
 					nodes,
 				)!,
