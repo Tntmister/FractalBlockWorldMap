@@ -124,7 +124,7 @@ export const labels: Map<item | upgrade, { label?: string; imageName?: string }>
 		},
 		"Laser Super Damage": {
 			label: "Super Damage",
-			imageName: "Laser Super",
+			imageName: "Laser",
 		},
 		"Laser Freeze Ray Weapon Mod": {
 			label: "Freeze Ray Weapon Mod",

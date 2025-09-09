@@ -153,8 +153,6 @@ body {
 	width: 2rem;
 	object-fit: contain;
 	align-self: center;
-}
-[class^="icon"]:has(~ *) {
 	margin-right: 0.25rem;
 }
 
