@@ -97,8 +97,9 @@ export function pathfindToInteractable(
 	pathStack: Node["edges"],
 	nodes: Map<nodeName, Node>,
 ) {
+	const nodesCopy = structuredClone(nodes);
 	if (interactable == "Blue Ring") {
-		nodes.values().forEach((node) => {
+		nodesCopy.values().forEach((node) => {
 			for (let i = node.edges.length - 1; i >= 0; i--) {
 				if (node.edges[i].node.blueRingDownDestination) {
 					node.edges.splice(i, 1);
@@ -106,7 +107,7 @@ export function pathfindToInteractable(
 			}
 		});
 	} else if (interactable == "Pink Ring") {
-		nodes.values().forEach((node) => {
+		nodesCopy.values().forEach((node) => {
 			for (let i = node.edges.length - 1; i >= 0; i--) {
 				if (node.edges[i].node.interactables.includes("Pink Sphere")) {
 					node.edges.splice(i, 1);
@@ -114,7 +115,7 @@ export function pathfindToInteractable(
 			}
 		});
 	}
-	const possibleDestinations = nodes.values().filter((node) => {
+	const possibleDestinations = nodesCopy.values().filter((node) => {
 		// small white flower only contains blue ring inside an alpha cube
 		if (node.name === "Small White Flower" && interactable == "Blue Ring") {
 			return !!pathStack.find((edge) => edge.node.name === "Alpha Cube");
@@ -123,7 +124,7 @@ export function pathfindToInteractable(
 	});
 	const paths: Edge[][] = [];
 	for (const destination of possibleDestinations) {
-		const path = dijkstraPathfind(pathStack.at(-1)!.node.name, destination.name, nodes);
+		const path = dijkstraPathfind(pathStack.at(-1)!.node.name, destination.name, nodesCopy);
 		if (path) paths.push(path);
 	}
 	if (paths.length > 0)
@@ -141,7 +142,8 @@ export function pathfindToInteractable(
 // returns resulting pathStack of traversing a path
 export function getTraversedPath(path: Edge[], pathStack: Edge[], nodes: Map<nodeName, Node>) {
 	let pathStackAux = pathStack.slice();
-	for (const edge of path[0]?.id == pathStack.at(-1)!.id && !path[0]?.up ? path.slice(1) : path) {
+	for (const edge of path) {
+		if (edge.id == pathStackAux.at(-1)!.id && !edge.up) continue;
 		if (edge.up) {
 			pathStackAux = pathStackAux.slice(
 				0,

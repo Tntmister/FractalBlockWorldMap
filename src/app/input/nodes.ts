@@ -2414,6 +2414,7 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Top of the World",
+		noEscape: true,
 		upgrades: ["Plasma Regen", "Minigun Super Damage", "Laser Super Damage", "Armor Regen", "Telekinesis"],
 		blueRingDownDestination: {
 			nodeName: "Mylantis Top City",
