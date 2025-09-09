@@ -141,7 +141,7 @@ export function pathfindToInteractable(
 // returns resulting pathStack of traversing a path
 export function getTraversedPath(path: Edge[], pathStack: Edge[], nodes: Map<nodeName, Node>) {
 	let pathStackAux = pathStack.slice();
-	for (const edge of path[0].id == pathStack.at(-1)!.id ? path.slice(1) : path) {
+	for (const edge of path[0]?.id == pathStack.at(-1)!.id && !path[0]?.up ? path.slice(1) : path) {
 		if (edge.up) {
 			pathStackAux = pathStackAux.slice(
 				0,
