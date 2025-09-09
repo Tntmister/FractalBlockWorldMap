@@ -183,6 +183,7 @@ export default function Main() {
 				}
 			});
 		}
+		const pathUp = (document.getElementsByName("pathfindUp")[0] as HTMLInputElement).checked;
 		const paths = [];
 		switch (pathfindType) {
 			case "interactable": {
@@ -190,9 +191,11 @@ export default function Main() {
 				for (
 					let i = pathStack.length;
 					i >
-					(interactable == "Blue Ring"
-						? pathStack.findLastIndex((edge) => edge.node.blueRingDownDestination)
-						: 0);
+					(pathUp
+						? interactable == "Blue Ring"
+							? pathStack.findLastIndex((edge) => edge.node.blueRingDownDestination)
+							: 0
+						: pathStack.length - 1);
 					i--
 				) {
 					const path = pathStack
@@ -217,7 +220,10 @@ export default function Main() {
 			case "node":
 				for (
 					let i = pathStack.length;
-					i > pathStack.findLastIndex((edge) => edge.node.noEscape);
+					i >
+					(pathUp
+						? pathStack.findLastIndex((edge) => edge.node.noEscape)
+						: pathStack.length - 1);
 					i--
 				) {
 					const path = pathStack
@@ -428,6 +434,10 @@ export default function Main() {
 					<label>
 						Include Key Required Paths
 						<input name='pathfindKeys' type='checkbox' />
+					</label>
+					<label>
+						Include Paths Upwards
+						<input defaultChecked name='pathfindUp' type='checkbox' />
 					</label>
 					<div className='pathNode' onClick={pathfindEvent}>
 						Find Path
