@@ -67,16 +67,31 @@ export function pathfindTo(
 					nodes,
 				)!.slice(1),
 			);
+			// index of blue active zone in path
 			const blueActiveZoneNode = path.findLast(
 				(edge) => edge.node.blueRingDownDestination,
 			)?.node;
-			if (!blueActiveZoneNode) return null;
+			//if pathfind started between blue active zone and impassable zone, ignore the impassable edge and return new path
+			if (!blueActiveZoneNode) {
+				const nodesWithoutImpassableEdge = structuredClone(nodes);
+				const node = nodesWithoutImpassableEdge.get(
+					path[impassableEdgeIndex - 1].node.name,
+				)!;
+				node.edges.forEach((edge, i) => {
+					if (edge.id == path![impassableEdgeIndex].id) {
+						node.edges.splice(i, 1);
+					}
+				});
+				return pathfindTo(targetNodeName, pathStack, nodesWithoutImpassableEdge);
+			}
+			// add blue ring edge to path (will be parsed to jump directly to the destination node)
 			path.push({
 				node: nodes.get(blueActiveZoneNode.blueRingDownDestination!.nodeName as nodeName)!,
 				distance: 0,
 				blueRing: true,
 				id: impassableEdgeIndex,
 			});
+			// if blue ring destination still isn't the target node, pathfind from the blue ring destination to the target node
 			if (path.at(-1)?.node.name != targetNodeName) {
 				path.push(
 					...pathfindTo(
@@ -98,6 +113,7 @@ export function pathfindToInteractable(
 	nodes: Map<nodeName, Node>,
 ) {
 	const nodesCopy = structuredClone(nodes);
+	// if pathfinding to a blue/pink ring, don't pathfind into a new active zone
 	if (interactable == "Blue Ring") {
 		nodesCopy.values().forEach((node) => {
 			for (let i = node.edges.length - 1; i >= 0; i--) {
@@ -115,6 +131,7 @@ export function pathfindToInteractable(
 			}
 		});
 	}
+	// pathfind to every destination with the desired interactable
 	const possibleDestinations = nodesCopy.values().filter((node) => {
 		// small white flower only contains blue ring inside an alpha cube
 		if (node.name === "Small White Flower" && interactable == "Blue Ring") {
