@@ -210,7 +210,7 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Unremembered Tower",
-		interactables: ["Waypoint", "Save", "Buy Station", "Markers", "Common Sell Station"],
+		interactables: ["Waypoint", "Save", "Buy Station", "Markers", "Common Sell Station", "Pink Sphere"],
 		monsters: ["Light Marine", "Marine", "Heavy Marine", "Menace", "Minor Rat", "Rat", "Minor Sliver"],
 		items: ["Cannon Ammo", "Rocket Ammo", "Gold", "200% Health 100% Armor", "1000% Armor", "Railgun Ammo", "Laser Ammo", "Green Key"],
 		upgrades: [
@@ -1484,7 +1484,7 @@ const INPUT_NODES = [
 		name: "Rainbow Flower",
 		items: ["Plasma Ammo", "Cannon Ammo", "Laser Ammo", "Rocket Ammo", "Homing Ammo", "Minigun Ammo", "EMP Ammo", "Nuke Ammo", "Dark Hole Ammo"],
 		upgrades: ["EMP Freeze Time", "EMP Radius"],
-		interactables: ["Save"],
+		interactables: ["Save", "Pink Ring"],
 	},
 	{
 		name: "Toronto Vine",
@@ -2438,19 +2438,10 @@ const INPUT_NODES = [
 		name: "Outer Space -4",
 	},
 	{
-		name: "Outer Space -4 B",
-	},
-	{
 		name: "Outer Space -3",
 	},
 	{
-		name: "Outer Space -3 B",
-	},
-	{
 		name: "Outer Space -2",
-	},
-	{
-		name: "Outer Space -2 B",
 	},
 	{
 		name: "Outer Space -1",
@@ -2460,9 +2451,6 @@ const INPUT_NODES = [
 		interactables: ["Out-Only Waypoint", "Waypoint"],
 		monsters: ["Vile Menace", "Unruly Juggernaut", "Tough Juggernaut", "I am the Juggernaut", "Formidable Juggernaut"],
 		upgrades: ["Laser", "Railgun Max Ammo", "Railgun Damage"],
-	},
-	{
-		name: "Outer Space 0 B",
 	},
 	{
 		name: "Lockbox",
@@ -2873,6 +2861,7 @@ const INPUT_NODES = [
 			"Minigun Ammo",
 			"Railgun Ammo",
 			"Rocket Ammo",
+			"200 Second Yellow Key",
 			"Laser Genesis Key",
 		],
 		upgrades: ["Nuke Damage", "Telekinesis", "Laser Damage", "Rocket Max Ammo", "Homing Max Ammo", "Minigun Damage", "Railgun Damage", "RejuvenX", "Laser Max Ammo"],

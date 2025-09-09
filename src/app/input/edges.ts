@@ -29,7 +29,7 @@ const inputEdges: InputEdge = {
 		},
 		"EMERGENCY Secret": {
 			distance: 20,
-			note: "Shrink",
+			requiresKey: "Yellow Key",
 		},
 	},
 	"EMERGENCY Secret": {
@@ -50,6 +50,7 @@ const inputEdges: InputEdge = {
 		"Infinity Flower": {
 			distance: 15,
 			note: "Instead of EMERGENCY secret",
+			requiresKey: "Yellow Key",
 		},
 	},
 	"Tutorial Chambers": {
@@ -4035,9 +4036,6 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Top of the World": {
-		"Outer Space -4 B": {
-			distance: 1,
-		},
 		"Outer Space -4": {
 			distance: 1,
 		},
@@ -4045,34 +4043,13 @@ const inputEdges: InputEdge = {
 			distance: 0,
 		},
 	},
-	"Outer Space -4 B": {
-		"Outer Space -3 B": {
-			distance: 1,
-		},
-	},
 	"Outer Space -4": {
 		"Outer Space -3": {
-			distance: 1,
-		},
-		"Outer Space -3 B": {
-			distance: 1,
-		},
-	},
-	"Outer Space -3 B": {
-		"Outer Space -2 B": {
 			distance: 1,
 		},
 	},
 	"Outer Space -3": {
 		"Outer Space -2": {
-			distance: 1,
-		},
-		"Outer Space -2 B": {
-			distance: 5,
-		},
-	},
-	"Outer Space -2 B": {
-		"Outer Space -1": {
 			distance: 1,
 		},
 	},
@@ -4092,18 +4069,6 @@ const inputEdges: InputEdge = {
 		},
 		"Mylantis": {
 			distance: 40,
-		},
-		"Large Gold Asteroid": {
-			distance: 5,
-		},
-		"Lockbox": {
-			distance: 5,
-			requiresKey: "Yellow Key",
-		},
-	},
-	"Outer Space 0 B": {
-		"Outer Space 1": {
-			distance: 20,
 		},
 		"Large Gold Asteroid": {
 			distance: 5,
@@ -4473,7 +4438,7 @@ const inputEdges: InputEdge = {
 	},
 	"Laser Genesis Planet": {
 		"Laser Genesis": {
-			distance: Infinity,
+			distance: 40,
 			requiresKey: "Laser Genesis Key",
 		},
 	},
