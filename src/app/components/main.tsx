@@ -156,25 +156,49 @@ export default function Main() {
 	}, [pathStack]);
 
 	const [pathfindType, setPathfindType] = useState<"interactable" | "node">("node");
+
+	function setPathfindTypeEvent(e: ChangeEvent<HTMLInputElement>) {
+		setPathfindType(e.target.value as typeof pathfindType);
+		(document.querySelector("[list='pathfindList']") as HTMLInputElement).value = "";
+		(document.querySelector("[name='pathfindButton']") as HTMLInputElement).disabled = true;
+	}
 	const pathfindTarget = useRef<Node | interactable>(null);
 	const pathfindPathstack = useRef<Edge[]>(null);
 	const [pathfindResult, setPathfindResult] = useState<Edge[] | null>();
 
-	function pathfindSelectEvent(e: ChangeEvent<HTMLSelectElement>) {
+	function pathfindSelectEvent(e: ChangeEvent<HTMLInputElement>) {
+		let enableButton = false;
 		switch (pathfindType) {
 			case "interactable":
 				pathfindTarget.current = e.target.value as interactable;
+				enableButton = interactables.includes(pathfindTarget.current);
 				break;
 
 			case "node":
 				pathfindTarget.current = nodes.get(e.target.value as nodeName)!;
+				enableButton = !!pathfindTarget.current;
 				break;
 			default:
 				break;
 		}
+
+		if (enableButton)
+			(
+				document.querySelector("[name='pathfindButton']") as HTMLInputElement
+			).classList.remove("disabled");
+		else
+			(document.querySelector("[name='pathfindButton']") as HTMLInputElement).classList.add(
+				"disabled",
+			);
 	}
 
 	function pathfindEvent() {
+		if (
+			(
+				document.querySelector("[name='pathfindButton']") as HTMLInputElement
+			).classList.contains("disabled")
+		)
+			return;
 		const nodesCopy = structuredClone(nodes);
 		if (
 			!(document.getElementsByName("pathfindStableSingleton")[0] as HTMLInputElement).checked
@@ -400,26 +424,27 @@ export default function Main() {
 				<div className='pathHeader'>Path To Location</div>
 				<div id='pathfindSelector'>
 					<label>
-						Location
+						<span>Location</span>
 						<input
 							name='pathfindType'
 							value='node'
 							type='radio'
 							defaultChecked
-							onChange={(e) => setPathfindType(e.target.value as typeof pathfindType)}
+							onChange={setPathfindTypeEvent}
 						/>
 					</label>
 					<label>
-						Interactable
+						<span>Interactable</span>
 						<input
 							name='pathfindType'
 							value='interactable'
 							type='radio'
-							onChange={(e) => setPathfindType(e.target.value as typeof pathfindType)}
+							onChange={setPathfindTypeEvent}
 						/>
 					</label>
+					<input list='pathfindList' onChange={pathfindSelectEvent} required />
 					{pathfindType == "node" && (
-						<select defaultValue={""} onChange={pathfindSelectEvent}>
+						<datalist id='pathfindList'>
 							<option disabled value=''></option>
 							{nodes
 								.values()
@@ -430,33 +455,40 @@ export default function Main() {
 										{node.name}
 									</option>
 								))}
-						</select>
+						</datalist>
 					)}
 					{pathfindType == "interactable" && (
-						<select defaultValue={""} onChange={pathfindSelectEvent}>
+						<datalist id='pathfindList'>
 							<option disabled value=''></option>
 							{interactables.map((interactable) => (
 								<option key={interactable} value={interactable}>
 									{interactable}
 								</option>
 							))}
-						</select>
+						</datalist>
 					)}
-					<label>
-						Include Stable Singletons
-						<input name='pathfindStableSingleton' type='checkbox' />
-					</label>
-					<label>
-						Include Key Required Paths
-						<input name='pathfindKeys' type='checkbox' />
-					</label>
-					<label>
-						Include Paths Upwards
-						<input defaultChecked name='pathfindUp' type='checkbox' />
-					</label>
-					<div className='pathNode' onClick={pathfindEvent}>
-						Find Path
+					<div className='filters'>
+						<label>
+							<input name='pathfindStableSingleton' type='checkbox' />
+							<span>Include Stable Singletons</span>
+						</label>
+						<label>
+							<input name='pathfindKeys' type='checkbox' />
+							<span>Include Key Required Paths</span>
+						</label>
+						<label>
+							<input defaultChecked name='pathfindUp' type='checkbox' />
+							<span>Include Paths Upwards</span>
+						</label>
 					</div>
+					<button
+						name='pathfindButton'
+						type='button'
+						className='pathNode disabled'
+						onClick={pathfindEvent}
+					>
+						Find Path
+					</button>
 				</div>
 				<div className='pathList'>
 					{pathfindResult ? (

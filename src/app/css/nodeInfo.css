@@ -17,7 +17,7 @@
 	width: 100%;
 	background-color: var(--backgroundTransparent);
 	border-bottom: var(--foreground) 1px solid;
-	padding: 0.25rem 0;
+	height: 2rem;
 	gap: 10px;
 	display: flex;
 	align-items: center;

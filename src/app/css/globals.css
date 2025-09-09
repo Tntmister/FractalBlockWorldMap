@@ -24,6 +24,59 @@ body {
 	scrollbar-color: color-mix(in srgb, var(--foreground), #000 30%) var(--background);
 }
 
+input[type="checkbox"],
+input[type="radio"] {
+	appearance: none;
+	-webkit-appearance: none;
+	background-color: var(--background);
+	margin: 0;
+	border: 2px solid var(--foreground);
+	width: 20px;
+	height: 20px;
+	display: grid;
+	place-content: center;
+}
+
+input[type="checkbox"] {
+	border-radius: 5px;
+}
+
+input[type="radio"] {
+	border-radius: 1000px;
+}
+
+input[type="checkbox"]::before,
+input[type="radio"]::before {
+	content: "";
+	width: 10px;
+	height: 10px;
+	transform: scale(0);
+	transition: 120ms transform ease-in-out;
+	box-shadow: inset 1em 1em var(--foreground);
+}
+
+input[type="checkbox"]::before {
+	border-radius: 2px;
+}
+
+input[type="radio"]::before {
+	border-radius: 100px;
+}
+
+input[type="checkbox"]:checked::before,
+input[type="radio"]:checked::before {
+	transform: scale(1);
+}
+
+button {
+	font: inherit;
+	color: inherit;
+}
+
+button.disabled {
+	opacity: 0.5;
+}
+
 ::-webkit-scrollbar {
 	background-color: var(--foreground);
 }

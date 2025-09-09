@@ -27,6 +27,7 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-shrink: 0;
 }
 
 #currentPathContainer .pathList {
@@ -170,10 +171,36 @@ body {
 	align-items: center;
 }
 
-#pathfindSelector input {
+#pathfindSelector input:last-child {
 	margin-left: 0.25rem;
 }
+#pathfindSelector input:first-child {
+	margin-right: 0.25rem;
+}
 
-#pathfindSelector > select {
+#pathfindSelector > input[list="pathfindList"] {
+	font: inherit;
+	padding: 0.1rem;
 	width: 100%;
+	background-color: var(--background);
+	color: var(--foreground);
+	border-color: var(--foreground);
+	border-radius: 5px;
+}
+
+#pathfindSelector > .filters {
+	font-size: 16px;
+	margin: 0.5rem 0;
+}
+
+#pathfindSelector label {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	margin-bottom: 0.25rem;
+	justify-content: center;
+}
+
+#pathfindSelector > .filters > label > span {
+	flex-grow: 1;
 }
