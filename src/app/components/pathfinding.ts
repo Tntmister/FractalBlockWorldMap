@@ -61,8 +61,8 @@ export function pathfindTo(
 		if (impassableEdgeIndex > -1) {
 			path = path.slice(0, impassableEdgeIndex);
 			path.push(
-				...pathfindToInteractable(
-					"Blue Ring",
+				...pathfindToInteractables(
+					["Blue Ring"],
 					getTraversedPath(path, pathStack, nodes),
 					nodes,
 				)!.slice(1),
@@ -107,14 +107,14 @@ export function pathfindTo(
 	return null;
 }
 
-export function pathfindToInteractable(
-	interactable: interactable,
+export function pathfindToInteractables(
+	interactables: interactable[],
 	pathStack: Node["edges"],
 	nodes: Map<nodeName, Node>,
 ) {
 	const nodesCopy = structuredClone(nodes);
 	// if pathfinding to a blue/pink ring, don't pathfind into a new active zone
-	if (interactable == "Blue Ring") {
+	if (interactables.includes("Blue Ring")) {
 		nodesCopy.values().forEach((node) => {
 			for (let i = node.edges.length - 1; i >= 0; i--) {
 				if (node.edges[i].node.blueRingDownDestination) {
@@ -122,7 +122,7 @@ export function pathfindToInteractable(
 				}
 			}
 		});
-	} else if (interactable == "Pink Ring") {
+	} else if (interactables.includes("Pink Ring")) {
 		nodesCopy.values().forEach((node) => {
 			for (let i = node.edges.length - 1; i >= 0; i--) {
 				if (node.edges[i].node.interactables.includes("Pink Sphere")) {
@@ -134,10 +134,10 @@ export function pathfindToInteractable(
 	// pathfind to every destination with the desired interactable
 	const possibleDestinations = nodesCopy.values().filter((node) => {
 		// small white flower only contains blue ring inside an alpha cube
-		if (node.name === "Small White Flower" && interactable == "Blue Ring") {
+		if (node.name === "Small White Flower" && interactables.includes("Blue Ring")) {
 			return !!pathStack.find((edge) => edge.node.name === "Alpha Cube");
 		}
-		return node.interactables.includes(interactable);
+		return interactables.every((interactable) => node.interactables.includes(interactable));
 	});
 	const paths: Edge[][] = [];
 	for (const destination of possibleDestinations) {

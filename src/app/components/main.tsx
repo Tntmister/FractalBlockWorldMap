@@ -7,7 +7,7 @@ import "../css/main.css";
 import { inputNodes, nodeName } from "../input/nodes";
 import { inputEdges } from "../input/edges";
 import { monsters } from "../input/monsters";
-import { getTraversedPath, pathfindTo, pathfindToInteractable } from "./pathfinding";
+import { getTraversedPath, pathfindTo, pathfindToInteractables } from "./pathfinding";
 
 const nodes: Map<nodeName, Node> = new Map();
 // initialize nodes from input.ts
@@ -207,8 +207,8 @@ export default function Main() {
 								up: true,
 							};
 						});
-					const pathfind = pathfindToInteractable(
-						interactable,
+					const pathfind = pathfindToInteractables(
+						[interactable],
 						pathStack.slice(0, i),
 						nodesCopy,
 					);
