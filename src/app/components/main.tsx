@@ -65,29 +65,26 @@ const startingPath: nodeName[] = [
 	"Tutorial 1",
 ];
 
+const initPathStack = [
+	{
+		node: nodes.get(startingPath[0])!,
+		distance: 0,
+		id: -1,
+	},
+	...startingPath
+		.slice(1)
+		.map(
+			(nodeName, index) =>
+				nodes.get(startingPath[index])!.edges.find((edge) => edge.node.name == nodeName)!,
+		),
+];
+
 export default function Main() {
 	// eslint-disable-next-line prefer-const
-	let [pathStack, setPathStack] = useState<Node["edges"]>([
-		{
-			node: nodes.get(startingPath[0])!,
-			distance: 0,
-			id: -1,
-		},
-	]);
+	let [pathStack, setPathStack] = useState<Node["edges"]>(initPathStack);
 
 	useEffect(() => {
 		document.title = "Fractal Block World Map";
-		setPathStack([
-			...pathStack,
-			...startingPath
-				.slice(1)
-				.map(
-					(nodeName, index) =>
-						nodes
-							.get(startingPath[index])!
-							.edges.find((edge) => edge.node.name == nodeName)!,
-				),
-		]);
 	}, []);
 
 	const currentNode = useMemo(() => pathStack.at(-1)!.node, [pathStack]);
@@ -157,21 +154,33 @@ export default function Main() {
 
 	const [pathfindType, setPathfindType] = useState<"interactable" | "node">("node");
 
-	function setPathfindTypeEvent(e: ChangeEvent<HTMLInputElement>) {
-		setPathfindType(e.target.value as typeof pathfindType);
-		(document.querySelector("[list='pathfindList']") as HTMLInputElement).value = "";
-		(document.querySelector("[name='pathfindButton']") as HTMLInputElement).disabled = true;
-	}
-	const pathfindTarget = useRef<Node | interactable>(null);
+	useEffect(() => {
+		if (pathfindType == "interactable")
+			for (const option of (document.querySelector("#pathfindList") as HTMLSelectElement)
+				.selectedOptions)
+				option.selected = false;
+		else if (pathfindType == "node")
+			(document.querySelector("[list='pathfindList']") as HTMLInputElement).value = "";
+		(document.querySelector("[name='pathfindButton']") as HTMLInputElement).classList.add(
+			"disabled",
+		);
+	}, [pathfindType]);
+
+	const pathfindTarget = useRef<Node | interactable[]>(null);
 	const pathfindPathstack = useRef<Edge[]>(null);
 	const [pathfindResult, setPathfindResult] = useState<Edge[] | null>();
 
-	function pathfindSelectEvent(e: ChangeEvent<HTMLInputElement>) {
+	function pathfindSelectEvent(e: ChangeEvent<HTMLInputElement & HTMLSelectElement>) {
 		let enableButton = false;
 		switch (pathfindType) {
 			case "interactable":
-				pathfindTarget.current = e.target.value as interactable;
-				enableButton = interactables.includes(pathfindTarget.current);
+				pathfindTarget.current = Array.from(e.target.selectedOptions).map(
+					(option) => option.value,
+				) as interactable[];
+
+				enableButton = pathfindTarget.current.every((interactable) =>
+					interactables.includes(interactable),
+				);
 				break;
 
 			case "node":
@@ -213,8 +222,10 @@ export default function Main() {
 		if (!(document.getElementsByName("pathfindKeys")[0] as HTMLInputElement).checked) {
 			nodesCopy.values().forEach((node) => {
 				for (let i = node.edges.length - 1; i >= 0; i--) {
-					if (node.edges[i].requiresKey == "Yellow Key") {
-						console.log(`removed edge ${node.name} -> ${node.edges[i].node.name}`);
+					if (
+						node.edges[i].requiresKey == "Yellow Key" ||
+						node.edges[i].requiresKey == "Universe Key"
+					) {
 						node.edges.splice(i, 1);
 					}
 				}
@@ -224,12 +235,12 @@ export default function Main() {
 		const paths = [];
 		switch (pathfindType) {
 			case "interactable": {
-				const interactable = pathfindTarget.current as interactable;
+				const interactables = pathfindTarget.current as interactable[];
 				for (
 					let i = pathStack.length;
 					i >
 					(pathUp
-						? interactable == "Blue Ring"
+						? interactables.includes("Blue Ring")
 							? pathStack.findLastIndex((edge) => edge.node.blueActiveZoneDestination)
 							: 0
 						: pathStack.length - 1);
@@ -245,13 +256,12 @@ export default function Main() {
 							};
 						});
 					const pathfind = pathfindToInteractables(
-						[interactable],
+						interactables,
 						pathStack.slice(0, i),
 						nodesCopy,
 					);
 					if (pathfind) paths.push(path.concat(pathfind));
 				}
-				console.log(paths);
 				break;
 			}
 			case "node":
@@ -430,7 +440,7 @@ export default function Main() {
 							value='node'
 							type='radio'
 							defaultChecked
-							onChange={setPathfindTypeEvent}
+							onChange={(e) => setPathfindType(e.target.value as typeof pathfindType)}
 						/>
 					</label>
 					<label>
@@ -439,33 +449,34 @@ export default function Main() {
 							name='pathfindType'
 							value='interactable'
 							type='radio'
-							onChange={setPathfindTypeEvent}
+							onChange={(e) => setPathfindType(e.target.value as typeof pathfindType)}
 						/>
 					</label>
-					<input list='pathfindList' onChange={pathfindSelectEvent} required />
 					{pathfindType == "node" && (
-						<datalist id='pathfindList'>
-							<option disabled value=''></option>
-							{nodes
-								.values()
-								.toArray()
-								.toSorted((a, b) => a.name.localeCompare(b.name))
-								.map((node) => (
-									<option key={node.name} value={node.name}>
-										{node.name}
-									</option>
-								))}
-						</datalist>
+						<>
+							<input list='pathfindList' onChange={pathfindSelectEvent} required />
+							<datalist id='pathfindList'>
+								<option disabled value=''></option>
+								{nodes
+									.values()
+									.toArray()
+									.toSorted((a, b) => a.name.localeCompare(b.name))
+									.map((node) => (
+										<option key={node.name} value={node.name}>
+											{node.name}
+										</option>
+									))}
+							</datalist>
+						</>
 					)}
 					{pathfindType == "interactable" && (
-						<datalist id='pathfindList'>
-							<option disabled value=''></option>
+						<select id='pathfindList' onChange={pathfindSelectEvent} multiple>
 							{interactables.map((interactable) => (
 								<option key={interactable} value={interactable}>
 									{interactable}
 								</option>
 							))}
-						</datalist>
+						</select>
 					)}
 					<div className='filters'>
 						<label>

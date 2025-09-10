@@ -97,28 +97,30 @@ export type item = `${weaponType} Ammo` | defenceItem | "Gold" | "EXP" | key | "
 
 export type upgrade = weaponUpgrade | `Non-${weaponType} ${weaponUpgradeType}` | defenceUpgrade | "Telekinesis" | weaponType | "Health"; // | weaponType | "Health" temporary
 
-export const interactables = [
-	"Sleep",
-	"Common Sell Station",
-	"Scarce Sell Station",
-	"Rare Sell Station",
-	"Buy Station",
-	"Buy Nuke",
-	"Markers",
-	"Waypoint",
-	"Bookmark",
-	"Respawn",
-	"Pink Ring",
-	"Pink Sphere",
-	"Blue Ring",
-	"Save",
-	"In-Only Waypoint",
-	"Out-Only Waypoint",
-	"Buy Blue Key",
-	"Max Ammo Upgrade Station",
-	"Upgrade Station",
-	"Black Market",
-] as const;
+export const interactables = (
+	[
+		"Sleep",
+		"Common Sell Station",
+		"Scarce Sell Station",
+		"Rare Sell Station",
+		"Buy Station",
+		"Buy Nuke",
+		"Markers",
+		"Waypoint",
+		"Bookmark",
+		"Respawn",
+		"Pink Ring",
+		"Pink Sphere",
+		"Blue Ring",
+		"Save",
+		"In-Only Waypoint",
+		"Out-Only Waypoint",
+		"Buy Blue Key",
+		"Max Ammo Upgrade Station",
+		"Upgrade Station",
+		"Black Market",
+	] as const
+).toSorted();
 export type interactable = (typeof interactables)[number];
 
 export type monster = {

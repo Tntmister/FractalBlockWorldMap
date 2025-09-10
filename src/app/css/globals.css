@@ -23,6 +23,9 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	scrollbar-color: color-mix(in srgb, var(--foreground), #000 30%) var(--background);
 }
+::-webkit-scrollbar {
+	color: var(--foreground);
+}
 
 input[type="checkbox"],
 input[type="radio"] {
@@ -68,17 +71,26 @@ input[type="radio"]:checked::before {
 	transform: scale(1);
 }
 
-button {
+button,
+select {
 	font: inherit;
 	color: inherit;
 }
 
-button.disabled {
-	opacity: 0.5;
+select[multiple] {
+	background-color: var(--background);
+	border-color: var(--foreground);
+	max-width: 100%;
+	border-radius: 2px;
 }
 
-::-webkit-scrollbar {
-	background-color: var(--foreground);
+select[multiple] option:checked {
+	background: var(--foreground)
+		linear-gradient(0deg, var(--foreground) 0%, var(--foreground) 100%);
+}
+
+button.disabled {
+	opacity: 0.5;
 }
 
 * {
