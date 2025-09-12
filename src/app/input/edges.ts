@@ -1368,6 +1368,12 @@ const inputEdges: InputEdge = {
 			note: "Level 11",
 		},
 	},
+	"WIG Prison": {
+		"Toronto": {
+			distance: 1,
+			note: "Rainbow Flower Image",
+		},
+	},
 	"Prank I2 WIG Flower": {
 		"WIG Prison 2": {
 			distance: 20,
@@ -1938,22 +1944,25 @@ const inputEdges: InputEdge = {
 	},
 	"Danville": {
 		"Ying Forest": {
-			distance: 1,
+			distance: 5,
 		},
 		"Infinity Flower": {
-			distance: 1,
+			distance: 5,
 		},
 		"Stoney Air": {
-			distance: 1,
+			distance: 5,
 		},
 		"I2 Library": {
-			distance: 1,
+			distance: 5,
 		},
 		"Small Yellow Flower": {
-			distance: 1,
+			distance: 5,
 		},
 		"Small Blue Flower (Primary)": {
-			distance: 1,
+			distance: 5,
+		},
+		"Weapon Library": {
+			distance: 5,
 		},
 	},
 	"Scorpius Portal": {
@@ -2034,11 +2043,14 @@ const inputEdges: InputEdge = {
 		"Laboratory Vine": {
 			distance: 5,
 		},
-		"Fanatic Grass": {
+		"Fanatic Weed": {
 			distance: 5,
 		},
 		"Fanatic Air": {
-			distance: 20,
+			distance: 5,
+		},
+		"Damp Cellar": {
+			distance: 10,
 		},
 		"I3 WIG Flower": {
 			distance: 20,
@@ -2055,11 +2067,46 @@ const inputEdges: InputEdge = {
 		"Laboratory Vine": {
 			distance: 5,
 		},
+		"Fanatic Weed": {
+			distance: 5,
+		},
+		"Fanatic Air": {
+			distance: 5,
+		},
+		"Damp Cellar": {
+			distance: 10,
+		},
+		"Alpha Menger Sponge": {
+			distance: 20,
+		},
+		"Montreal": {
+			distance: 20,
+		},
+		"Toronto": {
+			distance: 20,
+		},
+		"Danville": {
+			distance: 20,
+		},
+		"Small Blue Flower (Quinary)": {
+			distance: 20,
+		},
+	},
+	"Small Blue Flower (Quinary)": {
+		"Quicksand Grass": {
+			distance: 1,
+		},
+		"Laboratory Vine": {
+			distance: 5,
+		},
 		"Fanatic Grass": {
 			distance: 5,
 		},
 		"Fanatic Air": {
-			distance: 15,
+			distance: 5,
+		},
+		"Damp Basement": {
+			distance: 10,
 		},
 	},
 	"EMP City": {
@@ -2228,6 +2275,9 @@ const inputEdges: InputEdge = {
 		},
 		"I2 Library": {
 			distance: 10,
+		},
+		"Violet": {
+			distance: 15,
 		},
 	},
 	"Minigun Forest Hanging": {
@@ -3072,6 +3122,9 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Fanatic Yellow Vine": {
+		"Danville": {
+			distance: 10,
+		},
 		"Ostrich Fern": {
 			distance: 1,
 		},
@@ -3091,6 +3144,9 @@ const inputEdges: InputEdge = {
 			distance: 5,
 		},
 		"Weed Ring": {
+			distance: 5,
+		},
+		"I3 WIG Flower": {
 			distance: 5,
 		},
 	},
@@ -3531,8 +3587,20 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Stoney Sanctuary": {
+		"Ying Forest": {
+			distance: 1,
+		},
+		"Ying Air": {
+			distance: 1,
+		},
 		"Blackberry": {
-			distance: Infinity,
+			distance: 1,
+		},
+		"Stoney Library": {
+			distance: 5,
+		},
+		"Mossy Cellar": {
+			distance: 1,
 		},
 	},
 	"Yellow Cube Secret": {
@@ -3836,7 +3904,6 @@ const inputEdges: InputEdge = {
 		},
 		"Oak Tree": {
 			distance: 1,
-			note: "Net 1 grow",
 		},
 		"Tweedle-Dum Air": {
 			distance: 5,
@@ -3854,7 +3921,6 @@ const inputEdges: InputEdge = {
 		},
 		"Oak Tree": {
 			distance: 1,
-			note: "Net 1 grow",
 		},
 		"Paper Box": {
 			distance: 1,
@@ -3869,6 +3935,9 @@ const inputEdges: InputEdge = {
 	"Type 1 Tau Cave": {
 		"Type 2 Tau Cave": {
 			distance: 5,
+		},
+		"Oak Tree": {
+			distance: 1,
 		},
 		"Ying Flower": {
 			distance: 15,
@@ -3890,6 +3959,25 @@ const inputEdges: InputEdge = {
 		},
 		"Richmond": {
 			distance: 15,
+		},
+	},
+	"Oak Tree": {
+		"Ying Forest": {
+			distance: 1,
+		},
+		"Red Apple Tree": {
+			distance: 3,
+		},
+		"Stoney Air": {
+			distance: 5,
+		},
+		"Oak Tree Dungeon": {
+			distance: 10,
+		},
+	},
+	"Oak Tree Dungeon": {
+		"Small Yellow Flower": {
+			distance: 5,
 		},
 	},
 	"Tweedle-Dum Base": {
@@ -4440,6 +4528,25 @@ const inputEdges: InputEdge = {
 		"Laser Genesis": {
 			distance: 40,
 			requiresKey: "Laser Genesis Key",
+		},
+	},
+	"Laser Genesis": {
+		"Sapphire": {
+			distance: 1,
+		},
+	},
+	"Sapphire": {
+		"Ying Forest": {
+			distance: 5,
+		},
+		"Orange": {
+			distance: 5,
+		},
+		"Jumbo Yellow Flower": {
+			distance: 5,
+		},
+		"Small White Flower": {
+			distance: 5,
 		},
 	},
 	"Mylantis City": {
