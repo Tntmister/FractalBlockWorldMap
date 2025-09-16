@@ -93,9 +93,18 @@ type key =
 
 export type defenceUpgrade = "Random Health" | "Max Health" | "Health Regen" | "Armor Regen" | "RejuvenX";
 
-export type item = `${weaponType} Ammo` | defenceItem | "Gold" | "EXP" | key | "Health" | "Armor"; // | "Health" | "Armor" temporary
+export type item = `${number}x ${weaponType} Ammo` | `${weaponType} Ammo` | defenceItem | "Gold" | `${number} Gold` | "EXP" | key | "Health" | "Armor"; // | "Health" | "Armor" temporary
 
-export type upgrade = weaponUpgrade | `Non-${weaponType} ${weaponUpgradeType}` | defenceUpgrade | "Telekinesis" | weaponType | "Health"; // | weaponType | "Health" temporary
+export type upgrade =
+	| `${number}x ${weaponUpgrade}`
+	| weaponUpgrade
+	| `1x Non-${weaponType} ${weaponUpgradeType}`
+	| `${number}x ${defenceUpgrade}`
+	| defenceUpgrade
+	| "Telekinesis"
+	| "Marker Cost"
+	| weaponType
+	| "Health"; // | weaponType | "Health" temporary
 
 export const interactables = (
 	[
@@ -135,6 +144,7 @@ export type InputNode = {
 	monsters?: monsterName[];
 	upgrades?: (upgrade | upgrade[])[];
 	items?: item[];
+	notes?: string;
 	interactables?: interactable[];
 	noEscape?: boolean; // no accessible grow rings
 	trophy?: boolean;
@@ -147,6 +157,7 @@ export type InputNode = {
 	// rare case where a pink sphere in a node might be hidden inside a location at the same level (unremembered tower secret room)
 	pinkSphereDestination?: {
 		nodeName: string;
+		note?: string;
 	};
 };
 
@@ -178,6 +189,7 @@ export type Node = {
 	upgrades: NonNullable<InputNode["upgrades"]>;
 	items: NonNullable<InputNode["items"]>;
 	interactables: NonNullable<InputNode["interactables"]>;
+	notes: InputNode["notes"];
 	noEscape: NonNullable<InputNode["noEscape"]>;
 	trophy: NonNullable<InputNode["trophy"]>;
 	secretTrophy: NonNullable<InputNode["secretTrophy"]>;

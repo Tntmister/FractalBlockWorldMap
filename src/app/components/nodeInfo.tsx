@@ -8,11 +8,11 @@ interface NodeInfoProps {
 	node: Node;
 }
 
-const infoWindows = ["interactables", "items", "upgrades", "monsters"] as const;
+const infoWindows = ["interactables", "items", "upgrades", "monsters", "notes"] as const;
 
 export default function NodeInfo({ node }: NodeInfoProps) {
 	useEffect(() => {
-		changeInfoWindow(infoWindows.find((value) => node[value].length > 0));
+		changeInfoWindow(infoWindows.find((value) => node[value]?.length ?? 0 > 0));
 
 		// make image tooltips hover top left of cursor
 		const tooltipListener = (e: MouseEvent) => {
@@ -124,10 +124,17 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 					</span>
 					<span
 						data-infotype={"upgrades"}
-						onClick={node.items.length > 0 ? changeInfoWindowEvent : undefined}
+						onClick={node.upgrades.length > 0 ? changeInfoWindowEvent : undefined}
 						className={node.upgrades.length == 0 ? "unavailable" : ""}
 					>
 						Upgrades
+					</span>
+					<span
+						data-infotype={"notes"}
+						onClick={node.notes ? changeInfoWindowEvent : undefined}
+						className={!node.notes ? "unavailable" : ""}
+					>
+						Notes
 					</span>
 				</div>
 				<div id='nodeInfoContent'>
@@ -194,6 +201,7 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 								</div>
 							);
 						})}
+					{currentInfoWindow == "notes" && <div>{node.notes}</div>}
 				</div>
 			</div>
 		</div>

@@ -348,6 +348,7 @@ const inputEdges: InputEdge = {
 		},
 		"Gated Community": {
 			distance: 5,
+			requiresKey: "Yellow Key",
 		},
 		"Noob Maze Bundle": {
 			distance: 5,
@@ -546,6 +547,9 @@ const inputEdges: InputEdge = {
 		"Buttercup": {
 			distance: 1,
 		},
+		"Stoney Air": {
+			distance: 1,
+		},
 		"Lighthouse Basement": {
 			distance: 20,
 		},
@@ -579,11 +583,20 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"I1 Library": {
-		"Infinity Flower": {
-			distance: 30,
+		"Infinity Flower Vault": {
+			distance: 1,
 		},
 		"Pink Tree": {
 			distance: 1,
+		},
+	},
+	"Infinity Flower Vault": {
+		"Infinity Flower": {
+			distance: 30,
+		},
+		"Jumbo Yellow Flower": {
+			distance: 30,
+			note: "Corner of floor",
 		},
 	},
 	"Infinity Flower": {
@@ -1334,6 +1347,10 @@ const inputEdges: InputEdge = {
 		"Richmond Building": {
 			distance: 1,
 		},
+		"Pink Tree": {
+			distance: 5,
+			note: "Top of Buildings",
+		},
 	},
 	"Williston Wall": {
 		"Fir Tree": {
@@ -1640,14 +1657,26 @@ const inputEdges: InputEdge = {
 		"I2 WIG Flower": {
 			distance: 1,
 		},
-		"I3 WIG Maze Room": {
+		"I3 WIG Flower Vault": {
 			distance: 1,
 		},
 	},
-	"I3 WIG Maze Room": {
+	"I3 WIG Flower Vault": {
 		"I3 WIG Flower": {
-			distance: Infinity,
+			distance: 25,
 			note: "Guranteed Real",
+		},
+		"Infinity Flower": {
+			distance: 25,
+			note: "Corner of floor",
+		},
+		"Jumbo Yellow Flower": {
+			distance: 25,
+			note: "Corner of floor",
+		},
+		"Small White Flower": {
+			distance: 25,
+			note: "Corner of floor",
 		},
 	},
 	"I3 WIG Flower": {
@@ -2660,8 +2689,13 @@ const inputEdges: InputEdge = {
 		"Rainbow Flower": {
 			distance: 30,
 		},
+		"Toronto Maze Map Room Secret": {
+			distance: 50,
+		},
+	},
+	"Toronto Maze Map Room Secret": {
 		"Toronto Maze": {
-			distance: 30,
+			distance: 5,
 		},
 	},
 	"Raspberry": {
@@ -3091,6 +3125,9 @@ const inputEdges: InputEdge = {
 	},
 	"Laser Branch Vine": {
 		"Fir Tree": {
+			distance: 1,
+		},
+		"Fanatic Weed": {
 			distance: 1,
 		},
 		"Laser Branch Vine": {
@@ -3583,7 +3620,7 @@ const inputEdges: InputEdge = {
 		},
 		"Yellow Cube Secret": {
 			distance: 5,
-			note: "Under Ying Forest",
+			impassable: true,
 		},
 	},
 	"Stoney Sanctuary": {
@@ -3602,6 +3639,15 @@ const inputEdges: InputEdge = {
 		"Mossy Cellar": {
 			distance: 1,
 		},
+		"Orange Flower": {
+			distance: 1,
+		},
+		"Stoney Sanctuary Pillar": {
+			distance: 5,
+		},
+		"Stoney Sanctuary Treasure": {
+			distance: 30,
+		},
 	},
 	"Yellow Cube Secret": {
 		"Orange Flower": {
@@ -3619,18 +3665,30 @@ const inputEdges: InputEdge = {
 	},
 	"Galaxy Flower": {
 		"Galaxy": {
-			distance: 10,
+			distance: 5,
+		},
+		"Quicksand Grass": {
+			distance: 1,
 		},
 	},
 	"Solar System": {
-		"Solar System Debris": {
-			distance: 10,
+		"Supermassive Black Hole": {
+			distance: 30,
 		},
-		"Tau Cave Moon": {
-			distance: 25,
+		"Sun": {
+			distance: 15,
+		},
+		"Solar System Debris": {
+			distance: 15,
 		},
 		"Small Minigun Planet": {
 			distance: 10,
+		},
+		"Clay Planet": {
+			distance: 10,
+		},
+		"Tau Cave Moon": {
+			distance: 20,
 		},
 		"Moon Debris": {
 			distance: 10,
@@ -3638,20 +3696,37 @@ const inputEdges: InputEdge = {
 		"Alpha Moon": {
 			distance: 10,
 		},
-		"Ice Moon": {
+		"Beta Moon": {
 			distance: 10,
 		},
 		"Gamma Moon": {
 			distance: 10,
 		},
-		"Clay Planet": {
+		"Ice Moon": {
 			distance: 10,
 		},
-		"Beta Moon": {
-			distance: 10,
+		"Fire Rate Moon": {
+			distance: 30,
 		},
-		"Sun": {
-			distance: 15,
+		"Blue Ring Station": {
+			distance: 20,
+		},
+		"Space Library": {
+			distance: 20,
+		},
+	},
+	"Space Library": {
+		"Galaxy Flower": {
+			distance: 5,
+		},
+	},
+	"Blue Ring Station": {
+		"Ying Forest": {
+			distance: 1,
+		},
+		"Blue Bubble Gauntlet": {
+			distance: 10,
+			note: "Outside Rings",
 		},
 	},
 	"Solar System Debris": {
@@ -3879,22 +3954,34 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Tau Cave Moon": {
-		"Type 1 Tau Cave": {
-			distance: 1,
-			note: "Random",
+		"Secret Tau Cave Moon": {
+			distance: 40,
+			note: "K-Chunk icon must have a dot in the O",
 		},
 		"Type 2 Tau Cave": {
-			distance: 1,
-			note: "Random",
-		},
-		"Type 3 Tau Cave": {
-			distance: 1,
-			note: "Random",
+			distance: 5,
 		},
 		"Ying Forest": {
 			distance: 1,
 		},
 		"Imp Disco": {
+			distance: 1,
+		},
+	},
+	"Secret Tau Cave Moon": {
+		"Tau Cave Moon": {
+			distance: 1,
+		},
+		"Secret Tau Cave Moon Room": {
+			distance: 30,
+			impassable: true,
+		},
+	},
+	"Secret Tau Cave Moon Room": {
+		"Tau Cave Moon": {
+			distance: 1,
+		},
+		"Ying Air": {
 			distance: 1,
 		},
 	},
@@ -3949,7 +4036,7 @@ const inputEdges: InputEdge = {
 			distance: 15,
 		},
 		"Hard Pink Tree": {
-			distance: 40,
+			distance: 50,
 		},
 		"Alpha Cube": {
 			distance: 20,

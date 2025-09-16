@@ -17,6 +17,7 @@ for (const node of inputNodes) {
 		interactables: node.interactables?.toSorted() ?? [],
 		upgrades: node.upgrades?.toSorted() ?? [],
 		items: node.items?.toSorted() ?? [],
+		notes: node.notes,
 		noEscape: node.noEscape ?? false,
 		trophy: node.trophy ?? false,
 		secretTrophy: node.secretTrophy ?? false,
@@ -422,7 +423,7 @@ export default function Main() {
 										src={`./images/icons/Pink Ring.webp`}
 									/>
 									{pinkSphereEdge.node.pinkSphereDestination
-										? pinkSphereEdge.node.pinkSphereDestination.nodeName
+										? `${pinkSphereEdge.node.pinkSphereDestination.nodeName} ${pinkSphereEdge.node.pinkSphereDestination.note ?? ""}`
 										: pinkSphereEdge.node.name}
 								</span>
 							)}
