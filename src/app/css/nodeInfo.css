@@ -90,6 +90,10 @@
 	white-space: pre;
 }
 
+#nodeInfoNotes {
+	white-space: break-spaces;
+}
+
 #nodeInfoContent > * {
 	display: flex;
 	align-items: center;

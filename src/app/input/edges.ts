@@ -306,6 +306,15 @@ const inputEdges: InputEdge = {
 		"Ying Forest": {
 			distance: 1,
 		},
+		"Imp Dungeon": {
+			distance: 5,
+			note: "Smaller cube above Ying Air Cube",
+		},
+	},
+	"Imp Dungeon": {
+		"Ying Forest": {
+			distance: 5,
+		},
 	},
 	"Ying Flower": {
 		"Ying Air": {
@@ -724,6 +733,11 @@ const inputEdges: InputEdge = {
 		"River": {
 			distance: 10,
 		},
+		"Forest Museum": {
+			distance: 40,
+			arcade: true,
+			whiteBoxDevice: true,
+		},
 	},
 	"I3 Clouds": {
 		"White Rose": {
@@ -820,6 +834,11 @@ const inputEdges: InputEdge = {
 		},
 		"Desert Oasis": {
 			distance: 15,
+		},
+		"Aladdin's Cave": {
+			distance: 30,
+			arcade: true,
+			whiteBoxDevice: true,
 		},
 	},
 	"Desert Oasis": {
@@ -4264,6 +4283,8 @@ const inputEdges: InputEdge = {
 	"Iolite": {
 		"Jade Museum": {
 			distance: 5,
+			arcade: true,
+			whiteBoxDevice: true,
 		},
 	},
 	"Jade Museum": {
@@ -4280,6 +4301,14 @@ const inputEdges: InputEdge = {
 			distance: 15,
 		},
 	},
+	"Forest Museum": {
+		"Fir Tree": {
+			distance: 2,
+		},
+		"Health Tower": {
+			distance: 2,
+		},
+	},
 	"Mylantis": {
 		"Mylantis City": {
 			distance: 1,
@@ -4292,7 +4321,6 @@ const inputEdges: InputEdge = {
 		},
 		"RejuvenX Refinery": {
 			distance: 1,
-			note: "3 on Surface",
 		},
 		"Grand Lockbox": {
 			distance: 20,

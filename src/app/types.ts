@@ -93,13 +93,13 @@ type key =
 
 export type defenceUpgrade = "Random Health" | "Max Health" | "Health Regen" | "Armor Regen" | "RejuvenX";
 
-export type item = `${number}x ${weaponType} Ammo` | `${weaponType} Ammo` | defenceItem | "Gold" | `${number} Gold` | "EXP" | key | "Health" | "Armor"; // | "Health" | "Armor" temporary
+export type item = `${weaponType} Ammo x${number}` | `${weaponType} Ammo` | defenceItem | "Gold" | `${number} Gold` | "EXP" | key | "Health" | "Armor"; // | "Health" | "Armor" temporary
 
 export type upgrade =
-	| `${number}x ${weaponUpgrade}`
+	| `${weaponUpgrade} x${number}`
 	| weaponUpgrade
-	| `1x Non-${weaponType} ${weaponUpgradeType}`
-	| `${number}x ${defenceUpgrade}`
+	| `Non-${weaponType} ${weaponUpgradeType} x${number}`
+	| `${defenceUpgrade} x${number}`
 	| defenceUpgrade
 	| "Telekinesis"
 	| "Marker Cost"
@@ -166,6 +166,7 @@ type edgeInfo = {
 	note?: string; // specifc method to enter
 	requiresKey?: key;
 	whiteBoxDevice?: boolean;
+	arcade?: boolean;
 	impassable?: boolean; // to indicate that the destination is not directly accessible, only through waypoints/blue rings (i.e. WIG Prison and Violet Shells)
 	// used for pathfinding
 	blueRing?: boolean;

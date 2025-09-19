@@ -386,6 +386,12 @@ export default function Main() {
 											src={`./images/icons/${edge.requiresKey.includes("Singleton") ? "Stable Singletons Key" : edge.requiresKey}.webp`}
 										/>
 									)}
+									{edge.arcade && (
+										<Image
+											className='icon-small'
+											src={`./images/icons/Arcade.webp`}
+										/>
+									)}
 									{edge.whiteBoxDevice && (
 										<Image
 											className='icon-small'

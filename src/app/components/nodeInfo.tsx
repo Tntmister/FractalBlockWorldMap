@@ -1,4 +1,4 @@
-import { Node, Edge, weaponUpgrade, defenceItem, weaponType, defenceUpgrade } from "../types";
+import { Node, upgrade, item } from "../types";
 import Image from "./Image";
 import "../css/nodeInfo.css";
 import { Fragment, useEffect, useState } from "react";
@@ -172,9 +172,12 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 							<div key={item}>
 								<Image
 									className='icon-small'
-									src={`./images/icons/${labels.get(item)?.imageName ?? (item.includes("Yellow Key") ? "Yellow Key" : item)}.webp`}
+									src={`./images/icons/${
+										labels.get(item.replace(/ x\d+$/i, "") as item)
+											?.imageName ?? item.replace(/^\d+ (Second )?/i, "")
+									}.webp`}
 								/>
-								{item.includes("Ammo") ? "Ammo" : item}
+								{item.includes("Ammo") ? item.slice(item.indexOf(" ") + 1) : item}
 							</div>
 						))}
 					{currentInfoWindow == "upgrades" &&
@@ -190,7 +193,12 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 												<Image
 													className='icon-small'
 													src={`./images/icons/${
-														labels.get(upgrade)?.imageName ?? upgrade
+														labels.get(
+															upgrade.replace(
+																/ x\d+$/i,
+																"",
+															) as upgrade,
+														)?.imageName ?? upgrade
 													}.webp`}
 												/>
 											)}
@@ -201,7 +209,7 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 								</div>
 							);
 						})}
-					{currentInfoWindow == "notes" && <div>{node.notes}</div>}
+					{currentInfoWindow == "notes" && <div id='nodeInfoNotes'>{node.notes}</div>}
 				</div>
 			</div>
 		</div>
