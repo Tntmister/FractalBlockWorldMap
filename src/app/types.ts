@@ -168,7 +168,7 @@ type edgeInfo = {
 	whiteBoxDevice?: boolean;
 	arcade?: boolean;
 	impassable?: boolean; // to indicate that the destination is not directly accessible, only through waypoints/blue rings (i.e. WIG Prison and Violet Shells)
-	// used for pathfinding
+	// internal, used for pathfinding/traversal
 	blueRing?: boolean;
 	pinkRing?: boolean;
 	up?: boolean;
