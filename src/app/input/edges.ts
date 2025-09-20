@@ -783,6 +783,17 @@ const inputEdges: InputEdge = {
 			note: "Rainbow Flower - Sagittarius Portal - Rainbow Flower - Sagittarius Portal",
 		},
 	},
+	"Deep Sliver Maze": {
+		"I3 Air": {
+			distance: 5,
+		},
+		"Yellow Mushroom": {
+			distance: 30,
+		},
+		"I3 WIG Flower": {
+			distance: 30,
+		},
+	},
 	"River Reed": {
 		"Yellow Mushroom": {
 			distance: 5,
@@ -1223,6 +1234,12 @@ const inputEdges: InputEdge = {
 	},
 	"Sagittarius Portal": {
 		"Fanatic Lattice": {
+			distance: 10,
+		},
+		"Fanatic Weed": {
+			distance: 10,
+		},
+		"Minigun Forest Hanging": {
 			distance: 10,
 		},
 	},
@@ -3251,13 +3268,13 @@ const inputEdges: InputEdge = {
 			distance: 1,
 		},
 		"Blue Mushroom": {
-			distance: 20,
+			distance: 30,
 		},
 		"Rainbow Flower": {
-			distance: 20,
+			distance: 30,
 		},
 		"I2 Library": {
-			distance: 1,
+			distance: 5,
 		},
 	},
 	"Blue Mushroom": {

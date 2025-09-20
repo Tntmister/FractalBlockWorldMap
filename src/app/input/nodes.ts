@@ -1567,8 +1567,8 @@ const INPUT_NODES = [
 	{
 		name: "Laboratory Vine",
 		monsters: ["Goliath"],
-		items: ["Gold", "200% Armor", "Rocket Ammo", "Minigun Ammo", "Cannon Ammo", "Laser Ammo", "Railgun Ammo"],
-		upgrades: ["Railgun Damage", "Minigun Damage", "Max Health", "Random Health", "Non-Laser Max Ammo x1"],
+		items: ["Gold", "200% Armor", "Rocket Ammo", "Minigun Ammo", "Cannon Ammo", "Laser Ammo", "Railgun Ammo", "Nuke Ammo"],
+		upgrades: ["Railgun Damage", "Minigun Damage", "Nuke Damage", "Dark Hole Damage", "Max Health", "Random Health", "Non-Laser Max Ammo x1"],
 		interactables: ["Buy Station", "Markers", "Save"],
 	},
 	{
@@ -1618,8 +1618,19 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Rainbow Flower",
-		items: ["Plasma Ammo", "Cannon Ammo", "Laser Ammo", "Rocket Ammo", "Homing Ammo", "Minigun Ammo", "EMP Ammo", "Nuke Ammo", "Dark Hole Ammo"],
-		upgrades: ["EMP Freeze Time", "EMP Radius"],
+		items: [
+			"Plasma Ammo",
+			"Cannon Ammo x150",
+			"Laser Ammo x128",
+			"Rocket Ammo x120",
+			"Homing Ammo x2000",
+			"Minigun Ammo x1000",
+			"EMP Ammo x3",
+			"Nuke Ammo x4",
+			"Dark Hole Ammo",
+			"Railgun Ammo x300",
+		],
+		upgrades: ["EMP Freeze Time x1", "EMP Radius x3"],
 		interactables: ["Save", "Pink Ring"],
 	},
 	{
@@ -1695,9 +1706,10 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Toronto Maze Map Room Secret",
-		upgrades: ["Cannon Damage", "Cannon Max Ammo", "Homing Max Ammo", "Railgun Max Ammo", "Railgun Fire Rate", "Laser Max Ammo"],
+		upgrades: ["Cannon Damage", "Cannon Max Ammo", "Homing Max Ammo", "Railgun Max Ammo", "Railgun Fire Rate", "Laser Max Ammo", "Minigun Super Damage"],
 		interactables: ["Waypoint"],
-		secretTrophy: 2,
+		secretTrophy: 3,
+		notes: "Secret trophies are at model level 1, 2 and 5",
 	},
 	{
 		name: "Raspberry",
@@ -2523,16 +2535,16 @@ const INPUT_NODES = [
 		items: [
 			"150% Armor",
 			"200% Health 200% Armor",
-			"Rocket Ammo",
-			"Minigun Ammo",
-			"Homing Ammo",
+			"Rocket Ammo x120",
+			"Minigun Ammo x300",
+			"Homing Ammo x600",
 			"Laser Ammo",
-			"Railgun Ammo",
-			"EMP Ammo",
+			"Railgun Ammo x50",
+			"EMP Ammo x1",
 			"Dark Hole Ammo",
-			"Nuke Ammo",
-			"Cannon Ammo",
-			"Gold",
+			"Nuke Ammo x1",
+			"Cannon Ammo x150",
+			"60 Gold",
 		],
 		upgrades: ["Non-Laser Max Ammo x1", "EMP Radius", "EMP Freeze Time"],
 	},
@@ -2558,7 +2570,7 @@ const INPUT_NODES = [
 	},
 	{
 		name: "River Pyramid",
-		items: ["Nuke Ammo"],
+		items: ["Nuke Ammo x1"],
 		trophy: true,
 	},
 	{
@@ -2567,6 +2579,11 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Deep Sliver Maze",
+		interactables: ["Waypoint"],
+		monsters: ["Major Sliver", "Lesser Sliver"],
+		upgrades: ["Laser Freeze Ray Weapon Mod", "Nuke Damage x2", "Nuke Max Ammo x2", "Nuke Radius x2", "Nuke Velocity x2", "Laser Freeze Time x2"],
+		items: ["EMP Ammo x22", "2000 Gold", "Laser Ammo x896"],
+		trophy: true,
 	},
 	{
 		name: "Wood Box",
