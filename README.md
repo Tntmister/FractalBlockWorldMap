@@ -19,14 +19,10 @@ The page will then be availabe on [http://localhost:3000](http://localhost:3000)
 # Contributing
 
 Make sure to run
-
 ```bash
-npm install
+npm install && npm run prepare
 ```
-
 to use the configured ESLint and Prettier rules.
-
-Pull requests are to be made to the 'dev' branch.
 
 # Data
 All data is stored in the 'src\app\input' folder, with a respective file for each data type.
