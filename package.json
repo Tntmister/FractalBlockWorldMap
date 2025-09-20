@@ -8,7 +8,19 @@
 		"deploy": "next build && touch ./out/.nojekyll && gh-pages -d out -t",
 		"dev": "next dev --turbopack",
 		"build": "next build",
-		"lint": "next lint"
+		"lint": "next lint",
+		"prepare": "husky install"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.{js,jsx,mjs,ts,tsx,mts,json,css,scss,md}": [
+			"prettier --write",
+			"eslint --fix"
+		]
 	},
 	"dependencies": {
 		"next": "^15.5.2",
@@ -28,7 +40,9 @@
 		"eslint-plugin-react": "^7.37.5",
 		"gh-pages": "^6.3.0",
 		"globals": "^16.3.0",
+		"husky": "^8.0.0",
 		"jiti": "^2.5.1",
+		"lint-staged": "^16.1.6",
 		"prettier": "^3.6.2",
 		"prettier-eslint": "^17.0.0-alpha.1",
 		"typescript": "^5.9.2",
