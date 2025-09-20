@@ -98,7 +98,7 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 					</>
 				</span>
 			</div>
-			<Image id='nodeImage' src={`./images/nodes/${node.name}.jpg`} alt='' />
+			<Image id='nodeImage' src={`./images/nodes/${node.name}.webp`} alt='' />
 			<div id='nodeInfo'>
 				<div id='nodeInfoHeader'>
 					<span
