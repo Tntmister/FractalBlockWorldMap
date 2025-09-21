@@ -2810,6 +2810,7 @@ const inputEdges: InputEdge = {
 		},
 		"Burlington Showdown Tower": {
 			distance: 40,
+			arcade: true,
 		},
 		"Club Green Apple": {
 			distance: 5,
