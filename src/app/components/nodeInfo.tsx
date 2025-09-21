@@ -168,18 +168,29 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 							</div>
 						))}
 					{currentInfoWindow == "items" &&
-						node.items.map((item) => (
-							<div key={item}>
-								<Image
-									className='icon-small'
-									src={`./images/icons/${
-										labels.get(item.replace(/ x\d+$/i, "") as item)
-											?.imageName ?? item.replace(/^\d+ (Second )?/i, "")
-									}.webp`}
-								/>
-								{item.includes("Ammo") ? item.slice(item.indexOf(" ") + 1) : item}
-							</div>
-						))}
+						node.items.map((item) => {
+							const itemAux = Array.isArray(item) ? item : [item];
+							return (
+								<div key={itemAux.join("")}>
+									{itemAux.length > 1 && "("}
+									{itemAux.map((item, index) => (
+										<Fragment key={`${itemAux.join("")}|${item}`}>
+											<Image
+												className='icon-small'
+												src={`./images/icons/${
+													labels.get(item.replace(/ x\d+$/i, "") as item)
+														?.imageName ??
+													item.replace(/^\d+ (Second )?/i, "")
+												}.webp`}
+											/>
+											{item.includes("Ammo")
+												? item.slice(item.indexOf(" ") + 1)
+												: item}
+										</Fragment>
+									))}
+								</div>
+							);
+						})}
 					{currentInfoWindow == "upgrades" &&
 						node.upgrades.map((upgrade) => {
 							const upgradeAux = Array.isArray(upgrade) ? upgrade : [upgrade];

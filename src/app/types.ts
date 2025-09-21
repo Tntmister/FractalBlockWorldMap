@@ -93,7 +93,7 @@ type key =
 
 export type defenceUpgrade = "Random Health" | "Max Health" | "Health Regen" | "Armor Regen" | "RejuvenX";
 
-export type item = `${weaponType} Ammo x${number}` | `${weaponType} Ammo` | defenceItem | "Gold" | `${number} Gold` | "EXP" | key | "Health" | "Armor"; // | "Health" | "Armor" temporary
+export type item = `${weaponType} Ammo x${number}` | `${weaponType} Ammo` | defenceItem | "Gold" | `${number} Gold` | `${number} EXP` | "EXP" | key | "Health" | "Armor"; // | "Health" | "Armor" temporary
 
 export type upgrade =
 	| `${weaponUpgrade} x${number}`
@@ -143,7 +143,7 @@ export type InputNode = {
 	name: string;
 	monsters?: monsterName[];
 	upgrades?: (upgrade | upgrade[])[];
-	items?: item[];
+	items?: (item | item[])[];
 	notes?: string;
 	interactables?: interactable[];
 	noEscape?: boolean; // no accessible grow rings
