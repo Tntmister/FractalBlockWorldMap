@@ -217,12 +217,17 @@ const inputEdges: InputEdge = {
 		"Small White Flower": {
 			distance: 5,
 		},
-		"Red Apple": {
+		"Apple Tree Ammo": {
+			distance: 5,
+		},
+		"Apple Tree Bottom Treasure": {
 			distance: 20,
 		},
-		"Upgrade Station": {
-			distance: 30,
-			note: "Top of tree",
+		"Apple Tree Top Treasure": {
+			distance: 20,
+		},
+		"Red Apple": {
+			distance: 10,
 		},
 	},
 	"Yellow Apple Tree": {
@@ -232,15 +237,17 @@ const inputEdges: InputEdge = {
 		"Small White Flower": {
 			distance: 5,
 		},
-		"Red Apple": {
+		"Apple Tree Bottom Treasure": {
 			distance: 20,
+		},
+		"Apple Tree Top Treasure": {
+			distance: 20,
+		},
+		"Red Apple": {
+			distance: 10,
 		},
 		"Yellow Apple": {
-			distance: 20,
-		},
-		"Upgrade Station": {
-			distance: 30,
-			note: "Top of tree",
+			distance: 10,
 		},
 	},
 	"Green Apple Tree": {
@@ -250,18 +257,20 @@ const inputEdges: InputEdge = {
 		"Small White Flower": {
 			distance: 5,
 		},
-		"Red Apple": {
+		"Apple Tree Bottom Treasure": {
 			distance: 20,
+		},
+		"Apple Tree Top Treasure": {
+			distance: 20,
+		},
+		"Red Apple": {
+			distance: 10,
 		},
 		"Yellow Apple": {
-			distance: 20,
+			distance: 10,
 		},
 		"Green Apple": {
-			distance: 20,
-		},
-		"Upgrade Station": {
-			distance: 30,
-			note: "Top of tree",
+			distance: 15,
 		},
 	},
 	"Ying Island": {

@@ -477,6 +477,9 @@ export const monsters = [
 		name: "Locust",
 	},
 	{
+		name: "Non-Piercing Scourge",
+	},
+	{
 		name: "Greater Non-Piercing Scourge",
 	},
 	{
