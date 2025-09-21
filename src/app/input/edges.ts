@@ -1275,7 +1275,10 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Hell Flower": {
-		"Boss Battle": {
+		"Hell Bunker": {
+			distance: 10,
+		},
+		"Inner Core Room": {
 			distance: 40,
 		},
 		"Secret Wolf Forest": {
@@ -1297,7 +1300,7 @@ const inputEdges: InputEdge = {
 			note: "Level 11",
 		},
 	},
-	"Boss Battle": {
+	"Inner Core Room": {
 		"Ying Forest": {
 			distance: 5,
 		},
@@ -1307,6 +1310,9 @@ const inputEdges: InputEdge = {
 	},
 	"Credits": {
 		"Small White Flower": {
+			distance: 1,
+		},
+		"Engine": {
 			distance: 1,
 		},
 	},
