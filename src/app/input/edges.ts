@@ -4782,6 +4782,20 @@ const inputEdges: InputEdge = {
 		"Mylantis Top Garden": {
 			distance: 1,
 		},
+		"Mylantis Building": {
+			distance: 5,
+		},
+		"House of 5 Lampreys": {
+			distance: 15,
+			note: "U-11",
+		},
+		"Secret Farmhouse": {
+			distance: 15,
+			note: "S-10",
+			requiresKey: "Secret Farmhouse Key",
+		},
+	},
+	"Mylantis Building": {
 		"Ying Forest": {
 			distance: 1,
 		},
@@ -4793,15 +4807,6 @@ const inputEdges: InputEdge = {
 		},
 		"The Bulk 1": {
 			distance: 5,
-		},
-		"House of 5 Lampreys": {
-			distance: 15,
-			note: "U-11",
-		},
-		"Secret Farmhouse": {
-			distance: 15,
-			note: "S-10",
-			requiresKey: "Secret Farmhouse Key",
 		},
 	},
 	"Secret Farmhouse": {
