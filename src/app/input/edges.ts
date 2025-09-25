@@ -3404,6 +3404,10 @@ const inputEdges: InputEdge = {
 		"Small White Flower": {
 			distance: 1,
 		},
+		"Rainbow Flower Secret": {
+			distance: 30,
+			note: "Top of Stem",
+		},
 	},
 	"Fanatic Grass": {
 		"Large Cannon Pyramid": {
