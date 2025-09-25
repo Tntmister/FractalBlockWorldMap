@@ -4089,6 +4089,9 @@ const inputEdges: InputEdge = {
 		"Imp Disco": {
 			distance: 1,
 		},
+		"Tau Cave Moss": {
+			distance: 1,
+		},
 	},
 	"Secret Tau Cave Moon": {
 		"Tau Cave Moon": {
@@ -4150,6 +4153,9 @@ const inputEdges: InputEdge = {
 		},
 		"Ying Flower": {
 			distance: 15,
+		},
+		"Tau Cave Moss": {
+			distance: 5,
 		},
 		"Ying Forest": {
 			distance: 10,
@@ -4220,13 +4226,13 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Small Laser Fort": {
+		"Paper Box": {
+			distance: 5,
+			note: "Chance in Corners",
+		},
 		"Cardboard Box": {
 			distance: 5,
-			note: "Outer corners",
-		},
-		"Ying Forest": {
-			distance: 5,
-			note: "Outer Corners",
+			note: "Chance in Corners",
 		},
 		"Small Laser Fort Secret": {
 			distance: 15,
@@ -4849,6 +4855,32 @@ const inputEdges: InputEdge = {
 			distance: 3,
 			note: "Under Sell Station",
 		},
+		"Tau Cave Moss": {
+			distance: 1,
+		},
+	},
+	"Tau Cave Moss": {
+		"Ying Air": {
+			distance: 1,
+		},
+		"Ying Forest": {
+			distance: 1,
+		},
+		"Quicksand Grass": {
+			distance: 1,
+		},
+		"Stoney Air": {
+			distance: 5,
+		},
+		"Small Laser Fort": {
+			distance: 5,
+		},
+		"Tweedle-Dum Air": {
+			distance: 5,
+		},
+		"Tau Cave Moon": {
+			distance: 5,
+		},
 	},
 	"Main Branch Library": {
 		"Orange": {
@@ -5180,7 +5212,10 @@ const inputEdges: InputEdge = {
 			distance: 1,
 		},
 		"Small White Flower Maze": {
-			distance: 15,
+			distance: 20,
+		},
+		"Small White Flower Alpha Cube Treasure": {
+			distance: 10,
 		},
 	},
 	"Alpha Cube": {
