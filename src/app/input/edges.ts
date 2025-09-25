@@ -5096,7 +5096,7 @@ const inputEdges: InputEdge = {
 		"Yellow Flower City": {
 			distance: 10,
 		},
-		"Small Yellow Flower Secret": {
+		"SYF Blue Rings": {
 			distance: 40,
 		},
 	},

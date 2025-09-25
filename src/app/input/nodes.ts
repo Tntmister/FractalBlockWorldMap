@@ -114,7 +114,7 @@ const INPUT_NODES = [
 		upgrades: ["Plasma Damage", "Plasma Regen", "Health"],
 	},
 	{
-		name: "Small Yellow Flower Secret",
+		name: "SYF Blue Rings",
 		secretTrophy: true,
 		monsters: ["Blue Lamprey"],
 		interactables: ["Blue Ring"],
