@@ -4845,6 +4845,10 @@ const inputEdges: InputEdge = {
 			distance: 1,
 			requiresKey: "Universe Key",
 		},
+		"Large White Flower": {
+			distance: 3,
+			note: "Under Sell Station",
+		},
 	},
 	"Main Branch Library": {
 		"Orange": {
