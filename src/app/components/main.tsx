@@ -226,7 +226,11 @@ export default function Main() {
 				for (let i = node.edges.length - 1; i >= 0; i--) {
 					if (
 						node.edges[i].requiresKey == "Yellow Key" ||
-						node.edges[i].requiresKey == "Universe Key"
+						node.edges[i].requiresKey == "Universe Key" ||
+						node.edges[i].requiresKey == "Blue Key" ||
+						node.edges[i].requiresKey == "Green Key" ||
+						node.edges[i].requiresKey == "Secret Farmhouse Key" ||
+						node.edges[i].requiresKey == "Laser Genesis Key"
 					) {
 						node.edges.splice(i, 1);
 					}
