@@ -49,8 +49,11 @@ const inputEdges: InputEdge = {
 	"Safety Doppelganger": {
 		"Infinity Flower": {
 			distance: 15,
-			note: "Instead of EMERGENCY secret",
 			requiresKey: "Yellow Key",
+		},
+		"Quicksand Grass": {
+			distance: 5,
+			note: "Level 11",
 		},
 	},
 	"Tutorial Chambers": {
@@ -76,7 +79,7 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Stable Singletons": {
-		"I1": {
+		"Infinity Flower": {
 			distance: 1,
 			requiresKey: "I1 Stable Singletons Key",
 		},
@@ -127,6 +130,10 @@ const inputEdges: InputEdge = {
 		},
 		"Ying Forest Depth 50+": {
 			distance: 30,
+		},
+		"Orange": {
+			distance: 20,
+			note: "Secret Combination",
 		},
 	},
 	"Ying Forest Depth 50+": {
@@ -630,6 +637,9 @@ const inputEdges: InputEdge = {
 		"Small Yellow Flower": {
 			distance: 1,
 		},
+		"Infinity Flower Secret": {
+			distance: 10,
+		},
 	},
 	"I1": {
 		"Williston Spiral": {
@@ -684,6 +694,9 @@ const inputEdges: InputEdge = {
 			distance: 15,
 		},
 		"Orange Flower": {
+			distance: 15,
+		},
+		"Williston Ammo": {
 			distance: 15,
 		},
 	},
@@ -1362,9 +1375,37 @@ const inputEdges: InputEdge = {
 		"I2 WIG Flower": {
 			distance: 5,
 		},
+		"Imp Disco": {
+			distance: 5,
+		},
 	},
 	"Williston Caves": {
 		"Well": {
+			distance: 10,
+		},
+	},
+	"Secret Cave of Jerichos": {
+		"Jericho": {
+			distance: 1,
+		},
+		"Jumbo Yellow Flower": {
+			distance: 1,
+		},
+		"Jackfruit": {
+			distance: 5,
+		},
+		"Red Maze Flower": {
+			distance: 5,
+		},
+		"Ying Air": {
+			distance: 1,
+		},
+		"Jericho Caves": {
+			distance: 1,
+		},
+	},
+	"Jericho Caves": {
+		"Blackberry": {
 			distance: 10,
 		},
 	},
@@ -1392,15 +1433,26 @@ const inputEdges: InputEdge = {
 		"Bedroom": {
 			distance: 1,
 		},
+		"Williston Building": {
+			distance: 1,
+		},
+	},
+
+	"Williston Building": {
 		"Yellow Apple Tree": {
 			distance: 1,
 		},
-		"Richmond Building": {
+		"Ying Forest": {
+			distance: 1,
+		},
+		"Stoney Air": {
+			distance: 1,
+		},
+		"Yellow Flower Wall": {
 			distance: 1,
 		},
 		"Pink Tree": {
 			distance: 5,
-			note: "Top of Buildings",
 		},
 	},
 	"Williston Wall": {
@@ -3903,6 +3955,9 @@ const inputEdges: InputEdge = {
 		"Richmond Building": {
 			distance: 10,
 		},
+		"Richmond Info Building": {
+			distance: 10,
+		},
 		"Richmond Secret": {
 			distance: 10,
 		},
@@ -3931,6 +3986,17 @@ const inputEdges: InputEdge = {
 		"Red Cave": {
 			distance: 5,
 			note: "1 per Richmond",
+		},
+	},
+	"Richmond Info Building": {
+		"Ying Forest": {
+			distance: 1,
+		},
+		"Stoney Air": {
+			distance: 1,
+		},
+		"Yellow Flower Wall": {
+			distance: 1,
 		},
 	},
 	"Yellow Flower Wall": {
@@ -4302,6 +4368,10 @@ const inputEdges: InputEdge = {
 		},
 		"Lockbox": {
 			distance: 5,
+			requiresKey: "Yellow Key",
+		},
+		"Grand Lockbox": {
+			distance: 20,
 			requiresKey: "Yellow Key",
 		},
 	},
@@ -5052,9 +5122,6 @@ const inputEdges: InputEdge = {
 	},
 	"Large Cannon Pyramid": {
 		"Small White Flower": {
-			distance: 20,
-		},
-		"Upgrade Station": {
 			distance: 20,
 		},
 		"Ying Forest": {

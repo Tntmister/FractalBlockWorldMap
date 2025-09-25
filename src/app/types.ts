@@ -93,7 +93,18 @@ type key =
 
 export type defenceUpgrade = "Random Health" | "Max Health" | "Health Regen" | "Armor Regen" | "RejuvenX";
 
-export type item = `${weaponType} Ammo x${number}` | `${weaponType} Ammo` | defenceItem | "Gold" | `${number} Gold` | `${number} EXP` | "EXP" | key | "Health" | "Armor"; // | "Health" | "Armor" temporary
+export type item =
+	| `${weaponType} Ammo x${number}`
+	| `${weaponType} Ammo`
+	| defenceItem
+	| `${defenceItem} x${number}`
+	| "Gold"
+	| `${number} Gold`
+	| `${number} EXP`
+	| "EXP"
+	| key
+	| "Health"
+	| "Armor"; // | "Health" | "Armor" temporary
 
 export type upgrade =
 	| `${weaponUpgrade} x${number}`
