@@ -317,8 +317,8 @@ export default function Main() {
 				<div className='pathList'>
 					{pathStack.map((edge, index, path) => (
 						<Fragment key={`path${index}`}>
-							{index != 0 ? (
-								edge.node.noEscape ? (
+							{index != 0 &&
+								(edge.node.noEscape ? (
 									<Image
 										className='icon'
 										src='./images/icons/One Way.webp'
@@ -326,10 +326,7 @@ export default function Main() {
 									/>
 								) : (
 									"↑"
-								)
-							) : (
-								""
-							)}
+								))}
 							<div
 								className={`pathNode${
 									index ==
@@ -358,6 +355,12 @@ export default function Main() {
 									);
 								}}
 							>
+								{path[index + 1]?.requiresKey && (
+									<Image
+										className='icon-small'
+										src={`./images/icons/${path[index + 1].requiresKey!.includes("Singleton") ? "Stable Singletons Key" : path[index + 1].requiresKey}.webp`}
+									/>
+								)}
 								{edge.node.name}
 							</div>
 						</Fragment>
