@@ -4333,8 +4333,15 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Top of the World": {
+		"Edge of the World": {
+			distance: 1,
+			requiresKey: "Green Key",
+		},
+	},
+	"Edge of the World": {
 		"Outer Space -4": {
 			distance: 1,
+			requiresKey: "Yellow Key",
 		},
 		"Alpha Cube": {
 			distance: 0,

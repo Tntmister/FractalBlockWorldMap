@@ -2786,6 +2786,13 @@ const INPUT_NODES = [
 		secretTrophy: true,
 	},
 	{
+		name: "Edge of the World",
+		interactables: ["Waypoint"],
+		items: ["Green Key"],
+		monsters: ["Blue Lamprey"],
+		notes: "You must take the Green Key then find a waypoint inside the Alpha Cube to return to the waypoint here and reach the Top of the World",
+	},
+	{
 		name: "Outer Space -4",
 	},
 	{

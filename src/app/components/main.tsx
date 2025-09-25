@@ -45,6 +45,7 @@ for (const [fromName, edge] of Object.entries(inputEdges)) {
 
 const startingPath: nodeName[] = [
 	"Top of the World",
+	"Edge of the World",
 	"Outer Space -4",
 	"Outer Space -3",
 	"Outer Space -2",
