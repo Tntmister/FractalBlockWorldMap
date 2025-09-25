@@ -136,7 +136,10 @@ export function pathfindToInteractables(
 	// pathfind to every destination with the desired interactable
 	const possibleDestinations = nodesCopy.values().filter((node) => {
 		// small white flower only contains blue ring inside an alpha cube
-		if (node.name === "Small White Flower" && interactables.includes("Blue Ring")) {
+		if (
+			node.name === "Small White Flower Alpha Cube Treasure" &&
+			interactables.includes("Blue Ring")
+		) {
 			return !!pathStack.find((edge) => edge.node.name === "Alpha Cube");
 		}
 		return interactables.every((interactable) => node.interactables.includes(interactable));

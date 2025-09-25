@@ -182,7 +182,7 @@ const INPUT_NODES = [
 	{
 		name: "Small White Flower",
 		monsters: ["Light Marine", "Marine", "Heavy Marine"],
-		interactables: ["Save", "Pink Sphere", "Pink Ring", "Blue Ring", "Buy Station"],
+		interactables: ["Save", "Pink Sphere", "Pink Ring", "Buy Station"],
 		upgrades: [
 			"Random Health x1",
 			"Health Regen x4",
