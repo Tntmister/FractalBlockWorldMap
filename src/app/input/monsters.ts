@@ -23,7 +23,7 @@ export const monsters = [
 	},
 	{
 		name: "Light Marine",
-		drop: "Cannon Ammo",
+		drop: "Cannon Ammo x5",
 	},
 	{
 		name: "Marine",
@@ -35,7 +35,7 @@ export const monsters = [
 	},
 	{
 		name: "Rebel",
-		drop: "Cannon Ammo",
+		drop: "Cannon Ammo x25",
 	},
 	{
 		name: "Insurgent",
@@ -51,7 +51,7 @@ export const monsters = [
 	},
 	{
 		name: "Guerrilla",
-		drop: "Minigun Ammo",
+		drop: "Minigun Ammo x50",
 	},
 	{
 		name: "Hit Man",
@@ -59,7 +59,7 @@ export const monsters = [
 	},
 	{
 		name: "Mercinary",
-		drop: "Cannon Ammo",
+		drop: "Cannon Ammo x200",
 	},
 	{
 		name: "Commando",

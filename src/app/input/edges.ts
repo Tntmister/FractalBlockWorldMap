@@ -215,6 +215,7 @@ const inputEdges: InputEdge = {
 		},
 		"Quicksand Grass": {
 			distance: 1,
+			note: "Level 11",
 		},
 	},
 	"Red Apple Tree": {
@@ -642,7 +643,10 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"I1": {
-		"Williston Spiral": {
+		"Williston Minigun Spiral": {
+			distance: 1,
+		},
+		"Williston Health Spiral": {
 			distance: 1,
 		},
 		"Williston Field": {
@@ -650,7 +654,15 @@ const inputEdges: InputEdge = {
 			note: "Red Pillar",
 		},
 	},
-	"Williston Spiral": {
+	"Williston Minigun Spiral": {
+		"Williston Field": {
+			distance: 15,
+		},
+		"Stoney Air": {
+			distance: 1,
+		},
+	},
+	"Williston Health Spiral": {
 		"Williston Field": {
 			distance: 15,
 		},
@@ -1456,6 +1468,9 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Williston Wall": {
+		"Williston Ammo": {
+			distance: 2,
+		},
 		"Fir Tree": {
 			distance: 1,
 		},
@@ -1608,6 +1623,9 @@ const inputEdges: InputEdge = {
 	},
 	"Fanatic Lattice": {
 		"Fanatic Weed": {
+			distance: 5,
+		},
+		"Fanatic Weed Ammo": {
 			distance: 5,
 		},
 		"Fanatic Air": {
@@ -2018,6 +2036,9 @@ const inputEdges: InputEdge = {
 	},
 	"Small Cannon Gym": {
 		"Fanatic Weed": {
+			distance: 10,
+		},
+		"Fanatic Weed Ammo": {
 			distance: 10,
 		},
 	},
@@ -2438,26 +2459,19 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Guerilla Jungle": {
-		"Alpha Cube": {
-			distance: 5,
-			note: "Inside Trees",
-		},
-		"Hanging Fanatic Vine": {
-			distance: 1,
-		},
-		"I3 Common Gate": {
+		"Guerilla Tree": {
 			distance: 5,
 		},
-		"EMP City": {
+		"Fanatic Weed": {
 			distance: 1,
+		},
+		"I2 Library": {
+			distance: 10,
 		},
 		"Stoney Air": {
 			distance: 1,
 		},
 		"Large Cannon Pyramid": {
-			distance: 5,
-		},
-		"Fir Tree": {
 			distance: 5,
 		},
 		"Spruce Tree": {
@@ -2466,14 +2480,43 @@ const inputEdges: InputEdge = {
 		"Small White Flower": {
 			distance: 5,
 		},
-		"Scorpius Portal": {
+	},
+	"Guerilla Tree": {
+		"Alpha Cube": {
+			distance: 5,
+		},
+		"Cannon Ammo Grab": {
+			distance: 5,
+		},
+		"Hanging Fanatic Vine": {
+			distance: 1,
+		},
+		"I3 Common Gate": {
+			distance: 5,
+		},
+		"Minigun Forest Ammo": {
+			distance: 5,
+		},
+		"EMP City": {
+			distance: 1,
+		},
+		"Guerilla Tree Trunk": {
 			distance: 10,
+		},
+	},
+	"Guerilla Tree Trunk": {
+		"Scorpius Portal": {
+			distance: 5,
 		},
 		"Danville": {
 			distance: 10,
 		},
-		"Small Cannon Gym": {
+		"Guerilla Tree Trunk Treasure": {
 			distance: 10,
+		},
+		"Rainbow Flower": {
+			distance: 40,
+			note: "Rare",
 		},
 	},
 	"Spruce Tree": {
@@ -2686,7 +2729,7 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Mystic Vine 1": {
-		"Small Cannon Gym": {
+		"Cannon Ammo Grab": {
 			distance: 10,
 		},
 		"Vine Shaft Column": {
@@ -4224,6 +4267,10 @@ const inputEdges: InputEdge = {
 		"Tweedle Haunted House 1": {
 			distance: 1,
 		},
+		"Ying Forest": {
+			distance: 5,
+			note: "Walls of Forts and Mazes",
+		},
 	},
 	"Small Laser Fort": {
 		"Paper Box": {
@@ -4335,7 +4382,7 @@ const inputEdges: InputEdge = {
 	"Pure Menger Sponge": {
 		"Pure Menger Sponge Treasure": {
 			distance: 10,
-			note: "Very Deep",
+			note: "Level 130+",
 		},
 	},
 	"Top of the World": {
@@ -5031,11 +5078,11 @@ const inputEdges: InputEdge = {
 	"Sun": {
 		"Red-Green Elevator": {
 			distance: 1,
-			note: "Net Shrink 1",
+			note: "Shrink",
 		},
 		"Solar System Elevator": {
 			distance: 1,
-			note: "Way out of Solar System",
+			note: "Grow",
 		},
 		"Infinity Flower": {
 			distance: 40,
@@ -5043,25 +5090,36 @@ const inputEdges: InputEdge = {
 	},
 	"Clay Planet": {
 		"Ying Forest": {
-			distance: 1,
+			distance: 5,
 		},
 		"Ying Air": {
-			distance: 5,
+			distance: 1,
 		},
-		"Blue Bubble Gauntlet": {
-			distance: 5,
+		"Planet Surface": {
+			distance: 1,
 		},
-		"The Bulk 1": {
+		"Clay Planet Treasure": {
 			distance: 20,
+		},
+		"Clay Planet Cavity": {
+			distance: 15,
+		},
+	},
+	"Clay Planet Treasure": {
+		"The Bulk 1": {
+			distance: 5,
 		},
 		"I3 WIG Flower": {
-			distance: 20,
+			distance: 5,
 			note: "Guranteed Real",
+		},
+		"Ying Air": {
+			distance: 1,
 		},
 	},
 	"Ice Moon": {
 		"Ice Cube": {
-			distance: 10,
+			distance: 5,
 		},
 		"Orange": {
 			distance: 1,
@@ -5074,29 +5132,45 @@ const inputEdges: InputEdge = {
 		},
 		"Ying Air": {
 			distance: 1,
+		},
+		"Ice Moon Treasure": {
+			distance: 15,
 		},
 	},
 	"Gamma Moon": {
 		"Orange": {
 			distance: 1,
 		},
+		"Gamma Moon Treasure": {
+			distance: 20,
+		},
 	},
 	"Small Minigun Planet": {
-		"Ying Forest": {
+		"Planet Surface": {
 			distance: 1,
 		},
 		"Ying Air": {
 			distance: 15,
 		},
+	},
+	"Planet Surface": {
+		"Jumbo Yellow Flower": {
+			distance: 1,
+		},
 		"Buttercup": {
 			distance: 1,
 		},
-		"Orange Flower": {
-			distance: 1,
-			note: "Orange Pyramid",
+		"Jericho": {
+			distance: 5,
+			note: "Rare",
 		},
-		"Jumbo Yellow Flower": {
-			distance: 1,
+		"Golden Yellow Flower": {
+			distance: 5,
+			note: "Rare",
+		},
+		"Blue Bubble Gauntlet": {
+			distance: 5,
+			note: "Rare",
 		},
 	},
 	"Moon Debris": {
@@ -5121,7 +5195,7 @@ const inputEdges: InputEdge = {
 	"Small Yellow Flower": {
 		"Small Cannon Pyramid": {
 			distance: 10,
-			note: "x3",
+			note: "Chance for 3",
 		},
 		"Ying Forest": {
 			distance: 1,
@@ -5130,6 +5204,9 @@ const inputEdges: InputEdge = {
 			distance: 1,
 		},
 		"Yellow Flower City": {
+			distance: 5,
+		},
+		"Small Yellow Flower Treasure": {
 			distance: 10,
 		},
 		"SYF Blue Rings": {
@@ -5154,9 +5231,19 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Small Cannon Pyramid": {
+		"Small Cannon Pyramid Treasure": {
+			distance: 5,
+		},
+		"Small Cannon Pyramid Special Treasure": {
+			distance: 15,
+		},
+	},
+	"Small Cannon Pyramid Special Treasure": {
 		"Jumbo Yellow Flower": {
-			distance: 10,
-			note: "Small chance",
+			distance: 1,
+		},
+		"Ying Forest": {
+			distance: 1,
 		},
 	},
 	"Jumbo Yellow Flower": {
