@@ -34,8 +34,8 @@ input[type="radio"] {
 	background-color: var(--background);
 	margin: 0;
 	border: 2px solid var(--foreground);
-	width: 20px;
-	height: 20px;
+	min-width: 20px;
+	min-height: 20px;
 	display: grid;
 	place-content: center;
 }
@@ -51,8 +51,8 @@ input[type="radio"] {
 input[type="checkbox"]::before,
 input[type="radio"]::before {
 	content: "";
-	width: 10px;
-	height: 10px;
+	min-width: 10px;
+	min-height: 10px;
 	transform: scale(0);
 	transition: 120ms transform ease-in-out;
 	box-shadow: inset 1em 1em var(--foreground);
