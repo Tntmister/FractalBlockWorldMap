@@ -67,26 +67,49 @@ const startingPath: nodeName[] = [
 	"Tutorial 1",
 ];
 
-const initPathStack = [
-	{
-		node: nodes.get(startingPath[0])!,
-		distance: 0,
-		id: -1,
-	},
-	...startingPath
-		.slice(1)
-		.map(
-			(nodeName, index) =>
-				nodes.get(startingPath[index])!.edges.find((edge) => edge.node.name == nodeName)!,
-		),
-];
+function nodeListToPathStack(nodeNames: nodeName[]): Edge[] {
+	try {
+		return [
+			{
+				node: nodes.get(nodeNames[0])!,
+				distance: 0,
+				id: -1,
+			},
+			...nodeNames
+				.slice(1)
+				.map(
+					(nodeName, index) =>
+						nodes
+							.get(nodeNames[index])!
+							.edges.find((edge) => edge.node.name == nodeName)!,
+				),
+		];
+	} catch (error) {
+		console.warn("Error loading saved path:" + error);
+		return [];
+	}
+}
+const initPathStack = nodeListToPathStack(startingPath);
 
 export default function Main() {
 	// eslint-disable-next-line prefer-const
-	let [pathStack, setPathStack] = useState<Node["edges"]>(initPathStack);
+	let [pathStack, setPathStackState] = useState<Edge[]>(initPathStack);
+
+	function setPathStack(pathStack: Edge[]) {
+		setPathStackState(pathStack);
+		localStorage.setItem(
+			"nodeNameList",
+			JSON.stringify(pathStack.map((edge) => edge.node.name)),
+		);
+	}
 
 	useEffect(() => {
 		document.title = "Fractal Block World Map";
+		const localNodeNameList = localStorage.getItem("nodeNameList");
+		const localPathStack = localNodeNameList
+			? nodeListToPathStack(JSON.parse(localNodeNameList))
+			: null;
+		setPathStack(localPathStack && localPathStack.length > 0 ? localPathStack : initPathStack);
 	}, []);
 
 	const currentNode = useMemo(() => pathStack.at(-1)!.node, [pathStack]);
