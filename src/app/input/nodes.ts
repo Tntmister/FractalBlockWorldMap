@@ -8,12 +8,11 @@ const INPUT_NODES = [
 		interactables: ["Waypoint", "Save", "Respawn", "Bookmark", "Out-Only Waypoint"],
 		notes: "Secret combination to reach Oranges is shrinking in the sequence Floor -> Branch -> Floor -> Branch -> Floor -> Floor -> Floor",
 	},
+	// depth 50+ version of ying forest only has data about what's exclusive to it
 	{
 		name: "Ying Forest Depth 50+",
 		monsters: ["Minor Rat"],
 		items: ["200% Health 100% Armor", "Railgun Ammo", "Laser Ammo"],
-		upgrades: ["Cannon Damage", "Plasma Damage", "Health"],
-		interactables: ["Waypoint", "Save", "Respawn", "Bookmark", "Out-Only Waypoint"],
 	},
 	{
 		name: "Tutorial 1",
@@ -378,28 +377,35 @@ const INPUT_NODES = [
 		},
 	},
 	{
-		name: "Outer Crust A",
+		name: "Orange Mantle Cave",
+		items: ["Minigun Ammo", "Railgun Ammo"],
 	},
 	{
-		name: "Outer Crust B",
+		name: "Orange Outer Crust",
+		items: ["200% Health 100% Armor", "Rocket Ammo", "Nuke Ammo"],
+		monsters: ["Rebel", "Arch Menace Male", "Minor Rat"],
+		upgrades: ["Rocket Damage", "Rocket Radius"],
+		interactables: ["Save"],
 	},
 	{
-		name: "Outer Mantle",
+		name: "Orange Outer Mantle",
 		interactables: ["Waypoint", "Save", "Bookmark", "Buy Station"],
+		items: ["Railgun Ammo", "Minigun Ammo", "Rocket Ammo", "Laser Ammo"],
 	},
 	{
-		name: "Outer Mantle Secret",
-		upgrades: ["Rocket", "Minigun"],
+		name: "Orange Outer Mantle Secret",
+		upgrades: ["Rocket Velocity x1", "Minigun Max Ammo x1"],
+		secretTrophy: true,
 	},
 	{
 		name: "Red-Green Elevator",
 	},
 	{
-		name: "Inner Crust",
+		name: "Orange Inner Crust",
 	},
 	{
-		name: "Inner Mantle",
-		interactables: ["Waypoint", "Bookmark", "Buy Station", "Save"],
+		name: "Orange Inner Mantle",
+		interactables: ["Waypoint", "Out-Only Waypoint", "Bookmark", "Buy Station", "Save"],
 	},
 	{
 		name: "Huntington",
@@ -503,7 +509,12 @@ const INPUT_NODES = [
 	{
 		name: "Tau Cave Flower",
 		interactables: ["Save", "Pink Sphere"],
-		upgrades: ["Rocket", "Laser", "Random Health", "Railgun"],
+		upgrades: ["Random Health x1"],
+	},
+	{
+		name: "Tau Cave Flower Treasure",
+		interactables: ["Pink Ring"],
+		upgrades: ["Rocket Radius x4", "Rocket Velocity x4", "Random Health x4", ["Rocket Radius", "Laser Freeze Time"]],
 	},
 	{
 		name: "Oak Tree",
@@ -633,16 +644,6 @@ const INPUT_NODES = [
 		items: ["Gold", "Plasma Ammo"],
 	},
 	{
-		name: "Flare Weapon Mod",
-		upgrades: ["Plasma"],
-		items: ["Plasma Ammo"],
-	},
-	{
-		name: "Tommy Gun Weapon Mod",
-		upgrades: ["Cannon"],
-		items: ["Cannon Ammo"],
-	},
-	{
 		name: "Weapon Library",
 	},
 	{
@@ -741,12 +742,14 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Hinesburg",
-		interactables: ["Markers", "Buy Station", "Waypoint", "Respawn", "Save", "Common Sell Station"],
-		items: ["Gold", "Armor", "Nuke Ammo", "Railgun Ammo", "EMP Ammo"],
+		interactables: ["Markers", "Buy Station", "Waypoint", "Out-Only Waypoint", "Respawn", "Save", "Common Sell Station"],
+		items: ["100 Gold", "100% Armor x1", "Nuke Ammo x3", "Railgun Ammo x100", "EMP Ammo x3"],
+		blueActiveZoneDestination: {
+			nodeName: "Hinesburg",
+		},
 	},
 	{
 		name: "Outer Space 2 Debris",
-		items: ["Laser Ammo"],
 	},
 	{
 		name: "Sun",
@@ -1066,9 +1069,9 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Bristol",
-		items: ["Gold", "Armor", "I1 Stable Singletons Key"],
+		items: ["100 Gold", "100% Armor", "I1 Stable Singletons Key"],
 		upgrades: ["Minigun Damage x1", "Minigun Fire Rate x1"],
-		interactables: ["Pink Sphere", "Waypoint", "Respawn", "Common Sell Station", "Buy Station", "Markers"],
+		interactables: ["Pink Sphere", "Waypoint", "Out-Only Waypoint", "Respawn", "Common Sell Station", "Buy Station", "Markers"],
 		trophy: true,
 		secretTrophy: true,
 		notes: "Secret trophy: Go backwards through the maze after you've grown.",
@@ -1380,6 +1383,21 @@ const INPUT_NODES = [
 			nodeName: "Fanatic Spire",
 			note: "Entrance",
 		},
+	},
+	{
+		name: "Fanatic Spire Mid Treasure",
+		upgrades: [
+			"Cannon Fire Rate x2",
+			"Cannon Velocity x2",
+			"Cannon Num Shots x1",
+			"Cannon Max Ammo x2",
+			"Cannon Damage x1",
+			"Random Health x4",
+			"EMP Radius x1",
+			"EMP Freeze Time x2",
+		],
+		interactables: ["Waypoint", "Save", "Buy Station"],
+		items: ["Rocket Ammo x160", "Cannon Ammo x200", "Railgun Ammo x100", "EMP Ammo x2", "Nuke Ammo x2", "900 Gold"],
 	},
 	{
 		name: "Fanatic Spire Treasure",
@@ -1800,9 +1818,7 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Fanatic Grass",
-		items: ["Health", "Armor", "Nuke Ammo", "Gold", "Dark Hole Ammo", "Railgun Ammo", "Minigun Ammo", "Homing Ammo", "Rocket Ammo", "Laser Ammo", "Cannon Ammo", "Plasma Ammo"],
-		upgrades: ["Non-Laser Max Ammo x1"],
-
+		items: ["200% Health 100% Armor"],
 		monsters: ["Fanatic"],
 	},
 	{
@@ -2671,9 +2687,9 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Montreal",
-		items: ["Armor", "Gold", "I2 Stable Singletons Key"],
+		items: ["100% Armor x1", "100 Gold", "I2 Stable Singletons Key"],
 		monsters: ["Major Goon", "Dissident"],
-		upgrades: ["Railgun Fire Rate"],
+		upgrades: ["Railgun Fire Rate x1"],
 		interactables: ["Common Sell Station", "Buy Station", "Waypoint", "Markers", "Respawn", "Save", "Out-Only Waypoint", "Buy Blue Key"],
 		trophy: true,
 	},
@@ -3007,8 +3023,8 @@ const INPUT_NODES = [
 		monsters: ["Marine"],
 	},
 	{
-		name: "Outer Space 1 Bunker",
-		items: ["Armor", "Homing Ammo", "Rocket Ammo", "EMP Ammo"],
+		name: "Outer Space Bunker",
+		items: ["600% Armor", "Homing Ammo x2000", "Rocket Ammo x20", "EMP Ammo x1"],
 		interactables: ["Save", "Buy Station"],
 	},
 	{
@@ -3065,21 +3081,36 @@ const INPUT_NODES = [
 		name: "Richmond",
 		monsters: ["Collapsed Spirit"],
 		upgrades: ["Cannon Num Shots x1", "Cannon Velocity x1", "Cannon Fire Rate x1", "Random Health x1"],
-		items: ["100% Armor", "500 EXP", "80 Gold"],
+		items: ["100% Armor x1", "500 EXP", "80 Gold"],
 		interactables: ["Waypoint", "Save", "Common Sell Station", "Buy Station", "Respawn", "Markers", "Pink Ring", "Out-Only Waypoint"],
 		trophy: true,
+		notes: "Secret is at the top of the tower with the waypoint, you must shrink at the top of a different tower and travel through the concrete to reach the secret",
 	},
 	{
 		name: "Richmond Sewers",
 		monsters: ["Minor Rat", "Rebel", "Arch Menace Female"],
-		upgrades: ["Cannon", "Rocket", "Homing", "Health", "EMP"],
-		interactables: ["Waypoint"],
+		upgrades: [
+			"Cannon Damage x6",
+			["Rocket Velocity", "Rocket Max Ammo", "Rocket Damage"],
+			"Rocket Radius x1",
+			"Random Health x1",
+			"Homing Velocity x1",
+			"Cannon Num Shots x1",
+			"Cannon Damage x2",
+			"EMP Freeze Time x1",
+		],
+		interactables: ["Pink Sphere", "Out-Only Waypoint", "Waypoint", "Save"],
+		items: ["Gold", "Rocket Ammo", "20 Gold", "100% Armor"],
+		blueActiveZoneDestination: {
+			nodeName: "Richmond Sewers",
+			note: "Entrance",
+		},
 	},
 	{
 		name: "Richmond Secret",
 		interactables: ["Pink Ring", "Save", "Pink Sphere"],
-		items: ["Minigun Ammo", "Rocket Ammo", "Laser Ammo", "Railgun Ammo", "EMP Ammo", "Nuke Ammo"],
-		upgrades: ["Laser Freeze Time"],
+		items: ["Minigun Ammo x150", "Rocket Ammo x60", "Laser Ammo x32", "Railgun Ammo x100", "EMP Ammo x2", "Nuke Ammo x2"],
+		upgrades: ["Laser Freeze Time x1"],
 		secretTrophy: true,
 	},
 	{
@@ -3099,6 +3130,9 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Yellow Flower Wall",
+	},
+	{
+		name: "Yellow Flower Wall Ammo",
 		items: ["3 Gold", "Cannon Ammo x5", "Laser Ammo x8", "Rocket Ammo x5", "Homing Ammo x20", "Minigun Ammo x12", "Dark Hole Ammo x1"],
 	},
 	{
@@ -3123,12 +3157,17 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Richmond Library",
-		upgrades: ["Rocket"],
-		interactables: ["Waypoint", "Buy Nuke", "Blue Ring"],
+		upgrades: ["Rocket Max Ammo x1"],
+		interactables: ["Waypoint", "Buy Nuke", "Blue Ring", "Pink Sphere"],
+		trophy: true,
+		secretTrophy: true,
+		notes: "Secret Trophy: Behind Yellow Cube image behind Stoney Air image",
 	},
 	{
 		name: "Richmond Library Arcade",
-		upgrades: ["Health", "Railgun", "Laser", "Rocket"],
+		interactables: ["Pink Ring"],
+		items: ["Cannon Ammo", "Laser Ammo", "Rocket Ammo", "Homing Ammo", "Minigun Ammo", "Railgun Ammo", "EMP Ammo", "Nuke Ammo", "Extra 100% Health"],
+		upgrades: ["Random Health x4", "Railgun Fire Rate x1", "Laser Freeze Time x1", "Rocket Radius x1", "Rocket Velocity x1"],
 	},
 	{
 		name: "Bedroom",
@@ -3245,21 +3284,36 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Grey Lattice",
-		items: ["Armor", "Health", "Shield", "Laser Ammo", "Minigun Ammo", "Homing Ammo", "Cannon Ammo", "Rocket Ammo"],
-		upgrades: ["Plasma Velocity", "Non-Laser Max Ammo x1"],
+		items: ["100% Armor", "200% Health", "Shield", "Laser Ammo"],
+		upgrades: ["Plasma Velocity", "Random Health"],
 	},
 	{
-		name: "Slow Exit Maze",
+		name: "Ying World Ammo",
+		items: ["Laser Ammo x32", "Minigun Ammo x50", "Homing Ammo x100", "Cannon Ammo x25", "Rocket Ammo x20"],
+		upgrades: ["Non-Laser Max Ammo x1"],
+	},
+	{
+		name: "Slow Exit Maze Island",
 		monsters: ["Goblin", "Light Marine", "Heavy Marine", "Insurgent"],
-		upgrades: ["Minigun Damage", "Minigun Max Ammo", "Laser Max Ammo"],
+		interactables: ["Save", "Waypoint"],
+	},
+	{
+		name: "Slow Exit Maze Treasure",
+		upgrades: ["Minigun Damage x2", "Minigun Max Ammo x1", "Laser Max Ammo x1"],
 		interactables: ["Save", "Waypoint", "Pink Ring"],
-		items: ["Armor"],
+		items: ["1000% Armor"],
 		trophy: true,
+	},
+	{
+		name: "Dummy Arcade",
+		items: ["Cannon Ammo", "Laser Ammo", "Rocket Ammo", "Homing Ammo", "Minigun Ammo", "Railgun Ammo", "EMP Ammo", "Nuke Ammo", "Extra 100% Health"],
+		monsters: ["Blood Boy", "Greater Blood Boy"],
+		interactables: ["Pink Ring", "Pink Sphere"],
 	},
 	{
 		name: "Easy Minigun Tower",
 		interactables: ["Pink Ring", "Pink Sphere"],
-		items: ["Armor", "Health"],
+		items: ["600% Armor", "200% Health"],
 		upgrades: ["Minigun Damage", "Minigun Max Ammo", "Laser Damage"],
 	},
 	{
@@ -3573,8 +3627,8 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Alpha Menger Sponge",
-		monsters: ["Science Core", "Anti Blue Abomination", "Red Lamprey"],
-		upgrades: ["Nuke Damage"],
+		monsters: ["Science Core", "Anti Blue Abomination", "Mothership", "Red Lamprey"],
+		upgrades: ["Nuke Damage", "Nuke Velocity"],
 		items: ["Nuke Ammo", "Minigun Ammo", "Railgun Ammo"],
 		trophy: true,
 	},
@@ -3720,7 +3774,9 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Yellow Cube Secret",
-		upgrades: ["Health", "Dark Hole", "Rocket"],
+		interactables: ["Waypoint", "Save"],
+		upgrades: ["Health Regen x2", "Dark Hole Max Ammo x3", "Dark Hole Damage x3", "Dark Hole Velocity x3", "Rocket Radius x4"],
+		secretTrophy: true,
 	},
 	{
 		name: "Stoney Air Cave 1",
@@ -3866,19 +3922,19 @@ const INPUT_NODES = [
 	{
 		name: "Yellow Flower City",
 		interactables: ["Pink Ring"],
-		monsters: ["Insurgent", "Goblin"],
-		items: ["Cannon Ammo", "Plasma Ammo"],
+		monsters: ["Insurgent", "Dissident", "Mercinary", "Goblin"],
+		items: ["Cannon Ammo", "Plasma Ammo", "Gold", "100% Health 100% Armor"],
+		notes: "Small Cannon Pyramids are in the orange towers\nSecret Trophy and Pure Menger Sponge: Shrink in the bridge then repeatedly shrink near numbers until 6.",
 	},
 	{
 		name: "Orange Ground City",
 		interactables: ["Pink Ring"],
-		monsters: ["Insurgent", "Goblin"],
-		items: ["Cannon Ammo", "Health", "Armor"],
+		monsters: ["Marine"],
 	},
 	{
 		name: "Ying World Shell Green Island",
-		interactables: ["Waypoint", "Pink Ring"],
-		upgrades: ["Laser", "Health"],
+		interactables: ["Waypoint", "Pink Ring", "Save"],
+		upgrades: ["Laser Damage x1", "Max Health x1"],
 		secretTrophy: true,
 		notes: "Secret Trophy: Shrink into the concrete at the bottom of the island.",
 	},
@@ -3890,8 +3946,17 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Yellow Flower City Secret",
-		upgrades: ["Minigun"],
-		items: ["Railgun Ammo", "Rocket Ammo", "Minigun Ammo", "Laser Ammo", "Armor", "Health"],
+		upgrades: [["Minigun Fire Rate x1", "Rocket Radius x1"]],
+		items: [
+			["Rocket Ammo x100", "Nuke Ammo x1", "Railgun Ammo x50"],
+			"Rocket Ammo x60",
+			"Minigun Ammo x150",
+			"Laser Ammo x32",
+			"1000% Armor",
+			"Extra 100% Health x3",
+			"2000 EXP",
+		],
+		secretTrophy: true,
 	},
 ] as const satisfies readonly InputNode[];
 

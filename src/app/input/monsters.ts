@@ -431,6 +431,9 @@ export const monsters = [
 		name: "Blood Boy",
 	},
 	{
+		name: "Greater Blood Boy",
+	},
+	{
 		name: "Dragoon",
 	},
 	{

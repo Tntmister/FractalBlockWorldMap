@@ -137,31 +137,11 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Ying Forest Depth 50+": {
-		"Ying Air": {
-			distance: 1,
-		},
-		"Noob Maze Flower": {
-			distance: 1,
-		},
 		"Small Yellow Flower": {
 			distance: 1,
 		},
-		"Small Black Flower": {
-			distance: 1,
-		},
-		"Quicksand Grass": {
-			distance: 1,
-			note: "Save Points",
-		},
-		"Menace Hive": {
-			distance: 1,
-			note: "Hanging from branches",
-		},
-		"Unremembered Tower": {
-			distance: 1,
-		},
-		"Buttercup": {
-			distance: 1,
+		"Tau Cave Flower": {
+			distance: 5,
 		},
 	},
 	"Unremembered Tower": {
@@ -1690,10 +1670,13 @@ const inputEdges: InputEdge = {
 			distance: 1,
 		},
 		"Fanatic Spire Scaffold": {
-			distance: 5,
+			distance: 4,
 		},
 		"Small Blue Flower (Primary)": {
 			distance: 10,
+		},
+		"Fanatic Spire Mid Treasure": {
+			distance: 15,
 		},
 		"Fanatic Spire Treasure": {
 			distance: 30,
@@ -3456,6 +3439,9 @@ const inputEdges: InputEdge = {
 		"Large Cannon Pyramid": {
 			distance: 30,
 		},
+		"Fanatic Weed Ammo": {
+			distance: 5,
+		},
 	},
 	"Willow Tree": {
 		"Stoney Air": {
@@ -3606,7 +3592,7 @@ const inputEdges: InputEdge = {
 			distance: 1,
 			note: "On top",
 		},
-		"Outer Crust A": {
+		"Orange Outer Crust": {
 			distance: 10,
 		},
 	},
@@ -3615,21 +3601,24 @@ const inputEdges: InputEdge = {
 			distance: 1,
 		},
 	},
-	"Outer Crust A": {
+	"Orange Outer Crust": {
 		"Ying Air": {
-			distance: 20,
+			distance: 15,
 		},
-		"Outer Crust B": {
-			distance: 20,
-		},
-	},
-	"Outer Crust B": {
-		"Outer Mantle": {
-			distance: 20,
+		"Orange Outer Mantle": {
+			distance: 25,
 		},
 	},
-	"Outer Mantle": {
-		"Inner Crust": {
+	"Orange Mantle Cave": {
+		"Stoney Air": {
+			distance: 3,
+		},
+	},
+	"Orange Outer Mantle": {
+		"Orange Mantle Cave": {
+			distance: 5,
+		},
+		"Orange Inner Crust": {
 			distance: 20,
 		},
 		"Blue Bubble": {
@@ -3642,7 +3631,7 @@ const inputEdges: InputEdge = {
 			distance: 5,
 			note: "Net Shrink 1",
 		},
-		"Outer Mantle Secret": {
+		"Orange Outer Mantle Secret": {
 			distance: 30,
 			note: "Yellow Cube",
 		},
@@ -3652,12 +3641,15 @@ const inputEdges: InputEdge = {
 			distance: 1,
 		},
 	},
-	"Inner Crust": {
-		"Inner Mantle": {
+	"Orange Inner Crust": {
+		"Orange Inner Mantle": {
 			distance: 15,
 		},
 	},
-	"Inner Mantle": {
+	"Orange Inner Mantle": {
+		"Orange Mantle Cave": {
+			distance: 5,
+		},
 		"Huntington": {
 			distance: 15,
 		},
@@ -3685,7 +3677,7 @@ const inputEdges: InputEdge = {
 		"Camel's Hump": {
 			distance: 1,
 		},
-		"Tommy Gun Weapon Mod": {
+		"Weapon Library": {
 			distance: 1,
 		},
 	},
@@ -4050,6 +4042,9 @@ const inputEdges: InputEdge = {
 		"Ying Forest": {
 			distance: 1,
 		},
+		"Yellow Flower Wall Ammo": {
+			distance: 2,
+		},
 	},
 	"Red Cave": {
 		"Jumbo Yellow Flower": {
@@ -4071,10 +4066,16 @@ const inputEdges: InputEdge = {
 		"Ying Forest": {
 			distance: 1,
 		},
+		"Buttercup": {
+			distance: 2,
+		},
+		"Pink Tree": {
+			distance: 3,
+		},
 		"Tau Cave Flower": {
 			distance: 5,
 		},
-		"Pink Tree": {
+		"Small White Flower": {
 			distance: 5,
 		},
 		"Mossy Cellar": {
@@ -4087,6 +4088,10 @@ const inputEdges: InputEdge = {
 		},
 		"Stoney Air": {
 			distance: 5,
+		},
+		"Richmond Library Arcade": {
+			distance: 5,
+			arcade: true,
 		},
 	},
 	"Orange Flower": {
@@ -4105,17 +4110,28 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Tau Cave Flower": {
-		"Tau Cave Moon": {
-			distance: 20,
-		},
-		"Ying Forest": {
-			distance: 5,
+		"Quicksand Grass": {
+			distance: 1,
 		},
 		"Ying Air": {
 			distance: 1,
 		},
+		"Ying Forest": {
+			distance: 5,
+		},
 		"Jumbo Yellow Flower": {
 			distance: 10,
+		},
+		"Tau Cave Flower Treasure": {
+			distance: 20,
+		},
+	},
+	"Tau Cave Flower Treasure": {
+		"Tau Cave Moon": {
+			distance: 1,
+		},
+		"Ying Air": {
+			distance: 1,
 		},
 	},
 	"Tau Cave Moon": {
@@ -4326,16 +4342,6 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Tweedle Haunted House 2": {
-		"Flare Weapon Mod": {
-			distance: 10,
-		},
-	},
-	"Flare Weapon Mod": {
-		"Weapon Library": {
-			distance: 1,
-		},
-	},
-	"Tommy Gun Weapon Mod": {
 		"Weapon Library": {
 			distance: 1,
 		},
@@ -4369,16 +4375,21 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Grey Lattice": {
-		"Slow Exit Maze": {
+		"Slow Exit Maze Island": {
 			distance: 1,
 		},
 	},
-	"Slow Exit Maze": {
+	"Slow Exit Maze Island": {
 		"Easy Minigun Tower": {
 			distance: 1,
 		},
+		"Dummy Arcade": {
+			distance: 1,
+		},
+		"Slow Exit Maze Treasure": {
+			distance: 20,
+		},
 	},
-
 	"Pure Menger Sponge": {
 		"Pure Menger Sponge Treasure": {
 			distance: 10,
@@ -4966,7 +4977,7 @@ const inputEdges: InputEdge = {
 		"Outer Space 2": {
 			distance: 20,
 		},
-		"Outer Space 1 Bunker": {
+		"Outer Space Bunker": {
 			distance: 5,
 		},
 		"Medium Gold Asteroid": {
@@ -5216,18 +5227,20 @@ const inputEdges: InputEdge = {
 	"Yellow Flower City": {
 		"Small Cannon Pyramid": {
 			distance: 10,
-			note: "Orange X towers guranteed jumbo yellow flower",
 		},
 		"Quicksand Grass": {
 			distance: 5,
 		},
 		"Yellow Flower City Secret": {
 			distance: 20,
-			note: "Shrink until level 8",
 		},
 		"Pure Menger Sponge": {
 			distance: 20,
-			note: "Shrink until level 8",
+		},
+	},
+	"Yellow Flower City Secret": {
+		"Large Cannon Pyramid": {
+			distance: 5,
 		},
 	},
 	"Small Cannon Pyramid": {
