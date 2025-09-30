@@ -56,9 +56,11 @@ export function pathfindTo(
 ) {
 	let path = dijkstraPathfind(pathStack.at(-1)!.node.name, targetNodeName, nodes);
 	if (path) {
+		path = [pathStack.at(-1)!, ...path];
 		// if destination is only accessible thorugh a blue ring, jump to before that then pathfind to a blue ring
 		const impassableEdgeIndex = path.findIndex((edge) => edge.impassable);
 		if (impassableEdgeIndex > -1) {
+			const impassableEdgeId = path[impassableEdgeIndex].id;
 			path = path.slice(0, impassableEdgeIndex);
 			path.push(
 				...pathfindToInteractables(
@@ -78,7 +80,7 @@ export function pathfindTo(
 					path[impassableEdgeIndex - 1].node.name,
 				)!;
 				node.edges.forEach((edge, i) => {
-					if (edge.id == path![impassableEdgeIndex].id) {
+					if (edge.id == impassableEdgeId) {
 						node.edges.splice(i, 1);
 					}
 				});
@@ -104,7 +106,7 @@ export function pathfindTo(
 				);
 			}
 		}
-		return [pathStack.at(-1)!, ...path];
+		return path;
 	}
 	return null;
 }
