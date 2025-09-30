@@ -3,11 +3,11 @@ import { monster } from "../types";
 export const monsters = [
 	{
 		name: "Juggernaut",
-		drop: "Cannon Ammo",
+		drop: "Cannon Ammo x25",
 	},
 	{
 		name: "Tough Juggernaut",
-		drop: "Cannon Ammo",
+		drop: "Cannon Ammo x25",
 	},
 	{
 		name: "Unruly Juggernaut",
@@ -27,11 +27,11 @@ export const monsters = [
 	},
 	{
 		name: "Marine",
-		drop: "Minigun Ammo",
+		drop: "Minigun Ammo x12",
 	},
 	{
 		name: "Heavy Marine",
-		drop: "Minigun Ammo",
+		drop: "Minigun Ammo x50",
 	},
 	{
 		name: "Rebel",
@@ -39,7 +39,7 @@ export const monsters = [
 	},
 	{
 		name: "Insurgent",
-		drop: "Minigun Ammo",
+		drop: "Minigun Ammo x50",
 	},
 	{
 		name: "Dissident",
@@ -79,7 +79,7 @@ export const monsters = [
 	},
 	{
 		name: "Large Goon",
-		drop: "Laser Ammo",
+		drop: "Laser Ammo x32",
 	},
 	{
 		name: "Major Goon",
@@ -135,7 +135,7 @@ export const monsters = [
 	},
 	{
 		name: "Lesser Spider",
-		drop: "Minigun Ammo",
+		drop: "Minigun Ammo x50",
 	},
 	{
 		name: "Spider",
@@ -250,7 +250,7 @@ export const monsters = [
 	},
 	{
 		name: "Gnole",
-		drop: "Gold",
+		drop: "2 Gold",
 	},
 	{
 		name: "Demon",
@@ -321,23 +321,23 @@ export const monsters = [
 	},
 	{
 		name: "Lamprey",
-		drop: "Gold",
+		drop: "50 Gold",
 	},
 	{
 		name: "Yellow Lamprey",
-		drop: "Gold",
+		drop: "50 Gold",
 	},
 	{
 		name: "Green Lamprey",
-		drop: "Gold",
+		drop: "50 Gold",
 	},
 	{
 		name: "Red Lamprey",
-		drop: "Gold",
+		drop: "50 Gold",
 	},
 	{
 		name: "Blue Lamprey",
-		drop: "Gold",
+		drop: "50 Gold",
 	},
 	{
 		name: "Minor Beholder",
@@ -365,7 +365,7 @@ export const monsters = [
 	},
 	{
 		name: "Lesser Sliver",
-		drop: "Gold",
+		drop: "30 Gold",
 	},
 	{
 		name: "Sliver",
@@ -502,6 +502,9 @@ export const monsters = [
 	},
 	{
 		name: "Biblical Locust",
+	},
+	{
+		name: "Biblical Fly",
 	},
 	{
 		name: "Plague",

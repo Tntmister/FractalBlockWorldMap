@@ -93,18 +93,7 @@ type key =
 
 export type defenceUpgrade = "Random Health" | "Max Health" | "Health Regen" | "Armor Regen" | "RejuvenX";
 
-export type item =
-	| `${weaponType} Ammo x${number}`
-	| `${weaponType} Ammo`
-	| defenceItem
-	| `${defenceItem} x${number}`
-	| "Gold"
-	| `${number} Gold`
-	| `${number} EXP`
-	| "EXP"
-	| key
-	| "Health"
-	| "Armor"; // | "Health" | "Armor" temporary
+export type item = `${weaponType} Ammo x${number}` | `${weaponType} Ammo` | defenceItem | `${defenceItem} x${number}` | "Gold" | `${number} Gold` | `${number} EXP` | "EXP" | key;
 
 export type upgrade =
 	| `${weaponUpgrade} x${number}`
@@ -113,9 +102,7 @@ export type upgrade =
 	| `${defenceUpgrade} x${number}`
 	| defenceUpgrade
 	| "Telekinesis"
-	| "Marker Cost"
-	| weaponType
-	| "Health"; // | weaponType | "Health" temporary
+	| "Marker Cost";
 
 export const interactables = (
 	[
@@ -124,7 +111,12 @@ export const interactables = (
 		"Scarce Sell Station",
 		"Rare Sell Station",
 		"Buy Station",
-		"Buy Nuke",
+		"Buy Nuke 400",
+		"Buy Nuke 300",
+		"Buy Nuke 250",
+		"Buy Nuke 200",
+		"Buy Nuke 150",
+		"Buy Nuke 100",
 		"Markers",
 		"Waypoint",
 		"Bookmark",

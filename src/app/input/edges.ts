@@ -12,6 +12,10 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Tutorial 2": {
+		"Tutorial Secret": {
+			distance: 5,
+			requiresKey: "Yellow Key",
+		},
 		"Tutorial 1": {
 			distance: 1,
 		},
@@ -273,7 +277,7 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Ying Deep Air": {
-		"Ying Deep Air Cube": {
+		"Ying Air Core": {
 			distance: 5,
 		},
 	},
@@ -586,6 +590,9 @@ const inputEdges: InputEdge = {
 		},
 		"Health Tower": {
 			distance: 1,
+		},
+		"Weapon Library": {
+			distance: 20,
 		},
 	},
 	"I1 Library": {
@@ -1485,6 +1492,10 @@ const inputEdges: InputEdge = {
 	},
 	"WIG Prison": {
 		"Toronto": {
+			distance: 1,
+			note: "Rainbow Flower Image",
+		},
+		"WIG Prison Locker": {
 			distance: 1,
 			note: "Rainbow Flower Image",
 		},
@@ -3133,6 +3144,12 @@ const inputEdges: InputEdge = {
 		"Yellow Mushroom": {
 			distance: 15,
 		},
+		"Red Mushroom Small Treasure": {
+			distance: 20,
+		},
+		"Red Mushroom Treasure": {
+			distance: 25,
+		},
 	},
 	"I2 Fast Gate": {
 		"I2 WIG Flower": {
@@ -3763,7 +3780,26 @@ const inputEdges: InputEdge = {
 		},
 		"Yellow Cube Secret": {
 			distance: 5,
-			impassable: true,
+		},
+	},
+	"Rich Yellow Cube": {
+		"Mossy Air": {
+			distance: 1,
+		},
+		"Stoney Sanctuary": {
+			distance: 5,
+		},
+		"Ying Forest": {
+			distance: 1,
+		},
+		"Orange Flower": {
+			distance: 1,
+		},
+		"Small Cannon Pyramid": {
+			distance: 1,
+		},
+		"Rich Yellow Cube Secret": {
+			distance: 5,
 		},
 	},
 	"Stoney Sanctuary": {
@@ -3792,7 +3828,23 @@ const inputEdges: InputEdge = {
 			distance: 30,
 		},
 	},
+	"Stoney Library": {
+		"Stoney Library Treasure": {
+			distance: 5,
+			requiresKey: "Yellow Key",
+		},
+	},
 	"Yellow Cube Secret": {
+		"Small Yellow Flower": {
+			distance: 1,
+			note: "x24",
+		},
+		"Noob Maze Flower": {
+			distance: 1,
+			note: "x75",
+		},
+	},
+	"Rich Yellow Cube Secret": {
 		"Orange Flower": {
 			distance: 1,
 			note: "x8",
@@ -3902,10 +3954,13 @@ const inputEdges: InputEdge = {
 			distance: 5,
 		},
 		"Yellow Rocket Treasure": {
-			distance: 40,
+			distance: 25,
 		},
 	},
 	"Mossy Air Cube": {
+		"Mossy Air Cube Treasure": {
+			distance: 20,
+		},
 		"Ying Forest": {
 			distance: 1,
 		},
@@ -3921,7 +3976,7 @@ const inputEdges: InputEdge = {
 		"Tweedle-Dum Air": {
 			distance: 5,
 		},
-		"Tau Cave Flower": {
+		"Tau Cave Moon Case": {
 			distance: 5,
 		},
 		"Small Yellow Flower": {
@@ -3940,9 +3995,48 @@ const inputEdges: InputEdge = {
 			distance: 10,
 			note: "In Between Shells",
 		},
+	},
+	"Mossy Air Cube Treasure": {
+		"Tau Caves Ammo": {
+			distance: 5,
+		},
 		"Mossy Basement": {
-			distance: 20,
-			note: "Center",
+			distance: 5,
+		},
+		"Small Yellow Flower": {
+			distance: 5,
+		},
+		"Jumbo Yellow Flower": {
+			distance: 5,
+		},
+		"Small White Flower": {
+			distance: 5,
+		},
+		"Small Black Flower": {
+			distance: 5,
+		},
+		"Orange": {
+			distance: 5,
+		},
+		"Ying Flower": {
+			distance: 5,
+		},
+		"Tweedle-Dum Air": {
+			distance: 5,
+		},
+		"Tau Cave Flower": {
+			distance: 5,
+		},
+	},
+	"Tau Cave Moon Case": {
+		"Tau Cave Moon": {
+			distance: 1,
+		},
+		"Stoney Air": {
+			distance: 1,
+		},
+		"Ying Forest": {
+			distance: 1,
 		},
 	},
 	"Mossy Basement": {
@@ -3957,14 +4051,17 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Mossy Island": {
-		"Tall Rail Tower": {
+		"Mossy Air Ammo": {
 			distance: 5,
+		},
+		"Tall Rail Tower": {
+			distance: 10,
 		},
 		"Buttercup": {
-			distance: 5,
+			distance: 2,
 		},
 		"Mossy Cellar": {
-			distance: 5,
+			distance: 2,
 		},
 	},
 	"Mossy Cellar": {
@@ -3977,7 +4074,7 @@ const inputEdges: InputEdge = {
 		"Richmond": {
 			distance: 20,
 		},
-		"Ying Forest": {
+		"Tall Rail Tower": {
 			distance: 20,
 		},
 	},
@@ -4022,9 +4119,8 @@ const inputEdges: InputEdge = {
 		"Yellow Flower Wall": {
 			distance: 1,
 		},
-		"Red Cave": {
+		"Richmond Red Caves": {
 			distance: 5,
-			note: "1 per Richmond",
 		},
 	},
 	"Richmond Info Building": {
@@ -4046,7 +4142,7 @@ const inputEdges: InputEdge = {
 			distance: 2,
 		},
 	},
-	"Red Cave": {
+	"Richmond Red Caves": {
 		"Jumbo Yellow Flower": {
 			distance: 15,
 		},
@@ -4438,7 +4534,7 @@ const inputEdges: InputEdge = {
 		"Mylantis": {
 			distance: 40,
 		},
-		"Large Gold Asteroid": {
+		"High Gold Asteroid": {
 			distance: 5,
 		},
 		"Lockbox": {
@@ -4448,6 +4544,11 @@ const inputEdges: InputEdge = {
 		"Grand Lockbox": {
 			distance: 20,
 			requiresKey: "Yellow Key",
+		},
+	},
+	"High Gold Asteroid": {
+		"High Gold Asteroid Treasure": {
+			distance: 15,
 		},
 	},
 	"Topaz": {
@@ -5220,8 +5321,22 @@ const inputEdges: InputEdge = {
 		"Small Yellow Flower Treasure": {
 			distance: 10,
 		},
+		"Small Yellow Flower Meme Treasure": {
+			distance: 5,
+		},
 		"SYF Blue Rings": {
 			distance: 40,
+		},
+	},
+	"Small Yellow Flower Meme Treasure": {
+		"Moon Flower": {
+			distance: 20,
+		},
+		"Quicksand Grass": {
+			distance: 50,
+		},
+		"Small White Flower": {
+			distance: 50,
 		},
 	},
 	"Yellow Flower City": {
