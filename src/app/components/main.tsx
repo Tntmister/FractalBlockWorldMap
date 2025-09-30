@@ -397,7 +397,7 @@ export default function Main() {
 			<div id='nodeContainer'>
 				<NodeInfo node={currentNode}></NodeInfo>
 
-				{(currentNode.edges.length > 0 || blueActiveZoneEdge) && (
+				{(currentNode.edges.length > 0 || blueActiveZoneEdge || pinkSphereEdge) && (
 					<div id='edgesContainer'>
 						Possible destinations:
 						<div id='edgesList'>
