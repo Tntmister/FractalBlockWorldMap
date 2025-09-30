@@ -322,12 +322,5 @@ export const labels: Map<item | upgrade, { label?: string; imageName?: string }>
 		"Burlington Combination Lock": {
 			imageName: "Omega",
 		},
-		//temporary until all generic "Armor" and "Health" locations are fixed
-		"Health": {
-			imageName: "100%25 Health",
-		},
-		"Armor": {
-			imageName: "5%25 Armor",
-		},
 	}) as [item | upgrade, { label?: string; imageName?: string }][],
 );

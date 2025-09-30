@@ -206,14 +206,16 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 												{!upgrade.includes("Non-") && (
 													<Image
 														className='icon-small'
-														src={`./images/icons/${
-															labels.get(
-																upgrade.replace(
-																	/ x\d+$/i,
-																	"",
-																) as upgrade,
-															)?.imageName ?? upgrade
-														}.webp`}
+														src={(() => {
+															const upgradeName = upgrade.replace(
+																/ x\d+$/i,
+																"",
+															) as upgrade;
+															return `./images/icons/${
+																labels.get(upgradeName)
+																	?.imageName ?? upgradeName
+															}.webp`;
+														})()}
 													/>
 												)}
 												{labels.get(upgrade)?.label ?? upgrade}

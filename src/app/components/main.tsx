@@ -439,7 +439,7 @@ export default function Main() {
 									{edge.note && ` (${edge.note})`}
 									<Image
 										className='edgeTooltip'
-										src={`./images/edges/${currentNode.name} - ${edge.node.name}.jpg`}
+										src={`./images/edges/${currentNode.name} - ${edge.node.name}.webp`}
 										alt=''
 									/>
 								</span>
