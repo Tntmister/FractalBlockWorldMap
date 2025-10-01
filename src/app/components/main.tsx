@@ -75,17 +75,22 @@ function nodeListToPathStack(nodeNames: nodeName[]): Edge[] {
 				distance: 0,
 				id: -1,
 			},
-			...nodeNames
-				.slice(1)
-				.map(
-					(nodeName, index) =>
-						nodes
-							.get(nodeNames[index])!
-							.edges.find((edge) => edge.node.name == nodeName)!,
-				),
+			...nodeNames.slice(1).map(
+				(nodeName, index, arr) =>
+					nodes.get(nodeNames[index])!.edges.find((edge) => edge.node.name == nodeName) ??
+					(() => {
+						const error = new Error(
+							`${nodeName} is not connected to ${arr[index - 1]}`,
+						);
+						error.name = "InvalidPathError";
+						throw error;
+					})(),
+			),
 		];
 	} catch (error) {
-		console.warn("Error loading saved path:" + error);
+		if ((error as Error).name == "InvalidPathError")
+			console.warn("Error loading local storage path: " + (error as Error).message);
+		else throw error;
 		return [];
 	}
 }
