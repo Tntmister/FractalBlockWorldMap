@@ -59,7 +59,7 @@ export function pathfindTo(
 		path = [pathStack.at(-1)!, ...path];
 		// if destination is only accessible thorugh a blue ring, jump to before that then pathfind to a blue ring
 		const impassableEdgeIndex = path.findIndex((edge) => edge.impassable);
-		if (impassableEdgeIndex > -1) {
+		if (impassableEdgeIndex > 0) {
 			const impassableEdgeId = path[impassableEdgeIndex].id;
 			path = path.slice(0, impassableEdgeIndex);
 			path.push(
