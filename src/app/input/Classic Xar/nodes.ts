@@ -96,6 +96,7 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Safety Doppelganger",
+		monsters: ["Imp"],
 		interactables: ["Save", "Waypoint", "Pink Ring"],
 		upgrades: ["Plasma Velocity x2", "Plasma Regen x1", "Max Health x1"],
 		items: ["200% Armor"],
