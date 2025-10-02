@@ -3971,7 +3971,7 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Solar System": {
-		"Supermassive Black Hole": {
+		"Supermassive Black Hole 1": {
 			distance: 30,
 		},
 		"Sun": {
