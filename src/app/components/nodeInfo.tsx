@@ -158,7 +158,7 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 											(
 											<Image
 												className='icon-small'
-												src={`./images/icons/${labels.get(monster.drop)?.imageName ?? monster.drop}.webp`}
+												src={`./images/icons/${labels.get(monster.drop.replace(/ x\d+$/i, "") as item | upgrade)?.imageName ?? monster.drop.replace(/^\d+ (Second )?/i, "")}.webp`}
 											/>
 											<div>
 												{labels.get(monster.drop)?.imageName ??
