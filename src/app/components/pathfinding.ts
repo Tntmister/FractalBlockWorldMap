@@ -148,7 +148,7 @@ export function pathfindToInteractables(
 	});
 	const paths: Edge[][] = [];
 	for (const destination of possibleDestinations) {
-		const path = dijkstraPathfind(pathStack.at(-1)!.node.name, destination.name, nodesCopy);
+		const path = pathfindTo(destination.name, pathStack, nodesCopy);
 		if (path) paths.push(path);
 	}
 	if (paths.length > 0)

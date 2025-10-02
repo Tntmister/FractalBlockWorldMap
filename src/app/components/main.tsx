@@ -275,8 +275,11 @@ export default function Main() {
 					i >
 					(pathUp
 						? interactables.includes("Blue Ring")
-							? pathStack.findLastIndex((edge) => edge.node.blueActiveZoneDestination)
-							: 0
+							? pathStack.findLastIndex(
+									(edge) =>
+										edge.node.blueActiveZoneDestination || edge.node.noEscape,
+								)
+							: pathStack.findLastIndex((edge) => edge.node.noEscape)
 						: pathStack.length - 1);
 					i--
 				) {
