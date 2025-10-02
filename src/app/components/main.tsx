@@ -1,13 +1,25 @@
 "use client";
 import { ChangeEvent, Fragment, useEffect, useMemo, useRef, useState } from "react";
-import { Node, Edge, interactable, interactables } from "../types";
+import {
+	Node,
+	Edge,
+	interactable,
+	interactables,
+	searchableUpgrades,
+	searchableUpgrade,
+} from "../types";
 import Image from "./Image";
 import NodeInfo from "./nodeInfo";
 import "../css/main.css";
 import { inputNodes, nodeName } from "../input/nodes";
 import { inputEdges } from "../input/edges";
 import { monsters } from "../input/monsters";
-import { getTraversedPath, pathfindTo, pathfindToInteractables } from "./pathfinding";
+import {
+	getTraversedPath,
+	pathfindTo,
+	pathfindToInteractables,
+	pathfindToUpgrades,
+} from "./pathfinding";
 
 const nodes: Map<nodeName, Node> = new Map();
 // initialize nodes from input.ts
@@ -182,10 +194,10 @@ export default function Main() {
 			?.scrollIntoView();
 	}, [pathStack]);
 
-	const [pathfindType, setPathfindType] = useState<"interactable" | "node">("node");
+	const [pathfindType, setPathfindType] = useState<"interactable" | "node" | "upgrade">("node");
 
 	useEffect(() => {
-		if (pathfindType == "interactable")
+		if (pathfindType == "interactable" || pathfindType == "upgrade")
 			for (const option of (document.querySelector("#pathfindList") as HTMLSelectElement)
 				.selectedOptions)
 				option.selected = false;
@@ -196,13 +208,23 @@ export default function Main() {
 		);
 	}, [pathfindType]);
 
-	const pathfindTarget = useRef<Node | interactable[]>(null);
+	const pathfindTarget = useRef<Node | interactable[] | searchableUpgrade[]>(null);
 	const pathfindPathstack = useRef<Edge[]>(null);
 	const [pathfindResult, setPathfindResult] = useState<Edge[] | null>();
 
 	function pathfindSelectEvent(e: ChangeEvent<HTMLInputElement & HTMLSelectElement>) {
 		let enableButton = false;
 		switch (pathfindType) {
+			case "upgrade":
+				pathfindTarget.current = Array.from(e.target.selectedOptions).map(
+					(option) => option.value,
+				) as searchableUpgrade[];
+
+				enableButton = pathfindTarget.current.every((upgrade) =>
+					searchableUpgrades.includes(upgrade),
+				);
+				break;
+
 			case "interactable":
 				pathfindTarget.current = Array.from(e.target.selectedOptions).map(
 					(option) => option.value,
@@ -268,6 +290,30 @@ export default function Main() {
 		const pathUp = (document.getElementsByName("pathfindUp")[0] as HTMLInputElement).checked;
 		const paths = [];
 		switch (pathfindType) {
+			case "upgrade": {
+				const upgrades = pathfindTarget.current as searchableUpgrade[];
+				for (
+					let i = pathStack.length;
+					i >
+					(pathUp
+						? pathStack.findLastIndex((edge) => edge.node.noEscape)
+						: pathStack.length - 1);
+					i--
+				) {
+					const path = pathStack
+						.slice(i, pathStack.length)
+						.toReversed()
+						.map((edge): Edge => {
+							return {
+								...edge,
+								up: true,
+							};
+						});
+					const pathfind = pathfindToUpgrades(upgrades, pathStack.slice(0, i), nodesCopy);
+					if (pathfind) paths.push(path.concat(pathfind));
+				}
+				break;
+			}
 			case "interactable": {
 				const interactables = pathfindTarget.current as interactable[];
 				for (
@@ -498,6 +544,15 @@ export default function Main() {
 							onChange={(e) => setPathfindType(e.target.value as typeof pathfindType)}
 						/>
 					</label>
+					<label>
+						<span>Upgrade</span>
+						<input
+							name='pathfindType'
+							value='upgrade'
+							type='radio'
+							onChange={(e) => setPathfindType(e.target.value as typeof pathfindType)}
+						/>
+					</label>
 					{pathfindType == "node" && (
 						<>
 							<input list='pathfindList' onChange={pathfindSelectEvent} required />
@@ -520,6 +575,15 @@ export default function Main() {
 							{interactables.map((interactable) => (
 								<option key={interactable} value={interactable}>
 									{interactable}
+								</option>
+							))}
+						</select>
+					)}
+					{pathfindType == "upgrade" && (
+						<select id='pathfindList' onChange={pathfindSelectEvent} multiple>
+							{searchableUpgrades.map((upgrade) => (
+								<option key={upgrade} value={upgrade}>
+									{upgrade}
 								</option>
 							))}
 						</select>

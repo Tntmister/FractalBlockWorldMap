@@ -5,62 +5,64 @@ export type weaponType = "Plasma" | "Cannon" | "Laser" | "Rocket" | "Homing" | "
 
 type weaponUpgradeType = "Max Ammo" | "Regen" | "Fire Rate" | "Damage" | "Velocity" | "Radius" | "Freeze Time" | "Count";
 
-export type weaponUpgrade =
-	| "Plasma Max Ammo"
-	| "Plasma Regen"
-	| "Plasma Fire Rate"
-	| "Plasma Damage"
-	| "Plasma Velocity"
-	| "Plasma Shotgun Weapon Mod"
-	| "Plasma Hyper Rapid Fire Weapon Mod"
-	| "Plasma Lightning Rifle Weapon Mod"
-	| "Plasma Flair Weapon Mod"
-	| "Cannon Max Ammo"
-	| "Cannon Fire Rate"
-	| "Cannon Damage"
-	| "Cannon Velocity"
-	| "Cannon Num Shots"
-	| "Cannon Tommy Gun Weapon Mod"
-	| "Laser Max Ammo"
-	| "Laser Damage"
-	| "Laser Freeze Time"
-	| "Laser Super Damage"
-	| "Laser Freeze Ray Weapon Mod"
-	| "Rocket Max Ammo"
-	| "Rocket Fire Rate"
-	| "Rocket Damage"
-	| "Rocket Velocity"
-	| "Rocket Radius"
-	| "Rocket High Velocity Weapon Mod"
-	| "Rocket Big Radius Weapon Mod"
-	| "Rocket Progressive Weapon Mod"
-	| "Homing Max Ammo"
-	| "Homing Fire Rate"
-	| "Homing Damage"
-	| "Homing Velocity"
-	| "Minigun Max Ammo"
-	| "Minigun Fire Rate"
-	| "Minigun Damage"
-	| "Minigun Velocity"
-	| "Minigun Super Damage"
-	| "Railgun Max Ammo"
-	| "Railgun Fire Rate"
-	| "Railgun Damage"
-	| "Railgun Rapid Weapon Mod"
-	| "Railgun Super Vampire Weapon Mod"
-	| "EMP Max Ammo"
-	| "EMP Damage"
-	| "EMP Radius"
-	| "EMP Freeze Time"
-	| "Nuke Max Ammo"
-	| "Nuke Damage"
-	| "Nuke Velocity"
-	| "Nuke Radius"
-	| "Nuke Propulsion Weapon Mod"
-	| "Dark Hole Max Ammo"
-	| "Dark Hole Damage"
-	| "Dark Hole Velocity"
-	| "Dark Hole Drive Weapon Mod";
+const weaponUpgrades = [
+	"Plasma Max Ammo",
+	"Plasma Regen",
+	"Plasma Fire Rate",
+	"Plasma Damage",
+	"Plasma Velocity",
+	"Plasma Shotgun Weapon Mod",
+	"Plasma Hyper Rapid Fire Weapon Mod",
+	"Plasma Lightning Rifle Weapon Mod",
+	"Plasma Flair Weapon Mod",
+	"Cannon Max Ammo",
+	"Cannon Fire Rate",
+	"Cannon Damage",
+	"Cannon Velocity",
+	"Cannon Num Shots",
+	"Cannon Tommy Gun Weapon Mod",
+	"Laser Max Ammo",
+	"Laser Damage",
+	"Laser Freeze Time",
+	"Laser Super Damage",
+	"Laser Freeze Ray Weapon Mod",
+	"Rocket Max Ammo",
+	"Rocket Fire Rate",
+	"Rocket Damage",
+	"Rocket Velocity",
+	"Rocket Radius",
+	"Rocket High Velocity Weapon Mod",
+	"Rocket Big Radius Weapon Mod",
+	"Rocket Progressive Weapon Mod",
+	"Homing Max Ammo",
+	"Homing Fire Rate",
+	"Homing Damage",
+	"Homing Velocity",
+	"Minigun Max Ammo",
+	"Minigun Fire Rate",
+	"Minigun Damage",
+	"Minigun Velocity",
+	"Minigun Super Damage",
+	"Railgun Max Ammo",
+	"Railgun Fire Rate",
+	"Railgun Damage",
+	"Railgun Rapid Weapon Mod",
+	"Railgun Super Vampire Weapon Mod",
+	"EMP Max Ammo",
+	"EMP Damage",
+	"EMP Radius",
+	"EMP Freeze Time",
+	"Nuke Max Ammo",
+	"Nuke Damage",
+	"Nuke Velocity",
+	"Nuke Radius",
+	"Nuke Propulsion Weapon Mod",
+	"Dark Hole Max Ammo",
+	"Dark Hole Damage",
+	"Dark Hole Velocity",
+	"Dark Hole Drive Weapon Mod",
+] as const;
+export type weaponUpgrade = (typeof weaponUpgrades)[number];
 
 export type defenceItem =
 	| "100% Health 100% Armor"
@@ -91,16 +93,19 @@ type key =
 	| "Secret Farmhouse Key"
 	| "Burlington Combination Lock";
 
-export type defenceUpgrade = "Random Health" | "Max Health" | "Health Regen" | "Armor Regen" | "RejuvenX";
+const defenceUpgrades = ["Random Health", "Max Health", "Health Regen", "Armor Regen", "RejuvenX"] as const;
+export type defenceUpgrade = (typeof defenceUpgrades)[number];
 
-export type item = `${weaponType} Ammo x${number}` | `${weaponType} Ammo` | defenceItem | `${defenceItem} x${number}` | "Gold" | `${number} Gold` | `${number} EXP` | "EXP" | key;
+export const searchableUpgrades = [...weaponUpgrades, ...defenceUpgrades];
+export type searchableUpgrade = (typeof searchableUpgrades)[number];
+
+export type item = `${`${weaponType} Ammo` | defenceItem} x${number}` | `${weaponType} Ammo` | defenceItem | `${number} ${"Gold" | "EXP"}` | "EXP" | "Gold" | key;
 
 export type upgrade =
-	| `${weaponUpgrade} x${number}`
+	| `${weaponUpgrade | defenceUpgrade | `Non-${weaponType} ${weaponUpgradeType}`} x${number}`
 	| weaponUpgrade
-	| `Non-${weaponType} ${weaponUpgradeType} x${number}`
-	| `${defenceUpgrade} x${number}`
 	| defenceUpgrade
+	| `Non-${weaponType} ${weaponUpgradeType}`
 	| "Telekinesis"
 	| "Marker Cost";
 

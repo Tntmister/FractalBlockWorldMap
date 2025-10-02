@@ -1,5 +1,5 @@
 import { nodeName } from "../input/nodes";
-import { Edge, interactable, Node } from "../types";
+import { Edge, interactable, Node, upgrade } from "../types";
 
 //Dijkstra pathfinding
 // empty array = already at location, undefined = no path
@@ -108,6 +108,40 @@ export function pathfindTo(
 		}
 		return path;
 	}
+	return null;
+}
+
+export function pathfindToUpgrades(
+	upgrades: upgrade[],
+	pathStack: Node["edges"],
+	nodes: Map<nodeName, Node>,
+) {
+	const nodesCopy = structuredClone(nodes);
+	const possibleDestinations = nodesCopy.values().filter((node) => {
+		return upgrades.every((upgrade) =>
+			node.upgrades.some((nodeUpgrade) =>
+				Array.isArray(nodeUpgrade)
+					? nodeUpgrade.some(
+							(nodeUpgrade2) => nodeUpgrade2.replace(/ x\d+$/i, "") == upgrade,
+						)
+					: nodeUpgrade.replace(/ x\d+$/i, "") == upgrade,
+			),
+		);
+	});
+	const paths: Edge[][] = [];
+	for (const destination of possibleDestinations) {
+		const path = pathfindTo(destination.name, pathStack, nodesCopy);
+		if (path) paths.push(path);
+	}
+	if (paths.length > 0)
+		return [
+			pathStack.at(-1)!,
+			...paths.sort(
+				(a, b) =>
+					a.reduce((acc, edge) => acc + edge.distance, 0) -
+					b.reduce((acc, edge) => acc + edge.distance, 0),
+			)[0],
+		];
 	return null;
 }
 
