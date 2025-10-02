@@ -110,6 +110,9 @@ const inputEdges: InputEdge = {
 		"Ying Air": {
 			distance: 1,
 		},
+		"Ying Tree": {
+			distance: 5,
+		},
 		"Noob Maze Flower": {
 			distance: 1,
 		},
@@ -137,6 +140,20 @@ const inputEdges: InputEdge = {
 		"Orange": {
 			distance: 20,
 			note: "Secret Combination",
+		},
+	},
+	"Ying Tree": {
+		"Ying Forest": {
+			distance: 3,
+		},
+		"Quicksand Grass": {
+			distance: 2,
+		},
+		"Blackberry": {
+			distance: 20,
+		},
+		"Deep Menger Sponge": {
+			distance: 20,
 		},
 	},
 	"Ying Forest Depth 50+": {

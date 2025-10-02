@@ -8,6 +8,19 @@ const INPUT_NODES = [
 		interactables: ["Waypoint", "Save", "Respawn", "Bookmark", "Out-Only Waypoint"],
 		notes: "Secret combination to reach Oranges is shrinking in the sequence Floor -> Branch -> Floor -> Branch -> Floor -> Floor -> Floor",
 	},
+	{
+		name: "Ying Tree",
+		blueActiveZoneDestination: {
+			nodeName: "Ying Tree",
+		},
+		notes: "There is a map at the same level of the Ying Forest and Sub Treasure",
+	},
+	{
+		name: "Ying Tree Treasure",
+		items: ["300 Gold", "1000% Armor x1", "Extra 100% Health x3"],
+		interactables: ["Blue Ring", "Waypoint", "Save", "Buy Station", "Markers", "Common Sell Station"],
+		upgrades: ["Railgun Fire Rate", ["EMP Radius", "EMP Freeze Time"]],
+	},
 	// depth 50+ version of ying forest only has data about what's exclusive to it
 	{
 		name: "Ying Forest Depth 50+",
@@ -482,7 +495,7 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Galaxy Flower",
-		upgrades: ["Dark Hole Max Ammo"],
+		upgrades: [["Dark Hole Max Ammo", "Dark Hole Damage"]],
 		blueActiveZoneDestination: {
 			nodeName: "Galaxy Flower Secret",
 		},
@@ -3753,6 +3766,15 @@ const INPUT_NODES = [
 		trophy: true,
 	},
 	{
+		name: "Deep Menger Sponge",
+		interactables: ["Pink Sphere", "Blue Ring", "Pink Ring"],
+		blueActiveZoneDestination: {
+			nodeName: "Deep Menger Sponge",
+			note: "Deeper",
+		},
+		notes: "There is a chance a blue ring won't find a terminal chunk and crash the game (1001 level limit)",
+	},
+	{
 		name: "Happy Land",
 		items: ["Plasma Ammo"],
 		upgrades: ["Plasma Velocity"],
@@ -4117,7 +4139,7 @@ const INPUT_NODES = [
 	{
 		name: "Orange Ground City",
 		interactables: ["Pink Ring"],
-		monsters: ["Marine"],
+		monsters: ["Marine", "Goblin"],
 	},
 	{
 		name: "Ying World Shell Green Island",
