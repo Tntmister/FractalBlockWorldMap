@@ -60,7 +60,8 @@ export type weaponUpgrade =
 	| "Dark Hole Max Ammo"
 	| "Dark Hole Damage"
 	| "Dark Hole Velocity"
-	| "Dark Hole Drive Weapon Mod";
+	| "Dark Hole Drive Weapon Mod"
+	| "Dark Hole Quasar Drive Weapon Mod";
 
 export type defenceItem =
 	| "100% Health 100% Armor"
