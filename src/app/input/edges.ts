@@ -55,9 +55,8 @@ const inputEdges: InputEdge = {
 			distance: 15,
 			requiresKey: "Yellow Key",
 		},
-		"Quicksand Grass": {
+		"Quicksand Grass Level 11": {
 			distance: 5,
-			note: "Level 11",
 		},
 	},
 	"Tutorial Chambers": {
@@ -197,9 +196,8 @@ const inputEdges: InputEdge = {
 			distance: 10,
 			note: "x4",
 		},
-		"Quicksand Grass": {
+		"Quicksand Grass Level 11": {
 			distance: 1,
-			note: "Level 11",
 		},
 	},
 	"Red Apple Tree": {
@@ -290,7 +288,7 @@ const inputEdges: InputEdge = {
 			distance: 1,
 			impassable: true,
 		},
-		"Ying Island": {
+		"Ying Forest": {
 			distance: 1,
 		},
 	},
@@ -939,7 +937,7 @@ const inputEdges: InputEdge = {
 		"I3 Library": {
 			distance: 5,
 		},
-		"Mahogany Tree Inside": {
+		"Mahogany Tree Trunk": {
 			distance: 1,
 		},
 		"Mahogany Treetop": {
@@ -1101,7 +1099,7 @@ const inputEdges: InputEdge = {
 			distance: 5,
 		},
 	},
-	"Mahogany Tree Inside": {
+	"Mahogany Tree Trunk": {
 		"Fir Tree": {
 			distance: 1,
 		},
@@ -1197,11 +1195,7 @@ const inputEdges: InputEdge = {
 		},
 		"Hell": {
 			distance: 20,
-			note: "Pink Sphere Exit",
-		},
-		"Dandelions": {
-			distance: 20,
-			note: "Pink Sphere Exit",
+			impassable: true,
 		},
 	},
 	"Dandelions": {
@@ -1265,6 +1259,9 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Hell": {
+		"Dandelions": {
+			distance: 1,
+		},
 		"Green Apple Tree": {
 			distance: 10,
 		},
@@ -1283,7 +1280,6 @@ const inputEdges: InputEdge = {
 		"Hell Debug": {
 			distance: 20,
 			requiresKey: "Universe Key",
-			note: "More to Come",
 		},
 	},
 	"Hell Flower": {
@@ -1301,15 +1297,13 @@ const inputEdges: InputEdge = {
 		"Moon Flower": {
 			distance: 5,
 		},
-		"Quicksand Grass": {
+		"Quicksand Grass Level 11": {
 			distance: 5,
-			note: "Level 11",
 		},
 	},
 	"Moon Flower": {
-		"Quicksand Grass": {
+		"Quicksand Grass Level 11": {
 			distance: 1,
-			note: "Level 11",
 		},
 	},
 	"Inner Core Room": {
@@ -1485,9 +1479,8 @@ const inputEdges: InputEdge = {
 		"Prank I2 WIG Flower": {
 			distance: 1,
 		},
-		"Quicksand Grass": {
+		"Quicksand Grass Level 11": {
 			distance: 1,
-			note: "Level 11",
 		},
 	},
 	"WIG Prison": {
@@ -1798,9 +1791,8 @@ const inputEdges: InputEdge = {
 		"I3": {
 			distance: 1,
 		},
-		"Quicksand Grass": {
+		"Quicksand Grass Level 11": {
 			distance: 1,
-			note: "Level 11",
 		},
 		"WIG Prison": {
 			distance: 20,
@@ -2856,9 +2848,8 @@ const inputEdges: InputEdge = {
 		"I3 WIG Flower": {
 			distance: 10,
 		},
-		"Quicksand Grass": {
+		"Quicksand Grass Level 11": {
 			distance: 10,
-			note: "Level 11",
 		},
 	},
 	"Large White Flower": {
@@ -3028,13 +3019,16 @@ const inputEdges: InputEdge = {
 			distance: 5,
 			note: "Rare",
 		},
+		"Williston Ammo": {
+			distance: 2,
+		},
 	},
 	"Turnips": {
 		"Dandelions": {
 			distance: 1,
 		},
 		"Carrots": {
-			distance: 10,
+			distance: 5,
 		},
 		"I3 WIG Flower": {
 			distance: 10,
@@ -3049,7 +3043,10 @@ const inputEdges: InputEdge = {
 			distance: 10,
 		},
 		"Root Vegetable Basement": {
-			distance: 1,
+			distance: 10,
+		},
+		"I2 Fast Gate": {
+			distance: 10,
 		},
 	},
 	"Beets": {
@@ -3107,6 +3104,9 @@ const inputEdges: InputEdge = {
 		"Basement Library": {
 			distance: 1,
 		},
+		"Sagittarius Portal": {
+			distance: 1,
+		},
 	},
 	"Root Vegetable Basement": {
 		"Green Apple Tree": {
@@ -3120,9 +3120,8 @@ const inputEdges: InputEdge = {
 		"Carrots": {
 			distance: 5,
 		},
-		"Quicksand Grass": {
+		"Quicksand Grass Level 11": {
 			distance: 10,
-			note: "Level 11",
 		},
 		"I3 WIG Flower": {
 			distance: 10,
@@ -3157,21 +3156,36 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Salmon Mushroom": {
-		"I3 WIG Flower": {
+		"Salmon Mushroom Nuke Treasure": {
 			distance: 35,
-			note: "Tall Mushrooms, On Top",
+		},
+		"Salmon Mushroom Rail Treasure": {
+			distance: 25,
 		},
 		"Quicksand Grass": {
 			distance: 1,
+			note: "Floor",
+		},
+		"Quicksand Grass Level 11": {
+			distance: 25,
 		},
 		"Black Mushroom": {
 			distance: 25,
 			note: "Very Rare, On Side Treasures",
 		},
 	},
+	"Salmon Mushroom Nuke Treasure": {
+		"I3 WIG Flower": {
+			distance: 35,
+		},
+	},
 	"Black Mushroom": {
 		"Quicksand Grass": {
 			distance: 1,
+			note: "Floor",
+		},
+		"Quicksand Grass Level 11": {
+			distance: 15,
 		},
 		"Pink Tree": {
 			distance: 20,
@@ -5400,9 +5414,13 @@ const inputEdges: InputEdge = {
 			distance: 10,
 			note: "Level 10",
 		},
-		"Quicksand Grass Basement": {
+		"Quicksand Grass Level 11": {
 			distance: 10,
-			note: "Level 11+",
+		},
+	},
+	"Quicksand Grass Level 11": {
+		"Quicksand Grass Basement": {
+			distance: 5,
 		},
 	},
 	"Quicksand Grass Basement": {

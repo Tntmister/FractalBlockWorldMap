@@ -29,7 +29,7 @@ const INPUT_NODES = [
 		interactables: ["Pink Ring", "Respawn"],
 		secretTrophy: 2,
 		blueActiveZoneDestination: {
-			nodeName: "Tutorial 1",
+			nodeName: "Tutorial 2",
 		},
 		notes: "Secret Trophy 1: Below the dark concrete in the pink ring tutorial room\nSecret Trophy 2: ",
 	},
@@ -341,7 +341,7 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Ying Cave Island",
-		interactables: ["Waypoint", "Out-Only Waypoint", "Waypoint", "Save"],
+		interactables: ["Waypoint", "Out-Only Waypoint", "Pink Sphere", "Save"],
 	},
 	{
 		name: "Ying Cave Island Layer 1",
@@ -2312,18 +2312,34 @@ const INPUT_NODES = [
 	{
 		name: "Carrots",
 		monsters: ["Insurgent"],
-		upgrades: ["Cannon Max Ammo", "Non-Laser Max Ammo x1", "Rocket Damage", "Rocket Max Ammo"],
-		items: ["Plasma Ammo", "Cannon Ammo", "Laser Ammo", "Rocket Ammo", "Homing Ammo", "Minigun Ammo", "Railgun Ammo", "EMP Ammo", "Nuke Ammo", "Dark Hole Ammo", "Gold"],
+		upgrades: ["Cannon Max Ammo", "Cannon Damage", "Rocket Damage", "Rocket Velocity"],
+		items: ["Nuke Ammo", "Rocket Ammo", "Railgun Ammo", "Gold"],
 		interactables: ["Save", "Waypoint", "Out-Only Waypoint", "Bookmark"],
 		secretTrophy: true,
 	},
 	{
 		name: "Salmon Mushroom",
 		monsters: ["Minor Guardian"],
-		interactables: ["Pink Ring", "Pink Sphere", "Save"],
+		interactables: ["Pink Sphere", "Pink Ring"],
 		items: ["Homing Ammo"],
-		upgrades: [["Railgun Fire Rate", "Nuke Damage"], ["Railgun Max Ammo", "Nuke Max Ammo"], "Random Health"],
+		notes: "The taller the mushroom, the larger the chance for the Nuke treasure",
+	},
+	{
+		name: "Salmon Mushroom Mini Treasure",
+		upgrades: ["Railgun Damage x3", "Random Health x1"],
+		items: ["Homing Ammo x400"],
+		interactables: ["Pink Ring"],
+	},
+	{
+		name: "Salmon Mushroom Nuke Treasure",
+		upgrades: ["Nuke Damage x3", "Nuke Max Ammo x2", "Random Health x1"],
+		interactables: ["Pink Ring", "Save"],
 		trophy: true,
+	},
+	{
+		name: "Salmon Mushroom Rail Treasure",
+		upgrades: ["Railgun Fire Rate x4", "Railgun Max Ammo x2", "Random Health x1"],
+		interactables: ["Pink Ring", "Save"],
 	},
 	{
 		name: "Black Mushroom",
@@ -2331,9 +2347,6 @@ const INPUT_NODES = [
 		monsters: ["Sentinel", "Minor Guardian"],
 		items: ["Minigun Ammo", "Rocket Ammo", "Laser Ammo", "Cannon Ammo", "Gold", "200% Health 200% Armor"],
 		trophy: true,
-	},
-	{
-		name: "Black Market",
 	},
 	{
 		name: "I3 Air",
@@ -2565,7 +2578,7 @@ const INPUT_NODES = [
 		interactables: ["Waypoint"],
 	},
 	{
-		name: "Mahogany Tree Inside",
+		name: "Mahogany Tree Trunk",
 		items: ["Gold", "Nuke Ammo", "Plasma Ammo", "Laser Ammo", "Cannon Ammo", "Rocket Ammo", "Minigun Ammo", "Homing Ammo", "Railgun Ammo", "EMP Ammo"],
 		interactables: ["Save"],
 		monsters: ["Immoral Goon", "Evil Goon", "Unsavory Goon", "Nuclear Doomsday Shelter", "Guerrilla", "Vile Menace", "Mechanized Sheath", "Minor Gremlin"],
@@ -2646,7 +2659,7 @@ const INPUT_NODES = [
 		name: "Turnips",
 		items: ["Railgun Ammo"],
 		upgrades: ["Plasma Damage", "Cannon Fire Rate", "Rocket Radius"],
-		monsters: ["Arch Menace Female", "Guardian"],
+		monsters: ["Arch Menace Female", "Minor Guardian"],
 		secretTrophy: true,
 	},
 	{
@@ -2659,8 +2672,8 @@ const INPUT_NODES = [
 	{
 		name: "Essex",
 		monsters: ["Greater Scourge"],
-		upgrades: ["Plasma Shotgun Weapon Mod", "Nuke Radius"],
-		items: ["Gold", "200% Health 100% Armor"],
+		upgrades: ["Plasma Shotgun Weapon Mod", "Nuke Radius x1"],
+		items: ["200 Gold", "200% Health 100% Armor"],
 		interactables: ["Waypoint", "Respawn", "Save", "Buy Station", "Markers", "Scarce Sell Station", "Common Sell Station", "Buy Nuke 200"],
 		secretTrophy: true,
 	},
@@ -2717,6 +2730,9 @@ const INPUT_NODES = [
 		name: "I3 Library",
 		interactables: ["Pink Sphere", "Save", "Waypoint"],
 		trophy: true,
+		pinkSphereDestination: {
+			nodeName: "Hell",
+		},
 	},
 	{
 		name: "I2 Fast Gate",
@@ -3332,7 +3348,7 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Hell Debug",
-		notes: "More content will be added here soon",
+		notes: "More will be added here in a future version of the game",
 	},
 	{
 		name: "Inner Core Room",
@@ -3529,6 +3545,7 @@ const INPUT_NODES = [
 		name: "Mylantis Red Caves",
 		monsters: ["Guardian", "Night Guard", "Blue Lamprey", "Ogre"],
 		upgrades: ["Homing Fire Rate", "Homing Velocity"],
+		notes: "More will be added here in a future version of the game",
 	},
 	{
 		name: "RejuvenX Refinery",
@@ -3760,13 +3777,29 @@ const INPUT_NODES = [
 	{
 		name: "Quicksand Grass",
 		noEscape: true,
+		notes: "Level 10 has grass with yellow tips",
+	},
+	{
+		name: "Quicksand Grass Level 11",
+		noEscape: true,
 	},
 	{
 		name: "Quicksand Grass Basement",
-		interactables: ["Pink Sphere", "Save", "Buy Station", "Common Sell Station"],
+		interactables: ["Pink Sphere", "Pink Ring", "Save", "Buy Station", "Common Sell Station"],
 		monsters: ["Blue Lamprey", "War Vulcan", "Probe", "Rat"],
-		upgrades: ["Laser Max Ammo", "Laser Freeze Time", "EMP Freeze Time", "EMP Radius", "Random Health", "Nuke Max Ammo"],
-		items: ["Nuke Ammo", "Homing Ammo", "Laser Ammo", "Cannon Ammo", "Rocket Ammo", "Minigun Ammo", "Railgun Ammo", "EMP Ammo", "Dark Hole Ammo", "Gold"],
+		upgrades: ["Laser Max Ammo x1", "Laser Freeze Time x1", "EMP Freeze Time x1", "EMP Radius x1", "Random Health x5", "Nuke Max Ammo x1"],
+		items: [
+			"Nuke Ammo x30",
+			"Homing Ammo x1000",
+			"Laser Ammo x192",
+			"Cannon Ammo x150",
+			"Rocket Ammo x200",
+			"Minigun Ammo x500",
+			"Railgun Ammo x100",
+			"EMP Ammo x1",
+			"Dark Hole Ammo x1",
+			"50 Gold",
+		],
 		secretTrophy: true,
 	},
 	{
