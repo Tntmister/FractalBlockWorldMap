@@ -32,6 +32,22 @@ const INPUT_NODES = [
 		],
 		upgrades: ["Railgun Fire Rate", ["EMP Radius", "EMP Freeze Time"]],
 	},
+	{
+		name: "Ying Tree Sub Treasure",
+		upgrades: [
+			[
+				"EMP Radius x1",
+				"EMP Freeze Time x1",
+				"Random Health x1",
+				"Cannon Fire Rate x1",
+				"Cannon Velocity x1",
+				"Cannon Num Shots x1",
+				"Plasma Damage x1",
+				"Plasma Max Ammo x1",
+				"Plasma Velocity x1",
+			],
+		],
+	},
 	// depth 50+ version of ying forest only has data about what's exclusive to it
 	{
 		name: "Ying Forest Depth 50+",
@@ -1346,7 +1362,62 @@ const INPUT_NODES = [
 		upgrades: ["Rocket Radius x1"],
 	},
 	{
-		name: "Supermassive Black Hole",
+		name: "Supermassive Black Hole 1",
+		interactables: ["Waypoint", "Bookmark", "Save"],
+	},
+	{
+		name: "Supermassive Black Hole 2",
+		interactables: ["Waypoint", "Bookmark", "Save"],
+		monsters: ["Red Lamprey", "Pool Ball 2"],
+		upgrades: ["Dark Hole Max Ammo x5"],
+	},
+	{
+		name: "Supermassive Black Hole 3",
+		interactables: ["Waypoint", "Bookmark", "Save"],
+		items: ["Green Key"],
+		monsters: ["Orc"],
+	},
+	{
+		name: "Supermassive Black Hole 4",
+		items: ["Green Key"],
+		monsters: ["Orc", "Troll", "Hobgoblin"],
+		interactables: ["Waypoint", "Bookmark", "Save"],
+		upgrades: ["Dark Hole Max Ammo x2", "Plasma Regen x4"],
+	},
+	{
+		name: "Supermassive Black Hole 5",
+		interactables: ["Waypoint", "Bookmark", "Save"],
+		upgrades: ["Dark Hole Max Ammo x2", "Plasma Regen x4"],
+		items: ["600% Armor x28", "Dark Hole Ammo x28", "Extra 100% Health x56"],
+	},
+	{
+		name: "Singularity Boss Room",
+		items: ["10% Armor"],
+		monsters: ["Singularity"],
+	},
+	{
+		name: "Supermassive Black Hole Ammo",
+		items: ["Extra 100% Health x4", "Nuke Ammo x1", "Dark Hole Ammo x1", "600% Armor x1"],
+	},
+	{
+		name: "Supermassive Black Hole Treasure",
+		interactables: ["Waypoint", "Bookmark", "Save"],
+		upgrades: [
+			"Telekinesis",
+			"Dark Hole Max Ammo x7",
+			"Dark Hole Velocity x7",
+			"Plasma Velocity x7",
+			"Plasma Regen x7",
+			"Cannon Velocity x7",
+			"Cannon Fire Rate x7",
+			"Laser Damage x7",
+			"Dark Hole Quasar Drive Weapon Mod",
+		],
+	},
+	{
+		name: "Supermassive Black Hole Mold",
+		monsters: ["Pool Ball 8"],
+		upgrades: ["Dark Hole Max Ammo"],
 	},
 	{
 		name: "Ying Air Cube",

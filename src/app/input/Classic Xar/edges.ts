@@ -3971,7 +3971,7 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Solar System": {
-		"Supermassive Black Hole": {
+		"Supermassive Black Hole 1": {
 			distance: 30,
 		},
 		"Sun": {
@@ -4011,6 +4011,58 @@ const inputEdges: InputEdge = {
 			distance: 20,
 		},
 		"Space Library": {
+			distance: 20,
+		},
+	},
+
+	"Supermassive Black Hole 1": {
+		"Supermassive Black Hole 2": {
+			distance: 50,
+		},
+	},
+	"Supermassive Black Hole 2": {
+		"Supermassive Black Hole 3": {
+			distance: 10,
+			requiresKey: "Universe Key",
+		},
+	},
+	"Supermassive Black Hole 3": {
+		"Supermassive Black Hole 4": {
+			distance: 5,
+			requiresKey: "Green Key",
+		},
+	},
+	"Supermassive Black Hole 4": {
+		"I2 WIG Flower": {
+			distance: 15,
+		},
+		"Supermassive Black Hole 5": {
+			distance: 25,
+			requiresKey: "Green Key",
+		},
+	},
+	"Supermassive Black Hole 5": {
+		"Singularity Boss Room": {
+			distance: 1,
+			arcade: true,
+			whiteBoxDevice: true,
+		},
+	},
+	"Singularity Boss Room": {
+		"Supermassive Black Hole Ammo": {
+			distance: 3,
+		},
+		"Supermassive Black Hole Treasure": {
+			distance: 20,
+		},
+	},
+	"Supermassive Black Hole Treasure": {
+		"Supermassive Black Hole Mold": {
+			distance: 3,
+		},
+	},
+	"Supermassive Black Hole Mold": {
+		"Galaxy Flower": {
 			distance: 20,
 		},
 	},
