@@ -56,18 +56,28 @@ export function pathfindTo(
 ) {
 	let path = dijkstraPathfind(pathStack.at(-1)!.node.name, targetNodeName, nodes);
 	if (path) {
-		path = [pathStack.at(-1)!, ...path];
 		// if destination is only accessible thorugh a blue ring, jump to before that then pathfind to a blue ring
 		const impassableEdgeIndex = path.findIndex((edge) => edge.impassable);
 		if (impassableEdgeIndex > 0) {
 			const impassableEdgeId = path[impassableEdgeIndex].id;
+
+			// exclude current impassable edge from being included in blue ring pathfind to prevent incomplete/looping path
+			const nodesCopy = structuredClone(nodes);
+			nodesCopy.values().forEach((node) => {
+				for (let i = node.edges.length - 1; i >= 0; i--) {
+					if (node.edges[i].id == impassableEdgeId) {
+						node.edges.splice(i, 1);
+					}
+				}
+			});
+
 			path = path.slice(0, impassableEdgeIndex);
 			path.push(
 				...pathfindToInteractables(
 					["Blue Ring"],
 					getTraversedPath(path, pathStack, nodes),
-					nodes,
-				)!.slice(1),
+					nodesCopy,
+				)!,
 			);
 			// index of blue active zone in path
 			const blueActiveZoneNode = path.findLast(
@@ -95,15 +105,39 @@ export function pathfindTo(
 				blueRing: true,
 				id: impassableEdgeIndex,
 			});
-			// if blue ring destination still isn't the target node, pathfind from the blue ring destination to the target node
+			// if not at the target yet
 			if (path.at(-1)?.node.name != targetNodeName) {
-				path.push(
-					...pathfindTo(
-						targetNodeName,
-						getTraversedPath(path, pathStack, nodes),
-						nodes,
-					)!.slice(1),
+				// check if target is between impassable edge and blue ring destination
+				let traversedPath = getTraversedPath(path, pathStack, nodes);
+				traversedPath = traversedPath.slice(
+					traversedPath.findLastIndex((edge) => (edge.id = impassableEdgeId)) - 1,
 				);
+				const destinationIndex = traversedPath.findLastIndex(
+					(edge) => edge.node.name == targetNodeName,
+				);
+				if (destinationIndex > -1) {
+					path.push(
+						...traversedPath
+							.slice(
+								traversedPath.findLastIndex(
+									(edge) => edge.node.name == targetNodeName,
+								),
+								traversedPath.length - 1,
+							)
+							.toReversed()
+							.map((edge) => ({ ...edge, up: true })),
+					);
+				}
+				// if target node still isn't in the path, pathfind from the blue ring destination to the target node
+				else {
+					path.push(
+						...pathfindTo(
+							targetNodeName,
+							getTraversedPath(path, pathStack, nodes),
+							nodes,
+						)!,
+					);
+				}
 			}
 		}
 		return path;
@@ -134,14 +168,11 @@ export function pathfindToUpgrades(
 		if (path) paths.push(path);
 	}
 	if (paths.length > 0)
-		return [
-			pathStack.at(-1)!,
-			...paths.sort(
-				(a, b) =>
-					a.reduce((acc, edge) => acc + edge.distance, 0) -
-					b.reduce((acc, edge) => acc + edge.distance, 0),
-			)[0],
-		];
+		return paths.sort(
+			(a, b) =>
+				a.reduce((acc, edge) => acc + edge.distance, 0) -
+				b.reduce((acc, edge) => acc + edge.distance, 0),
+		)[0];
 	return null;
 }
 
@@ -186,14 +217,11 @@ export function pathfindToInteractables(
 		if (path) paths.push(path);
 	}
 	if (paths.length > 0)
-		return [
-			pathStack.at(-1)!,
-			...paths.sort(
-				(a, b) =>
-					a.reduce((acc, edge) => acc + edge.distance, 0) -
-					b.reduce((acc, edge) => acc + edge.distance, 0),
-			)[0],
-		];
+		return paths.sort(
+			(a, b) =>
+				a.reduce((acc, edge) => acc + edge.distance, 0) -
+				b.reduce((acc, edge) => acc + edge.distance, 0),
+		)[0];
 	return null;
 }
 
@@ -205,7 +233,7 @@ export function getTraversedPath(path: Edge[], pathStack: Edge[], nodes: Map<nod
 		if (edge.up) {
 			pathStackAux = pathStackAux.slice(
 				0,
-				pathStackAux.findLastIndex((edge2) => edge.node.name == edge2.node.name),
+				pathStackAux.findLastIndex((edge2) => edge.node.name == edge2.node.name) + 1,
 			);
 		} else if (edge.blueRing) {
 			const blueDownChunk = pathStackAux.findLastIndex(

@@ -293,7 +293,7 @@ export default function Main() {
 			case "upgrade": {
 				const upgrades = pathfindTarget.current as searchableUpgrade[];
 				for (
-					let i = pathStack.length;
+					let i = pathStack.length - 1;
 					i >
 					(pathUp
 						? pathStack.findLastIndex((edge) => edge.node.noEscape)
@@ -301,7 +301,7 @@ export default function Main() {
 					i--
 				) {
 					const path = pathStack
-						.slice(i, pathStack.length)
+						.slice(i, pathStack.length - 1)
 						.toReversed()
 						.map((edge): Edge => {
 							return {
@@ -317,7 +317,7 @@ export default function Main() {
 			case "interactable": {
 				const interactables = pathfindTarget.current as interactable[];
 				for (
-					let i = pathStack.length;
+					let i = pathStack.length - 1;
 					i >
 					(pathUp
 						? interactables.includes("Blue Ring")
@@ -330,7 +330,7 @@ export default function Main() {
 					i--
 				) {
 					const path = pathStack
-						.slice(i, pathStack.length)
+						.slice(i, pathStack.length - 1)
 						.toReversed()
 						.map((edge): Edge => {
 							return {
@@ -357,7 +357,7 @@ export default function Main() {
 					i--
 				) {
 					const path = pathStack
-						.slice(i, pathStack.length)
+						.slice(i - 1, pathStack.length - 1)
 						.toReversed()
 						.map((edge): Edge => {
 							return {
@@ -377,18 +377,23 @@ export default function Main() {
 				break;
 		}
 		setPathfindResult(
-			paths.sort(
-				(a, b) =>
-					a.reduce((acc, edge) => acc + edge.distance, 0) -
-					b.reduce((acc, edge) => acc + edge.distance, 0),
-			)[0],
+			paths.length > 0
+				? [
+						pathStack.at(-1)!,
+						...paths.sort(
+							(a, b) =>
+								a.reduce((acc, edge) => acc + edge.distance, 0) -
+								b.reduce((acc, edge) => acc + edge.distance, 0),
+						)[0],
+					]
+				: [],
 		);
 		pathfindPathstack.current = pathStack.slice();
 	}
 
-	function traversePathfind(path: Edge[], pathIndex: number, pathCurrentIndex: number) {
+	function traversePathfind(path: Edge[], pathIndex: number) {
 		pathStack = pathfindPathstack.current!;
-		traversePath(path.slice(0, pathIndex + 1));
+		traversePath(path.slice(1, pathIndex + 1));
 	}
 
 	return (
@@ -620,21 +625,13 @@ export default function Main() {
 								);
 								return (
 									<Fragment key={`pathfind${index}`}>
+										{index > 0 ? `↓${edge.up ? " (up)" : ""}` : ""}
 										<div
 											className={`pathNode${indexOfCurrent == index ? " current" : ""}`}
-											onClick={() =>
-												traversePathfind(
-													path,
-													edge.up ? index - 1 : index,
-													indexOfCurrent,
-												)
-											}
+											onClick={() => traversePathfind(path, index)}
 										>
 											{edge.node.name}
 										</div>
-										{index < path.length - 1
-											? `↓${edge.up ? " (up)" : ""}`
-											: ""}
 									</Fragment>
 								);
 							})}
