@@ -52,7 +52,7 @@ const inputEdges: InputEdge = {
 	},
 	"Safety Doppelganger": {
 		"Infinity Flower": {
-			distance: 15,
+			distance: 30,
 			requiresKey: "Yellow Key",
 		},
 		"Quicksand Grass Level 11": {
@@ -302,7 +302,7 @@ const inputEdges: InputEdge = {
 			note: "Under Island",
 		},
 		"Tutorial Chambers": {
-			distance: 1,
+			distance: 30,
 			impassable: true,
 		},
 		"Ying Forest": {
@@ -988,6 +988,10 @@ const inputEdges: InputEdge = {
 		"Mahogany Treetop Inner Tree": {
 			distance: 1,
 		},
+		"Mahogany Treetop Center Treasure": {
+			distance: 40,
+			impassable: true,
+		},
 	},
 	"Mahogany Treetop Inner Tree": {
 		"I3 Air": {
@@ -1050,6 +1054,20 @@ const inputEdges: InputEdge = {
 		"Amethyst": {
 			distance: 90,
 		},
+		"Mahogany Ammo": {
+			distance: 15,
+		},
+		"Mahogany Treetop Inner Tree End Treasure": {
+			distance: 60,
+		},
+		"Mahogany Treetop Inner Tree Weapon Mod Treasure": {
+			distance: 60,
+		},
+	},
+	"Mahogany Treetop Inner Tree Weapon Mod Treasure": {
+		"Weapon Library": {
+			distance: 1,
+		},
 	},
 	"Starksboro": {
 		"I1 Library": {
@@ -1073,8 +1091,22 @@ const inputEdges: InputEdge = {
 		"Small Yellow Flower": {
 			distance: 1,
 		},
+		"Essex": {
+			distance: 1,
+		},
+		"Rainbow Flower": {
+			distance: 1,
+		},
 	},
 	"Amethyst": {
+		"Amethyst Island": {
+			distance: 10,
+		},
+		"Amethyst Treasure": {
+			distance: 30,
+		},
+	},
+	"Amethyst Island": {
 		"Jumbo Yellow Flower": {
 			distance: 10,
 		},
@@ -1086,6 +1118,17 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Emerald": {
+		"Emerald Treasure": {
+			distance: 30,
+		},
+	},
+	"Emerald Treasure": {
+		"Emerald Sponge": {
+			distance: 1,
+			requiresKey: "Yellow Key",
+		},
+	},
+	"Emerald Sponge": {
 		"Emerald City": {
 			distance: 20,
 			requiresKey: "Green Key",
@@ -3477,6 +3520,7 @@ const inputEdges: InputEdge = {
 		},
 		"Small White Flower": {
 			distance: 1,
+			note: "x4",
 		},
 		"Rainbow Flower Secret": {
 			distance: 30,
@@ -4583,6 +4627,17 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Topaz": {
+		"Topaz Treasure": {
+			distance: 20,
+			impassable: true,
+		},
+	},
+	"Topaz Treasure": {
+		"Topaz Sponge": {
+			distance: 1,
+		},
+	},
+	"Topaz Sponge": {
 		"Blackberry": {
 			distance: 5,
 		},
@@ -4591,6 +4646,17 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Iolite": {
+		"Iolite Treasure": {
+			distance: 25,
+		},
+	},
+	"Iolite Treasure": {
+		"Iolite Sponge": {
+			distance: 1,
+			requiresKey: "Yellow Key",
+		},
+	},
+	"Iolite Sponge": {
 		"Jade Museum": {
 			distance: 5,
 			arcade: true,
@@ -5078,20 +5144,29 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Mylantis City Underground": {
-		"Beta Menger Sponge": {
+		"Beta Menger Sponge Top": {
 			distance: 1,
 		},
 		"The Bulk 1": {
 			distance: 1,
 		},
 	},
-	"Beta Menger Sponge": {
+	"Beta Menger Sponge Top": {
 		"Hinesburg": {
 			distance: 10,
 		},
 		"Beta Sponge Town": {
 			distance: 50,
 			note: "Depth >100",
+		},
+		"Beta Menger Sponge Mid": {
+			distance: 55,
+			note: "Depth 110",
+		},
+	},
+	"Beta Menger Sponge Mid": {
+		"Beta Menger Sponge Bottom": {
+			distance: 80,
 		},
 	},
 	"Beta Sponge Town": {

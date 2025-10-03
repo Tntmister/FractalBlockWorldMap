@@ -47,7 +47,7 @@ export const monsters = [
 	},
 	{
 		name: "Hired Gun",
-		drop: "Cannon Ammo",
+		drop: "Cannon Ammo x5",
 	},
 	{
 		name: "Guerrilla",
@@ -266,7 +266,7 @@ export const monsters = [
 	},
 	{
 		name: "Hobgoblin",
-		drop: "Gold",
+		drop: "20 Gold",
 	},
 	{
 		name: "Ogre",
