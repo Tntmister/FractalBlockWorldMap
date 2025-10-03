@@ -393,7 +393,7 @@ export default function Main() {
 								onClick={() => {
 									traversePath(
 										path
-											.slice(index + 1, path.length)
+											.slice(index, path.length)
 											.toReversed()
 											.map((edge) => ({
 												...edge,
