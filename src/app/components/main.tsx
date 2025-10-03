@@ -289,93 +289,54 @@ export default function Main() {
 		}
 		const pathUp = (document.getElementsByName("pathfindUp")[0] as HTMLInputElement).checked;
 		const paths = [];
-		switch (pathfindType) {
-			case "upgrade": {
-				const upgrades = pathfindTarget.current as searchableUpgrade[];
-				for (
-					let i = pathStack.length - 1;
-					i >
-					(pathUp
-						? pathStack.findLastIndex((edge) => edge.node.noEscape)
-						: pathStack.length - 1);
-					i--
-				) {
-					const path = pathStack
-						.slice(i, pathStack.length - 1)
-						.toReversed()
-						.map((edge): Edge => {
-							return {
-								...edge,
-								up: true,
-							};
-						});
-					const pathfind = pathfindToUpgrades(upgrades, pathStack.slice(0, i), nodesCopy);
-					if (pathfind) paths.push(path.concat(pathfind));
-				}
-				break;
-			}
-			case "interactable": {
-				const interactables = pathfindTarget.current as interactable[];
-				for (
-					let i = pathStack.length - 1;
-					i >
-					(pathUp
-						? interactables.includes("Blue Ring")
-							? pathStack.findLastIndex(
-									(edge) =>
-										edge.node.blueActiveZoneDestination || edge.node.noEscape,
-								)
-							: pathStack.findLastIndex((edge) => edge.node.noEscape)
-						: pathStack.length - 1);
-					i--
-				) {
-					const path = pathStack
-						.slice(i, pathStack.length - 1)
-						.toReversed()
-						.map((edge): Edge => {
-							return {
-								...edge,
-								up: true,
-							};
-						});
-					const pathfind = pathfindToInteractables(
-						interactables,
+		for (
+			let i = pathStack.length - 1;
+			i >
+			(pathUp ? pathStack.findLastIndex((edge) => edge.node.noEscape) : pathStack.length - 1);
+			i--
+		) {
+			// for each upward node, create an upwards path to that node before pathfinding down to the destination
+			const path = pathStack
+				.slice(i, pathStack.length - 1)
+				.toReversed()
+				.map((edge): Edge => {
+					return {
+						...edge,
+						up: true,
+					};
+				});
+			switch (pathfindType) {
+				case "upgrade": {
+					const pathfind = pathfindToUpgrades(
+						pathfindTarget.current as searchableUpgrade[],
 						pathStack.slice(0, i),
 						nodesCopy,
 					);
 					if (pathfind) paths.push(path.concat(pathfind));
+					break;
 				}
-				break;
-			}
-			case "node":
-				for (
-					let i = pathStack.length;
-					i >
-					(pathUp
-						? pathStack.findLastIndex((edge) => edge.node.noEscape)
-						: pathStack.length - 1);
-					i--
-				) {
-					const path = pathStack
-						.slice(i - 1, pathStack.length - 1)
-						.toReversed()
-						.map((edge): Edge => {
-							return {
-								...edge,
-								up: true,
-							};
-						});
+				case "interactable": {
+					const pathfind = pathfindToInteractables(
+						pathfindTarget.current as interactable[],
+						pathStack.slice(0, i),
+						nodesCopy,
+					);
+					if (pathfind) paths.push(path.concat(pathfind));
+
+					break;
+				}
+				case "node": {
 					const pathfind = pathfindTo(
 						(pathfindTarget.current as Node).name,
 						pathStack.slice(0, i),
 						nodesCopy,
 					);
 					if (pathfind) paths.push(path.concat(pathfind));
+					break;
 				}
-				break;
-			default:
-				break;
+			}
 		}
+
 		setPathfindResult(
 			paths.length > 0
 				? [
