@@ -292,7 +292,7 @@ export default function Main() {
 		for (
 			let i = pathStack.length - 1;
 			i >
-			(pathUp ? pathStack.findLastIndex((edge) => edge.node.noEscape) : pathStack.length - 1);
+			(pathUp ? pathStack.findLastIndex((edge) => edge.node.noEscape) : pathStack.length - 2);
 			i--
 		) {
 			// for each upward node, create an upwards path to that node before pathfinding down to the destination
