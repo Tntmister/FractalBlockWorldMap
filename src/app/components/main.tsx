@@ -64,34 +64,6 @@ export default function Main() {
 
 	const nodes = useMemo(() => {
 		const inputNodes = require(`../input/${selectedPackage}/nodes`).inputNodes as InputNode[];
-
-		if (selectedPackage == "Genesis Xar") {
-			for (const node of inputNodes) {
-				if (node.monsters && node.monsters.length > 0) {
-					if (node.items) {
-						const tmp = [];
-						for (let item of node.items) {
-							if (!Array.isArray(item)) {
-								if (/\d+ Gold/i.test(item)) {
-									item = "Gold";
-									tmp.push(item);
-								} else if (
-									!item.includes("Health") &&
-									!item.includes("Armor") &&
-									!item.includes("Ammo")
-								)
-									tmp.push(item);
-							}
-						}
-						if (tmp.length > 0) node.items = tmp as typeof node.items;
-						else delete node.items;
-					}
-					delete node.monsters;
-				}
-				delete node.upgrades;
-			}
-			console.log(inputNodes);
-		}
 		const inputEdges = require(`../input/${selectedPackage}/edges`)
 			.inputEdges as InputEdgeGeneric;
 		const monsters = require(`../input/${selectedPackage}/monsters`).monsters as monster[];
