@@ -1,6 +1,3 @@
-import { monsters } from "./input/monsters";
-import { nodeName } from "./input/nodes";
-
 export type weaponType = "Plasma" | "Cannon" | "Laser" | "Rocket" | "Homing" | "Minigun" | "Railgun" | "EMP" | "Nuke" | "Dark Hole";
 
 type weaponUpgradeType = "Max Ammo" | "Regen" | "Fire Rate" | "Damage" | "Velocity" | "Radius" | "Freeze Time" | "Count";
@@ -99,7 +96,15 @@ export type defenceUpgrade = (typeof defenceUpgrades)[number];
 export const searchableUpgrades = [...weaponUpgrades, ...defenceUpgrades];
 export type searchableUpgrade = (typeof searchableUpgrades)[number];
 
-export type item = `${`${weaponType} Ammo` | defenceItem} x${number}` | `${weaponType} Ammo` | defenceItem | `${number} ${"Gold" | "EXP"}` | "EXP" | "Gold" | key;
+export type item =
+	| `${`${weaponType} Ammo` | defenceItem} x${number}`
+	| `${weaponType} Ammo`
+	| defenceItem
+	| `${number} ${"Gold" | "EXP"}`
+	| "EXP"
+	| "Invulnerability"
+	| "Gold"
+	| key;
 
 export type upgrade =
 	| `${weaponUpgrade | defenceUpgrade | `Non-${weaponType} ${weaponUpgradeType}`} x${number}`
@@ -145,11 +150,9 @@ export type monster = {
 	drop?: upgrade | item;
 };
 
-export type monsterName = (typeof monsters)[number]["name"];
-
 export type InputNode = {
 	name: string;
-	monsters?: monsterName[];
+	monsters?: string[];
 	upgrades?: (upgrade | upgrade[])[];
 	items?: (item | item[])[];
 	notes?: string;
@@ -169,7 +172,7 @@ export type InputNode = {
 	};
 };
 
-type edgeInfo = {
+export type edgeInfo = {
 	distance: number; // how hard is it to traverse to ingame (enemy difficulty/time)
 	note?: string; // specifc method to enter
 	requiresKey?: key;
@@ -182,9 +185,9 @@ type edgeInfo = {
 	up?: boolean;
 };
 
-export type InputEdge = {
-	[from in nodeName]?: {
-		[to in nodeName]?: edgeInfo;
+export type InputEdgeGeneric = {
+	string?: {
+		string?: edgeInfo;
 	};
 };
 
@@ -194,7 +197,7 @@ export interface Edge extends edgeInfo {
 }
 
 export type Node = {
-	name: nodeName;
+	name: string;
 	upgrades: NonNullable<InputNode["upgrades"]>;
 	items: NonNullable<InputNode["items"]>;
 	interactables: NonNullable<InputNode["interactables"]>;
@@ -207,3 +210,5 @@ export type Node = {
 	monsters: monster[];
 	edges: Edge[];
 };
+
+export type labelMap = Map<item | upgrade, { label?: string; imageName?: string }>;

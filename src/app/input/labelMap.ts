@@ -1,9 +1,9 @@
 // maps items/upgrades to their respective images
 // if not specified, use self string
 
-import { weaponUpgrade, defenceItem, defenceUpgrade, weaponType, upgrade, item } from "../types";
+import { labelMap } from "../types";
 
-export const labels: Map<item | upgrade, { label?: string; imageName?: string }> = new Map(
+export const labels: labelMap = new Map(
 	Object.entries({
 		"100% Health 100% Armor": {
 			imageName: "100%25 Health 100%25 Armor",
@@ -322,5 +322,5 @@ export const labels: Map<item | upgrade, { label?: string; imageName?: string }>
 		"Burlington Combination Lock": {
 			imageName: "Omega",
 		},
-	}) as [item | upgrade, { label?: string; imageName?: string }][],
+	}) as (labelMap extends Map<infer K, infer V> ? [K, V] : never)[], //allows writing in file as array but transformed into a map at runtime, while keeping typescript autocomplete
 );

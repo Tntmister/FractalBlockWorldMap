@@ -7,79 +7,22 @@ import {
 	interactables,
 	searchableUpgrades,
 	searchableUpgrade,
+	InputNode,
+	InputEdgeGeneric,
+	monster,
 } from "../types";
 import Image from "./Image";
 import NodeInfo from "./nodeInfo";
 import "../css/main.css";
-import { inputNodes, nodeName } from "../input/nodes";
-import { inputEdges } from "../input/edges";
-import { monsters } from "../input/monsters";
 import {
 	getTraversedPath,
 	pathfindTo,
 	pathfindToInteractables,
 	pathfindToUpgrades,
 } from "./pathfinding";
+import { packages } from "../input/packages";
 
-const nodes: Map<nodeName, Node> = new Map();
-// initialize nodes from input.ts
-for (const node of inputNodes) {
-	nodes.set(node.name as nodeName, {
-		name: node.name as nodeName,
-		interactables: node.interactables?.toSorted() ?? [],
-		upgrades: node.upgrades?.toSorted() ?? [],
-		items: node.items?.toSorted() ?? [],
-		notes: node.notes,
-		noEscape: node.noEscape ?? false,
-		trophy: node.trophy ?? false,
-		secretTrophy: node.secretTrophy ?? false,
-		blueActiveZoneDestination: node.blueActiveZoneDestination,
-		pinkSphereDestination: node.pinkSphereDestination,
-		monsters: monsters.filter((monster) => node.monsters?.includes(monster.name)).toSorted(),
-		edges: [],
-	});
-}
-
-let edgeId = 0;
-// initialialize edges from input.ts
-for (const [fromName, edge] of Object.entries(inputEdges)) {
-	for (const [toName, edgeInfo] of Object.entries(edge)) {
-		const fromNode = nodes.get(fromName as nodeName)!;
-		const toNode = nodes.get(toName as nodeName)!;
-		if (fromNode && toNode)
-			fromNode.edges.push({
-				node: toNode,
-				id: ++edgeId,
-				...edgeInfo,
-			});
-	}
-}
-
-const startingPath: nodeName[] = [
-	"Top of the World",
-	"Edge of the World",
-	"Outer Space -4",
-	"Outer Space -3",
-	"Outer Space -2",
-	"Outer Space -1",
-	"Outer Space 0",
-	"Outer Space 1",
-	"Outer Space 2",
-	"Galaxy",
-	"Solar System",
-	"Tau Cave Moon",
-	"Type 2 Tau Cave",
-	"Type 3 Tau Cave",
-	"Type 1 Tau Cave",
-	"Ying Flower",
-	"Ying World",
-	"Tutorial Island",
-	"Tutorial Chambers",
-	"Tutorial 2",
-	"Tutorial 1",
-];
-
-function nodeListToPathStack(nodeNames: nodeName[]): Edge[] {
+function nodeListToPathStack(nodeNames: string[], nodes: Map<string, Node>): Edge[] {
 	try {
 		return [
 			{
@@ -106,28 +49,118 @@ function nodeListToPathStack(nodeNames: nodeName[]): Edge[] {
 		return [];
 	}
 }
-const initPathStack = nodeListToPathStack(startingPath);
 
 export default function Main() {
+	const [selectedPackage, setSelectedPackage] =
+		useState<(typeof packages)[number]>("Classic Xar");
+
+	useEffect(() => {
+		document.title = "Fractal Block World Map";
+
+		const localStoragePackage = localStorage.getItem("package") as (typeof packages)[number];
+		if (localStoragePackage) setSelectedPackage(localStoragePackage);
+		console.log(localStoragePackage);
+	}, []);
+
+	const nodes = useMemo(() => {
+		const inputNodes = require(`../input/${selectedPackage}/nodes`).inputNodes as InputNode[];
+
+		if (selectedPackage == "Genesis Xar") {
+			for (const node of inputNodes) {
+				if (node.monsters && node.monsters.length > 0) {
+					if (node.items) {
+						const tmp = [];
+						for (let item of node.items) {
+							if (!Array.isArray(item)) {
+								if (/\d+ Gold/i.test(item)) {
+									item = "Gold";
+									tmp.push(item);
+								} else if (
+									!item.includes("Health") &&
+									!item.includes("Armor") &&
+									!item.includes("Ammo")
+								)
+									tmp.push(item);
+							}
+						}
+						if (tmp.length > 0) node.items = tmp as typeof node.items;
+						else delete node.items;
+					}
+					delete node.monsters;
+				}
+				delete node.upgrades;
+			}
+			console.log(inputNodes);
+		}
+		const inputEdges = require(`../input/${selectedPackage}/edges`)
+			.inputEdges as InputEdgeGeneric;
+		const monsters = require(`../input/${selectedPackage}/monsters`).monsters as monster[];
+		const nodes: Map<string, Node> = new Map();
+		// initialize nodes from input.ts
+		for (const node of inputNodes) {
+			nodes.set(node.name, {
+				name: node.name,
+				interactables: node.interactables?.toSorted() ?? [],
+				upgrades: node.upgrades?.toSorted() ?? [],
+				items: node.items?.toSorted() ?? [],
+				notes: node.notes,
+				noEscape: node.noEscape ?? false,
+				trophy: node.trophy ?? false,
+				secretTrophy: node.secretTrophy ?? false,
+				blueActiveZoneDestination: node.blueActiveZoneDestination,
+				pinkSphereDestination: node.pinkSphereDestination,
+				monsters: monsters,
+				//.filter((monster) => node.monsters?.includes(monster.name))
+				//.toSorted(),
+				edges: [],
+			});
+		}
+
+		let edgeId = 0;
+		// initialialize edges from input.ts
+		for (const [fromName, edge] of Object.entries(inputEdges)) {
+			for (const [toName, edgeInfo] of Object.entries(edge)) {
+				const fromNode = nodes.get(fromName)!;
+				const toNode = nodes.get(toName)!;
+				if (fromNode && toNode) if (edgeInfo.distance === Infinity) edgeInfo.distance = 100;
+				fromNode.edges.push({
+					node: toNode,
+					id: ++edgeId,
+					...edgeInfo,
+				});
+			}
+		}
+		return nodes;
+	}, [selectedPackage]);
+
+	const initPathStack = useMemo(
+		() => nodeListToPathStack(require(`../input/${selectedPackage}/nodes`).startingPath, nodes),
+		[selectedPackage],
+	);
+	useEffect(() => {
+		const localNodeNameList = localStorage.getItem("nodeNameList");
+		const localNodeNameListParsed = localNodeNameList ? JSON.parse(localNodeNameList) : null;
+		const localPathStack =
+			localNodeNameListParsed && localNodeNameListParsed[selectedPackage]
+				? nodeListToPathStack(localNodeNameListParsed[selectedPackage], nodes)
+				: null;
+		setPathStack(localPathStack && localPathStack.length > 0 ? localPathStack : initPathStack);
+		localStorage.setItem("package", selectedPackage);
+	}, [selectedPackage]);
 	// eslint-disable-next-line prefer-const
 	let [pathStack, setPathStackState] = useState<Edge[]>(initPathStack);
 
 	function setPathStack(pathStack: Edge[]) {
 		setPathStackState(pathStack);
+		const localNodeNameList = JSON.parse(localStorage.getItem("nodeNameList") ?? "{}");
 		localStorage.setItem(
 			"nodeNameList",
-			JSON.stringify(pathStack.map((edge) => edge.node.name)),
+			JSON.stringify({
+				...localNodeNameList,
+				[selectedPackage]: pathStack.map((edge) => edge.node.name),
+			}),
 		);
 	}
-
-	useEffect(() => {
-		document.title = "Fractal Block World Map";
-		const localNodeNameList = localStorage.getItem("nodeNameList");
-		const localPathStack = localNodeNameList
-			? nodeListToPathStack(JSON.parse(localNodeNameList))
-			: null;
-		setPathStack(localPathStack && localPathStack.length > 0 ? localPathStack : initPathStack);
-	}, []);
 
 	const currentNode = useMemo(() => pathStack.at(-1)!.node, [pathStack]);
 
@@ -140,7 +173,7 @@ export default function Main() {
 
 	function traverseBlueRing() {
 		const destinationNode = nodes.get(
-			blueActiveZoneEdge!.node.blueActiveZoneDestination!.nodeName as nodeName,
+			blueActiveZoneEdge!.node.blueActiveZoneDestination!.nodeName,
 		)!;
 		traversePath([
 			{
@@ -162,7 +195,7 @@ export default function Main() {
 	function traversePinkRing() {
 		if (pinkSphereEdge!.node.pinkSphereDestination) {
 			const destinationNode = nodes.get(
-				pinkSphereEdge!.node.pinkSphereDestination!.nodeName as nodeName,
+				pinkSphereEdge!.node.pinkSphereDestination!.nodeName,
 			)!;
 			traversePath([
 				{
@@ -236,7 +269,7 @@ export default function Main() {
 				break;
 
 			case "node":
-				pathfindTarget.current = nodes.get(e.target.value as nodeName)!;
+				pathfindTarget.current = nodes.get(e.target.value)!;
 				enableButton = !!pathfindTarget.current;
 				break;
 			default:
@@ -360,6 +393,21 @@ export default function Main() {
 	return (
 		<>
 			<div className='pathContainer' id='currentPathContainer'>
+				<div id='packageContainer'>
+					<select
+						id='packageList'
+						onChange={(e) =>
+							setSelectedPackage(e.target.value as (typeof packages)[number])
+						}
+						value={selectedPackage}
+					>
+						{packages.map((packageName) => (
+							<option key={packageName} value={packageName}>
+								{packageName}
+							</option>
+						))}
+					</select>
+				</div>
 				<div className='pathHeader'>Path To Root</div>
 				<div className='pathList'>
 					{pathStack.map((edge, index, path) => (
@@ -415,7 +463,7 @@ export default function Main() {
 				</div>
 			</div>
 			<div id='nodeContainer'>
-				<NodeInfo node={currentNode}></NodeInfo>
+				<NodeInfo node={currentNode} selectedPackage={selectedPackage}></NodeInfo>
 
 				{(currentNode.edges.length > 0 || blueActiveZoneEdge || pinkSphereEdge) && (
 					<div id='edgesContainer'>
@@ -459,7 +507,8 @@ export default function Main() {
 									{edge.note && ` (${edge.note})`}
 									<Image
 										className='edgeTooltip'
-										src={`./images/edges/${currentNode.name} - ${edge.node.name}.webp`}
+										src={`./images/edges/packages/${selectedPackage}/${currentNode.name} - ${edge.node.name}.webp`}
+										fallbackSrc={`./images/edges/packages/Classic Xar/${currentNode.name} - ${edge.node.name}.webp`}
 										alt=''
 									/>
 								</span>

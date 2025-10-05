@@ -1,12 +1,11 @@
-import { nodeName } from "../input/nodes";
 import { Edge, interactable, Node, upgrade } from "../types";
 
 //Dijkstra pathfinding
 // empty array = already at location, undefined = no path
 export function dijkstraPathfind(
-	currentNodeName: nodeName,
-	targetNodeName: nodeName,
-	nodes: Map<nodeName, Node>,
+	currentNodeName: string,
+	targetNodeName: string,
+	nodes: Map<string, Node>,
 ): Edge[] | undefined {
 	if (currentNodeName == targetNodeName) return [];
 	const distancesToStart = new Map<Node, number>();
@@ -50,9 +49,9 @@ export function dijkstraPathfind(
 }
 
 export function pathfindTo(
-	targetNodeName: nodeName,
+	targetNodeName: string,
 	pathStack: Node["edges"],
-	nodes: Map<nodeName, Node>,
+	nodes: Map<string, Node>,
 ) {
 	let path = dijkstraPathfind(pathStack.at(-1)!.node.name, targetNodeName, nodes);
 	if (path) {
@@ -98,9 +97,7 @@ export function pathfindTo(
 			}
 			// add blue ring edge to path (will be parsed to jump directly to the destination node)
 			path.push({
-				node: nodes.get(
-					blueActiveZoneNode.blueActiveZoneDestination!.nodeName as nodeName,
-				)!,
+				node: nodes.get(blueActiveZoneNode.blueActiveZoneDestination!.nodeName)!,
 				distance: 0,
 				blueRing: true,
 				id: impassableEdgeIndex,
@@ -148,7 +145,7 @@ export function pathfindTo(
 export function pathfindToUpgrades(
 	upgrades: upgrade[],
 	pathStack: Node["edges"],
-	nodes: Map<nodeName, Node>,
+	nodes: Map<string, Node>,
 ) {
 	const nodesCopy = structuredClone(nodes);
 	const possibleDestinations = nodesCopy.values().filter((node) => {
@@ -179,7 +176,7 @@ export function pathfindToUpgrades(
 export function pathfindToInteractables(
 	interactables: interactable[],
 	pathStack: Node["edges"],
-	nodes: Map<nodeName, Node>,
+	nodes: Map<string, Node>,
 ) {
 	const nodesCopy = structuredClone(nodes);
 	// if pathfinding to a blue/pink ring, don't pathfind into a new active zone
@@ -226,7 +223,7 @@ export function pathfindToInteractables(
 }
 
 // returns resulting pathStack of traversing a path
-export function getTraversedPath(path: Edge[], pathStack: Edge[], nodes: Map<nodeName, Node>) {
+export function getTraversedPath(path: Edge[], pathStack: Edge[], nodes: Map<string, Node>) {
 	let pathStackAux = pathStack.slice();
 	for (const edge of path) {
 		if (edge.id == pathStackAux.at(-1)!.id && !edge.up) continue;
@@ -243,8 +240,7 @@ export function getTraversedPath(path: Edge[], pathStack: Edge[], nodes: Map<nod
 			pathStackAux.push(
 				...dijkstraPathfind(
 					pathStackAux[blueDownChunk].node.name,
-					pathStackAux[blueDownChunk].node.blueActiveZoneDestination!
-						.nodeName as nodeName,
+					pathStackAux[blueDownChunk].node.blueActiveZoneDestination!.nodeName,
 
 					nodes,
 				)!,
@@ -257,7 +253,7 @@ export function getTraversedPath(path: Edge[], pathStack: Edge[], nodes: Map<nod
 			pathStackAux.push(
 				...dijkstraPathfind(
 					pathStackAux[pinkSphereChunk].node.name,
-					pathStackAux[pinkSphereChunk].node.pinkSphereDestination!.nodeName as nodeName,
+					pathStackAux[pinkSphereChunk].node.pinkSphereDestination!.nodeName,
 
 					nodes,
 				)!,

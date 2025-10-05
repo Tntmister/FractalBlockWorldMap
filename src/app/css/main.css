@@ -20,6 +20,16 @@ body {
 	border-left: var(--foreground) 1px solid;
 }
 
+#packageContainer {
+	font-size: 24px;
+	padding: 0.5rem 1rem;
+	border-bottom: var(--foreground) 1px solid;
+}
+
+#packageList {
+	width: 100%;
+}
+
 .pathHeader {
 	background-color: var(--background);
 	border-bottom: var(--foreground) 1px solid;

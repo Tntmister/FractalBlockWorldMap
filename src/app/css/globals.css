@@ -77,14 +77,14 @@ select {
 	color: inherit;
 }
 
-select[multiple] {
+select {
 	background-color: var(--background);
 	border-color: var(--foreground);
 	max-width: 100%;
 	border-radius: 2px;
 }
 
-select[multiple] option:checked {
+select option:checked {
 	background: var(--foreground)
 		linear-gradient(0deg, var(--foreground) 0%, var(--foreground) 100%);
 }

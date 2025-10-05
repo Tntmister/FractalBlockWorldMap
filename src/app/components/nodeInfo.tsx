@@ -6,11 +6,12 @@ import { labels } from "../input/labelMap";
 
 interface NodeInfoProps {
 	node: Node;
+	selectedPackage: string;
 }
 
 const infoWindows = ["interactables", "items", "upgrades", "monsters", "notes"] as const;
 
-export default function NodeInfo({ node }: NodeInfoProps) {
+export default function NodeInfo({ node, selectedPackage }: NodeInfoProps) {
 	useEffect(() => {
 		changeInfoWindow(infoWindows.find((value) => node[value]?.length ?? 0 > 0));
 
@@ -98,7 +99,12 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 					</>
 				</span>
 			</div>
-			<Image id='nodeImage' src={`./images/nodes/${node.name}.webp`} alt='' />
+			<Image
+				id='nodeImage'
+				src={`./images/nodes/packages/${selectedPackage}/${node.name}.webp`}
+				fallbackSrc={`./images/edges/packages/Classic Xar/${node.name}.webp`}
+				alt=''
+			/>
 			<div id='nodeInfo'>
 				<div id='nodeInfoHeader'>
 					<span

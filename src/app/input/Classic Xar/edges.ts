@@ -1,5 +1,11 @@
-import { InputEdge } from "../types";
+import { edgeInfo } from "../../types";
 import { nodeName } from "./nodes";
+
+type InputEdge = {
+	[from in nodeName]?: {
+		[to in nodeName]?: edgeInfo;
+	};
+};
 
 const inputEdges: InputEdge = {
 	"Tutorial 1": {
@@ -5561,11 +5567,5 @@ const inputEdges: InputEdge = {
 		},
 	},
 };
-
-for (const a in inputEdges) {
-	for (const b in inputEdges[a as nodeName]) {
-		if (inputEdges[a as nodeName]![b as nodeName]!.distance == Infinity) inputEdges[a as nodeName]![b as nodeName]!.distance = 100;
-	}
-}
 
 export { inputEdges };

@@ -1,4 +1,4 @@
-import { monster } from "../types";
+import { monster } from "../../types";
 
 export const monsters = [
 	{
@@ -529,3 +529,5 @@ export const monsters = [
 		name: "Viral Greater Scourge",
 	},
 ] as const satisfies readonly monster[];
+
+export type monsterNames = (typeof monsters)[number]["name"];
