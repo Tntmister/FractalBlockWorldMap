@@ -109,9 +109,9 @@ export default function Main() {
 				secretTrophy: node.secretTrophy ?? false,
 				blueActiveZoneDestination: node.blueActiveZoneDestination,
 				pinkSphereDestination: node.pinkSphereDestination,
-				monsters: monsters,
-				//.filter((monster) => node.monsters?.includes(monster.name))
-				//.toSorted(),
+				monsters: monsters
+					.filter((monster) => node.monsters?.includes(monster.name))
+					.toSorted(),
 				edges: [],
 			});
 		}
