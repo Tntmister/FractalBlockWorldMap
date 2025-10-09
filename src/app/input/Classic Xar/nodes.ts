@@ -4645,10 +4645,25 @@ const INPUT_NODES = [
 	},
 	{
 		name: "White Rose",
-		monsters: ["Pool Ball 5", "Pool Ball 6"],
-		upgrades: ["Random Health", "RejuvenX"],
-		items: ["Extra 100% Health", "Gold", "600% Armor"],
+		monsters: ["Pool Ball 5"],
+	},
+	{
+		name: "White Rose Treasure",
+		upgrades: ["Random Health x4"],
+		items: ["Extra 100% Health x4", "200 Gold", "600% Armor x1"],
 		secretTrophy: true,
+	},
+	{
+		name: "White Rose Treasure 2",
+		monsters: ["Pool Ball 6"],
+		upgrades: ["RejuvenX x4"],
+		items: ["1600 Gold"],
+	},
+	{
+		name: "White Rose Secret",
+		upgrades: ["Nuke Radius x1"],
+		items: ["200% Armor x1", "1000 Gold"],
+		interactables: ["Waypoint"],
 	},
 	{
 		name: "River",
@@ -5260,6 +5275,9 @@ const INPUT_NODES = [
 		items: ["Gold"],
 		secretTrophy: true,
 		notes: "Secret Trophy: There is a hole in the bottom anti-plug.",
+	},
+	{
+		name: "Mylantis Caves Library Plug",
 	},
 	{
 		name: "Mylantis Cave Shaft",

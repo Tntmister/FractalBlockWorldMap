@@ -790,6 +790,19 @@ const inputEdges: InputEdge = {
 		"Red Apple Tree": {
 			distance: 5,
 		},
+		"White Rose Treasure": {
+			distance: 10,
+		},
+	},
+	"White Rose Treasure": {
+		"White Rose Treasure 2": {
+			distance: 15,
+		},
+	},
+	"White Rose Treasure 2": {
+		"White Rose Secret": {
+			distance: 40,
+		},
 	},
 	"I3 Air": {
 		"Dandelions": {
@@ -4722,6 +4735,21 @@ const inputEdges: InputEdge = {
 		},
 		"Taurus Portal": {
 			distance: 1,
+		},
+		"Mylantis Caves Library Plug": {
+			distance: 3,
+			note: "Shrink at the WIG Flower and go down",
+		},
+	},
+	"Mylantis Caves Library Plug": {
+		"Ying Forest": {
+			distance: 1,
+		},
+		"Small White Flower": {
+			distance: 1,
+		},
+		"White Rose": {
+			distance: 10,
 		},
 	},
 	"Mylantis Caves 1": {
