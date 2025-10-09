@@ -153,6 +153,7 @@ export type monster = {
 export type InputNode = {
 	name: string;
 	monsters?: string[];
+	// upgrades or items in nodes are a list than can either contain upgrades or nodes respectively, or a list in the case of a bent that has the possiblity of being different things
 	upgrades?: (upgrade | upgrade[])[];
 	items?: (item | item[])[];
 	notes?: string;
