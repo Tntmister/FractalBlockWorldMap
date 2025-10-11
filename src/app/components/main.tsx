@@ -479,8 +479,8 @@ export default function Main() {
 									{edge.note && ` (${edge.note})`}
 									<Image
 										className='edgeTooltip'
-										src={`./images/edges/packages/${selectedPackage}/${currentNode.name} - ${edge.node.name}.webp`}
-										fallbackSrc={`./images/edges/packages/Classic Xar/${currentNode.name} - ${edge.node.name}.webp`}
+										src={`./images/packages/${selectedPackage}/edges/${currentNode.name} - ${edge.node.name}.webp`}
+										fallbackSrc={`./images/packages/Classic Xar/edges/${currentNode.name} - ${edge.node.name}.webp`}
 										alt=''
 									/>
 								</span>

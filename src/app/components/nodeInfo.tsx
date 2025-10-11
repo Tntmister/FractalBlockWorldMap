@@ -101,8 +101,8 @@ export default function NodeInfo({ node, selectedPackage }: NodeInfoProps) {
 			</div>
 			<Image
 				id='nodeImage'
-				src={`./images/nodes/packages/${selectedPackage}/${node.name}.webp`}
-				fallbackSrc={`./images/edges/packages/Classic Xar/${node.name}.webp`}
+				src={`./images/packages/${selectedPackage}/nodes/${node.name}.webp`}
+				fallbackSrc={`./images/packages/Classic Xar/nodes/${node.name}.webp`}
 				alt=''
 			/>
 			<div id='nodeInfo'>
