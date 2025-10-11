@@ -171,19 +171,20 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Unremembered Tower": {
+		"Unremembered Tower Floors": {
+			distance: 0,
+		},
+		"Unremembered Tower Treasure": {
+			distance: 30,
+		},
+	},
+	"Unremembered Tower Floors": {
 		"Mossy Basement": {
 			distance: 15,
 		},
 		"Well": {
 			distance: 30,
 			note: "Floor 4",
-		},
-		"Tweedle-Dum Air": {
-			distance: 30,
-			note: "50% Chance",
-		},
-		"Spider Air": {
-			distance: 30,
 		},
 		"Unremembered Tower Secret Totem": {
 			distance: 60,
@@ -194,6 +195,15 @@ const inputEdges: InputEdge = {
 			distance: 30,
 			impassable: true,
 			note: "Pink Ring",
+		},
+	},
+	"Unremembered Tower Treasure": {
+		"Spider Air": {
+			distance: 0,
+		},
+		"Tweedle-Dum Air": {
+			distance: 15,
+			note: "50% Chance",
 		},
 	},
 	"Unremembered Tower Secret Totem": {
