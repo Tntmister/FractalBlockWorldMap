@@ -3971,7 +3971,7 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Solar System": {
-		"Supermassive Black Hole": {
+		"Supermassive Black Hole 1": {
 			distance: 30,
 		},
 		"Sun": {
@@ -4600,6 +4600,26 @@ const inputEdges: InputEdge = {
 		"Edge of the World": {
 			distance: 1,
 			requiresKey: "Green Key",
+		},
+		"Space Root Pink Prison": {
+			distance: 50,
+			impassable: true,
+			note: "Pink Ring",
+		},
+	},
+	"Space Root Pink Prison": {
+		"Fanatic Weed": {
+			distance: 1,
+		},
+		"Catacombs 1": {
+			distance: 1,
+		},
+		"Small Blue Flower (Primary)": {
+			distance: 1,
+		},
+		"Blue Bubble Gauntlet": {
+			distance: 5,
+			note: "Shrink into Front-Right-Down corner of treasure chunk",
 		},
 	},
 	"Edge of the World": {
