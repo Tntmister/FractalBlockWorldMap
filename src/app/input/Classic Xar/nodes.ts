@@ -524,10 +524,14 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Spider Air",
-		interactables: ["Save", "Buy Station", "Pink Ring", "Waypoint", "Out-Only Waypoint"],
+		interactables: ["Save", "Buy Station"],
 		monsters: ["Baby Spider", "Marine", "Minor Gremlin"],
 		upgrades: ["Railgun Damage", "Minigun Damage"],
 		items: ["Rocket Ammo", "Railgun Ammo", "Laser Ammo", "25% Health"],
+	},
+	{
+		name: "Spider Core",
+		interactables: ["Save", "Waypoint", "Out-Only Waypoint"],
 		secretTrophy: true,
 	},
 	{
