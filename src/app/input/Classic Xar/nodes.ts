@@ -1855,7 +1855,7 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Golden Yellow Flower",
-		interactables: ["Save", "Pink Ring"],
+		interactables: ["Save", "Pink Ring", "Pink Sphere"],
 		upgrades: ["Rocket Velocity x1", "Rocket High Velocity Weapon Mod", "Rocket Max Ammo x1"],
 		items: [
 			"Rocket Ammo x60",
@@ -4851,6 +4851,7 @@ const INPUT_NODES = [
 	},
 	{
 		name: "High Gold Asteroid",
+		interactables: ["Pink Sphere"],
 		monsters: ["Troll", "Ogre", "Goliath", "Yellow Lamprey"],
 		items: ["Gold"],
 	},

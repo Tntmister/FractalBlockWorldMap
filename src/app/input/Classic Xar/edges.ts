@@ -133,15 +133,15 @@ const inputEdges: InputEdge = {
 			note: "Save Points",
 		},
 		"Menace Hive": {
-			distance: 20,
+			distance: 30,
 			note: "Depth 12+, hanging from branches",
 		},
 		"Unremembered Tower": {
-			distance: 25,
+			distance: 50,
 			note: "Depth 30+",
 		},
 		"Ying Forest Depth 50+": {
-			distance: 30,
+			distance: 60,
 		},
 		"Orange": {
 			distance: 20,
