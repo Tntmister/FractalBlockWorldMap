@@ -541,7 +541,7 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Spider Air",
-		interactables: ["Save", "Buy Station", "Pink Ring", "Waypoint", "Out-Only Waypoint"],
+		interactables: ["Save", "Buy Station", "Waypoint", "Out-Only Waypoint"],
 		monsters: ["Baby Spider", "Marine", "Minor Gremlin"],
 		upgrades: ["Railgun Damage", "Minigun Damage"],
 		items: ["Rocket Ammo", "Railgun Ammo", "Laser Ammo", "25% Health"],
@@ -1419,6 +1419,11 @@ const INPUT_NODES = [
 		name: "Supermassive Black Hole Mold",
 		monsters: ["Pool Ball 8"],
 		upgrades: ["Dark Hole Max Ammo"],
+	},
+	{
+		name: "Space Root Pink Prison",
+		upgrades: ["Dark Hole Max Ammo x5"],
+		secretTrophy: true,
 	},
 	{
 		name: "Ying Air Cube",
