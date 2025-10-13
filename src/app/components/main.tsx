@@ -314,7 +314,7 @@ export default function Main() {
 				case "upgrade": {
 					const pathfind = pathfindToUpgrades(
 						pathfindTarget.current as searchableUpgrade[],
-						pathStack.slice(0, i),
+						pathStack.slice(0, i + 1),
 						nodesCopy,
 					);
 					if (pathfind) paths.push(path.concat(pathfind));
@@ -323,7 +323,7 @@ export default function Main() {
 				case "interactable": {
 					const pathfind = pathfindToInteractables(
 						pathfindTarget.current as interactable[],
-						pathStack.slice(0, i),
+						pathStack.slice(0, i + 1),
 						nodesCopy,
 					);
 					if (pathfind) paths.push(path.concat(pathfind));
@@ -333,7 +333,7 @@ export default function Main() {
 				case "node": {
 					const pathfind = pathfindTo(
 						(pathfindTarget.current as Node).name,
-						pathStack.slice(0, i),
+						pathStack.slice(0, i + 1),
 						nodesCopy,
 					);
 					if (pathfind) paths.push(path.concat(pathfind));
