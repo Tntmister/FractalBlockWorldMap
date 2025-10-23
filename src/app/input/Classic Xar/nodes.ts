@@ -6527,7 +6527,8 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Orange Ground City",
-		interactables: ["Pink Ring"],
+		interactables: ["Pink Ring", "Waypoint"],
+		items: ["Gold"],
 		monsters: ["Marine", "Goblin"],
 	},
 	{
