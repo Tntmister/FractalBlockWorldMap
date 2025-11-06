@@ -448,15 +448,20 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Spider Air": {
-		"Orange": {
+		"Spider Core": {
 			distance: 20,
+		},
+	},
+	"Spider Core": {
+		"Orange": {
+			distance: 1,
 			note: "x7",
 		},
 		"Blue Bubble Gauntlet": {
-			distance: 20,
+			distance: 1,
 		},
 		"Tau Cave Flower": {
-			distance: 20,
+			distance: 1,
 		},
 	},
 	"Menace Hive": {
