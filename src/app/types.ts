@@ -58,6 +58,7 @@ const weaponUpgrades = [
 	"Dark Hole Damage",
 	"Dark Hole Velocity",
 	"Dark Hole Drive Weapon Mod",
+	"Dark Hole Quasar Drive Weapon Mod",
 ] as const;
 export type weaponUpgrade = (typeof weaponUpgrades)[number];
 

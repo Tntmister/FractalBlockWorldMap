@@ -528,6 +528,10 @@ export const monsters = [
 	{
 		name: "Viral Greater Scourge",
 	},
+	{
+		name: "Singularity",
+		drop: "Green Key",
+	},
 ] as const satisfies readonly monster[];
 
 export type monsterNames = (typeof monsters)[number]["name"];

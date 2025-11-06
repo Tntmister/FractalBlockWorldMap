@@ -3976,7 +3976,7 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Solar System": {
-		"Supermassive Black Hole": {
+		"Supermassive Black Hole 1": {
 			distance: 30,
 		},
 		"Sun": {
@@ -4016,6 +4016,58 @@ const inputEdges: InputEdge = {
 			distance: 20,
 		},
 		"Space Library": {
+			distance: 20,
+		},
+	},
+
+	"Supermassive Black Hole 1": {
+		"Supermassive Black Hole 2": {
+			distance: 50,
+		},
+	},
+	"Supermassive Black Hole 2": {
+		"Supermassive Black Hole 3": {
+			distance: 10,
+			requiresKey: "Universe Key",
+		},
+	},
+	"Supermassive Black Hole 3": {
+		"Supermassive Black Hole 4": {
+			distance: 5,
+			requiresKey: "Green Key",
+		},
+	},
+	"Supermassive Black Hole 4": {
+		"I2 WIG Flower": {
+			distance: 15,
+		},
+		"Supermassive Black Hole 5": {
+			distance: 25,
+			requiresKey: "Green Key",
+		},
+	},
+	"Supermassive Black Hole 5": {
+		"Singularity Boss Room": {
+			distance: 1,
+			arcade: true,
+			whiteBoxDevice: true,
+		},
+	},
+	"Singularity Boss Room": {
+		"Supermassive Black Hole Ammo": {
+			distance: 3,
+		},
+		"Supermassive Black Hole Treasure": {
+			distance: 20,
+		},
+	},
+	"Supermassive Black Hole Treasure": {
+		"Supermassive Black Hole Mold": {
+			distance: 3,
+		},
+	},
+	"Supermassive Black Hole Mold": {
+		"Galaxy Flower": {
 			distance: 20,
 		},
 	},
@@ -4605,6 +4657,26 @@ const inputEdges: InputEdge = {
 		"Edge of the World": {
 			distance: 1,
 			requiresKey: "Green Key",
+		},
+		"Space Root Pink Prison": {
+			distance: 50,
+			impassable: true,
+			note: "Pink Ring",
+		},
+	},
+	"Space Root Pink Prison": {
+		"Fanatic Weed": {
+			distance: 1,
+		},
+		"Catacombs 1": {
+			distance: 1,
+		},
+		"Small Blue Flower (Primary)": {
+			distance: 1,
+		},
+		"Blue Bubble Gauntlet": {
+			distance: 5,
+			note: "Shrink into Front-Right-Down corner of treasure chunk",
 		},
 	},
 	"Edge of the World": {
