@@ -6215,7 +6215,7 @@ const INPUT_NODES = [
 	{
 		name: "Mossy Island",
 		items: ["3 Gold", "100% Armor"],
-		interactables: ["Save"],
+		interactables: ["Save", "Pink Sphere"],
 	},
 	{
 		name: "Mossy Island Caves",
