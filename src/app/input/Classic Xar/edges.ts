@@ -2643,23 +2643,28 @@ const inputEdges: InputEdge = {
 		"Spruce Tree": {
 			distance: 5,
 		},
-		"Stoney Air": {
-			distance: 1,
-		},
 		"Damp Basement": {
 			distance: 1,
-		},
-		"Fanatic Air": {
-			distance: 15,
-		},
-		"Minigun Forest Minor Pod": {
-			distance: 15,
 		},
 		"Hanging Fanatic Vine": {
 			distance: 1,
 		},
 		"Fanatic Weed Caves 2": {
 			distance: 10,
+		},
+		"Fanatic Weed Caves Minor Treasure": {
+			distance: 10,
+		},
+		"Fanatic Weed Caves Treasure": {
+			distance: 20,
+		},
+	},
+	"Fanatic Weed Caves Treasure": {
+		"Minigun Forest Minor Pod": {
+			distance: 1,
+		},
+		"Fanatic Air": {
+			distance: 1,
 		},
 	},
 	"Fanatic Weed Caves 2": {
@@ -2677,6 +2682,9 @@ const inputEdges: InputEdge = {
 		},
 		"Damp Cellar": {
 			distance: 5,
+		},
+		"Stoney Air": {
+			distance: 1,
 		},
 	},
 	"Damp Cellar": {
@@ -3226,7 +3234,13 @@ const inputEdges: InputEdge = {
 		},
 	},
 	"Steel Box": {
+		"Steel Box Bonus Treasure": {
+			distance: 10,
+		},
 		"Small Black Flower": {
+			distance: 10,
+		},
+		"Steel Box Treasure": {
 			distance: 10,
 		},
 	},
@@ -4222,7 +4236,51 @@ const inputEdges: InputEdge = {
 			distance: 2,
 		},
 		"Mossy Cellar": {
+			distance: 5,
+		},
+		"Mossy Island Caves": {
 			distance: 2,
+		},
+	},
+	"Mossy Island Caves": {
+		"Mossy Basement": {
+			distance: 10,
+		},
+		"Mossy Island Ying Treasure": {
+			distance: 15,
+		},
+		"Mossy Island Jericho Treasure": {
+			distance: 20,
+		},
+	},
+	"Mossy Island Jericho Treasure": {
+		"Jericho": {
+			distance: 1,
+		},
+		"Catacombs 1": {
+			distance: 1,
+		},
+		"Ying Air": {
+			distance: 1,
+		},
+	},
+	"Mossy Island Ying Treasure": {
+		"Ying Forest": {
+			distance: 1,
+		},
+		"Ying Flower": {
+			distance: 1,
+		},
+	},
+	"Mossy Island Towers Treasure": {
+		"Ying Forest": {
+			distance: 1,
+		},
+		"Health Tower": {
+			distance: 1,
+		},
+		"Steel Box": {
+			distance: 1,
 		},
 	},
 	"Mossy Cellar": {

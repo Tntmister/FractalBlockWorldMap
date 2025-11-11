@@ -2494,23 +2494,25 @@ const INPUT_NODES = [
 	},
 	{
 		name: "Fanatic Weed Caves",
+		interactables: ["Buy Station", "Markers"],
+		monsters: ["Nuclear Silo", "Major Goon", "Large Goon", "Questionable Goon", "Satellite"],
+	},
+	{
+		name: "Fanatic Weed Caves Minor Treasure",
 		interactables: ["Save"],
-		items: ["Gold", "200% Health 100% Armor"],
-		monsters: [
-			"Disciple",
-			"Nuclear Silo",
-			"Major Goon",
-			"Large Goon",
-			"Questionable Goon",
-			"Satellite",
-		],
-		upgrades: ["Dark Hole Damage", "Dark Hole Max Ammo", "Dark Hole Velocity", "Random Health"],
+		items: ["30 Gold", "Dark Hole Ammo x1", "Railgun Ammo x30", "200% Health 100% Armor x1"],
+		upgrades: ["Dark Hole Damage x1", ["Dark Hole Max Ammo x1", "Dark Hole Velocity x1"]],
+	},
+	{
+		name: "Fanatic Weed Caves Treasure",
+		interactables: ["Save"],
+		upgrades: ["Dark Hole Max Ammo x2", "Dark Hole Velocity x2", "Random Health x2"],
 		secretTrophy: true,
 	},
 	{
 		name: "Fanatic Weed Caves 2",
 		interactables: ["Common Sell Station", "Buy Station", "Markers"],
-		monsters: ["Sentinel"],
+		monsters: ["Sentinel", "Disciple"],
 	},
 	{
 		name: "Damp Basement",
@@ -2989,9 +2991,23 @@ const INPUT_NODES = [
 	{
 		name: "Steel Box",
 		monsters: ["Menace", "Dissident", "Collapsed Spirit", "Collapsed Angel"],
-		upgrades: ["Railgun Max Ammo", "Railgun Damage", "Rocket Max Ammo", "Cannon Max Ammo"],
+		interactables: ["Save"],
+	},
+	{
+		name: "Steel Box Bonus Treasure",
+		upgrades: ["Random Health x8"],
+		interactables: ["Save"],
+	},
+	{
+		name: "Steel Box Treasure",
+		items: ["Extra 100% Health x1", "200% Armor x1", "100 Gold", "Railgun Ammo x100"],
+		upgrades: [
+			"Railgun Max Ammo x1",
+			"Railgun Damage x4",
+			"Rocket Max Ammo x1",
+			"Cannon Max Ammo x1",
+		],
 		interactables: ["Buy Station", "Common Sell Station", "Save"],
-		items: ["Extra 100% Health", "200% Armor", "Gold", "Railgun Ammo"],
 		secretTrophy: true,
 	},
 	{
@@ -6200,6 +6216,50 @@ const INPUT_NODES = [
 		name: "Mossy Island",
 		items: ["3 Gold", "100% Armor"],
 		interactables: ["Save"],
+	},
+	{
+		name: "Mossy Island Caves",
+		items: ["5% Armor", "Gold"],
+		monsters: [
+			"Marine", // random health
+			"Rebel", //plasma damage
+			"Insurgent", // plasma regen
+			"Menace", // cannon damage
+			"Arch Menace Male", // max cannon
+			"Collapsed Spirit", // laser damage
+			"Petite Goon", // minigun damage
+			"Small Goon", // rocket damage
+			"Goon", // max rocket
+			"Large Goon", // rocket radius
+		],
+		upgrades: [
+			[
+				"Random Health",
+				"Plasma Damage",
+				"Plasma Regen",
+				"Cannon Damage",
+				"Cannon Max Ammo",
+				"Laser Damage",
+				"Minigun Damage",
+				"Rocket Damage",
+				"Rocket Max Ammo",
+				"Rocket Radius",
+			],
+		],
+		interactables: ["Save"],
+	},
+	{
+		name: "Mossy Island Ying Treasure",
+		interactables: ["Waypoint", "Out-Only Waypoint", "Save", "Pink Ring", "Respawn"],
+		upgrades: ["Rocket Velocity x2", "Random Health x3", "Plasma Regen x1"],
+	},
+	{
+		name: "Mossy Island Towers Treasure",
+		interactables: ["Waypoint", "Out-Only Waypoint", "Save", "Pink Ring", "Bookmark"],
+		upgrades: ["Random Health x3", "Plasma Regen x1"],
+	},
+	{
+		name: "Mossy Island Jericho Treasure",
 	},
 	{
 		name: "Buttercup",
