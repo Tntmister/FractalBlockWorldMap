@@ -4581,6 +4581,10 @@ const INPUT_NODES = [
 		],
 	},
 	{
+		name: "Violet Shell 3 White X",
+		notes: "Only contains 1 location at the center",
+	},
+	{
 		name: "Violet Shell 2",
 		monsters: ["Greater Dragoon"],
 		items: [
@@ -4623,6 +4627,27 @@ const INPUT_NODES = [
 			"Buy Station",
 			"Markers",
 		],
+	},
+	{
+		name: "Violet Shell 2 Border",
+		notes: "Treasure accessible through the cave.\n66% chance for Rainbow Flower, 33% chance for I3 WIG Flower",
+		interactables: ["Save", "Pink Ring"],
+		upgrades: [
+			[
+				"Dark Hole Damage",
+				"Railgun Damage",
+				"Nuke Damage",
+				"Minigun Damage",
+				"Random Health",
+			],
+			"Nuke Radius x2",
+			"EMP Radius x2",
+			"EMP Freeze Time x2",
+			"Railgun Max Ammo x1",
+			"Minigun Fire Rate x1",
+			"Laser Freeze Time x1",
+		],
+		items: ["1500 Gold", ["Nuke Ammo", "Rocket Ammo", "Railgun Ammo"]],
 	},
 	{
 		name: "Violet Shell 2 Map",
@@ -4678,6 +4703,19 @@ const INPUT_NODES = [
 			"Markers",
 		],
 		trophy: true,
+	},
+	{
+		name: "Violet Shell 1 Border",
+		notes: "Treasure accessible through the cave.\n33% chance for Rainbow Flower, 66% chance for I3 WIG Flower",
+		interactables: ["Save"],
+		upgrades: [
+			"Nuke Radius x2",
+			"EMP Radius x1",
+			"Railgun Max Ammo x1",
+			"Minigun Fire Rate x1",
+			"Laser Freeze Time x1",
+		],
+		items: ["1000 Gold"],
 	},
 	{
 		name: "Violet Shell 0",

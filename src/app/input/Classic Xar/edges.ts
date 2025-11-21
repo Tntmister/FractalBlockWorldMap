@@ -1942,11 +1942,20 @@ const inputEdges: InputEdge = {
 		"Moldy Basement": {
 			distance: 25,
 		},
-		"Large White Flower": {
+		"Violet Shell 3 White X": {
 			distance: 25,
 		},
 		"Ostrich Fern": {
 			distance: 10,
+		},
+	},
+	"Violet Shell 3 White X": {
+		"Large White Flower": {
+			distance: 1,
+		},
+		"Fanatic Island": {
+			distance: 1,
+			note: "Guranteed Willow Tree",
 		},
 	},
 	"Violet Shell 2": {
@@ -1971,10 +1980,6 @@ const inputEdges: InputEdge = {
 		"Healing Patch": {
 			distance: 10,
 		},
-		"Fanatic Lattice": {
-			distance: 10,
-			note: "Walls",
-		},
 		"Fanatic Spire": {
 			distance: 10,
 		},
@@ -1984,6 +1989,9 @@ const inputEdges: InputEdge = {
 		},
 		"Violet Shell 2 Map": {
 			distance: 10,
+		},
+		"Violet Shell 2 Border": {
+			distance: 15,
 		},
 	},
 	"Violet Shell 2 Map": {
@@ -2002,14 +2010,37 @@ const inputEdges: InputEdge = {
 		"Fanatic Spire": {
 			distance: 10,
 		},
-		"Fanatic Lattice": {
-			distance: 10,
-			note: "Walls",
-		},
 		"Fir Tree": {
 			distance: 1,
 		},
 		"Violet Shell 2 Map": {
+			distance: 10,
+		},
+	},
+	"Violet Shell 2 Border": {
+		"Fanatic Lattice": {
+			distance: 1,
+		},
+		"I1 Library": {
+			distance: 5,
+		},
+		"I2 Library": {
+			distance: 5,
+		},
+		"Imp Cave": {
+			distance: 5,
+		},
+		"I3 WIG Flower": {
+			distance: 10,
+			note: "Guranteed Real",
+		},
+		"Rainbow Flower": {
+			distance: 10,
+		},
+		"Galaxy Flower": {
+			distance: 10,
+		},
+		"Fanatic Weed": {
 			distance: 10,
 		},
 	},
@@ -2032,14 +2063,37 @@ const inputEdges: InputEdge = {
 		"Violet Shell 0": {
 			distance: 15, // we take a blue ring here, but distance to leave
 		},
-		"Fanatic Lattice": {
-			distance: 10,
-			note: "Walls",
-		},
-		"Health Tower": {
-			distance: 10,
-		},
 		"Blue Bubble Cave": {
+			distance: 10,
+		},
+		"Violet Shell 1 Border": {
+			distance: 15,
+		},
+	},
+	"Violet Shell 1 Border": {
+		"Health Tower": {
+			distance: 1,
+		},
+		"Fanatic Lattice": {
+			distance: 1,
+		},
+		"I1 Library": {
+			distance: 5,
+		},
+		"I2 Library": {
+			distance: 5,
+		},
+		"Imp Cave": {
+			distance: 5,
+		},
+		"I3 WIG Flower": {
+			distance: 10,
+			note: "Guranteed Real",
+		},
+		"Rainbow Flower": {
+			distance: 10,
+		},
+		"Fanatic Weed": {
 			distance: 10,
 		},
 	},
