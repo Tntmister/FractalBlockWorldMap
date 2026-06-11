@@ -35,7 +35,7 @@ export function initLocalStorage(): Edge[] {
 	console.log("a");
 	const localNodeNameList = localStorage.getItem("nodeNameList");
 	console.log("b");
-	if (localNodeNameList) {
+	if (localNodeNameList && Array.isArray(localNodeNameList)) {
 		return nodeListToPathStack(JSON.parse(localNodeNameList));
 	} else {
 		return initStackPath;
