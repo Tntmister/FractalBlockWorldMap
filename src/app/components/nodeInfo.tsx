@@ -1,5 +1,4 @@
 import { Node, Upgrade, Item } from "../types";
-import Image from "./Image";
 import "../css/nodeInfo.css";
 import { Fragment, useEffect, useState } from "react";
 import { labels } from "../data/labelMap";
@@ -71,7 +70,7 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 		<div id='nodeInfoContainer'>
 			<div id='nodeHeader'>
 				<span>
-					{node.trophy && <Image className='icon' src={`./images/icons/Trophy.webp`} />}
+					{node.trophy && <img className='icon' src={`./images/icons/Trophy.webp`} />}
 					{[...Array(Math.max(+node.trophy, +node.secretTrophy) - +node.trophy)].map(
 						(_, i) => (
 							<span className='icon' key={`trophy${i}Blank`} />
@@ -82,7 +81,7 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 				<span>
 					<>
 						{[...Array(+node.secretTrophy)].map((_, i) => (
-							<Image
+							<img
 								className='icon'
 								key={`secretTrophy${i}`}
 								src={`./images/icons/Secret Trophy.webp`}
@@ -142,7 +141,7 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 						{currentInfoWindow == "interactables" &&
 							node.interactables.map((interactable) => (
 								<div key={interactable}>
-									<Image
+									<img
 										className='icon-small'
 										src={`./images/icons/${interactable}.webp`}
 									/>
@@ -156,7 +155,7 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 									{monster.drop && (
 										<>
 											(
-											<Image
+											<img
 												className='icon-small'
 												src={`./images/icons/${labels.get(monster.drop.replace(/ x\d+$/i, "") as Item | Upgrade)?.imageName ?? monster.drop.replace(/^\d+ (Second )?/i, "")}.webp`}
 											/>
@@ -180,7 +179,7 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 										{itemAux.length > 1 && "("}
 										{itemAux.map((item, index) => (
 											<Fragment key={`${itemAux.join("")}|${item}`}>
-												<Image
+												<img
 													className='icon-small'
 													src={`./images/icons/${
 														labels.get(
@@ -207,7 +206,7 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 											<Fragment key={`${upgradeAux.join("")}|${upgrade}`}>
 												{!!index && " or "}
 												{!upgrade.includes("Non-") && (
-													<Image
+													<img
 														className='icon-small'
 														src={(() => {
 															const upgradeName = upgrade.replace(

@@ -8,103 +8,26 @@ import {
 	searchableUpgrades,
 	SearchableUpgrade,
 } from "../types";
-import Image from "./Image";
 import NodeInfo from "./nodeInfo";
 import "../css/main.css";
-import { nodeData, startingPath } from "../data/nodes";
-import { edgeData } from "../data/edges";
-import { monsters } from "../data/monsters";
 import {
 	getTraversedPath,
 	pathfindTo,
 	pathfindToInteractables,
 	pathfindToUpgrades,
 } from "./pathfinding";
-
-function nodeListToPathStack(nodeNames: string[], nodes: Map<string, Node>): Edge[] {
-	try {
-		return [
-			{
-				node: nodes.get(nodeNames[0])!,
-				distance: 0,
-				id: -1,
-			},
-			...nodeNames.slice(1).map(
-				(nodeName, index, arr) =>
-					nodes.get(nodeNames[index])!.edges.find((edge) => edge.node.name == nodeName) ??
-					(() => {
-						const error = new Error(
-							`${nodeName} is not connected to ${arr[index - 1]}`,
-						);
-						error.name = "InvalidPathError";
-						throw error;
-					})(),
-			),
-		];
-	} catch (error) {
-		if ((error as Error).name == "InvalidPathError")
-			console.warn("Error loading local storage path: " + (error as Error).message);
-		else throw error;
-		return [];
-	}
-}
+import { nodes, startingPath } from "./data";
+import { initLocalStorage, initStackPath } from "./localStorage";
 
 export default function Main() {
-	const nodes = useMemo(() => {
-		const nodes: Map<string, Node> = new Map();
-		// initialize nodes from data
-		for (const node of nodeData) {
-			nodes.set(node.name, {
-				name: node.name,
-				interactables: node.interactables?.toSorted() ?? [],
-				upgrades: node.upgrades?.toSorted() ?? [],
-				items: node.items?.toSorted() ?? [],
-				notes: node.notes,
-				noEscape: node.noEscape ?? false,
-				trophy: node.trophy ?? false,
-				secretTrophy: node.secretTrophy ?? false,
-				blueActiveZoneDestination: node.blueActiveZoneDestination,
-				pinkSphereDestination: node.pinkSphereDestination,
-				monsters: monsters
-					.filter((monster) => node.monsters?.includes(monster.name))
-					.toSorted(),
-				edges: [],
-			});
-		}
-
-		let edgeId = 0;
-		// initialialize edges from data
-		for (const [fromName, edge] of Object.entries(edgeData)) {
-			for (const [toName, edgeInfo] of Object.entries(edge)) {
-				const fromNode = nodes.get(fromName)!;
-				const toNode = nodes.get(toName)!;
-				if (fromNode && toNode) if (edgeInfo.distance === Infinity) edgeInfo.distance = 100;
-				fromNode.edges.push({
-					node: toNode,
-					id: ++edgeId,
-					...edgeInfo,
-				});
-			}
-		}
-		return nodes;
-	}, []);
-
-	const initPathStack = useMemo(() => nodeListToPathStack(startingPath, nodes), []);
 	useEffect(() => {
-		const localNodeNameList = localStorage.getItem("nodeNameList");
-		const localNodeNameListParsed = localNodeNameList ? JSON.parse(localNodeNameList) : null;
-		const localPathStack =
-			localNodeNameListParsed && localNodeNameListParsed
-				? nodeListToPathStack(localNodeNameListParsed, nodes)
-				: null;
-		setPathStack(localPathStack && localPathStack.length > 0 ? localPathStack : initPathStack);
+		const initPathStack = initLocalStorage();
+		setPathStackState(initPathStack);
 	}, []);
 	// eslint-disable-next-line prefer-const
-	let [pathStack, setPathStackState] = useState<Edge[]>(initPathStack);
-
+	let [pathStack, setPathStackState] = useState<Edge[]>(initStackPath);
 	function setPathStack(pathStack: Edge[]) {
 		setPathStackState(pathStack);
-		const localNodeNameList = JSON.parse(localStorage.getItem("nodeNameList") ?? "{}");
 		localStorage.setItem(
 			"nodeNameList",
 			JSON.stringify(pathStack.map((edge) => edge.node.name)),
@@ -348,7 +271,7 @@ export default function Main() {
 						<Fragment key={`path${index}`}>
 							{index != 0 &&
 								(edge.node.noEscape ? (
-									<Image
+									<img
 										className='icon'
 										src='./images/icons/One Way.webp'
 										alt='One Way'
@@ -385,7 +308,7 @@ export default function Main() {
 								}}
 							>
 								{path[index + 1]?.requiresKey && (
-									<Image
+									<img
 										className='icon-small'
 										src={`./images/icons/${path[index + 1].requiresKey!.includes("Singleton") ? "Stable Singletons Key" : path[index + 1].requiresKey}.webp`}
 									/>
@@ -414,32 +337,32 @@ export default function Main() {
 									}
 								>
 									{edge.requiresKey && (
-										<Image
+										<img
 											className='icon-small'
 											src={`./images/icons/${edge.requiresKey.includes("Singleton") ? "Stable Singletons Key" : edge.requiresKey}.webp`}
 										/>
 									)}
 									{edge.arcade && (
-										<Image
+										<img
 											className='icon-small'
 											src={`./images/icons/Arcade.webp`}
 										/>
 									)}
 									{edge.whiteBoxDevice && (
-										<Image
+										<img
 											className='icon-small'
 											src={`./images/icons/White Box Device.webp`}
 										/>
 									)}
 									{edge.impassable && (
-										<Image
+										<img
 											className='icon-small'
 											src={`./images/icons/One Way.webp`}
 										/>
 									)}
 									{edge.node.name}
 									{edge.note && ` (${edge.note})`}
-									<Image
+									<img
 										className='edgeTooltip'
 										src={`./images/edges/${currentNode.name} - ${edge.node.name}.webp`}
 										alt=''
@@ -448,7 +371,7 @@ export default function Main() {
 							))}
 							{blueActiveZoneEdge && (
 								<span className='edge blueRing' onClick={traverseBlueRing}>
-									<Image
+									<img
 										className='icon-small'
 										src={`./images/icons/Blue Ring.webp`}
 									/>
@@ -457,7 +380,7 @@ export default function Main() {
 							)}
 							{pinkSphereEdge && (
 								<span className='edge pinkRing' onClick={traversePinkRing}>
-									<Image
+									<img
 										className='icon-small'
 										src={`./images/icons/Pink Ring.webp`}
 									/>

@@ -4465,27 +4465,3 @@ const NODES = [
 export type nodeName = (typeof NODES)[number]["name"];
 
 export const nodeData = NODES as unknown as NodeData[];
-
-export const startingPath: nodeName[] = [
-	"Top of the World",
-	"Edge of the World",
-	"Outer Space -4",
-	"Outer Space -3",
-	"Outer Space -2",
-	"Outer Space -1",
-	"Outer Space 0",
-	"Outer Space 1",
-	"Outer Space 2",
-	"Galaxy",
-	"Solar System",
-	"Tau Cave Moon",
-	"Type 2 Tau Cave",
-	"Type 3 Tau Cave",
-	"Type 1 Tau Cave",
-	"Ying Flower",
-	"Ying World",
-	"Tutorial Island",
-	"Tutorial Chambers",
-	"Tutorial 2",
-	"Tutorial 1",
-];

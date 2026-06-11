@@ -48,11 +48,7 @@ export function dijkstraPathfind(
 	return path.length > 0 ? path : undefined;
 }
 
-export function pathfindTo(
-	targetNodeName: string,
-	pathStack: Node["edges"],
-	nodes: Map<string, Node>,
-) {
+export function pathfindTo(targetNodeName: string, pathStack: Edge[], nodes: Map<string, Node>) {
 	let path = dijkstraPathfind(pathStack.at(-1)!.node.name, targetNodeName, nodes);
 	if (path) {
 		// if destination is only accessible thorugh a blue ring, jump to before that then pathfind to a blue ring
