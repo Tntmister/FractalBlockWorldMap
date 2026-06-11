@@ -32,11 +32,11 @@ function nodeListToPathStack(nodeNames: string[]): Edge[] {
 export const initStackPath = nodeListToPathStack(startingPath);
 
 export function initLocalStorage(): Edge[] {
-	console.log("a");
 	const localNodeNameList = localStorage.getItem("nodeNameList");
-	console.log("b");
-	if (localNodeNameList && Array.isArray(localNodeNameList)) {
-		return nodeListToPathStack(JSON.parse(localNodeNameList));
+	if (localNodeNameList) {
+		const nodeNameList = JSON.parse(localNodeNameList);
+		if (Array.isArray(nodeNameList)) return nodeListToPathStack(JSON.parse(localNodeNameList));
+		else return initStackPath;
 	} else {
 		return initStackPath;
 	}

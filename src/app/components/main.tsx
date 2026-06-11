@@ -22,7 +22,7 @@ import { initLocalStorage, initStackPath } from "./localStorage";
 export default function Main() {
 	const [loading, setLoading] = useState<boolean>(true);
 	useEffect(() => {
-		pathStack = initLocalStorage();
+		setPathStackState(initLocalStorage());
 		setLoading(false);
 	}, []);
 	// eslint-disable-next-line prefer-const
