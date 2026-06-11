@@ -143,7 +143,7 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 								<div key={interactable}>
 									<img
 										className='icon-small'
-										src={`./images/icons/${interactable}.webp`}
+										src={`./images/icons/${labels.get(interactable)?.imageName ?? interactable}.webp`}
 									/>
 									{interactable}
 								</div>

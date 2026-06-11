@@ -207,4 +207,4 @@ export type Node = {
 	edges: Edge[];
 };
 
-export type LabelMap = Map<Item | Upgrade, { label?: string; imageName?: string }>;
+export type LabelMap = Map<Item | Upgrade | Interactable, { label?: string; imageName?: string }>;

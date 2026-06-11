@@ -322,5 +322,23 @@ export const labels: LabelMap = new Map(
 		"Burlington Combination Lock": {
 			imageName: "Omega",
 		},
+		"Buy Nuke 400": {
+			imageName: "Buy Nuke",
+		},
+		"Buy Nuke 300": {
+			imageName: "Buy Nuke",
+		},
+		"Buy Nuke 250": {
+			imageName: "Buy Nuke",
+		},
+		"Buy Nuke 200": {
+			imageName: "Buy Nuke",
+		},
+		"Buy Nuke 150": {
+			imageName: "Buy Nuke",
+		},
+		"Buy Nuke 100": {
+			imageName: "Buy Nuke",
+		},
 	}) as (LabelMap extends Map<infer K, infer V> ? [K, V] : never)[], //allows writing in file as array but transformed into a map at runtime, while keeping typescript autocomplete
 );
