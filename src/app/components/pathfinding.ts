@@ -222,7 +222,7 @@ export function pathfindToInteractables(
 export function getTraversedPath(path: Edge[], pathStack: Edge[], nodes: Map<string, Node>) {
 	let pathStackAux = pathStack.slice();
 	for (const edge of path) {
-		if (edge.id == pathStackAux.at(-1)!.id && !edge.up) continue;
+		if (edge.id == pathStackAux.at(-1)!.id && !edge.up && !edge.blueRing) continue;
 		if (edge.up) {
 			pathStackAux = pathStackAux.slice(
 				0,

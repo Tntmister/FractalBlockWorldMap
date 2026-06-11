@@ -3347,7 +3347,7 @@ const NODES = [
 		upgrades: ["Plasma Regen", "Minigun Super Damage", "Laser Super Damage", "Armor Regen", "Telekinesis"],
 		interactables: ["Blue Ring"],
 		blueActiveZoneDestination: {
-			nodeName: "Mylantis Top City",
+			nodeName: "Mylantis Top Garden",
 		},
 		trophy: true,
 		secretTrophy: true,
