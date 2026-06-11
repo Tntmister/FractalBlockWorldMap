@@ -9,6 +9,12 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='en'>
+			<head>
+				<meta
+					name='google-site-verification'
+					content='oyo0C9EsUZVa6qZaPylM7PInBZ_DK3jeMy_5I4towDk'
+				/>
+			</head>
 			<body className={font.className}>{children}</body>
 		</html>
 	);
