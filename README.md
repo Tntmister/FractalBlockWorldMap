@@ -40,7 +40,7 @@ Place images of a location on the 'public\images\nodes' location with the filena
 
 ## Edges
 
-Edges can be thought of as the "transition" between 2 nodes. They don't describe an actual location, moreso the requirments for going from one place to another.
+Edges can be thought of as the "transition" between 2 nodes. They don't describe an actual location, moreso the requirments for going from one place to another. (difficulty, key requirment, etc.)
 
 Secret locations that require a blue ring are still shown but with an icon describing that the location is not directly acessible.
 
