@@ -1,4 +1,4 @@
-import { Edge, interactable, Node, upgrade } from "../types";
+import { Edge, Interactable, Node, Upgrade } from "../types";
 
 //Dijkstra pathfinding
 // empty array = already at location, undefined = no path
@@ -143,7 +143,7 @@ export function pathfindTo(
 }
 
 export function pathfindToUpgrades(
-	upgrades: upgrade[],
+	upgrades: Upgrade[],
 	pathStack: Node["edges"],
 	nodes: Map<string, Node>,
 ) {
@@ -174,7 +174,7 @@ export function pathfindToUpgrades(
 }
 
 export function pathfindToInteractables(
-	interactables: interactable[],
+	interactables: Interactable[],
 	pathStack: Node["edges"],
 	nodes: Map<string, Node>,
 ) {

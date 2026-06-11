@@ -10,5 +10,6 @@
 	},
 	"[typescriptreact]": {
 		"editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
-	}
+	},
+	"js/ts.tsdk.path": "node_modules\\typescript\\lib"
 }

@@ -3,24 +3,23 @@ import { ChangeEvent, Fragment, useEffect, useMemo, useRef, useState } from "rea
 import {
 	Node,
 	Edge,
-	interactable,
+	Interactable,
 	interactables,
 	searchableUpgrades,
-	searchableUpgrade,
-	InputNode,
-	InputEdgeGeneric,
-	monster,
+	SearchableUpgrade,
 } from "../types";
 import Image from "./Image";
 import NodeInfo from "./nodeInfo";
 import "../css/main.css";
+import { nodeData, startingPath } from "../data/nodes";
+import { edgeData } from "../data/edges";
+import { monsters } from "../data/monsters";
 import {
 	getTraversedPath,
 	pathfindTo,
 	pathfindToInteractables,
 	pathfindToUpgrades,
 } from "./pathfinding";
-import { packages } from "../input/packages";
 
 function nodeListToPathStack(nodeNames: string[], nodes: Map<string, Node>): Edge[] {
 	try {
@@ -51,25 +50,10 @@ function nodeListToPathStack(nodeNames: string[], nodes: Map<string, Node>): Edg
 }
 
 export default function Main() {
-	const [selectedPackage, setSelectedPackage] =
-		useState<(typeof packages)[number]>("Classic Xar");
-
-	useEffect(() => {
-		document.title = "Fractal Block World Map";
-
-		const localStoragePackage = localStorage.getItem("package") as (typeof packages)[number];
-		if (localStoragePackage) setSelectedPackage(localStoragePackage);
-		console.log(localStoragePackage);
-	}, []);
-
 	const nodes = useMemo(() => {
-		const inputNodes = require(`../input/${selectedPackage}/nodes`).inputNodes as InputNode[];
-		const inputEdges = require(`../input/${selectedPackage}/edges`)
-			.inputEdges as InputEdgeGeneric;
-		const monsters = require(`../input/${selectedPackage}/monsters`).monsters as monster[];
 		const nodes: Map<string, Node> = new Map();
-		// initialize nodes from input.ts
-		for (const node of inputNodes) {
+		// initialize nodes from data
+		for (const node of nodeData) {
 			nodes.set(node.name, {
 				name: node.name,
 				interactables: node.interactables?.toSorted() ?? [],
@@ -89,8 +73,8 @@ export default function Main() {
 		}
 
 		let edgeId = 0;
-		// initialialize edges from input.ts
-		for (const [fromName, edge] of Object.entries(inputEdges)) {
+		// initialialize edges from data
+		for (const [fromName, edge] of Object.entries(edgeData)) {
 			for (const [toName, edgeInfo] of Object.entries(edge)) {
 				const fromNode = nodes.get(fromName)!;
 				const toNode = nodes.get(toName)!;
@@ -103,22 +87,18 @@ export default function Main() {
 			}
 		}
 		return nodes;
-	}, [selectedPackage]);
+	}, []);
 
-	const initPathStack = useMemo(
-		() => nodeListToPathStack(require(`../input/${selectedPackage}/nodes`).startingPath, nodes),
-		[selectedPackage],
-	);
+	const initPathStack = useMemo(() => nodeListToPathStack(startingPath, nodes), []);
 	useEffect(() => {
 		const localNodeNameList = localStorage.getItem("nodeNameList");
 		const localNodeNameListParsed = localNodeNameList ? JSON.parse(localNodeNameList) : null;
 		const localPathStack =
-			localNodeNameListParsed && localNodeNameListParsed[selectedPackage]
-				? nodeListToPathStack(localNodeNameListParsed[selectedPackage], nodes)
+			localNodeNameListParsed && localNodeNameListParsed
+				? nodeListToPathStack(localNodeNameListParsed, nodes)
 				: null;
 		setPathStack(localPathStack && localPathStack.length > 0 ? localPathStack : initPathStack);
-		localStorage.setItem("package", selectedPackage);
-	}, [selectedPackage]);
+	}, []);
 	// eslint-disable-next-line prefer-const
 	let [pathStack, setPathStackState] = useState<Edge[]>(initPathStack);
 
@@ -127,10 +107,7 @@ export default function Main() {
 		const localNodeNameList = JSON.parse(localStorage.getItem("nodeNameList") ?? "{}");
 		localStorage.setItem(
 			"nodeNameList",
-			JSON.stringify({
-				...localNodeNameList,
-				[selectedPackage]: pathStack.map((edge) => edge.node.name),
-			}),
+			JSON.stringify(pathStack.map((edge) => edge.node.name)),
 		);
 	}
 
@@ -213,7 +190,7 @@ export default function Main() {
 		);
 	}, [pathfindType]);
 
-	const pathfindTarget = useRef<Node | interactable[] | searchableUpgrade[]>(null);
+	const pathfindTarget = useRef<Node | Interactable[] | SearchableUpgrade[]>(null);
 	const pathfindPathstack = useRef<Edge[]>(null);
 	const [pathfindResult, setPathfindResult] = useState<Edge[] | null>();
 
@@ -223,7 +200,7 @@ export default function Main() {
 			case "upgrade":
 				pathfindTarget.current = Array.from(e.target.selectedOptions).map(
 					(option) => option.value,
-				) as searchableUpgrade[];
+				) as SearchableUpgrade[];
 
 				enableButton = pathfindTarget.current.every((upgrade) =>
 					searchableUpgrades.includes(upgrade),
@@ -233,7 +210,7 @@ export default function Main() {
 			case "interactable":
 				pathfindTarget.current = Array.from(e.target.selectedOptions).map(
 					(option) => option.value,
-				) as interactable[];
+				) as Interactable[];
 
 				enableButton = pathfindTarget.current.every((interactable) =>
 					interactables.includes(interactable),
@@ -313,7 +290,7 @@ export default function Main() {
 			switch (pathfindType) {
 				case "upgrade": {
 					const pathfind = pathfindToUpgrades(
-						pathfindTarget.current as searchableUpgrade[],
+						pathfindTarget.current as SearchableUpgrade[],
 						pathStack.slice(0, i + 1),
 						nodesCopy,
 					);
@@ -322,7 +299,7 @@ export default function Main() {
 				}
 				case "interactable": {
 					const pathfind = pathfindToInteractables(
-						pathfindTarget.current as interactable[],
+						pathfindTarget.current as Interactable[],
 						pathStack.slice(0, i + 1),
 						nodesCopy,
 					);
@@ -365,21 +342,6 @@ export default function Main() {
 	return (
 		<>
 			<div className='pathContainer' id='currentPathContainer'>
-				<div id='packageContainer'>
-					<select
-						id='packageList'
-						onChange={(e) =>
-							setSelectedPackage(e.target.value as (typeof packages)[number])
-						}
-						value={selectedPackage}
-					>
-						{packages.map((packageName) => (
-							<option key={packageName} value={packageName}>
-								{packageName}
-							</option>
-						))}
-					</select>
-				</div>
 				<div className='pathHeader'>Path To Root</div>
 				<div className='pathList'>
 					{pathStack.map((edge, index, path) => (
@@ -435,7 +397,7 @@ export default function Main() {
 				</div>
 			</div>
 			<div id='nodeContainer'>
-				<NodeInfo node={currentNode} selectedPackage={selectedPackage}></NodeInfo>
+				<NodeInfo node={currentNode}></NodeInfo>
 
 				{(currentNode.edges.length > 0 || blueActiveZoneEdge || pinkSphereEdge) && (
 					<div id='edgesContainer'>
@@ -479,8 +441,7 @@ export default function Main() {
 									{edge.note && ` (${edge.note})`}
 									<Image
 										className='edgeTooltip'
-										src={`./images/packages/${selectedPackage}/edges/${currentNode.name} - ${edge.node.name}.webp`}
-										fallbackSrc={`./images/packages/Classic Xar/edges/${currentNode.name} - ${edge.node.name}.webp`}
+										src={`./images/edges/${currentNode.name} - ${edge.node.name}.webp`}
 										alt=''
 									/>
 								</span>

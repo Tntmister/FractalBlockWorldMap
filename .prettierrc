@@ -17,7 +17,7 @@
 	"overrides": [
 		{
 			"files": [
-				"**/input/*.ts",
+				"**/data/*.ts",
 				"**/types.ts"
 			],
 			"options": {

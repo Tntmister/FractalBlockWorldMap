@@ -1,17 +1,16 @@
-import { Node, upgrade, item } from "../types";
+import { Node, Upgrade, Item } from "../types";
 import Image from "./Image";
 import "../css/nodeInfo.css";
 import { Fragment, useEffect, useState } from "react";
-import { labels } from "../input/labelMap";
+import { labels } from "../data/labelMap";
 
 interface NodeInfoProps {
 	node: Node;
-	selectedPackage: string;
 }
 
 const infoWindows = ["interactables", "items", "upgrades", "monsters", "notes"] as const;
 
-export default function NodeInfo({ node, selectedPackage }: NodeInfoProps) {
+export default function NodeInfo({ node }: NodeInfoProps) {
 	useEffect(() => {
 		changeInfoWindow(infoWindows.find((value) => node[value]?.length ?? 0 > 0));
 
@@ -99,12 +98,7 @@ export default function NodeInfo({ node, selectedPackage }: NodeInfoProps) {
 					</>
 				</span>
 			</div>
-			<Image
-				id='nodeImage'
-				src={`./images/packages/${selectedPackage}/nodes/${node.name}.webp`}
-				fallbackSrc={`./images/packages/Classic Xar/nodes/${node.name}.webp`}
-				alt=''
-			/>
+			<img id='nodeImage' src={`./images/nodes/${node.name}.webp`} alt='' />
 			<div id='nodeInfo'>
 				<div id='nodeInfoHeader'>
 					<span
@@ -164,13 +158,13 @@ export default function NodeInfo({ node, selectedPackage }: NodeInfoProps) {
 											(
 											<Image
 												className='icon-small'
-												src={`./images/icons/${labels.get(monster.drop.replace(/ x\d+$/i, "") as item | upgrade)?.imageName ?? monster.drop.replace(/^\d+ (Second )?/i, "")}.webp`}
+												src={`./images/icons/${labels.get(monster.drop.replace(/ x\d+$/i, "") as Item | Upgrade)?.imageName ?? monster.drop.replace(/^\d+ (Second )?/i, "")}.webp`}
 											/>
 											<div>
 												{labels.get(
 													monster.drop.replace(/ x\d+$/i, "") as
-														| item
-														| upgrade,
+														| Item
+														| Upgrade,
 												)?.label ?? monster.drop}
 											</div>
 											)
@@ -190,7 +184,7 @@ export default function NodeInfo({ node, selectedPackage }: NodeInfoProps) {
 													className='icon-small'
 													src={`./images/icons/${
 														labels.get(
-															item.replace(/ x\d+$/i, "") as item,
+															item.replace(/ x\d+$/i, "") as Item,
 														)?.imageName ??
 														item.replace(/^\d+ (Second )?/i, "")
 													}.webp`}
@@ -219,7 +213,7 @@ export default function NodeInfo({ node, selectedPackage }: NodeInfoProps) {
 															const upgradeName = upgrade.replace(
 																/ x\d+$/i,
 																"",
-															) as upgrade;
+															) as Upgrade;
 															return `./images/icons/${
 																labels.get(upgradeName)
 																	?.imageName ?? upgradeName

@@ -1,9 +1,9 @@
 // maps items/upgrades to their respective images
 // if not specified, use self string
 
-import { labelMap } from "../types";
+import { LabelMap } from "../types";
 
-export const labels: labelMap = new Map(
+export const labels: LabelMap = new Map(
 	Object.entries({
 		"100% Health 100% Armor": {
 			imageName: "100%25 Health 100%25 Armor",
@@ -322,5 +322,5 @@ export const labels: labelMap = new Map(
 		"Burlington Combination Lock": {
 			imageName: "Omega",
 		},
-	}) as (labelMap extends Map<infer K, infer V> ? [K, V] : never)[], //allows writing in file as array but transformed into a map at runtime, while keeping typescript autocomplete
+	}) as (LabelMap extends Map<infer K, infer V> ? [K, V] : never)[], //allows writing in file as array but transformed into a map at runtime, while keeping typescript autocomplete
 );

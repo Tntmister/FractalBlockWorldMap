@@ -1,6 +1,6 @@
-export type weaponType = "Plasma" | "Cannon" | "Laser" | "Rocket" | "Homing" | "Minigun" | "Railgun" | "EMP" | "Nuke" | "Dark Hole";
+export type WeaponType = "Plasma" | "Cannon" | "Laser" | "Rocket" | "Homing" | "Minigun" | "Railgun" | "EMP" | "Nuke" | "Dark Hole";
 
-type weaponUpgradeType = "Max Ammo" | "Regen" | "Fire Rate" | "Damage" | "Velocity" | "Radius" | "Freeze Time" | "Count";
+type WeaponUpgradeType = "Max Ammo" | "Regen" | "Fire Rate" | "Damage" | "Velocity" | "Radius" | "Freeze Time" | "Count";
 
 const weaponUpgrades = [
 	"Plasma Max Ammo",
@@ -60,9 +60,9 @@ const weaponUpgrades = [
 	"Dark Hole Drive Weapon Mod",
 	"Dark Hole Quasar Drive Weapon Mod",
 ] as const;
-export type weaponUpgrade = (typeof weaponUpgrades)[number];
+export type WeaponUpgrade = (typeof weaponUpgrades)[number];
 
-export type defenceItem =
+export type DefenceItem =
 	| "100% Health 100% Armor"
 	| "200% Health 100% Armor"
 	| "200% Health 200% Armor"
@@ -80,7 +80,7 @@ export type defenceItem =
 	| "Extra 100% Health"
 	| "Shield";
 
-type key =
+type Key =
 	| "Yellow Key"
 	| `${number} Second Yellow Key`
 	| "Blue Key"
@@ -92,26 +92,26 @@ type key =
 	| "Burlington Combination Lock";
 
 const defenceUpgrades = ["Random Health", "Max Health", "Health Regen", "Armor Regen", "RejuvenX"] as const;
-export type defenceUpgrade = (typeof defenceUpgrades)[number];
+export type DefenceUpgrade = (typeof defenceUpgrades)[number];
 
 export const searchableUpgrades = [...weaponUpgrades, ...defenceUpgrades];
-export type searchableUpgrade = (typeof searchableUpgrades)[number];
+export type SearchableUpgrade = (typeof searchableUpgrades)[number];
 
-export type item =
-	| `${`${weaponType} Ammo` | defenceItem} x${number}`
-	| `${weaponType} Ammo`
-	| defenceItem
+export type Item =
+	| `${`${WeaponType} Ammo` | DefenceItem} x${number}`
+	| `${WeaponType} Ammo`
+	| DefenceItem
 	| `${number} ${"Gold" | "EXP"}`
 	| "EXP"
 	| "Invulnerability"
 	| "Gold"
-	| key;
+	| Key;
 
-export type upgrade =
-	| `${weaponUpgrade | defenceUpgrade | `Non-${weaponType} ${weaponUpgradeType}`} x${number}`
-	| weaponUpgrade
-	| defenceUpgrade
-	| `Non-${weaponType} ${weaponUpgradeType}`
+export type Upgrade =
+	| `${WeaponUpgrade | DefenceUpgrade | `Non-${WeaponType} ${WeaponUpgradeType}`} x${number}`
+	| WeaponUpgrade
+	| DefenceUpgrade
+	| `Non-${WeaponType} ${WeaponUpgradeType}`
 	| "Telekinesis"
 	| "Marker Cost";
 
@@ -144,21 +144,21 @@ export const interactables = (
 		"Black Market",
 	] as const
 ).toSorted();
-export type interactable = (typeof interactables)[number];
+export type Interactable = (typeof interactables)[number];
 
-export type monster = {
+export type Monster = {
 	name: string;
-	drop?: upgrade | item;
+	drop?: Upgrade | Item;
 };
 
-export type InputNode = {
+export type NodeData = {
 	name: string;
 	monsters?: string[];
 	// upgrades or items in nodes are a list than can either contain upgrades or nodes respectively, or a list in the case of a bent that has the possiblity of being different things
-	upgrades?: (upgrade | upgrade[])[];
-	items?: (item | item[])[];
+	upgrades?: (Upgrade | Upgrade[])[];
+	items?: (Item | Item[])[];
 	notes?: string;
-	interactables?: interactable[];
+	interactables?: Interactable[];
 	noEscape?: boolean; // no accessible grow rings
 	trophy?: boolean;
 	secretTrophy?: boolean | number; // some locations have more than 1 secret trophy
@@ -174,10 +174,10 @@ export type InputNode = {
 	};
 };
 
-export type edgeInfo = {
+export type EdgeData = {
 	distance: number; // how hard is it to traverse to ingame (enemy difficulty/time)
 	note?: string; // specifc method to enter
-	requiresKey?: key;
+	requiresKey?: Key;
 	whiteBoxDevice?: boolean;
 	arcade?: boolean;
 	impassable?: boolean; // to indicate that the destination is not directly accessible, only through waypoints/blue rings (i.e. WIG Prison and Violet Shells)
@@ -187,30 +187,24 @@ export type edgeInfo = {
 	up?: boolean;
 };
 
-export type InputEdgeGeneric = {
-	string?: {
-		string?: edgeInfo;
-	};
-};
-
-export interface Edge extends edgeInfo {
+export interface Edge extends EdgeData {
 	node: Node;
 	id: number;
 }
 
 export type Node = {
 	name: string;
-	upgrades: NonNullable<InputNode["upgrades"]>;
-	items: NonNullable<InputNode["items"]>;
-	interactables: NonNullable<InputNode["interactables"]>;
-	notes: InputNode["notes"];
-	noEscape: NonNullable<InputNode["noEscape"]>;
-	trophy: NonNullable<InputNode["trophy"]>;
-	secretTrophy: NonNullable<InputNode["secretTrophy"]>;
-	blueActiveZoneDestination: InputNode["blueActiveZoneDestination"];
-	pinkSphereDestination: InputNode["pinkSphereDestination"];
-	monsters: monster[];
+	upgrades: NonNullable<NodeData["upgrades"]>;
+	items: NonNullable<NodeData["items"]>;
+	interactables: NonNullable<NodeData["interactables"]>;
+	notes: NodeData["notes"];
+	noEscape: NonNullable<NodeData["noEscape"]>;
+	trophy: NonNullable<NodeData["trophy"]>;
+	secretTrophy: NonNullable<NodeData["secretTrophy"]>;
+	blueActiveZoneDestination: NodeData["blueActiveZoneDestination"];
+	pinkSphereDestination: NodeData["pinkSphereDestination"];
+	monsters: Monster[];
 	edges: Edge[];
 };
 
-export type labelMap = Map<item | upgrade, { label?: string; imageName?: string }>;
+export type LabelMap = Map<Item | Upgrade, { label?: string; imageName?: string }>;

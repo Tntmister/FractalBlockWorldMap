@@ -1,13 +1,13 @@
-import { edgeInfo } from "../../types";
+import { EdgeData } from "../types";
 import { nodeName } from "./nodes";
 
-type InputEdge = {
+type EdgeDataSpecific = {
 	[from in nodeName]?: {
-		[to in nodeName]?: edgeInfo;
+		[to in nodeName]?: EdgeData;
 	};
 };
 
-const inputEdges: InputEdge = {
+const edgeData: EdgeDataSpecific = {
 	"Tutorial 1": {
 		"Happy Land": {
 			distance: 1,
@@ -5795,4 +5795,4 @@ const inputEdges: InputEdge = {
 	},
 };
 
-export { inputEdges };
+export { edgeData };

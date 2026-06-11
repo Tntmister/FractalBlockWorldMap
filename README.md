@@ -28,14 +28,14 @@ to use the configured ESLint and Prettier rules.
 
 # Data
 
-All data is stored in the 'src\app\input' folder, with a respective file for each data type.
+All data is stored in the 'src\app\data' folder, with a respective file for each data type.
 
 ## Nodes
 
 Node Type:
 
 ```typescript
-type InputNode = {
+type NodeData = {
 	name: string;
 	monsters?: monsterName[];
 	upgrades?: (upgrade | upgrade[])[];
@@ -88,7 +88,7 @@ type edgeInfo = {
 	up?: boolean;
 };
 
-type InputEdges = {
+type EdgeData = {
 	[from in nodeNames]?: {
 		[to in nodeNames]?: edgeInfo;
 	};
