@@ -16,13 +16,14 @@ import {
 	pathfindToInteractables,
 	pathfindToUpgrades,
 } from "./pathfinding";
-import { nodes, startingPath } from "./data";
+import { nodes } from "./data";
 import { initLocalStorage, initStackPath } from "./localStorage";
 
 export default function Main() {
+	const [loading, setLoading] = useState<boolean>(true);
 	useEffect(() => {
-		const initPathStack = initLocalStorage();
-		setPathStackState(initPathStack);
+		pathStack = initLocalStorage();
+		setLoading(false);
 	}, []);
 	// eslint-disable-next-line prefer-const
 	let [pathStack, setPathStackState] = useState<Edge[]>(initStackPath);
@@ -102,15 +103,17 @@ export default function Main() {
 	const [pathfindType, setPathfindType] = useState<"interactable" | "node" | "upgrade">("node");
 
 	useEffect(() => {
-		if (pathfindType == "interactable" || pathfindType == "upgrade")
-			for (const option of (document.querySelector("#pathfindList") as HTMLSelectElement)
-				.selectedOptions)
-				option.selected = false;
-		else if (pathfindType == "node")
-			(document.querySelector("[list='pathfindList']") as HTMLInputElement).value = "";
-		(document.querySelector("[name='pathfindButton']") as HTMLInputElement).classList.add(
-			"disabled",
-		);
+		if (!loading) {
+			if (pathfindType == "interactable" || pathfindType == "upgrade")
+				for (const option of (document.querySelector("#pathfindList") as HTMLSelectElement)
+					.selectedOptions)
+					option.selected = false;
+			else if (pathfindType == "node")
+				(document.querySelector("[list='pathfindList']") as HTMLInputElement).value = "";
+			(document.querySelector("[name='pathfindButton']") as HTMLInputElement).classList.add(
+				"disabled",
+			);
+		}
 	}, [pathfindType]);
 
 	const pathfindTarget = useRef<Node | Interactable[] | SearchableUpgrade[]>(null);
@@ -264,251 +267,265 @@ export default function Main() {
 
 	return (
 		<>
-			<div className='pathContainer' id='currentPathContainer'>
-				<div className='pathHeader'>Path To Root</div>
-				<div className='pathList'>
-					{pathStack.map((edge, index, path) => (
-						<Fragment key={`path${index}`}>
-							{index != 0 &&
-								(edge.node.noEscape ? (
-									<img
-										className='icon'
-										src='./images/icons/One Way.webp'
-										alt='One Way'
-									/>
-								) : (
-									"↑"
-								))}
-							<div
-								className={`pathNode${
-									index ==
-									pathStack.findLastIndex((edge) =>
-										edge.node.interactables?.includes("Pink Sphere"),
-									)
-										? " pinkRing"
-										: ""
-								}${
-									index ==
-									pathStack.findLastIndex(
-										(edge) => edge.node.blueActiveZoneDestination,
-									)
-										? " blueRing"
-										: ""
-								}`}
-								onClick={() => {
-									traversePath(
-										path
-											.slice(index, path.length)
-											.toReversed()
-											.map((edge) => ({
-												...edge,
-												up: true,
-											})),
-									);
-								}}
-							>
-								{path[index + 1]?.requiresKey && (
-									<img
-										className='icon-small'
-										src={`./images/icons/${path[index + 1].requiresKey!.includes("Singleton") ? "Stable Singletons Key" : path[index + 1].requiresKey}.webp`}
-									/>
-								)}
-								{edge.node.name}
-							</div>
-						</Fragment>
-					))}
-				</div>
-			</div>
-			<div id='nodeContainer'>
-				<NodeInfo node={currentNode}></NodeInfo>
-
-				{(currentNode.edges.length > 0 || blueActiveZoneEdge || pinkSphereEdge) && (
-					<div id='edgesContainer'>
-						Possible destinations:
-						<div id='edgesList'>
-							{currentNode.edges.map((edge, index) => (
-								<span
-									key={`edge${index}`}
-									className='edge'
-									onClick={
-										edge.node != currentNode
-											? () => traversePath([edge])
-											: undefined
-									}
-								>
-									{edge.requiresKey && (
-										<img
-											className='icon-small'
-											src={`./images/icons/${edge.requiresKey.includes("Singleton") ? "Stable Singletons Key" : edge.requiresKey}.webp`}
-										/>
-									)}
-									{edge.arcade && (
-										<img
-											className='icon-small'
-											src={`./images/icons/Arcade.webp`}
-										/>
-									)}
-									{edge.whiteBoxDevice && (
-										<img
-											className='icon-small'
-											src={`./images/icons/White Box Device.webp`}
-										/>
-									)}
-									{edge.impassable && (
-										<img
-											className='icon-small'
-											src={`./images/icons/One Way.webp`}
-										/>
-									)}
-									{edge.node.name}
-									{edge.note && ` (${edge.note})`}
-									<img
-										className='edgeTooltip'
-										src={`./images/edges/${currentNode.name} - ${edge.node.name}.webp`}
-										alt=''
-									/>
-								</span>
+			{loading == false && (
+				<>
+					<div className='pathContainer' id='currentPathContainer'>
+						<div className='pathHeader'>Path To Root</div>
+						<div className='pathList'>
+							{pathStack.map((edge, index, path) => (
+								<Fragment key={`path${index}`}>
+									{index != 0 &&
+										(edge.node.noEscape ? (
+											<img
+												className='icon'
+												src='./images/icons/One Way.webp'
+												alt='One Way'
+											/>
+										) : (
+											"↑"
+										))}
+									<div
+										className={`pathNode${
+											index ==
+											pathStack.findLastIndex((edge) =>
+												edge.node.interactables?.includes("Pink Sphere"),
+											)
+												? " pinkRing"
+												: ""
+										}${
+											index ==
+											pathStack.findLastIndex(
+												(edge) => edge.node.blueActiveZoneDestination,
+											)
+												? " blueRing"
+												: ""
+										}`}
+										onClick={() => {
+											traversePath(
+												path
+													.slice(index, path.length)
+													.toReversed()
+													.map((edge) => ({
+														...edge,
+														up: true,
+													})),
+											);
+										}}
+									>
+										{path[index + 1]?.requiresKey && (
+											<img
+												className='icon-small'
+												src={`./images/icons/${path[index + 1].requiresKey!.includes("Singleton") ? "Stable Singletons Key" : path[index + 1].requiresKey}.webp`}
+											/>
+										)}
+										{edge.node.name}
+									</div>
+								</Fragment>
 							))}
-							{blueActiveZoneEdge && (
-								<span className='edge blueRing' onClick={traverseBlueRing}>
-									<img
-										className='icon-small'
-										src={`./images/icons/Blue Ring.webp`}
+						</div>
+					</div>
+					<div id='nodeContainer'>
+						<NodeInfo node={currentNode}></NodeInfo>
+
+						{(currentNode.edges.length > 0 || blueActiveZoneEdge || pinkSphereEdge) && (
+							<div id='edgesContainer'>
+								Possible destinations:
+								<div id='edgesList'>
+									{currentNode.edges.map((edge, index) => (
+										<span
+											key={`edge${index}`}
+											className='edge'
+											onClick={
+												edge.node != currentNode
+													? () => traversePath([edge])
+													: undefined
+											}
+										>
+											{edge.requiresKey && (
+												<img
+													className='icon-small'
+													src={`./images/icons/${edge.requiresKey.includes("Singleton") ? "Stable Singletons Key" : edge.requiresKey}.webp`}
+												/>
+											)}
+											{edge.arcade && (
+												<img
+													className='icon-small'
+													src={`./images/icons/Arcade.webp`}
+												/>
+											)}
+											{edge.whiteBoxDevice && (
+												<img
+													className='icon-small'
+													src={`./images/icons/White Box Device.webp`}
+												/>
+											)}
+											{edge.impassable && (
+												<img
+													className='icon-small'
+													src={`./images/icons/One Way.webp`}
+												/>
+											)}
+											{edge.node.name}
+											{edge.note && ` (${edge.note})`}
+											<img
+												className='edgeTooltip'
+												src={`./images/edges/${currentNode.name} - ${edge.node.name}.webp`}
+												alt=''
+											/>
+										</span>
+									))}
+									{blueActiveZoneEdge && (
+										<span className='edge blueRing' onClick={traverseBlueRing}>
+											<img
+												className='icon-small'
+												src={`./images/icons/Blue Ring.webp`}
+											/>
+											{`${blueActiveZoneEdge.node.blueActiveZoneDestination!.nodeName} ${blueActiveZoneEdge.node.blueActiveZoneDestination!.note ?? ""}`}
+										</span>
+									)}
+									{pinkSphereEdge && (
+										<span className='edge pinkRing' onClick={traversePinkRing}>
+											<img
+												className='icon-small'
+												src={`./images/icons/Pink Ring.webp`}
+											/>
+											{pinkSphereEdge.node.pinkSphereDestination
+												? `${pinkSphereEdge.node.pinkSphereDestination.nodeName} ${pinkSphereEdge.node.pinkSphereDestination.note ?? ""}`
+												: pinkSphereEdge.node.name}
+										</span>
+									)}
+								</div>
+							</div>
+						)}
+					</div>
+					<div className='pathContainer' id='pathfindContainer'>
+						<div className='pathHeader'>Path To Location</div>
+						<div id='pathfindSelector'>
+							<label>
+								<span>Location</span>
+								<input
+									name='pathfindType'
+									value='node'
+									type='radio'
+									defaultChecked
+									onChange={(e) =>
+										setPathfindType(e.target.value as typeof pathfindType)
+									}
+								/>
+							</label>
+							<label>
+								<span>Interactable</span>
+								<input
+									name='pathfindType'
+									value='interactable'
+									type='radio'
+									onChange={(e) =>
+										setPathfindType(e.target.value as typeof pathfindType)
+									}
+								/>
+							</label>
+							<label>
+								<span>Upgrade</span>
+								<input
+									name='pathfindType'
+									value='upgrade'
+									type='radio'
+									onChange={(e) =>
+										setPathfindType(e.target.value as typeof pathfindType)
+									}
+								/>
+							</label>
+							{pathfindType == "node" && (
+								<>
+									<input
+										list='pathfindList'
+										onChange={pathfindSelectEvent}
+										required
 									/>
-									{`${blueActiveZoneEdge.node.blueActiveZoneDestination!.nodeName} ${blueActiveZoneEdge.node.blueActiveZoneDestination!.note ?? ""}`}
-								</span>
+									<datalist id='pathfindList'>
+										<option disabled value=''></option>
+										{nodes
+											.values()
+											.toArray()
+											.toSorted((a, b) => a.name.localeCompare(b.name))
+											.map((node) => (
+												<option key={node.name} value={node.name}>
+													{node.name}
+												</option>
+											))}
+									</datalist>
+								</>
 							)}
-							{pinkSphereEdge && (
-								<span className='edge pinkRing' onClick={traversePinkRing}>
-									<img
-										className='icon-small'
-										src={`./images/icons/Pink Ring.webp`}
-									/>
-									{pinkSphereEdge.node.pinkSphereDestination
-										? `${pinkSphereEdge.node.pinkSphereDestination.nodeName} ${pinkSphereEdge.node.pinkSphereDestination.note ?? ""}`
-										: pinkSphereEdge.node.name}
-								</span>
+							{pathfindType == "interactable" && (
+								<select id='pathfindList' onChange={pathfindSelectEvent} multiple>
+									{interactables.map((interactable) => (
+										<option key={interactable} value={interactable}>
+											{interactable}
+										</option>
+									))}
+								</select>
+							)}
+							{pathfindType == "upgrade" && (
+								<select id='pathfindList' onChange={pathfindSelectEvent} multiple>
+									{searchableUpgrades.map((upgrade) => (
+										<option key={upgrade} value={upgrade}>
+											{upgrade}
+										</option>
+									))}
+								</select>
+							)}
+							<div className='filters'>
+								<label>
+									<input name='pathfindStableSingleton' type='checkbox' />
+									<span>Include Stable Singletons</span>
+								</label>
+								<label>
+									<input name='pathfindKeys' type='checkbox' />
+									<span>Include Key Required Paths</span>
+								</label>
+								<label>
+									<input defaultChecked name='pathfindUp' type='checkbox' />
+									<span>Include Paths Upwards</span>
+								</label>
+							</div>
+							<button
+								name='pathfindButton'
+								type='button'
+								className='pathNode disabled'
+								onClick={pathfindEvent}
+							>
+								Find Path
+							</button>
+						</div>
+						<div className='pathList'>
+							{pathfindResult ? (
+								<>
+									{pathfindResult.map((edge, index, path) => {
+										const indexOfCurrent = path.findIndex(
+											(edge) => pathStack.at(-1)!.id == edge.id,
+										);
+										return (
+											<Fragment key={`pathfind${index}`}>
+												{index > 0 ? `↓${edge.up ? " (up)" : ""}` : ""}
+												<div
+													className={`pathNode${indexOfCurrent == index ? " current" : ""}`}
+													onClick={() => traversePathfind(path, index)}
+												>
+													{edge.node.name}
+												</div>
+											</Fragment>
+										);
+									})}
+								</>
+							) : pathfindResult === undefined ? (
+								""
+							) : (
+								"No Path Available!"
 							)}
 						</div>
 					</div>
-				)}
-			</div>
-			<div className='pathContainer' id='pathfindContainer'>
-				<div className='pathHeader'>Path To Location</div>
-				<div id='pathfindSelector'>
-					<label>
-						<span>Location</span>
-						<input
-							name='pathfindType'
-							value='node'
-							type='radio'
-							defaultChecked
-							onChange={(e) => setPathfindType(e.target.value as typeof pathfindType)}
-						/>
-					</label>
-					<label>
-						<span>Interactable</span>
-						<input
-							name='pathfindType'
-							value='interactable'
-							type='radio'
-							onChange={(e) => setPathfindType(e.target.value as typeof pathfindType)}
-						/>
-					</label>
-					<label>
-						<span>Upgrade</span>
-						<input
-							name='pathfindType'
-							value='upgrade'
-							type='radio'
-							onChange={(e) => setPathfindType(e.target.value as typeof pathfindType)}
-						/>
-					</label>
-					{pathfindType == "node" && (
-						<>
-							<input list='pathfindList' onChange={pathfindSelectEvent} required />
-							<datalist id='pathfindList'>
-								<option disabled value=''></option>
-								{nodes
-									.values()
-									.toArray()
-									.toSorted((a, b) => a.name.localeCompare(b.name))
-									.map((node) => (
-										<option key={node.name} value={node.name}>
-											{node.name}
-										</option>
-									))}
-							</datalist>
-						</>
-					)}
-					{pathfindType == "interactable" && (
-						<select id='pathfindList' onChange={pathfindSelectEvent} multiple>
-							{interactables.map((interactable) => (
-								<option key={interactable} value={interactable}>
-									{interactable}
-								</option>
-							))}
-						</select>
-					)}
-					{pathfindType == "upgrade" && (
-						<select id='pathfindList' onChange={pathfindSelectEvent} multiple>
-							{searchableUpgrades.map((upgrade) => (
-								<option key={upgrade} value={upgrade}>
-									{upgrade}
-								</option>
-							))}
-						</select>
-					)}
-					<div className='filters'>
-						<label>
-							<input name='pathfindStableSingleton' type='checkbox' />
-							<span>Include Stable Singletons</span>
-						</label>
-						<label>
-							<input name='pathfindKeys' type='checkbox' />
-							<span>Include Key Required Paths</span>
-						</label>
-						<label>
-							<input defaultChecked name='pathfindUp' type='checkbox' />
-							<span>Include Paths Upwards</span>
-						</label>
-					</div>
-					<button
-						name='pathfindButton'
-						type='button'
-						className='pathNode disabled'
-						onClick={pathfindEvent}
-					>
-						Find Path
-					</button>
-				</div>
-				<div className='pathList'>
-					{pathfindResult ? (
-						<>
-							{pathfindResult.map((edge, index, path) => {
-								const indexOfCurrent = path.findIndex(
-									(edge) => pathStack.at(-1)!.id == edge.id,
-								);
-								return (
-									<Fragment key={`pathfind${index}`}>
-										{index > 0 ? `↓${edge.up ? " (up)" : ""}` : ""}
-										<div
-											className={`pathNode${indexOfCurrent == index ? " current" : ""}`}
-											onClick={() => traversePathfind(path, index)}
-										>
-											{edge.node.name}
-										</div>
-									</Fragment>
-								);
-							})}
-						</>
-					) : pathfindResult === undefined ? (
-						""
-					) : (
-						"No Path Available!"
-					)}
-				</div>
-			</div>
+				</>
+			)}
 		</>
 	);
 }
