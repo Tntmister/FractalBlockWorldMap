@@ -814,19 +814,25 @@ const NODES = [
 		interactables: ["Waypoint", "Out-Only Waypoint", "Bookmark", "Save", "Markers", "Buy Station", "Common Sell Station", "Respawn"],
 		items: ["Cannon Ammo", "Laser Ammo", "Rocket Ammo", "Homing Ammo", "Minigun Ammo", "Railgun Ammo", "EMP Ammo", "Nuke Ammo"],
 		upgrades: ["Laser Damage", "Plasma Regen", "Non-Laser Max Ammo x1"],
+		blueActiveZoneDestination: {
+			nodeName: "Type 3 Tau Cave",
+		},
 	},
 	{
 		name: "Type 2 Tau Cave",
 		monsters: ["Marine", "Menace"],
-		interactables: ["Waypoint", "Out-Only Waypoint"],
+		interactables: ["Waypoint", "Out-Only Waypoint", "Common Sell Station"],
 		blueActiveZoneDestination: {
-			nodeName: "Type 2 Tau Cave",
+			nodeName: "Type 3 Tau Cave",
 		},
 	},
 	{
 		name: "Type 3 Tau Cave",
 		monsters: ["Gnole"],
 		interactables: ["Waypoint", "Out-Only Waypoint"],
+		blueActiveZoneDestination: {
+			nodeName: "Type 3 Tau Cave",
+		},
 	},
 	{
 		name: "Hinesburg",
@@ -4366,7 +4372,8 @@ const NODES = [
 		interactables: ["Save"],
 		items: ["Cannon Ammo", "150% Armor"],
 		upgrades: ["Nuke Damage", "Plasma Regen", "Health Regen"],
-		monsters: ["Marine", "Petite Goon", "Heavy Marine", "Insurgent"],
+		monsters: ["Marine", "Petite Goon", "Heavy Marine", "Insurgent", "Biblical Fly"],
+		notes: "Going through a Green Shrink Box leaves you 1 level smaller than you came in. You can go through the short and hard way through a shaft with Biblical Flies, or the long way through a 6x4x3 maze.",
 	},
 	{
 		name: "Red Apple Tree",

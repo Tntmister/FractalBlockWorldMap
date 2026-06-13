@@ -4545,14 +4545,8 @@ const edgeData: EdgeDataSpecific = {
 		"Oak Tree": {
 			distance: 1,
 		},
-		"Tweedle-Dum Air": {
-			distance: 5,
-		},
-		"Tweedle-Dee Air": {
-			distance: 5,
-		},
-		"Buttercup": {
-			distance: 1,
+		"Alpha Cube": {
+			distance: 20,
 		},
 	},
 	"Type 3 Tau Cave": {
@@ -4576,6 +4570,9 @@ const edgeData: EdgeDataSpecific = {
 		"Type 2 Tau Cave": {
 			distance: 5,
 		},
+		"Green Shrink Box": {
+			distance: 5,
+		},
 		"Oak Tree": {
 			distance: 1,
 		},
@@ -4594,14 +4591,14 @@ const edgeData: EdgeDataSpecific = {
 		"Hard Pink Tree": {
 			distance: 50,
 		},
-		"Alpha Cube": {
-			distance: 20,
-		},
 		"Stoney Air": {
 			distance: 1,
 		},
 		"Richmond": {
 			distance: 15,
+		},
+		"Buttercup": {
+			distance: 5,
 		},
 	},
 	"Oak Tree": {
