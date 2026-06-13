@@ -30,7 +30,8 @@ for (const [fromName, edge] of Object.entries(edgeData)) {
 		const toNode = nodes.get(toName)!;
 		if (fromNode && toNode) if (edgeInfo.distance === Infinity) edgeInfo.distance = 100;
 		fromNode.edges.push({
-			node: toNode,
+			originNode: fromNode,
+			destinationNode: toNode,
 			id: ++edgeId,
 			...edgeInfo,
 		});

@@ -188,8 +188,9 @@ export type EdgeData = {
 };
 
 export interface Edge extends EdgeData {
-	node: Node;
+	originNode?: Node;
 	id: number;
+	destinationNode: Node;
 }
 
 export type Node = {

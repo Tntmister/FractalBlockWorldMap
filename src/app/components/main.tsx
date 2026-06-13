@@ -31,26 +31,28 @@ export default function Main() {
 		setPathStackState(pathStack);
 		localStorage.setItem(
 			"nodeNameList",
-			JSON.stringify(pathStack.map((edge) => edge.node.name)),
+			JSON.stringify(pathStack.map((edge) => edge.destinationNode.name)),
 		);
 	}
 
-	const currentNode = useMemo(() => pathStack.at(-1)!.node, [pathStack]);
+	const currentNode = useMemo(() => pathStack.at(-1)!.destinationNode, [pathStack]);
 
+	// where you would go if you used the blue ring in the current node
 	const blueActiveZoneEdge = useMemo(() => {
 		if (currentNode.interactables.includes("Blue Ring")) {
-			return pathStack.findLast((edge) => edge.node.blueActiveZoneDestination);
+			return pathStack.findLast((edge) => edge.destinationNode.blueActiveZoneDestination);
 		}
 		return;
 	}, [pathStack]);
 
 	function traverseBlueRing() {
 		const destinationNode = nodes.get(
-			blueActiveZoneEdge!.node.blueActiveZoneDestination!.nodeName,
+			blueActiveZoneEdge!.destinationNode.blueActiveZoneDestination!.nodeName,
 		)!;
 		traversePath([
 			{
-				node: destinationNode,
+				originNode: currentNode,
+				destinationNode: destinationNode,
 				id: blueActiveZoneEdge!.id,
 				distance: 0,
 				blueRing: true,
@@ -60,19 +62,22 @@ export default function Main() {
 
 	const pinkSphereEdge = useMemo(() => {
 		if (currentNode.interactables.includes("Pink Ring")) {
-			return pathStack.findLast((edge) => edge.node.interactables.includes("Pink Sphere"));
+			return pathStack.findLast((edge) =>
+				edge.destinationNode.interactables.includes("Pink Sphere"),
+			);
 		}
 		return;
 	}, [pathStack]);
 
 	function traversePinkRing() {
-		if (pinkSphereEdge!.node.pinkSphereDestination) {
+		if (pinkSphereEdge!.destinationNode.pinkSphereDestination) {
 			const destinationNode = nodes.get(
-				pinkSphereEdge!.node.pinkSphereDestination!.nodeName,
+				pinkSphereEdge!.destinationNode.pinkSphereDestination!.nodeName,
 			)!;
 			traversePath([
 				{
-					node: destinationNode,
+					originNode: currentNode,
+					destinationNode: destinationNode,
 					id: pinkSphereEdge!.id,
 					distance: 0,
 					pinkRing: true,
@@ -175,7 +180,7 @@ export default function Main() {
 			nodesCopy.get("EMERGENCY")!.edges.splice(
 				nodesCopy
 					.get("EMERGENCY")!
-					.edges.findIndex((edge) => edge.node.name == "Stable Singletons"),
+					.edges.findIndex((edge) => edge.destinationNode.name == "Stable Singletons"),
 				1,
 			);
 		}
@@ -200,7 +205,9 @@ export default function Main() {
 		for (
 			let i = pathStack.length - 1;
 			i >
-			(pathUp ? pathStack.findLastIndex((edge) => edge.node.noEscape) : pathStack.length - 2);
+			(pathUp
+				? pathStack.findLastIndex((edge) => edge.destinationNode.noEscape)
+				: pathStack.length - 2);
 			i--
 		) {
 			// for each upward node, create an upwards path to that node before pathfinding down to the destination
@@ -275,7 +282,7 @@ export default function Main() {
 							{pathStack.map((edge, index, path) => (
 								<Fragment key={`path${index}`}>
 									{index != 0 &&
-										(edge.node.noEscape ? (
+										(edge.destinationNode.noEscape ? (
 											<img
 												className='icon'
 												src='./images/icons/One Way.webp'
@@ -288,14 +295,17 @@ export default function Main() {
 										className={`pathNode${
 											index ==
 											pathStack.findLastIndex((edge) =>
-												edge.node.interactables?.includes("Pink Sphere"),
+												edge.destinationNode.interactables?.includes(
+													"Pink Sphere",
+												),
 											)
 												? " pinkRing"
 												: ""
 										}${
 											index ==
 											pathStack.findLastIndex(
-												(edge) => edge.node.blueActiveZoneDestination,
+												(edge) =>
+													edge.destinationNode.blueActiveZoneDestination,
 											)
 												? " blueRing"
 												: ""
@@ -316,9 +326,10 @@ export default function Main() {
 											<img
 												className='icon-small'
 												src={`./images/icons/${path[index + 1].requiresKey!.includes("Singleton") ? "Stable Singletons Key" : path[index + 1].requiresKey}.webp`}
+												alt='Stable Singletons Key'
 											/>
 										)}
-										{edge.node.name}
+										{edge.destinationNode.name}
 									</div>
 								</Fragment>
 							))}
@@ -336,7 +347,7 @@ export default function Main() {
 											key={`edge${index}`}
 											className='edge'
 											onClick={
-												edge.node != currentNode
+												edge.destinationNode != currentNode
 													? () => traversePath([edge])
 													: undefined
 											}
@@ -345,31 +356,35 @@ export default function Main() {
 												<img
 													className='icon-small'
 													src={`./images/icons/${edge.requiresKey.includes("Singleton") ? "Stable Singletons Key" : edge.requiresKey}.webp`}
+													alt='Stable Singletons Key'
 												/>
 											)}
 											{edge.arcade && (
 												<img
 													className='icon-small'
 													src={`./images/icons/Arcade.webp`}
+													alt='Arcade'
 												/>
 											)}
 											{edge.whiteBoxDevice && (
 												<img
 													className='icon-small'
 													src={`./images/icons/White Box Device.webp`}
+													alt='White Box Device'
 												/>
 											)}
 											{edge.impassable && (
 												<img
 													className='icon-small'
 													src={`./images/icons/One Way.webp`}
+													alt='Impassable'
 												/>
 											)}
-											{edge.node.name}
+											{edge.destinationNode.name}
 											{edge.note && ` (${edge.note})`}
 											<img
 												className='edgeTooltip'
-												src={`./images/edges/${currentNode.name} - ${edge.node.name}.webp`}
+												src={`./images/edges/${edge.originNode!.name} - ${edge.destinationNode.name}.webp`}
 												alt=''
 											/>
 										</span>
@@ -379,8 +394,9 @@ export default function Main() {
 											<img
 												className='icon-small'
 												src={`./images/icons/Blue Ring.webp`}
+												alt='Blue Ring'
 											/>
-											{`${blueActiveZoneEdge.node.blueActiveZoneDestination!.nodeName} ${blueActiveZoneEdge.node.blueActiveZoneDestination!.note ?? ""}`}
+											{`${blueActiveZoneEdge.destinationNode.blueActiveZoneDestination!.nodeName} ${blueActiveZoneEdge.destinationNode.blueActiveZoneDestination!.note ?? ""}`}
 										</span>
 									)}
 									{pinkSphereEdge && (
@@ -388,10 +404,11 @@ export default function Main() {
 											<img
 												className='icon-small'
 												src={`./images/icons/Pink Ring.webp`}
+												alt='Pink Ring'
 											/>
-											{pinkSphereEdge.node.pinkSphereDestination
-												? `${pinkSphereEdge.node.pinkSphereDestination.nodeName} ${pinkSphereEdge.node.pinkSphereDestination.note ?? ""}`
-												: pinkSphereEdge.node.name}
+											{pinkSphereEdge.destinationNode.pinkSphereDestination
+												? `${pinkSphereEdge.destinationNode.pinkSphereDestination.nodeName} ${pinkSphereEdge.destinationNode.pinkSphereDestination.note ?? ""}`
+												: pinkSphereEdge.destinationNode.name}
 										</span>
 									)}
 								</div>
@@ -511,7 +528,7 @@ export default function Main() {
 													className={`pathNode${indexOfCurrent == index ? " current" : ""}`}
 													onClick={() => traversePathfind(path, index)}
 												>
-													{edge.node.name}
+													{edge.destinationNode.name}
 												</div>
 											</Fragment>
 										);

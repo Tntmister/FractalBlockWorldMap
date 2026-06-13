@@ -5,13 +5,15 @@ function nodeListToPathStack(nodeNames: string[]): Edge[] {
 	try {
 		return [
 			{
-				node: nodes.get(nodeNames[0])!,
+				destinationNode: nodes.get(nodeNames[0])!,
 				distance: 0,
 				id: -1,
 			},
 			...nodeNames.slice(1).map(
 				(nodeName, index, arr) =>
-					nodes.get(nodeNames[index])!.edges.find((edge) => edge.node.name == nodeName) ??
+					nodes
+						.get(nodeNames[index])!
+						.edges.find((edge) => edge.destinationNode.name == nodeName) ??
 					(() => {
 						const error = new Error(
 							`${nodeName} is not connected to ${arr[index - 1]}`,

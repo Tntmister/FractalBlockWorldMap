@@ -29,9 +29,9 @@ export function dijkstraPathfind(
 		visitedNodes.set(currentNode, currentDistance);
 		// iterate edge nodes, and set distance to unvisited node if smaller than current node distance to start
 		for (const edge of currentNode.edges) {
-			if (edge.distance + currentDistance < distancesToStart.get(edge.node)!) {
-				distancesToStart.set(edge.node, edge.distance + currentDistance);
-				predecessors.set(edge.node, currentNode); // set predecessor node (for backtracking to create path)
+			if (edge.distance + currentDistance < distancesToStart.get(edge.destinationNode)!) {
+				distancesToStart.set(edge.destinationNode, edge.distance + currentDistance);
+				predecessors.set(edge.destinationNode, edge.originNode!); // set predecessor node (for backtracking to create path)
 			}
 		}
 	}
@@ -43,13 +43,15 @@ export function dijkstraPathfind(
 		predecessors.get(node);
 		node = predecessors.get(node)!
 	) {
-		path.unshift(predecessors.get(node)!.edges.find((edge) => edge.node.name == node.name)!);
+		path.unshift(
+			predecessors.get(node)!.edges.find((edge) => edge.destinationNode.name == node.name)!,
+		);
 	}
 	return path.length > 0 ? path : undefined;
 }
 
 export function pathfindTo(targetNodeName: string, pathStack: Edge[], nodes: Map<string, Node>) {
-	let path = dijkstraPathfind(pathStack.at(-1)!.node.name, targetNodeName, nodes);
+	let path = dijkstraPathfind(pathStack.at(-1)!.destinationNode.name, targetNodeName, nodes);
 	if (path) {
 		// if destination is only accessible thorugh a blue ring, jump to before that then pathfind to a blue ring
 		const impassableEdgeIndex = path.findIndex((edge) => edge.impassable);
@@ -76,13 +78,13 @@ export function pathfindTo(targetNodeName: string, pathStack: Edge[], nodes: Map
 			);
 			// index of blue active zone in path
 			const blueActiveZoneNode = path.findLast(
-				(edge) => edge.node.blueActiveZoneDestination,
-			)?.node;
+				(edge) => edge.destinationNode.blueActiveZoneDestination,
+			)?.destinationNode;
 			//if pathfind started between blue active zone and impassable zone, ignore the impassable edge and return new path
 			if (!blueActiveZoneNode) {
 				const nodesWithoutImpassableEdge = structuredClone(nodes);
 				const node = nodesWithoutImpassableEdge.get(
-					path[impassableEdgeIndex - 1].node.name,
+					path[impassableEdgeIndex].originNode!.name,
 				)!;
 				node.edges.forEach((edge, i) => {
 					if (edge.id == impassableEdgeId) {
@@ -93,27 +95,28 @@ export function pathfindTo(targetNodeName: string, pathStack: Edge[], nodes: Map
 			}
 			// add blue ring edge to path (will be parsed to jump directly to the destination node)
 			path.push({
-				node: nodes.get(blueActiveZoneNode.blueActiveZoneDestination!.nodeName)!,
+				originNode: blueActiveZoneNode,
+				destinationNode: nodes.get(blueActiveZoneNode.blueActiveZoneDestination!.nodeName)!,
 				distance: 0,
 				blueRing: true,
 				id: impassableEdgeIndex,
 			});
 			// if not at the target yet
-			if (path.at(-1)?.node.name != targetNodeName) {
+			if (path.at(-1)?.destinationNode.name != targetNodeName) {
 				// check if target is between impassable edge and blue ring destination
 				let traversedPath = getTraversedPath(path, pathStack, nodes);
 				traversedPath = traversedPath.slice(
 					traversedPath.findLastIndex((edge) => (edge.id = impassableEdgeId)) - 1,
 				);
 				const destinationIndex = traversedPath.findLastIndex(
-					(edge) => edge.node.name == targetNodeName,
+					(edge) => edge.destinationNode.name == targetNodeName,
 				);
 				if (destinationIndex > -1) {
 					path.push(
 						...traversedPath
 							.slice(
 								traversedPath.findLastIndex(
-									(edge) => edge.node.name == targetNodeName,
+									(edge) => edge.destinationNode.name == targetNodeName,
 								),
 								traversedPath.length - 1,
 							)
@@ -179,7 +182,7 @@ export function pathfindToInteractables(
 	if (interactables.includes("Blue Ring")) {
 		nodesCopy.values().forEach((node) => {
 			for (let i = node.edges.length - 1; i >= 0; i--) {
-				if (node.edges[i].node.blueActiveZoneDestination) {
+				if (node.edges[i].destinationNode.blueActiveZoneDestination) {
 					node.edges.splice(i, 1);
 				}
 			}
@@ -187,7 +190,7 @@ export function pathfindToInteractables(
 	} else if (interactables.includes("Pink Ring")) {
 		nodesCopy.values().forEach((node) => {
 			for (let i = node.edges.length - 1; i >= 0; i--) {
-				if (node.edges[i].node.interactables.includes("Pink Sphere")) {
+				if (node.edges[i].destinationNode.interactables.includes("Pink Sphere")) {
 					node.edges.splice(i, 1);
 				}
 			}
@@ -200,7 +203,7 @@ export function pathfindToInteractables(
 			node.name === "Small White Flower Alpha Cube Treasure" &&
 			interactables.includes("Blue Ring")
 		) {
-			return !!pathStack.find((edge) => edge.node.name === "Alpha Cube");
+			return !!pathStack.find((edge) => edge.destinationNode.name === "Alpha Cube");
 		}
 		return interactables.every((interactable) => node.interactables.includes(interactable));
 	});
@@ -226,30 +229,32 @@ export function getTraversedPath(path: Edge[], pathStack: Edge[], nodes: Map<str
 		if (edge.up) {
 			pathStackAux = pathStackAux.slice(
 				0,
-				pathStackAux.findLastIndex((edge2) => edge.node.name == edge2.node.name) + 1,
+				pathStackAux.findLastIndex(
+					(edge2) => edge.destinationNode.name == edge2.destinationNode.name,
+				) + 1,
 			);
 		} else if (edge.blueRing) {
 			const blueDownChunk = pathStackAux.findLastIndex(
-				(edge2) => edge2.node.blueActiveZoneDestination,
+				(edge2) => edge2.destinationNode.blueActiveZoneDestination,
 			);
 			pathStackAux = pathStackAux.slice(0, blueDownChunk + 1);
 			pathStackAux.push(
 				...dijkstraPathfind(
-					pathStackAux[blueDownChunk].node.name,
-					pathStackAux[blueDownChunk].node.blueActiveZoneDestination!.nodeName,
+					pathStackAux[blueDownChunk].destinationNode.name,
+					pathStackAux[blueDownChunk].destinationNode.blueActiveZoneDestination!.nodeName,
 
 					nodes,
 				)!,
 			);
 		} else if (edge.pinkRing) {
 			const pinkSphereChunk = pathStackAux.findLastIndex(
-				(edge2) => edge2.node.pinkSphereDestination,
+				(edge2) => edge2.destinationNode.pinkSphereDestination,
 			);
 			pathStackAux = pathStackAux.slice(0, pinkSphereChunk + 1);
 			pathStackAux.push(
 				...dijkstraPathfind(
-					pathStackAux[pinkSphereChunk].node.name,
-					pathStackAux[pinkSphereChunk].node.pinkSphereDestination!.nodeName,
+					pathStackAux[pinkSphereChunk].destinationNode.name,
+					pathStackAux[pinkSphereChunk].destinationNode.pinkSphereDestination!.nodeName,
 
 					nodes,
 				)!,
