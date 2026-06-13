@@ -31,7 +31,7 @@ export function dijkstraPathfind(
 		for (const edge of currentNode.edges) {
 			if (edge.distance + currentDistance < distancesToStart.get(edge.destinationNode)!) {
 				distancesToStart.set(edge.destinationNode, edge.distance + currentDistance);
-				predecessors.set(edge.destinationNode, edge.originNode!); // set predecessor node (for backtracking to create path)
+				predecessors.set(edge.destinationNode, edge.originNode); // set predecessor node (for backtracking to create path)
 			}
 		}
 	}
@@ -84,7 +84,7 @@ export function pathfindTo(targetNodeName: string, pathStack: Edge[], nodes: Map
 			if (!blueActiveZoneNode) {
 				const nodesWithoutImpassableEdge = structuredClone(nodes);
 				const node = nodesWithoutImpassableEdge.get(
-					path[impassableEdgeIndex].originNode!.name,
+					path[impassableEdgeIndex].originNode.name,
 				)!;
 				node.edges.forEach((edge, i) => {
 					if (edge.id == impassableEdgeId) {

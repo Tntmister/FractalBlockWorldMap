@@ -384,7 +384,7 @@ export default function Main() {
 											{edge.note && ` (${edge.note})`}
 											<img
 												className='edgeTooltip'
-												src={`./images/edges/${edge.originNode!.name} - ${edge.destinationNode.name}.webp`}
+												src={`./images/edges/${edge.originNode.name} - ${edge.destinationNode.name}.webp`}
 												alt=''
 											/>
 										</span>

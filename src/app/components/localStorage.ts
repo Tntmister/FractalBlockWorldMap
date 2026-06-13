@@ -1,14 +1,33 @@
-import { Edge } from "../types";
+import { Edge, Node } from "../types";
 import { nodes, startingPath } from "./data";
 
 function nodeListToPathStack(nodeNames: string[]): Edge[] {
 	try {
-		return [
-			{
-				destinationNode: nodes.get(nodeNames[0])!,
-				distance: 0,
-				id: -1,
+		const dummyNode: Node = {
+			name: "dummy node",
+			upgrades: [],
+			items: [],
+			monsters: [],
+			get edges() {
+				return [
+					{
+						destinationNode: nodes.get(nodeNames[0])!,
+						distance: 0,
+						id: -1,
+						originNode: this,
+					},
+				];
 			},
+			interactables: [],
+			blueActiveZoneDestination: undefined,
+			pinkSphereDestination: undefined,
+			noEscape: false,
+			notes: undefined,
+			secretTrophy: false,
+			trophy: false,
+		};
+		return [
+			dummyNode.edges[0],
 			...nodeNames.slice(1).map(
 				(nodeName, index, arr) =>
 					nodes
