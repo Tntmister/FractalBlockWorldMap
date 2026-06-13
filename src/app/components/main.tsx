@@ -18,6 +18,7 @@ import {
 } from "./pathfinding";
 import { nodes } from "./data";
 import { initLocalStorage, initStackPath } from "./localStorage";
+import Image from "next/image";
 
 export default function Main() {
 	const [loading, setLoading] = useState<boolean>(true);
@@ -283,7 +284,7 @@ export default function Main() {
 								<Fragment key={`path${index}`}>
 									{index != 0 &&
 										(edge.destinationNode.noEscape ? (
-											<img
+											<Image
 												className='icon'
 												src='./images/icons/One Way.webp'
 												alt='One Way'
@@ -323,7 +324,7 @@ export default function Main() {
 										}}
 									>
 										{path[index + 1]?.requiresKey && (
-											<img
+											<Image
 												className='icon-small'
 												src={`./images/icons/${path[index + 1].requiresKey!.includes("Singleton") ? "Stable Singletons Key" : path[index + 1].requiresKey}.webp`}
 												alt='Stable Singletons Key'
@@ -353,28 +354,28 @@ export default function Main() {
 											}
 										>
 											{edge.requiresKey && (
-												<img
+												<Image
 													className='icon-small'
 													src={`./images/icons/${edge.requiresKey.includes("Singleton") ? "Stable Singletons Key" : edge.requiresKey}.webp`}
 													alt='Stable Singletons Key'
 												/>
 											)}
 											{edge.arcade && (
-												<img
+												<Image
 													className='icon-small'
 													src={`./images/icons/Arcade.webp`}
 													alt='Arcade'
 												/>
 											)}
 											{edge.whiteBoxDevice && (
-												<img
+												<Image
 													className='icon-small'
 													src={`./images/icons/White Box Device.webp`}
 													alt='White Box Device'
 												/>
 											)}
 											{edge.impassable && (
-												<img
+												<Image
 													className='icon-small'
 													src={`./images/icons/One Way.webp`}
 													alt='Impassable'
@@ -382,7 +383,7 @@ export default function Main() {
 											)}
 											{edge.destinationNode.name}
 											{edge.note && ` (${edge.note})`}
-											<img
+											<Image
 												className='edgeTooltip'
 												src={`./images/edges/${edge.originNode.name} - ${edge.destinationNode.name}.webp`}
 												alt=''
@@ -391,7 +392,7 @@ export default function Main() {
 									))}
 									{blueActiveZoneEdge && (
 										<span className='edge blueRing' onClick={traverseBlueRing}>
-											<img
+											<Image
 												className='icon-small'
 												src={`./images/icons/Blue Ring.webp`}
 												alt='Blue Ring'
@@ -401,7 +402,7 @@ export default function Main() {
 									)}
 									{pinkSphereEdge && (
 										<span className='edge pinkRing' onClick={traversePinkRing}>
-											<img
+											<Image
 												className='icon-small'
 												src={`./images/icons/Pink Ring.webp`}
 												alt='Pink Ring'

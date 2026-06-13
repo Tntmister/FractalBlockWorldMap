@@ -2,6 +2,7 @@ import { Node, Upgrade, Item } from "../types";
 import "../css/nodeInfo.css";
 import { Fragment, useEffect, useState } from "react";
 import { labels } from "../data/labelMap";
+import Image from "next/image";
 
 interface NodeInfoProps {
 	node: Node;
@@ -70,7 +71,9 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 		<div id='nodeInfoContainer'>
 			<div id='nodeHeader'>
 				<span>
-					{node.trophy && <img className='icon' src={`./images/icons/Trophy.webp`} />}
+					{node.trophy && (
+						<Image className='icon' src={`./images/icons/Trophy.webp`} alt='Trophy' />
+					)}
 					{[...Array(Math.max(+node.trophy, +node.secretTrophy) - +node.trophy)].map(
 						(_, i) => (
 							<span className='icon' key={`trophy${i}Blank`} />
@@ -81,10 +84,11 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 				<span>
 					<>
 						{[...Array(+node.secretTrophy)].map((_, i) => (
-							<img
+							<Image
 								className='icon'
 								key={`secretTrophy${i}`}
 								src={`./images/icons/Secret Trophy.webp`}
+								alt='Secret Trophy'
 							/>
 						))}
 						{[
@@ -97,7 +101,7 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 					</>
 				</span>
 			</div>
-			<img id='nodeImage' src={`./images/nodes/${node.name}.webp`} alt='' />
+			<Image id='nodeImage' src={`./images/nodes/${node.name}.webp`} alt='' />
 			<div id='nodeInfo'>
 				<div id='nodeInfoHeader'>
 					<span
@@ -139,36 +143,52 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 				{currentInfoWindow && (
 					<div id='nodeInfoContent'>
 						{currentInfoWindow == "interactables" &&
-							node.interactables.map((interactable) => (
-								<div key={interactable}>
-									<img
-										className='icon-small'
-										src={`./images/icons/${labels.get(interactable)?.imageName ?? interactable}.webp`}
-									/>
-									{interactable}
-								</div>
-							))}
+							node.interactables.map((interactable) => {
+								const imageName =
+									labels.get(interactable)?.imageName ?? interactable;
+								return (
+									<div key={interactable}>
+										<Image
+											className='icon-small'
+											src={`./images/icons/${imageName}.webp`}
+											alt={imageName}
+										/>
+										{interactable}
+									</div>
+								);
+							})}
 						{currentInfoWindow == "monsters" &&
 							node.monsters.map((monster) => (
 								<div key={monster.name}>
 									{monster.name}
-									{monster.drop && (
-										<>
-											(
-											<img
-												className='icon-small'
-												src={`./images/icons/${labels.get(monster.drop.replace(/ x\d+$/i, "") as Item | Upgrade)?.imageName ?? monster.drop.replace(/^\d+ (Second )?/i, "")}.webp`}
-											/>
-											<div>
-												{labels.get(
+									{monster.drop &&
+										(() => {
+											const imageName =
+												labels.get(
 													monster.drop.replace(/ x\d+$/i, "") as
 														| Item
 														| Upgrade,
-												)?.label ?? monster.drop}
-											</div>
-											)
-										</>
-									)}
+												)?.imageName ??
+												monster.drop.replace(/^\d+ (Second )?/i, "");
+											return (
+												<>
+													(
+													<Image
+														className='icon-small'
+														src={`./images/icons/${imageName}.webp`}
+														alt={imageName}
+													/>
+													<div>
+														{labels.get(
+															monster.drop.replace(/ x\d+$/i, "") as
+																| Item
+																| Upgrade,
+														)?.label ?? monster.drop}
+													</div>
+													)
+												</>
+											);
+										})()}
 								</div>
 							))}
 						{currentInfoWindow == "items" &&
@@ -177,22 +197,24 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 								return (
 									<div key={itemAux.join("")}>
 										{itemAux.length > 1 && "("}
-										{itemAux.map((item, index) => (
-											<Fragment key={`${itemAux.join("")}|${item}`}>
-												<img
-													className='icon-small'
-													src={`./images/icons/${
-														labels.get(
-															item.replace(/ x\d+$/i, "") as Item,
-														)?.imageName ??
-														item.replace(/^\d+ (Second )?/i, "")
-													}.webp`}
-												/>
-												{item.includes("Ammo")
-													? item.slice(item.indexOf(" ") + 1)
-													: item}
-											</Fragment>
-										))}
+										{itemAux.map((item, index) => {
+											const imageName =
+												labels.get(item.replace(/ x\d+$/i, "") as Item)
+													?.imageName ??
+												item.replace(/^\d+ (Second )?/i, "");
+											return (
+												<Fragment key={`${itemAux.join("")}|${item}`}>
+													<Image
+														className='icon-small'
+														src={`./images/icons/${imageName}.webp`}
+														alt={imageName}
+													/>
+													{item.includes("Ammo")
+														? item.slice(item.indexOf(" ") + 1)
+														: item}
+												</Fragment>
+											);
+										})}
 									</div>
 								);
 							})}
@@ -205,21 +227,23 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 										{upgradeAux.map((upgrade, index) => (
 											<Fragment key={`${upgradeAux.join("")}|${upgrade}`}>
 												{!!index && " or "}
-												{!upgrade.includes("Non-") && (
-													<img
-														className='icon-small'
-														src={(() => {
-															const upgradeName = upgrade.replace(
-																/ x\d+$/i,
-																"",
-															) as Upgrade;
-															return `./images/icons/${
-																labels.get(upgradeName)
-																	?.imageName ?? upgradeName
-															}.webp`;
-														})()}
-													/>
-												)}
+												{!upgrade.includes("Non-") &&
+													(() => {
+														const upgradeName = upgrade.replace(
+															/ x\d+$/i,
+															"",
+														) as Upgrade;
+														return (
+															<Image
+																className='icon-small'
+																src={`./images/icons/${
+																	labels.get(upgradeName)
+																		?.imageName ?? upgradeName
+																}.webp`}
+																alt={upgradeName}
+															/>
+														);
+													})()}
 												{labels.get(upgrade)?.label ?? upgrade}
 											</Fragment>
 										))}
