@@ -668,6 +668,7 @@ const NODES = [
 		monsters: ["Heavy Marine"],
 		upgrades: ["Plasma Regen"],
 		items: ["Shield"],
+		notes: "Pink Ring can be found by going into the head of the flower then down the stem.",
 	},
 	{
 		name: "Hard Pink Tree",
@@ -1134,6 +1135,18 @@ const NODES = [
 		name: "Williston Field",
 		monsters: ["Spider", "Bee", "Queen Bee", "Gnole", "Unruly Juggernaut", "Formidable Juggernaut", "Locust", "Dissident"],
 		items: ["Gold", "Nuke Ammo", "EMP Ammo", "Railgun Ammo", "Rocket Ammo", "Laser Ammo", "Minigun Ammo"],
+	},
+	{
+		name: "Williston Field Treasure",
+		upgrades: ["Minigun Damage x2", "Minigun Fire Rate x1"],
+	},
+	{
+		name: "Williston Patch",
+	},
+	{
+		name: "Williston Rich Field",
+		monsters: ["Unruly Juggernaut"],
+		upgrades: ["Cannon Max Ammo x1"],
 	},
 	{
 		name: "Williston Caves",

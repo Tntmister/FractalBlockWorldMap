@@ -742,9 +742,6 @@ const edgeData: EdgeDataSpecific = {
 		"Quicksand Grass": {
 			distance: 30,
 		},
-		"Stoney Air": {
-			distance: 30,
-		},
 	},
 	"Blackberry": {
 		"Small White Flower": {
@@ -1464,6 +1461,29 @@ const edgeData: EdgeDataSpecific = {
 		},
 		"Imp Disco": {
 			distance: 5,
+		},
+		"Williston Field Treasure": {
+			distance: 5,
+		},
+		"Williston Patch": {
+			distance: 15,
+			note: "Below Williston Trees",
+		},
+	},
+	"Williston Patch": {
+		"I1": {
+			distance: 1,
+		},
+		"Williston Rich Field": {
+			distance: 5,
+		},
+		"Orange": {
+			distance: 5,
+		},
+	},
+	"Williston Rich Field": {
+		"Buttercup": {
+			distance: 10,
 		},
 	},
 	"Williston Caves": {
