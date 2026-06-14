@@ -1,4 +1,4 @@
-import { Edge, Interactable, Node, Upgrade } from "../types";
+import { Edge, Interactable, Node, Upgrade } from "../../types";
 
 //Dijkstra pathfinding
 // empty array = already at location, undefined = no path
