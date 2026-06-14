@@ -72,7 +72,7 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 			<div id='nodeHeader'>
 				<span>
 					{node.trophy && (
-						<Image className='icon' src={`./images/icons/Trophy.webp`} alt='Trophy' />
+						<img className='icon' src={`./images/icons/Trophy.webp`} alt='Trophy' />
 					)}
 					{[...Array(Math.max(+node.trophy, +node.secretTrophy) - +node.trophy)].map(
 						(_, i) => (
@@ -84,7 +84,7 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 				<span>
 					<>
 						{[...Array(+node.secretTrophy)].map((_, i) => (
-							<Image
+							<img
 								className='icon'
 								key={`secretTrophy${i}`}
 								src={`./images/icons/Secret Trophy.webp`}
@@ -101,7 +101,7 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 					</>
 				</span>
 			</div>
-			<Image id='nodeImage' src={`./images/nodes/${node.name}.webp`} alt='' />
+			<img id='nodeImage' src={`./images/nodes/${node.name}.webp`} alt='' />
 			<div id='nodeInfo'>
 				<div id='nodeInfoHeader'>
 					<span
@@ -148,7 +148,7 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 									labels.get(interactable)?.imageName ?? interactable;
 								return (
 									<div key={interactable}>
-										<Image
+										<img
 											className='icon-small'
 											src={`./images/icons/${imageName}.webp`}
 											alt={imageName}
@@ -173,7 +173,7 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 											return (
 												<>
 													(
-													<Image
+													<img
 														className='icon-small'
 														src={`./images/icons/${imageName}.webp`}
 														alt={imageName}
@@ -204,7 +204,7 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 												item.replace(/^\d+ (Second )?/i, "");
 											return (
 												<Fragment key={`${itemAux.join("")}|${item}`}>
-													<Image
+													<img
 														className='icon-small'
 														src={`./images/icons/${imageName}.webp`}
 														alt={imageName}
@@ -234,7 +234,7 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 															"",
 														) as Upgrade;
 														return (
-															<Image
+															<img
 																className='icon-small'
 																src={`./images/icons/${
 																	labels.get(upgradeName)
