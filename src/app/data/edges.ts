@@ -760,6 +760,9 @@ const edgeData: EdgeDataSpecific = {
 		},
 	},
 	"I3": {
+		"I3 Entrance": {
+			distance: 1,
+		},
 		"I3 Air": {
 			distance: 1,
 		},
@@ -777,6 +780,12 @@ const edgeData: EdgeDataSpecific = {
 		},
 		"Mahogany Tree": {
 			distance: 5,
+		},
+		"I3 Ammo Patch": {
+			distance: 10,
+		},
+		"I3 Waypoint Patch": {
+			distance: 10,
 		},
 		"Desert": {
 			distance: 15,
@@ -823,6 +832,9 @@ const edgeData: EdgeDataSpecific = {
 	},
 	"River": {
 		"Tangerine": {
+			distance: 10,
+		},
+		"Carrots": {
 			distance: 10,
 		},
 		"River Pyramid": {
@@ -3296,7 +3308,7 @@ const edgeData: EdgeDataSpecific = {
 		"Carrots": {
 			distance: 5,
 		},
-		"Quicksand Grass Level 11": {
+		"Quicksand Grass": {
 			distance: 10,
 		},
 		"I3 WIG Flower": {
