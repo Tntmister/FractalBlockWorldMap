@@ -410,6 +410,14 @@ const edgeData: EdgeDataSpecific = {
 			note: "x3",
 		},
 	},
+	"Noob Maze Flower": {
+		"Noob Maze": {
+			distance: 0,
+		},
+		"Ying Forest": {
+			distance: 0,
+		},
+	},
 	"Ying Cave Island": {
 		"Ying Cave Island Layer 1": {
 			distance: 5,
@@ -814,13 +822,16 @@ const edgeData: EdgeDataSpecific = {
 		"White Rose Treasure": {
 			distance: 10,
 		},
+		"Quicksand Grass": {
+			distance: 1,
+		},
 	},
 	"White Rose Treasure": {
-		"White Rose Treasure 2": {
+		"White Rose Corridor": {
 			distance: 15,
 		},
 	},
-	"White Rose Treasure 2": {
+	"White Rose Corridor": {
 		"White Rose Secret": {
 			distance: 40,
 		},
@@ -948,6 +959,9 @@ const edgeData: EdgeDataSpecific = {
 		},
 		"Ying Forest": {
 			distance: 30,
+		},
+		"Ascend Temple Treasure": {
+			distance: 80,
 		},
 	},
 	"Desert Caves": {
@@ -1618,6 +1632,7 @@ const edgeData: EdgeDataSpecific = {
 		"WIG Prison Locker": {
 			distance: 1,
 			note: "Rainbow Flower Image",
+			requiresKey: "Green Key",
 		},
 	},
 	"Prank I2 WIG Flower": {

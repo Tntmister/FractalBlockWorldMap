@@ -169,7 +169,8 @@ const NODES = [
 		name: "SYF Blue Rings",
 		secretTrophy: true,
 		monsters: ["Blue Lamprey"],
-		interactables: ["Blue Ring"],
+		interactables: ["Blue Ring", "Waypoint", "Bookmark", "Save"],
+		notes: "Blue Rings are behind a Mega-Chunk of Blue Lampreys",
 	},
 	{
 		name: "Jumbo Yellow Flower",
@@ -1093,7 +1094,7 @@ const NODES = [
 	{
 		name: "Ying Air Core",
 		interactables: ["Buy Station", "Common Sell Station", "Waypoint"],
-		upgrades: ["Rocket Velocity", "Homing Max Ammo x1"],
+		upgrades: ["Rocket Radius x1", "Homing Max Ammo x1"],
 		items: ["100 Gold", "Cannon Ammo x75", "Laser Ammo x64", "Railgun Ammo x50", "Cannon Ammo x60", "Minigun Ammo x150", "Homing Ammo x2000"],
 		monsters: ["War Vulcan"],
 		secretTrophy: true,
@@ -3298,6 +3299,7 @@ const NODES = [
 	{
 		name: "I3 Clouds",
 		monsters: ["Greater Beholder"],
+		items: ["Rocket Ammo", "Cannon Ammo", "EMP Ammo", "Railgun Ammo"],
 	},
 	{
 		name: "White Rose",
@@ -3310,10 +3312,11 @@ const NODES = [
 		secretTrophy: true,
 	},
 	{
-		name: "White Rose Treasure 2",
+		name: "White Rose Corridor",
 		monsters: ["Pool Ball 6"],
 		upgrades: ["RejuvenX x4"],
 		items: ["1600 Gold"],
+		notes: "Tip: Drag each Pool Ball to the edges of the White Rose so they're outside your fertile radius when you're in the center",
 	},
 	{
 		name: "White Rose Secret",
@@ -3364,7 +3367,13 @@ const NODES = [
 		name: "Ascend Temple",
 		interactables: ["In-Only Waypoint", "Save", "Waypoint"],
 		monsters: ["Lesser Spider", "Red Lamprey", "Lamprey", "Yellow Lamprey", "Green Lamprey", "Blue Lamprey"],
-		upgrades: ["Minigun Damage", "Nuke Radius", "Laser Max Ammo", "Laser Super Damage"],
+		notes: "Treasure is behind a room full of Lesser Spiders and a 13x13x13 maze full of Lampreys",
+	},
+	{
+		name: "Ascend Temple Treasure",
+		interactables: ["Save", "Waypoint"],
+		upgrades: ["Minigun Damage x60", "Nuke Radius x6", "Laser Max Ammo x1", "Laser Super Damage x1"],
+		notes: "Allows growing into I3 at 1 size bigger than normal.",
 		secretTrophy: true,
 	},
 	{
@@ -3381,8 +3390,9 @@ const NODES = [
 	{
 		name: "Colchester Secret",
 		interactables: ["Waypoint", "Pink Ring"],
-		upgrades: ["Nuke Damage"],
+		upgrades: ["Nuke Damage x28"],
 		items: ["150% Armor"],
+		secretTrophy: true,
 	},
 	{
 		name: "Top of the World",
