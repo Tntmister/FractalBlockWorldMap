@@ -18,6 +18,8 @@ const weaponUpgrades = [
 	"Cannon Velocity",
 	"Cannon Num Shots",
 	"Cannon Tommy Gun Weapon Mod",
+	"Cannon Sheriff Weapon Mod",
+	"Cannon Judge Weapon Mod",
 	"Laser Max Ammo",
 	"Laser Damage",
 	"Laser Freeze Time",

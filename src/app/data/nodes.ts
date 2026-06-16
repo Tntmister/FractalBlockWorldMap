@@ -2646,7 +2646,7 @@ const NODES = [
 	},
 	{
 		name: "Amethyst Island",
-		items: ["Dark Hole Ammo", "EMP Ammo"],
+		items: ["Dark Hole Ammo", "EMP Ammo x1"],
 		interactables: ["Buy Station"],
 		upgrades: ["Dark Hole Damage x2", "Homing Velocity x4"],
 	},
@@ -3751,6 +3751,12 @@ const NODES = [
 		name: "Mylantis",
 		monsters: ["Goliath"],
 		interactables: ["Waypoint", "Bookmark", "Save", "Out-Only Waypoint", "Pink Sphere"],
+		blueActiveZoneDestination: {
+			nodeName: "Mylantis City Top Garden",
+		},
+	},
+	{
+		name: "Mylantis Caves",
 	},
 	{
 		name: "Mylantis Crust",
@@ -3770,7 +3776,7 @@ const NODES = [
 		name: "Mylantis Caves Library Plug",
 	},
 	{
-		name: "Mylantis Cave Shaft",
+		name: "Mylantis Caves Shaft",
 		monsters: ["Green Lamprey"],
 	},
 	{
@@ -3853,8 +3859,19 @@ const NODES = [
 	},
 	{
 		name: "Mylantis Great Cavern",
-		upgrades: ["Telekinesis"],
-		interactables: ["Waypoint", "Bookmark", "Save"],
+		interactables: ["Save"],
+		monsters: ["Troll", "Hobgoblin"],
+	},
+	{
+		name: "The Mount P",
+		interactables: ["Scarce Sell Station", "Buy Station", "Markers", "Rare Sell Station", "Save", "Waypoint", "Respawn"],
+		items: ["Dark Hole Ammo x1"],
+		upgrades: ["Cannon Judge Weapon Mod", "Telekinesis"],
+	},
+	{
+		name: "Small Boat",
+		interactables: ["Waypoint", "Bookmark", "Save", "Markers", "Buy Station"],
+		upgrades: ["Cannon Sheriff Weapon Mod"],
 	},
 	{
 		name: "Mylantis Red Caves",
@@ -3865,9 +3882,20 @@ const NODES = [
 	{
 		name: "RejuvenX Refinery",
 		monsters: ["Arch Menace Male", "Goliath"],
-		upgrades: ["RejuvenX"],
-		items: ["Extra 100% Health", "600% Armor", "Cannon Ammo", "Laser Ammo", "Rocket Ammo", "Minigun Ammo", "Railgun Ammo", "Nuke Ammo", "EMP Ammo", "Gold"],
-		interactables: ["Save", "Buy Station", "Respawn"],
+		upgrades: ["RejuvenX x2"],
+		items: [
+			"Extra 100% Health x6",
+			"600% Armor x1",
+			"Cannon Ammo x100",
+			"Laser Ammo x96",
+			"Rocket Ammo x100",
+			"Minigun Ammo x250",
+			"Railgun Ammo x100",
+			"Nuke Ammo x3",
+			"EMP Ammo x3",
+			"200 Gold",
+		],
+		interactables: ["Save", "Buy Station", "Respawn", "Out-Only Waypoint"],
 	},
 	{
 		name: "Nuclear Silo",
@@ -3878,6 +3906,9 @@ const NODES = [
 		name: "Mylantis City",
 		interactables: ["Pink Sphere", "Waypoint"],
 		secretTrophy: true,
+		blueActiveZoneDestination: {
+			nodeName: "Mylantis City Top Garden",
+		},
 		notes: "Secret Trophy: On the left-back corner of the second floor of the city, in the right-front building of that corner chunk is the secret nuke room.\nThe right-front corner of the third floor is supposedly different (MYLANTIS_CITY_SIDE_SECRET), but doesn't contain anything yet.",
 	},
 	{
@@ -3928,6 +3959,14 @@ const NODES = [
 	{
 		name: "Mylantis Top Garden",
 		items: ["Nuke Ammo x8", "100 Gold"],
+		interactables: ["Buy Nuke 300", "Buy Station", "Scarce Sell Station", "Markers", "Waypoint", "Save", "Bookmark"],
+		trophy: true,
+		blueActiveZoneDestination: {
+			nodeName: "Mylantis Top Garden",
+		},
+	},
+	{
+		name: "Mylantis Top Garden Depot",
 		upgrades: [
 			"Plasma Damage x4",
 			"Plasma Fire Rate x2",
@@ -3955,11 +3994,12 @@ const NODES = [
 			"Dark Hole Max Ammo x6",
 			"Dark Hole Velocity x6",
 			"Dark Hole Damage x6",
-			"Nuke Damage x24",
-			"RejuvenX x4",
 		],
-		interactables: ["Buy Nuke 300", "Buy Station", "Scarce Sell Station", "Markers", "Waypoint", "Save", "Bookmark"],
-		trophy: true,
+	},
+	{
+		name: "Mylantis Spice Building",
+		interactables: ["Save"],
+		upgrades: ["Nuke Damage x24", "RejuvenX x4"],
 	},
 	{
 		name: "Tau Cave Moss",

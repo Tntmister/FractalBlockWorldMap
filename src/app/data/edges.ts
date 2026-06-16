@@ -4952,7 +4952,7 @@ const edgeData: EdgeDataSpecific = {
 		"Mylantis City": {
 			distance: 1,
 		},
-		"Mylantis Crust": {
+		"Mylantis Caves": {
 			distance: 1,
 		},
 		"Laser Genesis Planet": {
@@ -4965,12 +4965,56 @@ const edgeData: EdgeDataSpecific = {
 			distance: 20,
 		},
 	},
-	"Mylantis Crust": {
-		"I3 WIG Flower": {
-			distance: 5,
+	"Mylantis Caves": {
+		"Mylantis Crust": {
+			distance: 1,
+		},
+		"Mylantis Caves Shaft": {
+			distance: 15,
 		},
 		"Mylantis Caves 1": {
 			distance: 10,
+		},
+		"Mylantis Caves 2": {
+			distance: 20,
+		},
+		"Mylantis Caves 3": {
+			distance: 30,
+		},
+		"Mylantis Caves 4": {
+			distance: 40,
+		},
+		"Mylantis Caves 5": {
+			distance: 50,
+		},
+		"Mylantis Caves 6": {
+			distance: 60,
+		},
+		"Mylantis Caves 7": {
+			distance: 70,
+		},
+		"Mylantis Caves 8": {
+			distance: Infinity,
+		},
+		"Mylantis Caves 9": {
+			distance: Infinity,
+		},
+		"Mylantis Caves 10": {
+			distance: Infinity,
+		},
+		"Mylantis Caves 11": {
+			distance: Infinity,
+		},
+		"Mylantis Great Cavern": {
+			distance: Infinity,
+		},
+		"Mylantis Red Caves": {
+			distance: Infinity,
+		},
+	},
+	"Mylantis Crust": {
+		"I3 WIG Flower": {
+			distance: 5,
 		},
 	},
 	"Mylantis Caves Library": {
@@ -5006,12 +5050,6 @@ const edgeData: EdgeDataSpecific = {
 		"Mylantis Caves Library": {
 			distance: 5,
 		},
-		"Mylantis Cave Shaft": {
-			distance: 15,
-		},
-		"Mylantis Caves 2": {
-			distance: 20,
-		},
 	},
 	"Mylantis Caves 2": {
 		"I3 WIG Flower": {
@@ -5029,12 +5067,6 @@ const edgeData: EdgeDataSpecific = {
 		"RejuvenX Refinery": {
 			distance: 10,
 		},
-		"Mylantis Cave Shaft": {
-			distance: 18,
-		},
-		"Mylantis Caves 3": {
-			distance: 25,
-		},
 	},
 	"Mylantis Caves 3": {
 		"I3 WIG Flower": {
@@ -5050,12 +5082,6 @@ const edgeData: EdgeDataSpecific = {
 			distance: 8,
 		},
 		"RejuvenX Refinery": {
-			distance: Infinity,
-		},
-		"Mylantis Cave Shaft": {
-			distance: Infinity,
-		},
-		"Mylantis Caves 4": {
 			distance: Infinity,
 		},
 	},
@@ -5075,12 +5101,6 @@ const edgeData: EdgeDataSpecific = {
 		"RejuvenX Refinery": {
 			distance: Infinity,
 		},
-		"Mylantis Cave Shaft": {
-			distance: Infinity,
-		},
-		"Mylantis Caves 5": {
-			distance: Infinity,
-		},
 	},
 	"Mylantis Caves 5": {
 		"I3 WIG Flower": {
@@ -5096,12 +5116,6 @@ const edgeData: EdgeDataSpecific = {
 			distance: Infinity,
 		},
 		"RejuvenX Refinery": {
-			distance: Infinity,
-		},
-		"Mylantis Cave Shaft": {
-			distance: Infinity,
-		},
-		"Mylantis Caves 6": {
 			distance: Infinity,
 		},
 	},
@@ -5124,12 +5138,6 @@ const edgeData: EdgeDataSpecific = {
 		"RejuvenX Refinery": {
 			distance: Infinity,
 		},
-		"Mylantis Cave Shaft": {
-			distance: Infinity,
-		},
-		"Mylantis Caves 7": {
-			distance: Infinity,
-		},
 	},
 	"Mylantis Caves 7": {
 		"I3 WIG Flower": {
@@ -5145,12 +5153,6 @@ const edgeData: EdgeDataSpecific = {
 			distance: Infinity,
 		},
 		"RejuvenX Refinery": {
-			distance: Infinity,
-		},
-		"Mylantis Cave Shaft": {
-			distance: Infinity,
-		},
-		"Mylantis Caves 8": {
 			distance: Infinity,
 		},
 	},
@@ -5173,12 +5175,6 @@ const edgeData: EdgeDataSpecific = {
 		"RejuvenX Refinery": {
 			distance: Infinity,
 		},
-		"Mylantis Cave Shaft": {
-			distance: Infinity,
-		},
-		"Mylantis Caves 9": {
-			distance: Infinity,
-		},
 	},
 	"Mylantis Caves 9": {
 		"I3 WIG Flower": {
@@ -5191,15 +5187,6 @@ const edgeData: EdgeDataSpecific = {
 			distance: Infinity,
 		},
 		"RejuvenX Refinery": {
-			distance: Infinity,
-		},
-		"Mylantis Cave Shaft": {
-			distance: Infinity,
-		},
-		"Mylantis Caves Library": {
-			distance: Infinity,
-		},
-		"Mylantis Caves 10": {
 			distance: Infinity,
 		},
 	},
@@ -5222,41 +5209,40 @@ const edgeData: EdgeDataSpecific = {
 		"Mylantis Caves Library": {
 			distance: Infinity,
 		},
-		"Mylantis Cave Shaft": {
-			distance: Infinity,
-		},
-		"Mylantis Caves 11": {
-			distance: Infinity,
-		},
 	},
 	"Mylantis Caves 11": {
 		"I3 WIG Flower": {
 			distance: 5,
 		},
 		"Moon Flower": {
-			distance: Infinity,
-		},
-		"RejuvenX Refinery": {
-			distance: Infinity,
+			distance: 50,
 		},
 		"Mylantis Caves Library": {
-			distance: Infinity,
-		},
-		"Mylantis Cave Shaft": {
-			distance: Infinity,
-		},
-		"Mylantis Great Cavern": {
-			distance: Infinity,
+			distance: 40,
 		},
 	},
 	"Mylantis Great Cavern": {
-		"Mylantis Red Caves": {
-			distance: Infinity,
+		"The Mount P": {
+			distance: 10,
+			note: "Big Boat",
+		},
+		"Small Boat": {
+			distance: 5,
+		},
+	},
+	"The Mount P": {
+		"Weapon Library": {
+			distance: 1,
+		},
+	},
+	"Small Boat": {
+		"Weapon Library": {
+			distance: 1,
 		},
 	},
 	"Mylantis Red Caves": {
 		"Amethyst": {
-			distance: Infinity,
+			distance: 40,
 		},
 	},
 	"Denver": {
@@ -5363,6 +5349,9 @@ const edgeData: EdgeDataSpecific = {
 		},
 	},
 	"Mylantis Top Garden": {
+		"Mylantis Top Garden Depot": {
+			distance: 1,
+		},
 		"Ying Forest": {
 			distance: 1,
 		},
