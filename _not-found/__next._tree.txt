@@ -1,2 +1,2 @@
 :HL["/FractalBlockWorldMap/_next/static/chunks/358w3enyyrhuy.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"qUmY3ANi6K8dtz4NICb7t"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"uDPifZsIU573tHvvpx-VT"}
