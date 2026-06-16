@@ -102,159 +102,171 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 				</span>
 			</div>
 			<img id='nodeImage' src={`./images/nodes/${node.name}.webp`} alt='' />
-			<div id='nodeInfo'>
-				<div id='nodeInfoHeader'>
-					<span
-						data-infotype={"interactables"}
-						onClick={node.interactables.length > 0 ? changeInfoWindowEvent : undefined}
-						className={node.interactables.length == 0 ? "unavailable" : ""}
-					>
-						Interactables
-					</span>
-					<span
-						data-infotype={"monsters"}
-						onClick={node.monsters.length > 0 ? changeInfoWindowEvent : undefined}
-						className={node.monsters.length == 0 ? "unavailable" : ""}
-					>
-						Monsters
-					</span>
-					<span
-						data-infotype={"items"}
-						onClick={node.items.length > 0 ? changeInfoWindowEvent : undefined}
-						className={node.items.length == 0 ? "unavailable" : ""}
-					>
-						Items
-					</span>
-					<span
-						data-infotype={"upgrades"}
-						onClick={node.upgrades.length > 0 ? changeInfoWindowEvent : undefined}
-						className={node.upgrades.length == 0 ? "unavailable" : ""}
-					>
-						Upgrades
-					</span>
-					<span
-						data-infotype={"notes"}
-						onClick={node.notes ? changeInfoWindowEvent : undefined}
-						className={!node.notes ? "unavailable" : ""}
-					>
-						Notes
-					</span>
-				</div>
-				{currentInfoWindow && (
-					<div id='nodeInfoContent'>
-						{currentInfoWindow == "interactables" &&
-							node.interactables.map((interactable) => {
-								const imageName =
-									labels.get(interactable)?.imageName ?? interactable;
-								return (
-									<div key={interactable}>
-										<img
-											className='icon-small'
-											src={`./images/icons/${imageName}.webp`}
-											alt={imageName}
-										/>
-										{interactable}
-									</div>
-								);
-							})}
-						{currentInfoWindow == "monsters" &&
-							node.monsters.map((monster) => (
-								<div key={monster.name}>
-									{monster.name}
-									{monster.drop &&
-										(() => {
-											const imageName =
-												labels.get(
-													monster.drop.replace(/ x\d+$/i, "") as
-														| Item
-														| Upgrade,
-												)?.imageName ??
-												monster.drop.replace(/^\d+ (Second )?/i, "");
-											return (
-												<>
-													(
-													<img
-														className='icon-small'
-														src={`./images/icons/${imageName}.webp`}
-														alt={imageName}
-													/>
-													<div>
-														{labels.get(
-															monster.drop.replace(/ x\d+$/i, "") as
-																| Item
-																| Upgrade,
-														)?.label ?? monster.drop}
-													</div>
-													)
-												</>
-											);
-										})()}
-								</div>
-							))}
-						{currentInfoWindow == "items" &&
-							node.items.map((item) => {
-								const itemAux = Array.isArray(item) ? item : [item];
-								return (
-									<div key={itemAux.join("")}>
-										{itemAux.length > 1 && "("}
-										{itemAux.map((item, index) => {
-											const imageName =
-												labels.get(item.replace(/ x\d+$/i, "") as Item)
-													?.imageName ??
-												item.replace(/^\d+ (Second )?/i, "");
-											return (
-												<Fragment key={`${itemAux.join("")}|${item}`}>
-													<img
-														className='icon-small'
-														src={`./images/icons/${imageName}.webp`}
-														alt={imageName}
-													/>
-													{item.includes("Ammo")
-														? item.slice(item.indexOf(" ") + 1)
-														: item}
-												</Fragment>
-											);
-										})}
-									</div>
-								);
-							})}
-						{currentInfoWindow == "upgrades" &&
-							node.upgrades.map((upgrade) => {
-								const upgradeAux = Array.isArray(upgrade) ? upgrade : [upgrade];
-								return (
-									<div key={upgradeAux.join("")}>
-										{upgradeAux.length > 1 && "("}
-										{upgradeAux.map((upgrade, index) => (
-											<Fragment key={`${upgradeAux.join("")}|${upgrade}`}>
-												{!!index && " or "}
-												{!upgrade.includes("Non-") &&
-													(() => {
-														const upgradeName = upgrade.replace(
-															/ x\d+$/i,
-															"",
-														) as Upgrade;
-														return (
-															<img
-																className='icon-small'
-																src={`./images/icons/${
-																	labels.get(upgradeName)
-																		?.imageName ?? upgradeName
-																}.webp`}
-																alt={upgradeName}
-															/>
-														);
-													})()}
-												{labels.get(upgrade)?.label ?? upgrade}
-											</Fragment>
-										))}
-										{upgradeAux.length > 1 && ")"}
-									</div>
-								);
-							})}
-						{currentInfoWindow == "notes" && <div id='nodeInfoNotes'>{node.notes}</div>}
+			{(node.interactables.length > 0 ||
+				node.interactables.length > 0 ||
+				node.items.length > 0 ||
+				node.upgrades.length > 0 ||
+				!!node.notes) && (
+				<div id='nodeInfo'>
+					<div id='nodeInfoHeader'>
+						<span
+							data-infotype={"interactables"}
+							onClick={
+								node.interactables.length > 0 ? changeInfoWindowEvent : undefined
+							}
+							className={node.interactables.length == 0 ? "unavailable" : ""}
+						>
+							Interactables
+						</span>
+						<span
+							data-infotype={"monsters"}
+							onClick={node.monsters.length > 0 ? changeInfoWindowEvent : undefined}
+							className={node.monsters.length == 0 ? "unavailable" : ""}
+						>
+							Monsters
+						</span>
+						<span
+							data-infotype={"items"}
+							onClick={node.items.length > 0 ? changeInfoWindowEvent : undefined}
+							className={node.items.length == 0 ? "unavailable" : ""}
+						>
+							Items
+						</span>
+						<span
+							data-infotype={"upgrades"}
+							onClick={node.upgrades.length > 0 ? changeInfoWindowEvent : undefined}
+							className={node.upgrades.length == 0 ? "unavailable" : ""}
+						>
+							Upgrades
+						</span>
+						<span
+							data-infotype={"notes"}
+							onClick={node.notes ? changeInfoWindowEvent : undefined}
+							className={!node.notes ? "unavailable" : ""}
+						>
+							Notes
+						</span>
 					</div>
-				)}
-			</div>
+					{currentInfoWindow && (
+						<div id='nodeInfoContent'>
+							{currentInfoWindow == "interactables" &&
+								node.interactables.map((interactable) => {
+									const imageName =
+										labels.get(interactable)?.imageName ?? interactable;
+									return (
+										<div key={interactable}>
+											<img
+												className='icon-small'
+												src={`./images/icons/${imageName}.webp`}
+												alt={imageName}
+											/>
+											{interactable}
+										</div>
+									);
+								})}
+							{currentInfoWindow == "monsters" &&
+								node.monsters.map((monster) => (
+									<div key={monster.name}>
+										{monster.name}
+										{monster.drop &&
+											(() => {
+												const imageName =
+													labels.get(
+														monster.drop.replace(/ x\d+$/i, "") as
+															| Item
+															| Upgrade,
+													)?.imageName ??
+													monster.drop.replace(/^\d+ (Second )?/i, "");
+												return (
+													<>
+														(
+														<img
+															className='icon-small'
+															src={`./images/icons/${imageName}.webp`}
+															alt={imageName}
+														/>
+														<div>
+															{labels.get(
+																monster.drop.replace(
+																	/ x\d+$/i,
+																	"",
+																) as Item | Upgrade,
+															)?.label ?? monster.drop}
+														</div>
+														)
+													</>
+												);
+											})()}
+									</div>
+								))}
+							{currentInfoWindow == "items" &&
+								node.items.map((item) => {
+									const itemAux = Array.isArray(item) ? item : [item];
+									return (
+										<div key={itemAux.join("")}>
+											{itemAux.length > 1 && "("}
+											{itemAux.map((item, index) => {
+												const imageName =
+													labels.get(item.replace(/ x\d+$/i, "") as Item)
+														?.imageName ??
+													item.replace(/^\d+ (Second )?/i, "");
+												return (
+													<Fragment key={`${itemAux.join("")}|${item}`}>
+														<img
+															className='icon-small'
+															src={`./images/icons/${imageName}.webp`}
+															alt={imageName}
+														/>
+														{item.includes("Ammo")
+															? item.slice(item.indexOf(" ") + 1)
+															: item}
+													</Fragment>
+												);
+											})}
+										</div>
+									);
+								})}
+							{currentInfoWindow == "upgrades" &&
+								node.upgrades.map((upgrade) => {
+									const upgradeAux = Array.isArray(upgrade) ? upgrade : [upgrade];
+									return (
+										<div key={upgradeAux.join("")}>
+											{upgradeAux.length > 1 && "("}
+											{upgradeAux.map((upgrade, index) => (
+												<Fragment key={`${upgradeAux.join("")}|${upgrade}`}>
+													{!!index && " or "}
+													{!upgrade.includes("Non-") &&
+														(() => {
+															const upgradeName = upgrade.replace(
+																/ x\d+$/i,
+																"",
+															) as Upgrade;
+															return (
+																<img
+																	className='icon-small'
+																	src={`./images/icons/${
+																		labels.get(upgradeName)
+																			?.imageName ??
+																		upgradeName
+																	}.webp`}
+																	alt={upgradeName}
+																/>
+															);
+														})()}
+													{labels.get(upgrade)?.label ?? upgrade}
+												</Fragment>
+											))}
+											{upgradeAux.length > 1 && ")"}
+										</div>
+									);
+								})}
+							{currentInfoWindow == "notes" && (
+								<div id='nodeInfoNotes'>{node.notes}</div>
+							)}
+						</div>
+					)}
+				</div>
+			)}
 		</div>
 	);
 }
