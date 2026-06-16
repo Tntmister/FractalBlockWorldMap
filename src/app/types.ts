@@ -178,6 +178,7 @@ export type EdgeData = {
 	distance: number; // how hard is it to traverse to ingame (enemy difficulty/time)
 	note?: string; // specifc method to enter
 	requiresKey?: Key;
+	yellowBoxDevice?: boolean;
 	whiteBoxDevice?: boolean;
 	arcade?: boolean;
 	impassable?: boolean; // to indicate that the destination is not directly accessible, only through waypoints/blue rings (i.e. WIG Prison and Violet Shells)

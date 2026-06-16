@@ -1613,6 +1613,7 @@ const edgeData: EdgeDataSpecific = {
 		"Toronto": {
 			distance: 1,
 			note: "Rainbow Flower Image",
+			yellowBoxDevice: true,
 		},
 		"WIG Prison Locker": {
 			distance: 1,

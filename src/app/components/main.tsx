@@ -204,6 +204,13 @@ export default function Main() {
 													alt='White Box Device'
 												/>
 											)}
+											{edge.yellowBoxDevice && (
+												<img
+													className='icon-small'
+													src={`./images/icons/Yellow Box Device.webp`}
+													alt='Yellow Box Device'
+												/>
+											)}
 											{edge.impassable && (
 												<img
 													className='icon-small'
