@@ -150,16 +150,30 @@ const edgeData: EdgeDataSpecific = {
 	},
 	"Ying Tree": {
 		"Ying Forest": {
-			distance: 3,
+			distance: 1,
 		},
-		"Quicksand Grass": {
-			distance: 2,
+		"Ying Tree Sub Treasure": {
+			distance: 5,
+		},
+		"Ying Tree Treasure": {
+			distance: 25,
+		},
+	},
+	"Ying Tree Treasure": {
+		"Beta Cube": {
+			distance: 1,
 		},
 		"Blackberry": {
-			distance: 20,
+			distance: 1,
 		},
 		"Deep Menger Sponge": {
-			distance: 20,
+			distance: 1,
+		},
+	},
+	"Beta Cube": {
+		"Red Apple Tree": {
+			distance: 5,
+			note: "Grey room",
 		},
 	},
 	"Ying Forest Depth 50+": {
@@ -190,6 +204,7 @@ const edgeData: EdgeDataSpecific = {
 			distance: 60,
 			note: "Tweedle-dum Air Anti-Plug Hole",
 			requiresKey: "Yellow Key",
+			yellowBoxDevice: true,
 		},
 		"Unremembered Tower Secret Room": {
 			distance: 30,
@@ -213,6 +228,7 @@ const edgeData: EdgeDataSpecific = {
 		"Rainbow Flower": {
 			distance: 1,
 			requiresKey: "Yellow Key",
+			yellowBoxDevice: true,
 		},
 	},
 	"Unremembered Tower Secret Room": {
@@ -752,19 +768,33 @@ const edgeData: EdgeDataSpecific = {
 		},
 	},
 	"Blackberry": {
+		"Blackberry Seed": {
+			distance: 10,
+			yellowBoxDevice: true,
+		},
+	},
+	"Blackberry Seed": {
 		"Small White Flower": {
-			distance: 25,
+			distance: 20,
 		},
 		"Small Black Flower": {
+			distance: 20,
+		},
+		"Blackberry Core": {
+			distance: 20,
+		},
+	},
+	"Blackberry Core": {
+		"Blackberry Treasure": {
 			distance: 25,
 		},
+		"Blackberry Orange Box": {
+			distance: 25,
+		},
+	},
+	"Blackberry Orange Box": {
 		"Pink Tree": {
 			distance: 10,
-			note: "Inside Orange Cubes",
-		},
-		"Quicksand Grass": {
-			distance: 10,
-			note: "Inside Orange Cubes, Layer 11",
 		},
 	},
 	"I3": {
@@ -1876,7 +1906,7 @@ const edgeData: EdgeDataSpecific = {
 			distance: 5,
 			note: "Inside Vine",
 		},
-		"Violet": {
+		"Violets": {
 			distance: 10,
 		},
 		"Toronto": {
@@ -1953,7 +1983,7 @@ const edgeData: EdgeDataSpecific = {
 			impassable: true,
 		},
 	},
-	"Violet": {
+	"Violets": {
 		"Quicksand Grass": {
 			distance: 1,
 		},
@@ -2611,7 +2641,7 @@ const edgeData: EdgeDataSpecific = {
 		"I2 Library": {
 			distance: 10,
 		},
-		"Violet": {
+		"Violets": {
 			distance: 15,
 		},
 	},
@@ -2866,7 +2896,7 @@ const edgeData: EdgeDataSpecific = {
 		"Fanatic Weed": {
 			distance: 1,
 		},
-		"Violet": {
+		"Violets": {
 			distance: 1,
 		},
 		"Fanatic Lattice": {

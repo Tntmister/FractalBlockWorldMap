@@ -16,6 +16,7 @@ const NODES = [
 		name: "Ying Tree",
 		blueActiveZoneDestination: {
 			nodeName: "Ying Tree",
+			note: "Exit",
 		},
 		notes: "There is a map at the same level of the Ying Forest and Sub Treasure",
 	},
@@ -24,6 +25,13 @@ const NODES = [
 		items: ["300 Gold", "1000% Armor x1", "Extra 100% Health x3"],
 		interactables: ["Blue Ring", "Waypoint", "Save", "Buy Station", "Markers", "Common Sell Station"],
 		upgrades: ["Railgun Fire Rate", ["EMP Radius", "EMP Freeze Time"]],
+	},
+	{
+		name: "Beta Cube",
+		interactables: ["Blue Ring"],
+		upgrades: ["EMP Max Ammo x1", ["EMP Freeze Time x1", "EMP Radius x1"], "RejuvenX x1"],
+		items: ["200% Health 200% Armor", "EMP Ammo x2"],
+		secretTrophy: true,
 	},
 	{
 		name: "Ying Tree Sub Treasure",
@@ -41,7 +49,7 @@ const NODES = [
 			],
 		],
 	},
-	// depth 50+ version of ying forest only has data about what's exclusive to it
+	// depth 50+ version of ying forest, only has data about what's exclusive to it
 	{
 		name: "Ying Forest Depth 50+",
 		monsters: ["Minor Rat"],
@@ -331,6 +339,7 @@ const NODES = [
 		pinkSphereDestination: {
 			nodeName: "Unremembered Tower Secret Room",
 		},
+		notes: "In towers with a Tweedle-Dum Air chunk in the treasure room, there is a hole in the back-left-down corner of the Anti-Plug box surrounding it, which you can use to reach the secret. Make sure to bring a long lasting Yellow Key.",
 	},
 	{
 		name: "Unremembered Tower Treasure",
@@ -1243,25 +1252,37 @@ const NODES = [
 	},
 	{
 		name: "Blackberry",
-		items: [
-			"200% Health 100% Armor",
-			"200% Health 200% Armor",
-			"200% Armor",
-			"1000% Armor",
-			"Extra 100% Health",
-			"Rocket Ammo",
-			"Dark Hole Ammo",
-			"Homing Ammo",
-			"Nuke Ammo",
-			"EMP Ammo",
-			"Gold",
-			"140 Second Yellow Key",
-		],
-		upgrades: ["Rocket Radius", "EMP Radius", "EMP Max Ammo", "Nuke Radius", "Nuke Max Ammo", "Nuke Damage", "Dark Hole Max Ammo"],
-		monsters: ["Baby Spider", "Great Spider", "Iron War Vulcan", "Guerrilla", "Insurgent", "Light Marine", "Marine", "Blue Abomination", "Science Core", "Vile Menace"],
-		interactables: ["Save", "Buy Station", "Waypoint", "Bookmark", "Pink Sphere", "Pink Ring", "Out-Only Waypoint"],
+		interactables: ["Buy Station", "Waypoint", "Bookmark", "Save"],
+		items: ["200% Health 100% Armor", "Rocket Ammo"],
+		monsters: ["Guerrilla", "Insurgent", "Baby Spider", "Iron War Vulcan"],
+		secretTrophy: true,
+	},
+	{
+		name: "Blackberry Seed",
+		items: ["200% Armor x8", "Extra 100% Health x8", "Dark Hole Ammo x16"],
+		monsters: ["Great Spider", "Spider", "Light Marine"],
+		interactables: ["Save", "Waypoint", "Bookmark"],
+	},
+	{
+		name: "Blackberry Core",
+		interactables: ["Save", "Pink Sphere"],
+		monsters: ["Blue Abomination", "Science Core"],
+		items: ["200 Gold", "Extra 100% Health x6", "Homing Ammo x2000", "200% Health 200% Armor x2", "30 Second Yellow Key"],
+	},
+	{
+		name: "Blackberry Orange Box",
+		items: ["140 Second Yellow Key"],
+		interactables: ["Out-Only Waypoint", "Save"],
+		monsters: ["Light Marine", "Marine", "Vile Menace"],
+		notes: "Orange cubes loop, Blue cubes contain either another blue cube, with increasingly difficult enemies, or a grey cube with the treasure.",
+		secretTrophy: true,
+	},
+	{
+		name: "Blackberry Treasure",
+		interactables: ["Pink Ring", "Save"],
+		items: ["Nuke Ammo x16", "EMP Ammo x1", "300 Gold", "1000% Armor x1"],
+		upgrades: ["Nuke Radius x5", "Nuke Max Ammo x2", "Nuke Velocity x1", "Nuke Damage x1", "Rocket Radius x6", "Dark Hole Max Ammo x1", "EMP Radius x4", "EMP Max Ammo x1"],
 		trophy: true,
-		secretTrophy: 2,
 	},
 	{
 		name: "Fake Blackberry",
@@ -1408,6 +1429,7 @@ const NODES = [
 		blueActiveZoneDestination: {
 			nodeName: "WIG Prison",
 		},
+		notes: "Only contains 1 of the I2 destinations",
 	},
 	{
 		name: "Prank I2 WIG Flower",
@@ -3087,13 +3109,14 @@ const NODES = [
 		},
 	},
 	{
-		name: "Violet",
+		name: "Violets",
 		interactables: ["Blue Ring"],
 		monsters: ["Night Guard"],
 		upgrades: ["EMP Freeze Time"],
 		blueActiveZoneDestination: {
 			nodeName: "Violet Shell 0",
 		},
+		notes: "Normally you have to use the Blue Ring to get inside the Violet Shells for the first time, but you can shrink into the toll doors outside of the Violet Shell 3 to get inside",
 	},
 	{
 		name: "Violet Shell 3",
@@ -4110,7 +4133,7 @@ const NODES = [
 		interactables: ["Pink Sphere", "Blue Ring", "Pink Ring"],
 		blueActiveZoneDestination: {
 			nodeName: "Deep Menger Sponge",
-			note: "Deeper",
+			note: "(Deeper)",
 		},
 		notes: "There is a chance a blue ring won't find a terminal chunk and crash the game (1001 level limit)",
 	},
