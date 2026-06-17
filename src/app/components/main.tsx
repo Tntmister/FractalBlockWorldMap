@@ -77,7 +77,7 @@ export default function Main() {
 	}
 
 	function traversePath(path: Edge[]) {
-		setPathStack(getTraversedPath(path, pathStack, nodes));
+		setPathStack(getTraversedPath(path, pathStack, nodes)!);
 	}
 
 	useEffect(() => {

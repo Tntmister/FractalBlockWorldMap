@@ -72,7 +72,7 @@ export function pathfindTo(targetNodeName: string, pathStack: Edge[], nodes: Map
 			path.push(
 				...pathfindToInteractables(
 					["Blue Ring"],
-					getTraversedPath(path, pathStack, nodes),
+					getTraversedPath(path, pathStack, nodes)!,
 					nodesCopy,
 				)!,
 			);
@@ -105,6 +105,9 @@ export function pathfindTo(targetNodeName: string, pathStack: Edge[], nodes: Map
 			if (path.at(-1)?.destinationNode.name != targetNodeName) {
 				// check if target is between impassable edge and blue ring destination
 				let traversedPath = getTraversedPath(path, pathStack, nodes);
+				if (!traversedPath) {
+					return null;
+				}
 				traversedPath = traversedPath.slice(
 					traversedPath.findLastIndex((edge) => (edge.id = impassableEdgeId)) - 1,
 				);
@@ -129,7 +132,7 @@ export function pathfindTo(targetNodeName: string, pathStack: Edge[], nodes: Map
 					path.push(
 						...pathfindTo(
 							targetNodeName,
-							getTraversedPath(path, pathStack, nodes),
+							getTraversedPath(path, pathStack, nodes)!,
 							nodes,
 						)!,
 					);
@@ -238,14 +241,19 @@ export function getTraversedPath(path: Edge[], pathStack: Edge[], nodes: Map<str
 				(edge2) => edge2.destinationNode.blueActiveZoneDestination,
 			);
 			pathStackAux = pathStackAux.slice(0, blueDownChunk + 1);
-			pathStackAux.push(
-				...dijkstraPathfind(
-					pathStackAux[blueDownChunk].destinationNode.name,
-					pathStackAux[blueDownChunk].destinationNode.blueActiveZoneDestination!.nodeName,
-
-					nodes,
-				)!,
+			const resultPath = dijkstraPathfind(
+				pathStackAux[blueDownChunk].destinationNode.name,
+				pathStackAux[blueDownChunk].destinationNode.blueActiveZoneDestination!.nodeName,
+				nodes,
 			);
+			if (resultPath) pathStackAux.push(...resultPath);
+			//something must have gone wrong for this to happen TODO: fix case when pathfinding to a pink ring finds a destination between blue ring and terminal where terminal has a pink sphere (violet shell 2 border in violet -> violet shell 0 path)
+			else {
+				console.warn(
+					`Error pathfinding a blue ring from ${pathStackAux[blueDownChunk].destinationNode.name} to ${pathStackAux[blueDownChunk].destinationNode.blueActiveZoneDestination!.nodeName}`,
+				);
+				return undefined;
+			}
 		} else if (edge.pinkRing) {
 			const pinkSphereChunk = pathStackAux.findLastIndex(
 				(edge2) => edge2.destinationNode.pinkSphereDestination,
