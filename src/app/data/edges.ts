@@ -1639,7 +1639,7 @@ const edgeData: EdgeDataSpecific = {
 		"Mystic Vine 0": {
 			distance: 1,
 		},
-		"Blue Bubble Cave": {
+		"Bubble Cave": {
 			distance: 1,
 		},
 		"WIG Prison": {
@@ -1679,83 +1679,181 @@ const edgeData: EdgeDataSpecific = {
 			distance: 1,
 		},
 	},
-	"Blue Bubble Cave": {
+	"Bubble Cave": {
+		"Bubble Cave Shaft": {
+			distance: 10,
+		},
+		"Bubble Cave Wall": {
+			distance: 5,
+		},
+		"Bubble Cave Treasure": {
+			distance: 20,
+		},
+		"Bubble Cave Bubble": {
+			distance: 20,
+		},
+	},
+	"Bubble Cave Treasure": {
+		"Small Blue Flower (Primary)": {
+			distance: 1,
+		},
+		"Gnole Disco": {
+			distance: 1,
+		},
+	},
+	"Bubble Cave Wall": {
+		"Earthy Cellar": {
+			distance: 40,
+		},
+		"Bubble Cave Wall Sub": {
+			distance: 5,
+		},
+		"Bubble Cave Green Wall Sub": {
+			distance: 10,
+		},
+	},
+	"Bubble Cave Wall Sub": {
+		"Ying Forest": {
+			distance: 5,
+			note: "Around Waypoint",
+		},
 		"Fir Tree": {
 			distance: 1,
 		},
-		"Fanatic Weed": {
-			distance: 5,
-		},
-		"Earthy Cellar": {
-			distance: 10,
-		},
-		"Gnole Disco": {
-			distance: 10,
-		},
-		"Small Blue Flower (Primary)": {
-			distance: 10,
-		},
-		"Stoney Air": {
-			distance: 10,
-		},
 		"Cardboard Box": {
 			distance: 10,
-			note: "Sub-Cave",
 		},
 		"Blackberry": {
 			distance: 10,
-			note: "Sub-Cave",
+		},
+	},
+	"Bubble Cave Green Wall Sub": {
+		"Ying Forest": {
+			distance: 5,
+			note: "Around Waypoint",
+		},
+		"Fanatic Weed": {
+			distance: 5,
 		},
 		"I2 WIG Flower": {
 			distance: 15,
 		},
-		"Purple Bubble Cave": {
-			distance: 15,
-		},
-	},
-	"Purple Bubble Cave": {
-		"Oak Tree": {
+		"Cardboard Box": {
 			distance: 10,
 		},
-		"Fanatic Weed": {
-			distance: 1,
+		"Blackberry": {
+			distance: 10,
 		},
-		"Weed Ring": {
-			distance: 1,
+	},
+	"Bubble Cave Shaft": {
+		"Stoney Air": {
+			distance: 20,
 		},
-		"Ostrich Fern": {
-			distance: 1,
+	},
+	"Bubble Cave Bubble": {
+		"Oak Tree": {
+			distance: 10,
 		},
 		"Fanatic Air": {
 			distance: 1,
 		},
-		"Nuke Radius Cave": {
-			distance: 5,
-			note: "Inside Big Green Hanging Vine",
-		},
-		"I3 Common Gate": {
+		"Fanatic Weed": {
 			distance: 1,
 		},
-		"Galaxy Flower": {
-			distance: 10,
+		"Hanging Fanatic Vine": {
+			distance: 1,
 		},
+		"Weed Ring": {
+			distance: 5,
+		},
+		"Ostrich Fern": {
+			distance: 5,
+		},
+		"I3 Common Gate": {
+			distance: 5,
+		},
+		"Galaxy Flower": {
+			distance: 5,
+		},
+		"Bubble Cave Bubble Treasure": {
+			distance: 30,
+		},
+	},
+	"Bubble Cave Bubble Treasure": {
 		"Fir Tree": {
-			distance: 10,
+			distance: 1,
+			note: "Treasure Border",
 		},
 		"Blue Mushroom": {
-			distance: 30,
+			distance: 10,
 			note: "50% Chance",
 		},
-		"Danville": {
-			distance: 30,
-		},
 		"Mystic Vine 0": {
-			distance: 30,
+			distance: 10,
+		},
+		"Danville": {
+			distance: 10,
 		},
 	},
 	"Ostrich Fern": {
 		"Fir Tree": {
 			distance: 1,
+		},
+		"I2 Mountains": {
+			distance: 20,
+		},
+		"Fanatic Weed": {
+			distance: 1,
+			note: "Floor",
+		},
+	},
+	"I2 Mountains": {
+		"I2 Mountains Tree Trunk": {
+			distance: 10,
+		},
+		"Fanatic Weed Caves": {
+			distance: 10,
+			note: "Tops of trees",
+		},
+		"Fanatic Grass": {
+			distance: 10,
+		},
+		"I2 Mountains Treasure": {
+			distance: 40,
+		},
+	},
+	"I2 Mountains Treasure": {
+		"Weapon Library": {
+			distance: 1,
+		},
+		"I2 Pink Puzzle": {
+			distance: 1,
+		},
+	},
+	"I2 Pink Puzzle": {
+		"I2 Pink Puzzle Treasure": {
+			distance: 30,
+			impassable: true,
+		},
+		"Ying Forest": {
+			distance: 1,
+		},
+	},
+	"I2 Pink Puzzle Treasure": {
+		"Catacombs 1": {
+			distance: 1,
+		},
+		"Ying Forest": {
+			distance: 1,
+		},
+		"Rainbow Flower": {
+			distance: 1,
+			note: "50% Chance",
+		},
+	},
+	"I2 Mountains Tree Trunk": {
+		"I2 WIG Flower": {
+			distance: 10,
 		},
 	},
 	"Earthy Cellar": {
@@ -1992,7 +2090,6 @@ const edgeData: EdgeDataSpecific = {
 		},
 		"Violet Shell 3": {
 			distance: 50,
-			impassable: true,
 		},
 	},
 	"Violet Shell 3": {
@@ -2141,7 +2238,7 @@ const edgeData: EdgeDataSpecific = {
 		"Violet Shell 0": {
 			distance: 15, // we take a blue ring here, but distance to leave
 		},
-		"Blue Bubble Cave": {
+		"Bubble Cave": {
 			distance: 10,
 		},
 		"Violet Shell 1 Border": {
@@ -2649,7 +2746,7 @@ const edgeData: EdgeDataSpecific = {
 		"Guerilla Jungle": {
 			distance: 1,
 		},
-		"Blue Bubble Cave": {
+		"Bubble Cave": {
 			distance: 1,
 		},
 		"Raspberry": {
@@ -2772,6 +2869,9 @@ const edgeData: EdgeDataSpecific = {
 		"Fir Tree": {
 			distance: 1,
 		},
+		"Fanatic Air": {
+			distance: 1,
+		},
 		"Spruce Tree": {
 			distance: 5,
 		},
@@ -2793,9 +2893,6 @@ const edgeData: EdgeDataSpecific = {
 	},
 	"Fanatic Weed Caves Treasure": {
 		"Minigun Forest Minor Pod": {
-			distance: 1,
-		},
-		"Fanatic Air": {
 			distance: 1,
 		},
 	},
@@ -3569,7 +3666,7 @@ const edgeData: EdgeDataSpecific = {
 		"Fanatic Air": {
 			distance: 1,
 		},
-		"Blue Bubble Cave": {
+		"Bubble Cave": {
 			distance: 1,
 		},
 		"Stoney Air": {
@@ -4027,6 +4124,9 @@ const edgeData: EdgeDataSpecific = {
 		"Ying Forest": {
 			distance: 1,
 		},
+		"Tau Cave Moss": {
+			distance: 1,
+		},
 		"Orange Flower": {
 			distance: 1,
 		},
@@ -4035,6 +4135,9 @@ const edgeData: EdgeDataSpecific = {
 		},
 		"Yellow Cube Secret": {
 			distance: 5,
+		},
+		"Rich Yellow Cube": {
+			distance: 10,
 		},
 	},
 	"Rich Yellow Cube": {
@@ -4045,6 +4148,9 @@ const edgeData: EdgeDataSpecific = {
 			distance: 5,
 		},
 		"Ying Forest": {
+			distance: 1,
+		},
+		"Tau Cave Moss": {
 			distance: 1,
 		},
 		"Orange Flower": {
@@ -4175,6 +4281,9 @@ const edgeData: EdgeDataSpecific = {
 		"Supermassive Black Hole 3": {
 			distance: 10,
 			requiresKey: "Universe Key",
+		},
+		"Orange Ground City": {
+			distance: 10,
 		},
 	},
 	"Supermassive Black Hole 3": {
@@ -4708,6 +4817,9 @@ const edgeData: EdgeDataSpecific = {
 	},
 	"Tweedle-Dum Air": {
 		"Tweedle-Dee Air": {
+			distance: 1,
+		},
+		"Tweedle-Dum Base": {
 			distance: 1,
 		},
 	},

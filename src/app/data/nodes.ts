@@ -542,7 +542,7 @@ const NODES = [
 	},
 	{
 		name: "Galaxy Flower Secret",
-		upgrades: ["Dark Hole Damage", "Dark Hole Max Ammo", "Dark Hole Velocity", "Laser Max Ammo"],
+		upgrades: ["Dark Hole Damage x24", "Dark Hole Max Ammo x5", "Dark Hole Velocity x5", "Laser Max Ammo x2"],
 		secretTrophy: true,
 	},
 	{
@@ -1465,29 +1465,55 @@ const NODES = [
 		notes: "Corresponding Green Key comes from Starksboro",
 	},
 	{
-		name: "Blue Bubble Cave",
-		upgrades: ["Homing Damage", "Homing Fire Rate", "Homing Max Ammo", "Homing Velocity"],
-		items: ["Gold", "Homing Ammo"],
-		interactables: ["Waypoint", "Bookmark", "Save", "Out-Only Waypoint"],
-		monsters: ["Minor Rat", "Orc", "Demon", "Gnole"],
+		name: "Bubble Cave",
 	},
 	{
-		name: "Purple Bubble Cave",
-		monsters: ["Unruly Juggernaut", "Sentinel", "Marine", "Blue Abomination"],
-		upgrades: [
-			"Non-Laser Max Ammo x1",
-			["EMP Max Ammo", "Nuke Max Ammo"],
-			"Nuke Damage",
-			"Nuke Max Ammo",
-			"Nuke Radius",
-			"Nuke Velocity",
-			"Railgun Fire Rate",
-			"Railgun Max Ammo",
-			"Rocket Max Ammo",
-			"Max Health",
-		],
-		items: ["Cannon Ammo", "Laser Ammo", "Rocket Ammo", "Homing Ammo", "Minigun Ammo", "Railgun Ammo", "EMP Ammo", "Nuke Ammo", "Dark Hole Ammo", "Gold"],
+		name: "Bubble Cave Shaft",
+		monsters: ["Orc"],
+	},
+	{
+		name: "Bubble Cave Wall",
+		monsters: ["Minor Rat", "Demon"],
+	},
+	{
+		name: "Bubble Cave Wall Sub",
+		items: ["Homing Ammo"],
 		interactables: ["Waypoint", "Bookmark", "Save", "Out-Only Waypoint"],
+		monsters: ["Gnole"],
+	},
+	{
+		name: "Bubble Cave Green Wall Sub",
+		items: ["Homing Ammo"],
+		interactables: ["Waypoint", "Bookmark", "Save", "Out-Only Waypoint"],
+		monsters: ["Gnole"],
+	},
+	{
+		name: "Bubble Cave Treasure",
+		interactables: ["Waypoint", "Bookmark", "Save"],
+		items: ["200 Gold"],
+		upgrades: ["Homing Damage x2", "Homing Fire Rate x2", "Homing Max Ammo x2", "Homing Velocity x2"],
+	},
+	{
+		name: "Bubble Cave Bubble",
+		items: ["Dark Hole Ammo"],
+		monsters: ["Unruly Juggernaut", "Sentinel"],
+		interactables: ["Waypoint", "Bookmark", "Save", "Out-Only Waypoint"],
+	},
+	{
+		name: "Bubble Cave Bubble Treasure",
+		monsters: ["Blue Abomination"],
+		items: ["EMP Ammo x6", "Nuke Ammo x6", "1000 Gold"],
+		upgrades: [
+			["EMP Max Ammo x1", "Nuke Max Ammo x1"],
+			"Nuke Damage x2",
+			"Nuke Max Ammo x2",
+			"Nuke Radius x2",
+			"Nuke Velocity x2",
+			"Railgun Fire Rate x3",
+			"Railgun Max Ammo x1",
+			"Rocket Max Ammo x1",
+			"Max Health x3",
+		],
 		secretTrophy: true,
 	},
 	{
@@ -3252,6 +3278,46 @@ const NODES = [
 	},
 	{
 		name: "Ostrich Fern",
+		upgrades: ["Minigun Damage", "Minigun Velocity"],
+	},
+	{
+		name: "I2 Mountains",
+		interactables: ["Pink Sphere"],
+	},
+	{
+		name: "I2 Mountains Treasure",
+		interactables: ["Pink Ring", "Waypoint", "Save"],
+		upgrades: [
+			"Random Health x7",
+			"Plasma Velocity x7",
+			"Minigun Max Ammo x4",
+			"Minigun Velocity x3",
+			"Minigun Fire Rate x2",
+			"Rocket Radius x2",
+			"Cannon Fire Rate x3",
+			"EMP Radius x2",
+			"EMP Freeze Time x2",
+			"Laser Cold Beam Weapon Mod",
+		],
+		items: ["Laser Ammo x448"],
+		trophy: true,
+	},
+	{
+		name: "I2 Pink Puzzle",
+		pinkSphereDestination: {
+			nodeName: "I2 Pink Puzzle Treasure",
+		},
+	},
+	{
+		name: "I2 Pink Puzzle Treasure",
+		upgrades: ["Armor Regen x1", "Random Health x6", "Minigun Velocity x7", "Minigun Max Ammo x10", "Plasma Max Ammo x4", "Rocket Radius x7"],
+		secretTrophy: true,
+	},
+	{
+		name: "I2 Mountains Tree Trunk",
+		monsters: ["Evil Goon", "Immoral Goon", "Unsavory Goon", "Guerrilla"],
+		items: ["Gold", "Nuke Ammo"],
+		upgrades: ["Railgun Damage", "Dark Hole Damage", "Minigun Damage"],
 	},
 	{
 		name: "Moldy Basement",
@@ -4396,14 +4462,18 @@ const NODES = [
 		blueActiveZoneDestination: {
 			nodeName: "Yellow Cube Secret",
 		},
+		interactables: ["Blue Ring"],
 		items: ["Rocket Ammo"],
+		notes: "There is a Blue Ring hidden inside the Tau Cave Moss chunks, that you can find by shrinking below one",
 	},
 	{
 		name: "Rich Yellow Cube",
 		blueActiveZoneDestination: {
 			nodeName: "Rich Yellow Cube Secret",
 		},
+		interactables: ["Blue Ring"],
 		items: ["Rocket Ammo"],
+		notes: "There is a Blue Ring hidden inside the Tau Cave Moss chunks, that you can find by shrinking below one",
 	},
 	{
 		name: "Mossy Air Cube",

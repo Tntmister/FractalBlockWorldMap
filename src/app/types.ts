@@ -25,6 +25,7 @@ const weaponUpgrades = [
 	"Laser Freeze Time",
 	"Laser Super Damage",
 	"Laser Freeze Ray Weapon Mod",
+	"Laser Cold Beam Weapon Mod",
 	"Rocket Max Ammo",
 	"Rocket Fire Rate",
 	"Rocket Damage",
