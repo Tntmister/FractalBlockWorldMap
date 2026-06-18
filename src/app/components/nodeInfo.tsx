@@ -101,7 +101,14 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 					</>
 				</span>
 			</div>
-			<img id='nodeImage' src={`./images/nodes/${node.name}.webp`} alt='' />
+			<img
+				id='nodeImage'
+				src={`./images/nodes/${node.name}.webp`}
+				alt='test'
+				onError={(e) =>
+					console.log(((e.target as HTMLImageElement).outerHTML = "IMAGE NOT FOUND"))
+				}
+			/>
 			{(node.interactables.length > 0 ||
 				node.interactables.length > 0 ||
 				node.items.length > 0 ||

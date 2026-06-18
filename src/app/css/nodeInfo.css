@@ -10,10 +10,13 @@
 	display: flex;
 	overflow: hidden;
 	position: relative;
+	justify-content: center;
+	align-items: center;
 }
 
 #nodeHeader {
 	position: absolute;
+	top: 0;
 	width: 100%;
 	background-color: var(--backgroundTransparent);
 	border-bottom: var(--foreground) 1px solid;
