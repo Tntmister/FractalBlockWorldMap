@@ -180,13 +180,21 @@ export default function Main() {
 													: undefined
 											}
 										>
-											{edge.requiresKey && (
-												<img
-													className='icon-small'
-													src={`./images/icons/${edge.requiresKey.includes("Singleton") ? "Stable Singletons Key" : edge.requiresKey}.webp`}
-													alt='Stable Singletons Key'
-												/>
-											)}
+											{edge.requiresKey &&
+												(() => {
+													const keyName = edge.requiresKey.includes(
+														"Singleton",
+													)
+														? "Stable Singletons Key"
+														: edge.requiresKey.replace(/ \(\w*\)/i, "");
+													return (
+														<img
+															className='icon-small'
+															src={`./images/icons/${keyName}.webp`}
+															alt={keyName}
+														/>
+													);
+												})()}
 											{edge.arcade && (
 												<img
 													className='icon-small'

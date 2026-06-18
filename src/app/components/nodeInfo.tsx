@@ -209,7 +209,7 @@ export default function NodeInfo({ node }: NodeInfoProps) {
 												const imageName =
 													labels.get(item.replace(/ x\d+$/i, "") as Item)
 														?.imageName ??
-													item.replace(/^\d+ (Second )?/i, "");
+													item.replace(/(^\d+ (Second )?| \(\w*\))/i, "");
 												return (
 													<Fragment key={`${itemAux.join("")}|${item}`}>
 														<img

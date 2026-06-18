@@ -87,7 +87,7 @@ type Key =
 	| "Yellow Key"
 	| `${number} Second Yellow Key`
 	| "Blue Key"
-	| "Green Key"
+	| `Green Key${` (${string})` | ""}`
 	| "Laser Genesis Key"
 	| "Universe Key"
 	| `${"I1" | "I2" | "I3" | "Burlington" | "Hell"} Stable Singletons Key`
