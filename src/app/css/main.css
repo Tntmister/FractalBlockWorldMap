@@ -5,7 +5,7 @@ body {
 	border: var(--foreground) 1px solid;
 }
 
-.pathContainer {
+.sideContainer {
 	text-align: center;
 	width: 15vw;
 	display: flex;
@@ -14,10 +14,6 @@ body {
 
 #currentPathContainer {
 	border-right: var(--foreground) 1px solid;
-}
-
-#pathfindContainer {
-	border-left: var(--foreground) 1px solid;
 }
 
 #packageContainer {

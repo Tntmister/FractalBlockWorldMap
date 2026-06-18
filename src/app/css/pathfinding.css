@@ -1,3 +1,7 @@
+#pathfindContainer {
+	border-left: var(--foreground) 1px solid;
+}
+
 #pathfindSelector {
 	display: flex;
 	flex-direction: column;

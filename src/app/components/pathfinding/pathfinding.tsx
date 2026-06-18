@@ -186,7 +186,7 @@ export default function Pathfinding({ loading, pathStack, traversePath }: Pathfi
 	}
 
 	return (
-		<div className='pathContainer' id='pathfindContainer'>
+		<div className='sideContainer' id='pathfindContainer'>
 			<div className='pathHeader'>Path To Location</div>
 			<div id='pathfindSelector'>
 				<label>
@@ -275,32 +275,32 @@ export default function Pathfinding({ loading, pathStack, traversePath }: Pathfi
 					Find Path
 				</button>
 			</div>
-			<div className='pathList'>
-				{pathfindResult ? (
-					<>
-						{pathfindResult.map((edge, index, path) => {
-							const indexOfCurrent = path.findIndex(
-								(edge) => pathStack.at(-1)!.id == edge.id,
-							);
-							return (
-								<Fragment key={`pathfind${index}`}>
-									{index > 0 ? `↓${edge.up ? " (up)" : ""}` : ""}
-									<div
-										className={`pathNode${indexOfCurrent == index ? " current" : ""}`}
-										onClick={() => traversePathfind(path, index)}
-									>
-										{edge.destinationNode.name}
-									</div>
-								</Fragment>
-							);
-						})}
-					</>
-				) : pathfindResult === undefined ? (
-					""
-				) : (
-					"No Path Available!"
-				)}
-			</div>
+			{pathfindResult && (
+				<div className='pathList'>
+					{pathfindResult.length > 0 ? (
+						<>
+							{pathfindResult.map((edge, index, path) => {
+								const indexOfCurrent = path.findIndex(
+									(edge) => pathStack.at(-1)!.id == edge.id,
+								);
+								return (
+									<Fragment key={`pathfind${index}`}>
+										{index > 0 ? `↓${edge.up ? " (up)" : ""}` : ""}
+										<div
+											className={`pathNode${indexOfCurrent == index ? " current" : ""}`}
+											onClick={() => traversePathfind(path, index)}
+										>
+											{edge.destinationNode.name}
+										</div>
+									</Fragment>
+								);
+							})}
+						</>
+					) : (
+						"No Path Found"
+					)}
+				</div>
+			)}
 		</div>
 	);
 }

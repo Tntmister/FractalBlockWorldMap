@@ -99,7 +99,7 @@ export default function Main() {
 		<>
 			{loading == false && (
 				<>
-					<div className='pathContainer' id='currentPathContainer'>
+					<div className='sideContainer' id='currentPathContainer'>
 						<div className='pathHeader'>Path To Root</div>
 						<div className='pathList'>
 							{pathStack.map((edge, index, path) => (
