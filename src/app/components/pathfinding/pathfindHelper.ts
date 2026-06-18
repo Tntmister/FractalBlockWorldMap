@@ -1,4 +1,5 @@
 import { Edge, Interactable, Node, Upgrade } from "../../types";
+import { nodes } from "../data";
 
 //Dijkstra pathfinding
 // empty array = already at location, undefined = no path
@@ -50,8 +51,16 @@ export function dijkstraPathfind(
 	return path.length > 0 ? path : undefined;
 }
 
-export function pathfindTo(targetNodeName: string, pathStack: Edge[], nodes: Map<string, Node>) {
-	let path = dijkstraPathfind(pathStack.at(-1)!.destinationNode.name, targetNodeName, nodes);
+export function pathfindTo(
+	targetNodeName: string,
+	pathStack: Edge[],
+	modifiedNodes: Map<string, Node>,
+) {
+	let path = dijkstraPathfind(
+		pathStack.at(-1)!.destinationNode.name,
+		targetNodeName,
+		modifiedNodes,
+	);
 	if (path) {
 		// if destination is only accessible thorugh a blue ring, jump to before that then pathfind to a blue ring
 		const impassableEdgeIndex = path.findIndex((edge) => edge.impassable);
