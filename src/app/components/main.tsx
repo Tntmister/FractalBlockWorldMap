@@ -146,12 +146,9 @@ export default function Main() {
 										}}
 									>
 										{path[index + 1]?.requiresKey &&
+											!path[index + 1]?.requiresKey?.includes("Singleton") && //hide stable singleton key since its permanent
 											(() => {
-												const key = path[index + 1].requiresKey!.includes(
-													"Singleton",
-												)
-													? "Stable Singletons Key"
-													: path[index + 1].requiresKey!;
+												const key = path[index + 1].requiresKey;
 												return (
 													<img
 														className='icon-small'
