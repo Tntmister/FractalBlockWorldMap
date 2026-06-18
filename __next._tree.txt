@@ -1,4 +1,4 @@
 :HL["/FractalBlockWorldMap/_next/static/chunks/358w3enyyrhuy.css","style"]
 :HL["/FractalBlockWorldMap/_next/static/media/whiterabbit-s.p.3hzcmca6w0fuu.woff","font",{"crossOrigin":"","type":"font/woff"}]
 :HL["/FractalBlockWorldMap/_next/static/chunks/0etm3v_86w3of.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"OF9xh55BFFLL2eNNrMl3X"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"Eju_-QK7ZwASqfjlnRusl"}
