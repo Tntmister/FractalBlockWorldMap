@@ -1,10 +1,10 @@
 1:"$Sreact.fragment"
 2:I[47257,["/FractalBlockWorldMap/_next/static/chunks/158myu8e_yme3.js"],"ClientPageRoot"]
-3:I[95228,["/FractalBlockWorldMap/_next/static/chunks/158myu8e_yme3.js","/FractalBlockWorldMap/_next/static/chunks/0jul1g3dwp6rl.js"],"default"]
+3:I[95228,["/FractalBlockWorldMap/_next/static/chunks/158myu8e_yme3.js","/FractalBlockWorldMap/_next/static/chunks/2176irgrbnfpl.js"],"default"]
 6:I[97367,["/FractalBlockWorldMap/_next/static/chunks/158myu8e_yme3.js"],"OutletBoundary"]
 7:"$Sreact.suspense"
-:HL["/FractalBlockWorldMap/_next/static/chunks/2kecscooxsfav.css","style"]
-0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","link","0",{"rel":"stylesheet","href":"/FractalBlockWorldMap/_next/static/chunks/2kecscooxsfav.css","precedence":"next"}],["$","script","script-0",{"src":"/FractalBlockWorldMap/_next/static/chunks/0jul1g3dwp6rl.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"KfR0siSUE_oyIpiotD6kf"}
+:HL["/FractalBlockWorldMap/_next/static/chunks/0etm3v_86w3of.css","style"]
+0:{"rsc":["$","$1","c",{"children":[["$","$L2",null,{"Component":"$3","serverProvidedParams":{"searchParams":{},"params":{},"promises":["$@4","$@5"]}}],[["$","link","0",{"rel":"stylesheet","href":"/FractalBlockWorldMap/_next/static/chunks/0etm3v_86w3of.css","precedence":"next"}],["$","script","script-0",{"src":"/FractalBlockWorldMap/_next/static/chunks/2176irgrbnfpl.js","async":true}]],["$","$L6",null,{"children":["$","$7",null,{"name":"Next.MetadataOutlet","children":"$@8"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"OF9xh55BFFLL2eNNrMl3X"}
 4:{}
 5:"$0:rsc:props:children:0:props:serverProvidedParams:params"
 8:null
