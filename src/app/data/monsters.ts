@@ -462,6 +462,7 @@ export const monsters = [
 	},
 	{
 		name: "Inner Core",
+		drop: "Universe Key",
 	},
 	{
 		name: "Inner Core Minion",

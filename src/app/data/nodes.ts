@@ -1,4 +1,4 @@
-import { NodeData } from "../types";
+import { interactables, NodeData } from "../types";
 import { monsterNames } from "./monsters";
 
 type NodeDataSpecific = NodeData & {
@@ -82,11 +82,21 @@ const NODES = [
 		upgrades: ["Plasma Fire Rate x1", "Plasma Regen x3", "Plasma Max Ammo x2", "Max Health x2"],
 	},
 	{
-		name: "EMERGENCY Secret",
-		items: ["Gold", "1000% Armor", "Extra 100% Health"],
+		name: "EMERGENCY Secret 1",
+		items: ["500 Gold", "1000% Armor x1", "Extra 100% Health x4"],
+		upgrades: ["Laser Freeze Time", "Laser Max Ammo"],
+	},
+	{
+		name: "EMERGENCY Secret 2",
+		items: ["1000 Gold", "1000% Armor x1", "Extra 100% Health x4"],
 		interactables: ["Waypoint", "Out-Only Waypoint"],
-		upgrades: ["Laser Freeze Time", "Laser Max Ammo", "Minigun Max Ammo", "Minigun Velocity", "Nuke Radius", "Plasma Regen"],
+		upgrades: ["Laser Freeze Time x1", "Laser Max Ammo x2", "Minigun Max Ammo x5", "Minigun Velocity x5", "Nuke Radius x4", "Plasma Regen x4"],
 		secretTrophy: true,
+	},
+	{
+		name: "EMERGENCY Secret 3",
+		upgrades: ["Laser Max Ammo x4"],
+		items: ["1000 Gold"],
 	},
 	{
 		name: "Safety Doppelganger",
@@ -475,6 +485,12 @@ const NODES = [
 		interactables: ["Pink Ring", "Save", "Scarce Sell Station", "Buy Station", "Markers", "Waypoint", "Respawn", "Out-Only Waypoint"],
 		items: ["200 Gold", "100% Armor"],
 		upgrades: ["Health Regen x26", "Telekinesis", "RejuvenX x8", "Railgun Fire Rate x1", "Nuke Max Ammo x1", "EMP Max Ammo x1", "EMP Radius x1", "Cannon Tommy Gun Weapon Mod"],
+	},
+	{
+		name: "Huntington Secret",
+		upgrades: ["EMP Radius x2", "EMP Freeze Time x2", "RejuvenX x2"],
+		items: ["400 Gold"],
+		secretTrophy: true,
 	},
 	{
 		name: "Camel's Hump",
@@ -3486,13 +3502,59 @@ const NODES = [
 	{
 		name: "Top of the World",
 		noEscape: true,
-		upgrades: ["Plasma Regen", "Minigun Super Damage", "Laser Super Damage", "Armor Regen", "Telekinesis"],
 		interactables: ["Blue Ring"],
 		blueActiveZoneDestination: {
 			nodeName: "Mylantis Top Garden",
 		},
 		trophy: true,
+	},
+	{
+		name: "Top of the World Secret",
+		upgrades: ["Plasma Regen x210", "Minigun Super Damage x1", "Laser Super Damage x1", "Armor Regen x1", "Telekinesis"],
 		secretTrophy: true,
+	},
+	{
+		name: "Heart Farmhouse",
+		interactables: ["Sleep", "Waypoint", "Respawn", "Save", "Buy Station", "Markers", "Upgrade Station", "Max Ammo Upgrade Station", "Rare Sell Station"],
+		items: [
+			"Dark Hole Ammo x3",
+			"200% Health 200% Armor x1",
+			"Homing Ammo x2000",
+			"Cannon Ammo x100",
+			"Nuke Ammo x2",
+			"EMP Ammo x2",
+			"Minigun Ammo x300",
+			"Railgun Ammo x100",
+			"Rocket Ammo x100",
+			"250 Second Yellow Key",
+		],
+		upgrades: [
+			"Dark Hole Max Ammo x8",
+			"Nuke Damage x25",
+			"Telekinesis",
+			"Laser Damage x25",
+			"Rocket Max Ammo x25",
+			"Homing Max Ammo",
+			"Minigun Damage x25",
+			"Railgun Damage x25",
+			"RejuvenX x20",
+			"Laser Max Ammo x5",
+			"Health Regen x20",
+		],
+		monsters: ["Mercinary", "Commando", "Collapsed Angel", "Collapsed Archangel", "Collapsed Star", "Collapsed Soul", "Yellow Lamprey", "Green Lamprey"],
+	},
+	{
+		name: "Dummy Galaxy Flower",
+		upgrades: ["Dark Hole Damage x1"],
+	},
+	{
+		name: "Dummy Galaxy",
+	},
+	{
+		name: "Icarus House",
+		interactables: ["Waypoint"],
+		upgrades: ["Dark Hole Max Ammo x3", "Armor Regen x1"],
+		notes: "Behind the painting, you will find the Icarus Mode toggle.\nNote that Icarus Mode is not currently supported here.",
 	},
 	{
 		name: "Edge of the World",
@@ -3706,9 +3768,16 @@ const NODES = [
 	},
 	{
 		name: "Hell Flower",
-		interactables: ["Pink Sphere", "Black Market"],
-		upgrades: ["Nuke Damage x3", "Nuke Velocity x2", "Nuke Max Ammo x1", "Railgun Fire Rate"],
-		items: ["Hell Stable Singletons Key", "Railgun Ammo x450", "Laser Ammo x96", "Nuke Ammo x3", "EMP Ammo x7", "Cannon Ammo x200", "Minigun Ammo x150", "Extra 10% Health"],
+		interactables: ["Pink Sphere"],
+		upgrades: ["Nuke Damage x3", "Nuke Velocity x2", "Nuke Max Ammo x1"],
+		items: ["Hell Stable Singletons Key"],
+		trophy: true,
+	},
+	{
+		name: "Hellberry",
+		interactables: ["Black Market"],
+		upgrades: ["Railgun Fire Rate"],
+		items: ["Railgun Ammo x450", "Laser Ammo x96", "Nuke Ammo x3", "EMP Ammo x7", "Cannon Ammo x200", "Minigun Ammo x150", "Extra 10% Health"],
 		monsters: [
 			"Minor Gremlin",
 			"Mechanized Sheath",
@@ -3724,7 +3793,31 @@ const NODES = [
 			"Compromised Nuclear Silo",
 			"Satellite",
 		],
-		trophy: true,
+	},
+	{
+		name: "Secret Hell Flower",
+		interactables: ["Pink Sphere"],
+		items: ["Green Key", "Nuke Ammo"],
+		notes: "How to reach the Inner Core room with the Green Key: Before picking up the key, go into an I3 closest to the Inner Core room and find a location with a Waypoint and a Pink Ring close to eachother (Colchester Secret). Then you can go back (waypoint to the emergency secret waypoint), pick up the Green Key, go into the nearest I3 and find a Waypoint, teleport to the earlier I3 and use the Pink Ring, then go into the Inner Core room",
+	},
+	{
+		name: "Secret Hellberry",
+		items: ["Railgun Ammo x450", "Laser Ammo x96", "Nuke Ammo x3", "EMP Ammo x7", "Cannon Ammo x200", "Minigun Ammo x150"],
+		monsters: [
+			"Minor Gremlin",
+			"Mechanized Sheath",
+			"Goliath",
+			"Hobgoblin",
+			"Commando",
+			"Troll",
+			"Collapsed Spirit",
+			"Probe",
+			"Heavy Marine",
+			"Plague",
+			"Blood Boy",
+			"Compromised Nuclear Silo",
+			"Satellite",
+		],
 	},
 	{
 		name: "Hell Bunker",
@@ -3753,7 +3846,7 @@ const NODES = [
 	},
 	{
 		name: "Inner Core Room",
-		monsters: ["Inner Core"],
+		monsters: ["Inner Core", "Inner Core Minion"],
 		trophy: true,
 	},
 	{
@@ -3795,6 +3888,11 @@ const NODES = [
 		items: ["Universe Key"],
 		upgrades: ["RejuvenX x1", "Nuke Damage x1", "Nuke Max Ammo x1", "Nuke Radius x1", "Nuke Velocity x1"],
 		interactables: ["Waypoint", "Out-Only Waypoint", "Pink Ring"],
+	},
+	{
+		name: "Heart Room",
+		items: ["Green Key (heart)"],
+		upgrades: ["Dark Hole Max Ammo x15"],
 	},
 	{
 		name: "Stable Singletons",
@@ -4041,8 +4139,19 @@ const NODES = [
 			"200 Second Yellow Key",
 			"Laser Genesis Key",
 		],
-		upgrades: ["Nuke Damage", "Telekinesis", "Laser Damage", "Rocket Max Ammo", "Homing Max Ammo", "Minigun Damage", "Railgun Damage", "RejuvenX", "Laser Max Ammo"],
-		monsters: ["Mercinary", "Commando", "Collapsed Angel", "Collapsed Archangel", "Collapsed Star", "Collapsed Soul", "Yellow Lamprey", "Clockwork Watchman"],
+		upgrades: [
+			"Nuke Damage x25",
+			"Telekinesis",
+			"Laser Damage x25",
+			"Rocket Max Ammo x25",
+			"Homing Max Ammo",
+			"Minigun Damage x25",
+			"Railgun Damage x25",
+			"RejuvenX x20",
+			"Laser Max Ammo x5",
+			"Health Regen x20",
+		],
+		monsters: ["Mercinary", "Commando", "Collapsed Angel", "Collapsed Archangel", "Collapsed Star", "Collapsed Soul", "Yellow Lamprey", "Green Lamprey", "Clockwork Watchman"],
 		trophy: true,
 	},
 	{

@@ -37,18 +37,49 @@ const edgeData: EdgeDataSpecific = {
 		"Stable Singletons": {
 			distance: 1,
 		},
-		"EMERGENCY Secret": {
+		"EMERGENCY Secret 1": {
 			distance: 20,
 			requiresKey: "Yellow Key",
 		},
 	},
-	"EMERGENCY Secret": {
+	"EMERGENCY Secret 1": {
 		"Tau Cave Moon": {
 			distance: 1,
 		},
-		"Fire Rate Moon": {
+		"EMERGENCY Secret 2": {
 			distance: 1,
 			requiresKey: "Universe Key",
+		},
+	},
+	"EMERGENCY Secret 2": {
+		"Fire Rate Moon": {
+			distance: 10,
+		},
+		"EMERGENCY Secret 3": {
+			distance: 30,
+			note: "Bottom right of glass",
+		},
+	},
+	"EMERGENCY Secret 3": {
+		"Secret Hell Flower": {
+			distance: 1,
+		},
+	},
+	"Secret Hell Flower": {
+		"Secret Hellberry": {
+			distance: 1,
+			arcade: true,
+		},
+	},
+	"Secret Hellberry": {
+		"I3 WIG Flower": {
+			distance: 15,
+			arcade: true,
+		},
+		"Inner Core Room": {
+			distance: 30,
+			arcade: true,
+			requiresKey: "Green Key",
 		},
 	},
 	"Fire Rate Moon": {
@@ -814,7 +845,7 @@ const edgeData: EdgeDataSpecific = {
 			distance: 15,
 		},
 		"Sagittarius Portal": {
-			distance: 15,
+			distance: 20,
 		},
 		"Mahogany Tree": {
 			distance: 5,
@@ -1430,14 +1461,22 @@ const edgeData: EdgeDataSpecific = {
 		},
 	},
 	"Hell Flower": {
+		"Hellberry": {
+			distance: 1,
+			arcade: true,
+		},
+	},
+	"Hellberry": {
 		"Hell Bunker": {
 			distance: 10,
 		},
 		"Inner Core Room": {
 			distance: 40,
+			arcade: true,
 		},
 		"Secret Wolf Forest": {
 			distance: 60,
+			arcade: true,
 		},
 	},
 	"Secret Wolf Forest": {
@@ -1454,11 +1493,18 @@ const edgeData: EdgeDataSpecific = {
 		},
 	},
 	"Inner Core Room": {
-		"Ying Forest": {
+		"Inner Core Room Bunker": {
 			distance: 5,
 		},
 		"Credits": {
 			distance: 40,
+			arcade: true,
+		},
+	},
+	"Inner Core Room Bunker": {
+		"Ying Forest": {
+			distance: 1,
+			arcade: true,
 		},
 	},
 	"Credits": {
@@ -1467,6 +1513,13 @@ const edgeData: EdgeDataSpecific = {
 		},
 		"Engine": {
 			distance: 1,
+		},
+	},
+	"Engine": {
+		"Heart Room": {
+			distance: 1,
+			requiresKey: "Universe Key",
+			note: "Only inside Secret Hell Flower",
 		},
 	},
 	"Williston Field": {
@@ -1886,7 +1939,7 @@ const edgeData: EdgeDataSpecific = {
 			distance: 5,
 		},
 		"Fanatic Spire": {
-			distance: 10,
+			distance: 20,
 		},
 		"I2 Library": {
 			distance: 10,
@@ -1944,7 +1997,7 @@ const edgeData: EdgeDataSpecific = {
 			distance: 1,
 		},
 		"Fanatic Spire Scaffold": {
-			distance: 4,
+			distance: 5,
 		},
 		"Small Blue Flower (Primary)": {
 			distance: 10,
@@ -1986,7 +2039,7 @@ const edgeData: EdgeDataSpecific = {
 			note: "Inside Grey Pillars",
 		},
 		"Creeping Jeni": {
-			distance: 5,
+			distance: 10,
 		},
 	},
 	"Creeping Jeni": {
@@ -4049,6 +4102,21 @@ const edgeData: EdgeDataSpecific = {
 		"Weapon Library": {
 			distance: 1,
 		},
+		"Huntington Secret": {
+			distance: 30,
+			impassable: true,
+		},
+	},
+	"Huntington Secret": {
+		"Galaxy Flower": {
+			distance: 1,
+		},
+		"Moon Flower": {
+			distance: 1,
+		},
+		"Ying Forest": {
+			distance: 1,
+		},
 	},
 	"Stoney Air": {
 		"Stoney Air Cave 1": {
@@ -4228,9 +4296,6 @@ const edgeData: EdgeDataSpecific = {
 		},
 	},
 	"Solar System": {
-		"Supermassive Black Hole 1": {
-			distance: 30,
-		},
 		"Sun": {
 			distance: 15,
 		},
@@ -4957,10 +5022,44 @@ const edgeData: EdgeDataSpecific = {
 			distance: 1,
 			requiresKey: "Green Key",
 		},
+		"Top of the World Secret": {
+			distance: 5,
+			note: " corner",
+		},
 		"Space Root Pink Prison": {
 			distance: 50,
 			impassable: true,
 			note: "Pink Ring",
+		},
+	},
+	"Top of the World Secret": {
+		"Heart Farmhouse": {
+			distance: 5,
+			requiresKey: "Green Key (heart)",
+		},
+	},
+	"Heart Farmhouse": {
+		"Dummy Galaxy Flower": {
+			distance: 25,
+		},
+		"Ying Forest": {
+			distance: 1,
+		},
+	},
+	"Dummy Galaxy Flower": {
+		"Dummy Galaxy": {
+			distance: 5,
+		},
+		"Icarus House": {
+			distance: 5,
+		},
+		"Quicksand Grass": {
+			distance: 1,
+		},
+	},
+	"Dummy Galaxy": {
+		"Solar System": {
+			distance: 20,
 		},
 	},
 	"Space Root Pink Prison": {
@@ -5698,6 +5797,9 @@ const edgeData: EdgeDataSpecific = {
 		},
 	},
 	"Galaxy": {
+		"Supermassive Black Hole 1": {
+			distance: 50,
+		},
 		"Solar System": {
 			distance: 20,
 		},
