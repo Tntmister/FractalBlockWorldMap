@@ -9,6 +9,7 @@ import {
 import { ChangeEvent, Fragment, useEffect, useRef, useState } from "react";
 import { pathfindTo, pathfindToInteractables, pathfindToUpgrades } from "./pathfindHelper";
 import { nodes } from "../data";
+import "../../css/pathfinding.css";
 
 interface PathfindingProps {
 	loading: boolean;
