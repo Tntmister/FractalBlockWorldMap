@@ -25,7 +25,7 @@ export default function RootLayout({
 				/>
 				<meta
 					name='description'
-					content='A (mostly) accurate map of Fractal Block World, including pathfinding from one place to another.'
+					content='A (mostly) accurate interactive map of Fractal Block World with detailed info about locations and path functionality, including pathfinding to locations, interactables and upgrades.'
 				/>
 				<meta name='author' content='Tntmister' />
 			</head>
