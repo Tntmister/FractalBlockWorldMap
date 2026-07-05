@@ -1706,14 +1706,6 @@ const NODES = [
 		trophy: true,
 	},
 	{
-		name: "Large White Flower",
-		trophy: true,
-		items: ["200% Health 200% Armor", "Nuke Ammo", "Rocket Ammo", "Cannon Ammo", "Railgun Ammo", "EMP Ammo", "Gold"],
-		upgrades: ["Random Health", "Plasma Regen", "Laser Max Ammo"],
-		monsters: ["Collapsed Archangel", "Petite Goon", "Collapsed Spirit", "Evil Goon", "Collapsed Angel", "Questionable Goon", "Green Lamprey"],
-		interactables: ["Rare Sell Station", "Buy Station", "Markers"],
-	},
-	{
 		name: "Danville",
 		upgrades: ["Rocket Max Ammo", "Rocket Radius", "Nuke Velocity", "Nuke Damage", "Nuke Max Ammo", "Nuke Radius"],
 		items: ["Gold", "100% Armor"],
@@ -2324,10 +2316,25 @@ const NODES = [
 	},
 	{
 		name: "Large White Flower",
-		upgrades: ["Random Health", "Plasma Regen", "Laser Max Ammo", "Homing Max Ammo", "Homing Fire Rate", "Homing Damage", "Homing Velocity", "Max Health"],
 		items: ["Extra 100% Health", "Gold"],
-		monsters: ["Menace", "Arch Menace Male"],
-		interactables: ["Waypoint", "Save", "Pink Ring", "Pink Sphere", "Buy Station"],
+		monsters: ["Collapsed Archangel", "Collapsed Angel", "Collapsed Spirit", "Petite Goon", "Small Goon", "Goon", "Immoral Goon", "Questionable Goon", "Green Lamprey"],
+		interactables: ["Pink Sphere"],
+		notes: "Secret Entrance is on the bottom of the left face of the flower",
+	},
+	{
+		name: "Large White Flower Secret Entrance",
+		interactables: ["Rare Sell Station", "Buy Station", "Markers"],
+		items: ["Nuke Ammo x5", "Rocket Ammo x80", "Cannon Ammo x50", "Railgun Ammo x50", "EMP Ammo x1", "Dark Hole Ammo x1", "200% Health 200% Armor x1"],
+	},
+	{
+		name: "Large White Flower Treasure",
+		upgrades: ["Random Health x64", "Plasma Regen x16", "Laser Max Ammo x2"],
+		items: ["2000 Gold"],
+	},
+	{
+		name: "Past Large White Flower Treasure",
+		upgrades: ["Homing Max Ammo x4", "Homing Damage x1", "Homing Fire Rate x1", "Homing Velocity x1", "Max Health x5"],
+		interactables: ["Waypoint", "Save", "Buy Station", "Pink Ring"],
 		trophy: true,
 	},
 	{

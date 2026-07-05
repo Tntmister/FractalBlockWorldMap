@@ -3237,8 +3237,26 @@ const edgeData: EdgeDataSpecific = {
 		},
 	},
 	"Large White Flower": {
+		"Large White Flower Treasure": {
+			distance: 50,
+		},
+		"Large White Flower Secret Entrance": {
+			distance: 10,
+		},
+	},
+	"Large White Flower Secret Entrance": {
+		"Past Large White Flower Treasure": {
+			distance: 1,
+		},
+	},
+	"Large White Flower Treasure": {
+		"Past Large White Flower Treasure": {
+			distance: 1,
+		},
+	},
+	"Past Large White Flower Treasure": {
 		"Great White Cavern": {
-			distance: 30,
+			distance: 1,
 		},
 	},
 	"Great White Cavern": {
