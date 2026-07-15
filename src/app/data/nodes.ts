@@ -3560,8 +3560,9 @@ const NODES = [
 	{
 		name: "Icarus House",
 		interactables: ["Waypoint"],
+		secretTrophy: true,
 		upgrades: ["Dark Hole Max Ammo x3", "Armor Regen x1"],
-		notes: "Behind the painting, you will find the Icarus Mode toggle.\nNote that Icarus Mode is not currently supported here.",
+		notes: "Behind the painting, you will find the Icarus Mode toggle.\nNote that Icarus Mode is not currently supported here. (But there is a secret trophy in Absolute Infinite)",
 	},
 	{
 		name: "Edge of the World",
