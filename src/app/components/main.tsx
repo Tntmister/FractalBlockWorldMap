@@ -148,11 +148,11 @@ export default function Main() {
 										{path[index + 1]?.requiresKey &&
 											!path[index + 1]?.requiresKey?.includes("Singleton") && //hide stable singleton key since its permanent
 											(() => {
-												const key = path[index + 1].requiresKey;
+												const key = path[index + 1].requiresKey!;
 												return (
 													<img
 														className='icon-small'
-														src={`./images/icons/${key}.webp`}
+														src={`./images/icons/${key.replace(/ \(\w*\)/i, "")}.webp`}
 														alt={key}
 													/>
 												);
@@ -191,7 +191,7 @@ export default function Main() {
 														<img
 															className='icon-small'
 															src={`./images/icons/${keyName}.webp`}
-															alt={keyName}
+															alt={edge.requiresKey}
 														/>
 													);
 												})()}
